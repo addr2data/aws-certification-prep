@@ -3,10 +3,10 @@ AWS CERTIFICATION PREP
 
 Introduction
 ------------
+I have worked with EC2 off and on for the last 5-6 years, but never dug into the details. As of Jun 2018, I started looking at the AWS certification program. I decided to put this project together to help myself stay organized and hopefully, help others. 
 
-
-Exams
------
+Exams I am preparing for
+------------------------
 1. AWS Certified Solutions Architect – Associate
 2. AWS Certified Advanced Networking – Specialty
 3. AWS Certified Solutions Architect - Professional
