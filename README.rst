@@ -1,6 +1,16 @@
 AWS CERTIFICATION PREP
 ======================
 
+Introduction
+------------
+
+
+Exams
+-----
+1. AWS Certified Solutions Architect – Associate
+2. AWS Certified Advanced Networking – Specialty
+3. AWS Certified Solutions Architect - Professional
+
 Getting started
 ---------------
 
@@ -34,4 +44,25 @@ http://pubs.opengroup.org/architecture/togaf9-doc/arch/index.html
 Quizzes
 ~~~~~~~
 https://www.quiz-maker.com/
+
+
+boto3
+-----
+
+Credentials
+~~~~~~~~~~~
+mkdir ~/.aws
+vi ~/.aws/credentials
+
+	[default]
+	aws_access_key_id = YOUR_ACCESS_KEY
+	aws_secret_access_key = YOUR_SECRET_KEY
+
+Configuration
+~~~~~~~~~~~~~
+vi ~/.aws/config
+
+	[default]
+	region=us-east-1
+
 
