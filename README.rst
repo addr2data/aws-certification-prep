@@ -3,10 +3,10 @@ AWS CERTIFICATION PREP
 
 Introduction
 ------------
-I have worked with EC2 off and on for the last 5-6 years, but never dug into the details. As of Jun 2018, I started looking at the AWS certification program. I decided to put this project together to help myself stay organized and hopefully, help others. 
+I started playing with EC2 about 6 years ago. I primarily used it to create virtual machines for dev work. I learned the basics of EC2, didn't dig too deeply. A while back, I changed to using Digital Ocean for creating dev virtual machines. Mostly, because of cost difference (at the time) and the simple REST API. Recently (Jun 2018), I decided I wanted to pursue AWS certification (for career reasons). I have created this GitHub project to help organize my notes/code samples and hopefully, help someone else interested in pursuing AWS certification. I expect it to be a work in progress for 12-18 months.
 
-Exams I am preparing for
-------------------------
+Exams I have decided to prepare for:
+------------------------------------
 -  AWS Certified Solutions Architect – Associate
 -  AWS Certified Advanced Networking – Specialty
 -  AWS Certified Solutions Architect - Professional
