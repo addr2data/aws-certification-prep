@@ -1,8 +1,10 @@
 AWS CERTIFICATION PREP
 ======================
 
-Start: 			Jun 4, 2018
-Last Update: 	Jun 11, 2018
+Start 			Last Update
+---------------------------		
+Jun 4, 2018		Jun 11, 2018
+
 
 Introduction
 ------------
