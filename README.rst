@@ -34,31 +34,22 @@ Approach
 
 
 
-Getting started
----------------
-
+Account Setup
+-------------
 - Create an AWS account
 - Create a certifcation account
 - Create a training account
 	https://www.aws.training/Training
 
-Documentation Links
--------------------
-https://aws.amazon.com/documentation/
-https://aws.amazon.com/certification/certification-prep/
-https://aws.amazon.com/whitepapers/
+Important Links
+---------------
+-  `AWS Certification Page <https://aws.amazon.com/certification/certification-prep/>`_
+-  `AWS Documentation Page <https://aws.amazon.com/documentation/>`_
+-  `AWS Whitepapers Page <https://aws.amazon.com/whitepapers/>`_
 
-Enterprise Architecture
------------------------
-https://www.zachman.com/about-the-zachman-framework
-http://pubs.opengroup.org/architecture/togaf9-doc/arch/index.html
-
-Quizzes
-~~~~~~~
-https://www.quiz-maker.com/
-
-boto3
------
+Getting Started
+---------------
+- Install boto3
 
 Credentials
 ~~~~~~~~~~~
