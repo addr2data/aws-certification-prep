@@ -1,9 +1,12 @@
 AWS CERTIFICATION PREP
 ======================
 
+Start: 			Jun 4, 2018
+Last Update: 	Jun 11, 2018
+
 Introduction
 ------------
-I started playing with EC2 about 6 years ago. I primarily used it to create virtual machines for dev work. I learned the basics of EC2, didn't dig too deeply. A while back, I changed to using Digital Ocean for creating dev virtual machines. Mostly, because of cost difference (at the time) and the simple REST API. Recently (Jun 2018), I decided I wanted to pursue AWS certification (for career reasons). I have created this GitHub project to help organize my notes/code samples and hopefully, help someone else interested in pursuing AWS certification. I expect it to be a work in progress for 12-18 months.
+I started playing with EC2 about 6 years ago. I primarily used it to create VMs for dev work. I learned the basics of EC2, never dug in very deeply. A while back, I changed to using Digital Ocean for creating my VMs. Mostly, because of cost differences (at the time) and the simple REST API. Recently, I decided I wanted to come back to using AWS and pursue certification (for career reasons). I have created this GitHub project to help organize my notes/code samples and hopefully, help someone else interested in pursuing AWS certification. I expect it to be a work in progress for 12-18 months.
 
 Exams I have decided to prepare for:
 ------------------------------------
