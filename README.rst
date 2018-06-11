@@ -43,7 +43,13 @@ Account Setup
 -  `Sign up for certification account <https://aws.amazon.com/certification/certification-prep/>`_
 -  `Sign up training account <https://www.aws.training/Training/>`_
 
-Wokrflow
+Getting started
+---------------
+Familiarize yourself with the following whitepapers.
+
+-  `Overview of Amazon Web Services <https://docs.aws.amazon.com/aws-technical-content/latest/aws-overview/aws-overview.pdf>`_
+
+Workflow
 --------
 - Prepare for local environment
 - Configure your basic VPC environment
