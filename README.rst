@@ -23,9 +23,9 @@ Exam Guides
 Videos you should watch
 -----------------------
 
-	Networking
-	~~~~~~~~~~
-	`AWS re:Invent 2017: Advanced VPC Design and New Capabilities for Amazon VPC (NET305) <https://www.youtube.com/watch?v=Pj11NFXDbLY>`_
+Networking
+----------
+-  `AWS re:Invent 2017: Advanced VPC Design and New Capabilities for Amazon VPC (NET305) <https://www.youtube.com/watch?v=Pj11NFXDbLY>`_
 
 Getting started
 ---------------
