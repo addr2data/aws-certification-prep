@@ -33,8 +33,8 @@ Exam Guides
 
 -  `AWS Certified Solutions Architect - Professional <https://d0.awsstatic.com/Train%20&%20Cert/docs/AWS_certified_solutions_architect_professional_blueprint.pdf>`_
 
-AWS Services that are in-scope for this project
------------------------------------------------
+AWS Services (in-scope for this project)
+----------------------------------------
 - Compute
 	EC2, ECS, Lamba
 - Storage
@@ -58,7 +58,7 @@ As I develop my knowledge and prepare for the exams listed above, I expect to go
 	- Get comfortable configuring and using each service
 	- Build a deeper understanding of each service
 	- Understand how each service fits into an overall architecture
-	- Discuss/explain all the above with others
+	- Be able to discuss/explain all the above with others
 
 As I have started to reacquaint myself with AWS, I have worked with the console, but I ultimately I prefer to work with the API. All the exercises in this project will use the API, wherever possible. I will leave it up to the individual familiarize themselves with the console.
 
