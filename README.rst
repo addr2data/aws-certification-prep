@@ -17,9 +17,9 @@ I have created this public GitHub project to force me to be more organized with 
 
 I expect this project to be a work in progress for at least 12 months.
 
-Exams
------
-I have decided to pursue the following exams.
+Certifications
+--------------
+I have decided to pursue the following certifications.
 
 -  AWS Certified Solutions Architect – Associate
 -  AWS Certified Advanced Networking – Specialty
@@ -36,7 +36,7 @@ Exam Guides
 
 Approach
 --------
-
+As I have started to reacquaint myself with AWS, I have spent a lot of time working with the console, but I prefer to work with the API. All the exercises in this project will use the API, unless that is not possible. I will leave it up to the individual familiarize themselves with the console.  
 
 Account Setup
 -------------
