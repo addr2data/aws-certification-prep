@@ -37,17 +37,20 @@ Approach
 --------
 As I have started to reacquaint myself with AWS, I have spent a lot of time working with the console, but I prefer to work with the API. All the exercises in this project will use the API, unless impossible. I will leave it up to the individual familiarize themselves with the console.
 
+*Note: Following the exercises in this project will generate costs to your AWS account, though they should be relatively small. An explanation of the expected costs will be provided at the beginning of each exercise.*  
+
 Account Setup
 -------------
 -  `Sign up for AWS account <https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/>`_
 -  `Sign up for certification account <https://aws.amazon.com/certification/certification-prep/>`_
 -  `Sign up training account <https://www.aws.training/Training/>`_
 
-Getting started
----------------
+Before you start
+----------------
 Familiarize yourself with the following whitepapers.
 
 -  `Overview of Amazon Web Services <https://docs.aws.amazon.com/aws-technical-content/latest/aws-overview/aws-overview.pdf>`_
+-  `How AWS Pricing Works <https://d1.awsstatic.com/whitepapers/aws_pricing_overview.pdf>`_
 
 Workflow
 --------
@@ -61,4 +64,6 @@ Important Links
 -  `AWS Certification Page <https://aws.amazon.com/certification/certification-prep/>`_
 -  `AWS Documentation Page <https://aws.amazon.com/documentation/>`_
 -  `AWS Whitepapers Page <https://aws.amazon.com/whitepapers/>`_
+-  `AWS Pricing Page <https://aws.amazon.com/pricing/>`_
+
 
