@@ -31,28 +31,19 @@ Exam Guides
 Approach
 --------
 
-Videos you should watch
------------------------
 
-Networking
-----------
--  `AWS re:Invent 2017: Advanced VPC Design and New Capabilities for Amazon VPC (NET305) <https://www.youtube.com/watch?v=Pj11NFXDbLY>`_
+
 
 Getting started
 ---------------
 
-Create an AWS account
-~~~~~~~~~~~~~~~~~~~~~
+- Create an AWS account
+- Create a certifcation account
+- Create a training account
+	https://www.aws.training/Training
 
-Create a certifcation account
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Create a training account
-~~~~~~~~~~~~~~~~~~~~~~~~~
-https://www.aws.training/Training
-
-Documentation
--------------
+Documentation Links
+-------------------
 https://aws.amazon.com/documentation/
 https://aws.amazon.com/certification/certification-prep/
 https://aws.amazon.com/whitepapers/
@@ -84,5 +75,6 @@ vi ~/.aws/config
 
 	[default]
 	region=us-east-1
+
 
 
