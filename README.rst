@@ -13,6 +13,8 @@ I started playing with EC2 about 6 years ago. I primarily used it to create VMs 
 
 Exams I have decided to prepare for:
 ------------------------------------
+I have decided to pursue the following exams.
+
 -  AWS Certified Solutions Architect – Associate
 -  AWS Certified Advanced Networking – Specialty
 -  AWS Certified Solutions Architect - Professional
