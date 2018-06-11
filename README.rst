@@ -33,27 +33,26 @@ Exam Guides
 
 -  `AWS Certified Solutions Architect - Professional <https://d0.awsstatic.com/Train%20&%20Cert/docs/AWS_certified_solutions_architect_professional_blueprint.pdf>`_
 
-
 Approach
 --------
-As I have started to reacquaint myself with AWS, I have spent a lot of time working with the console, but I prefer to work with the API. All the exercises in this project will use the API, unless that is not possible. I will leave it up to the individual familiarize themselves with the console.  
+As I have started to reacquaint myself with AWS, I have spent a lot of time working with the console, but I prefer to work with the API. All the exercises in this project will use the API, unless impossible. I will leave it up to the individual familiarize themselves with the console.
 
 Account Setup
 -------------
-- Create an AWS account
-- Create a certifcation account
-- Create a training account
-	https://www.aws.training/Training
+-  `Sign up for AWS account <https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/>`_
+-  `Sign up for certification account <https://aws.amazon.com/certification/certification-prep/>`_
+-  `Sign up training account <https://www.aws.training/Training/>`_
+
+Wokrflow
+--------
+- Prepare for local environment
+- Configure your basic VPC environment
+- Get familiar with instances
+- To be added 
 
 Important Links
 ---------------
 -  `AWS Certification Page <https://aws.amazon.com/certification/certification-prep/>`_
 -  `AWS Documentation Page <https://aws.amazon.com/documentation/>`_
 -  `AWS Whitepapers Page <https://aws.amazon.com/whitepapers/>`_
-
-Getting Started
----------------
-
-
-
 
