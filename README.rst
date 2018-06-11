@@ -9,11 +9,11 @@ Project Status
 
 Introduction
 ------------
-I started playing with AWS EC2 in 2012. Initially, it so I could demo the basic concepts of public cloud to co-workers, then I started using it to create VMs for dev work. I had learned the basics of EC2, but never dug in very deeply. Later, I changed to using Digital Ocean for creating my VMs. Mostly, because of cost differences (at the time) and the simple REST API. 
+I started playing with AWS EC2 in 2012. Initially, it was so I could demo the basic concepts of public cloud to co-workers. Afterwards, I used EC2 as my  development environment for some Python projects. During this time, I learned the basics of EC2, but never really dug in deep. Later, I changed to using Digital Ocean as my development environment. Mostly, because of cost differences (at the time) and the simple REST API. 
 
 Recently, I decided to come back to using AWS and pursue certification (for career reasons).
 
-I have created this public GitHub project to force me to be more organized with my notes/code samples. I am approaching it like I am developing a set of tutorials. I know this approach will help be more thorough and systematic in my personal development, but I sincerely hope others will find value in it.
+I have created this public GitHub project to force me to be more organized with my notes/code-samples. I am approaching this project like I am developing a training resource for others. I know this approach will help be more thorough and systematic in my personal development, but I sincerely hope others will find value in it.
 
 I expect this project to be a work in progress for at least 12 months.
 
