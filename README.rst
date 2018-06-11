@@ -33,7 +33,7 @@ Exam Guides
 
 -  `AWS Certified Solutions Architect - Professional <https://d0.awsstatic.com/Train%20&%20Cert/docs/AWS_certified_solutions_architect_professional_blueprint.pdf>`_
 
-AWS Services that are in scope for this project
+AWS Services that are in-scope for this project
 -----------------------------------------------
 - Compute
 	EC2, ECS, Lamba
@@ -48,14 +48,19 @@ AWS Services that are in scope for this project
 - Security, Identity & Compliance
 	IAM, Certificate Manager
 
-**Note: It is likely these will change as I develop my knowledge/skills. At this point, I don't know, what I don't know.**
+*Note: It is likely these will change as I develop my knowledge/skills. At this point, I don't know, what I don't know.*
 
 Approach
 --------
-As I develop my knowledge and prepare for the exams listed about, I expect to go through the following phases.
+As I develop my knowledge and prepare for the exams listed above, I expect to go through the following phases.
 
-	- Get comfortable working with each AWS service that is in scope , so that is how this project will be developed.
-As I have started to reacquaint myself with AWS, I have spent a lot of time working with the console, but I prefer to work with the API. All the exercises in this project will use the API, unless impossible. I will leave it up to the individual familiarize themselves with the console.
+	- Understand the basics of each service 
+	- Get comfortable configuring and using each service
+	- Build a deeper understanding of each service
+	- Understand how each service fits into an overall architecture
+	- Discuss/explain all the above with others
+
+As I have started to reacquaint myself with AWS, I have worked with the console, but I ultimately I prefer to work with the API. All the exercises in this project will use the API, wherever possible. I will leave it up to the individual familiarize themselves with the console.
 
 *Note: Following the exercises in this project will generate costs to your AWS account. These should be relatively small. An explanation of the expected costs will be provided at the beginning of each exercise.*  
 
