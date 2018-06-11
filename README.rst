@@ -47,13 +47,15 @@ Account Setup
 
 Before you start
 ----------------
-Familiarize yourself with the following whitepapers.
+You should familiarize yourself with the following whitepapers before you start.
 
 -  `Overview of Amazon Web Services <https://docs.aws.amazon.com/aws-technical-content/latest/aws-overview/aws-overview.pdf>`_
 -  `How AWS Pricing Works <https://d1.awsstatic.com/whitepapers/aws_pricing_overview.pdf>`_
 
-Along your journey
-------------------
+Along the way
+-------------
+You should familiarize yourself with the following whitepapers along the way.
+
 -  `An Overview of the AWS Cloud Adoption Framework <https://d1.awsstatic.com/whitepapers/aws_cloud_adoption_framework.pdf>`_
 
 
