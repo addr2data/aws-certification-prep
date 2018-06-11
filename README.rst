@@ -19,6 +19,9 @@ Exam Guides
 
 -  `AWS Certified Solutions Architect - Professional <https://d0.awsstatic.com/Train%20&%20Cert/docs/AWS_certified_solutions_architect_professional_blueprint.pdf>`_
 
+Videos you should watch
+-----------------------
+`AWS re:Invent 2017: Advanced VPC Design and New Capabilities for Amazon VPC (NET305) <https://www.youtube.com/watch?v=Pj11NFXDbLY>
 
 Getting started
 ---------------
