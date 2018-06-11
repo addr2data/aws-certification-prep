@@ -62,7 +62,7 @@ As I develop my knowledge and prepare for the exams listed above, I expect to go
 
 As I have started to reacquaint myself with AWS, I have worked with the console, but I ultimately I prefer to work with the API. All the exercises in this project will use the API, wherever possible. I will leave it up to the individual familiarize themselves with the console.
 
-*Note: Following the exercises in this project will generate costs to your AWS account. These should be relatively small. An explanation of the expected costs will be provided at the beginning of each exercise.*  
+*Note: Following the exercises in this project will generate costs to your AWS account. These should be relatively small, especially if you are new to AWS (increased eligibility to free-tier). An explanation of the expected costs will be provided at the beginning of each exercise.*  
 
 Account Setup
 -------------
