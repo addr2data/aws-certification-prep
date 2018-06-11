@@ -9,7 +9,7 @@ Project Status
 
 Introduction
 ------------
-I started playing with AWS EC2 in 2012. Initially, it was so I could demo basic pubic cloud concepts to co-workers. Afterwards, I used EC2 as my  development environment for some Python projects I was working on. During this time, I developed a good handle on the basics of EC2, but never really dug in deep. Later, moved to using Digital Ocean. Mostly, because of cost differences (at the time) and the simple REST API.
+I started playing with AWS EC2 in 2012. Initially, it was so I could demo basic pubic cloud concepts to co-workers. Afterwards, I used EC2 as a dev environment for some Python projects I was working on. During this time, I developed a good handle on the basics of EC2, but never really dug in deep. Later, I moved to using Digital Ocean. Mostly, because of cost differences (at the time) and the simple REST API.
 
 Recently, I decided to come back to using AWS and pursue certification (for career reasons).
 
