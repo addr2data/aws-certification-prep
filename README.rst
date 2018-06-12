@@ -46,7 +46,7 @@ AWS Services (in-scope for this project)
 - Security, Identity & Compliance
 	IAM, Certificate Manager
 
-*Note: It is likely these will change as I develop my knowledge/skills. At this point, I don't know, what I don't know.*
+*Note: It is likely these will change as I develop my knowledge/skills.*
 
 Approach
 --------
