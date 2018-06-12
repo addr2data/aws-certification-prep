@@ -9,11 +9,9 @@ Project Status
 
 Introduction
 ------------
-I started playing with AWS EC2 in 2012. Initially, it was so I could demo basic pubic cloud concepts to co-workers. Afterwards, I used EC2 as a dev environment for some Python projects I was working on. During this time, I developed a good handle on the basics of EC2, but never really dug in deep. Later, I moved to using Digital Ocean. Mostly, because of cost differences (at the time) and the simple REST API.
+Recently, I decided to pursue AWS certification (for career reasons). I been playing with AWS EC2 off and on since 2012, but have never used it in any meaningful way. Considering how much the AWS ecosystem has grown over the years, I have my work cut out for me. Also, I want to improve my knowledge of AWS APIs, so I plan to get as much hands-on experience as possible via Python/Boto3.
 
-Recently, I decided to come back to using AWS and pursue certification (for career reasons).
-
-I have created this public GitHub project to force me to be more organized with my notes/code-samples. I am approaching this project as if, I am developing a training resource for others. I know this approach will help be more thorough and systematic in my certification journey, but I sincerely hope others will find value in it.
+I have created this public GitHub project to force myself to be more organized with my notes and code. I am going to approach this project, as if I am developing a training resource for others. I know this approach will help me on my certification journey, but I sincerely hope others will find value in it.
 
 I expect this project to be a work in progress for at least 12 months.
 
