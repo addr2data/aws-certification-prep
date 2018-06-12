@@ -9,7 +9,7 @@ Project Status
 
 Introduction
 ------------
-Recently, I decided to pursue AWS certification (for career reasons). I been playing with AWS EC2 off and on since 2012, but have never used it in any meaningful way. Considering how much the AWS ecosystem has grown over the years, I have my work cut out for me. Also, I want to improve my knowledge of AWS APIs, so I plan to get as much hands-on experience as possible via Python/Boto3.
+Recently, I decided to pursue AWS certification (for career reasons). I been playing with AWS EC2 off and on since 2012, but have never used it in any meaningful way. Considering how much the AWS ecosystem has grown over the years, I have my work cut out for me. In addition to certification, I want to improve my knowledge of AWS APIs, so I plan to get as much hands-on experience as possible via Python/Boto3.
 
 I have created this public GitHub project to force myself to be more organized with my notes and code. I am going to approach this project, as if I am developing a training resource for others. I know this approach will help me on my certification journey, but I sincerely hope others will find value in it.
 
