@@ -49,7 +49,7 @@ Set up a user account for API access
 - Under **Set permissions for <user name>**, select **Attach existing policies directly**.
 - Click on **Next: Permissions**.
 - Search for **AmazonEC2FullAccess**, then select **AmazonEC2FullAccess**.
-  	*Note: we will add access to other services later*
+  	Note: we will add access to other services later
 - Click on **Next: Review**.
 - Click **Create user**.
 - On the following screen, copy the values for **Access key ID** and **Secret access key**.
