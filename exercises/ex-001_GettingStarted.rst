@@ -153,5 +153,22 @@ Availability Zones
 	aws ec2 describe-availability-zones
 
 
+.. code-block::
+
+  	  describe-availability-zones
+	[--filters <value>]
+	[--zone-names <value>]
+	[--dry-run | --no-dry-run]
+	[--cli-input-json <value>]
+	[--generate-cli-skeleton <value>]
+
+	--filters (list)
+
+	One or more filters.
+
+	message - Information about the Availability Zone.
+	region-name - The name of the region for the Availability Zone (for example, us-east-1 ).
+	state - The state of the Availability Zone (available | information | impaired | unavailable ).
+	zone-name - The name of the Availability Zone (for example, us-east-1a ).
 
 
