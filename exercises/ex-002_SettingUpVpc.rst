@@ -1,6 +1,11 @@
 ex-002: Basic configuration your VPC environment
 ================================================
-This exercise explores the basic setup of a VPC.
+
+Introduction
+------------
+The primary purpose of this exercise is to get you familiar with basic VPC concepts and to configure a VPC for basic IPv4 connectivity.
+
+
 
 
 VPC Limits

@@ -3,7 +3,7 @@ ex-001: Getting started
 
 Introduction
 ------------
-The primary purpose of this exercise is to get your local and AWS environments setup for basic connectivity to the EC2 API. In addition, you will use the **awscli** and **awscertprep_cli.py** (Python script include in the project) to briefly explore your EC2 environment.
+The primary purpose of this exercise is to get your local and AWS environments ready for basic connectivity to the EC2 API and to use **awscli** and **awscertprep_cli.py** (Python script include in the project) to briefly explore your EC2 environment.
 
 Initial
 -------
