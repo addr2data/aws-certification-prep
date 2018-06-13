@@ -7,7 +7,10 @@ Clone this repo
 
 	git@github.com:addr2data/aws-certification-prep.git
 
+If you don't your SSH keys set up.
+
 .. code-block::
+	
 	https://github.com/addr2data/aws-certification-prep.git
 
 Creating a virtual environment
