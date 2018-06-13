@@ -1,4 +1,4 @@
-EX-002: Basic configuration your VPC environment
+ex-002: Basic configuration your VPC environment
 ================================================
 This exercise explores the basic setup of a VPC.
 

@@ -1,5 +1,5 @@
-EX-001 Getting started
-======================
+ex-001: Getting started
+=======================
 
 - Install boto3
 
