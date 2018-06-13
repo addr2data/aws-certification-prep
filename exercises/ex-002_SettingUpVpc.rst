@@ -5,7 +5,12 @@ Introduction
 ------------
 The primary purpose of this exercise is to get you familiar with basic VPC concepts and to configure a VPC for basic IPv4 connectivity.
 
+VPC
+---
+VPC stands for Virtual Private Cloud and provides significant control over how you configure your AWS cloud network environment.
 
+See the following for detailed information on VPC:
+https://aws.amazon.com/vpc/
 
 
 VPC Limits
