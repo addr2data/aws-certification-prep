@@ -5,8 +5,8 @@ Initial
 -------
 Install **git** and **virtualenv**, if you don't already have them installed. Here are the links:
 
-`virtualenv <https://virtualenv.pypa.io/en/stable/>`_
-`git <https://git-scm.com/>`_
+- `virtualenv <https://virtualenv.pypa.io/en/stable/>`_
+- `git <https://git-scm.com/>`_
 
 
 Clone this GitHub repo
