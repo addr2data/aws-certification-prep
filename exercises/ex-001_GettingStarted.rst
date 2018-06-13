@@ -75,7 +75,7 @@ Create a configuration file
 
 	vi ~/.aws/config
 
-Insert the appropriate region for your location (see region table below).
+Insert the appropriate region for your location (see **AWS regions** table below).
 
 .. code-block::
 
