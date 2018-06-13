@@ -32,11 +32,27 @@ Set up your virtual environment
  source bin/activate
 
 
-Install the requirements
+Install requirements
 --------------------
 .. code-block::
 
  pip install boto3 docopt awscli
+
+
+Set up a user account for API access
+------------------------------------
+- Login to your AWS account.
+- Under services select **IAM**.
+- Select **users**
+- Click **Add user**
+- Under **Set user details**, enter user name **apiuser01**.
+- Under **Select AWS access type**, select **Programmatic access**.
+- Under **Set permissions for <user name>**, select **Attach existing policies directly**.
+- Click on **Next: Permissions**.
+- Search for **AmazonEC2FullAccess**, then select **AmazonEC2FullAccess**.
+- Click on **Next: Review**.
+- Click Create user**.
+- On the following screen, copy the values for **Access key ID** and **Secret access key**.
 
 
 Credentials
