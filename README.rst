@@ -52,24 +52,25 @@ At this point, I feel like the following AWS services are in-scope for this proj
 
 Tools
 -----
-Initially, I will working with the following 'tools'. I will update this list as I start to work with other.
+Initially, I will be working with the following 'tools'. I will update this list as I start to work with others.
 
 - AWS Console (I hope to use this sparingly)
 - AWS CLI
-- Python (Python3)
+- Python3
 - Boto3
 
 Approach
 --------
-As I develop my knowledge and prepare for the exams listed above, I expect to go through the following phases.
+As I develop my knowledge and prepare for the exams listed above, I expect to go through the following steps.
 
-	- Understand the basics of each service 
-	- Get comfortable configuring and using each service
-	- Build a deeper understanding of each service
-	- Understand how each service fits into an overall architecture
-	- Be able to discuss/explain all the above with others
-
-As I have started to reacquaint myself with AWS, I have worked with the console, but I ultimately I prefer to work with the API. All the exercises in this project will use the API, wherever possible. I will leave it up to the individual familiarize themselves with the console.
+1. Learn the basics of a service (I am already there with EC2, VPC, S3 and IAM)
+2. Get comfortable with the basic configuration and use of that service.
+3. Build some basic exercises that others could follow and in the process solidify my own understanding.
+4. Dig deeper into that service. Get comfortable with advanced configuration, use and design considerations.
+5. Build some advanced exercises that others could follow and in the process solidify my own understanding.
+6. Understand how that service fits into an overall architecture.
+7. Be able to discuss that service with others, in a sales/services context.
+8. Rinse and repeat.
 
 *Note: Following the exercises in this project will generate costs to your AWS account. These should be relatively small, especially if you are new to AWS (increased eligibility for free-tier). An explanation of the expected costs will be provided at the beginning of each exercise.*  
 
