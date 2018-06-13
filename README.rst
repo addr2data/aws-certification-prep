@@ -84,15 +84,22 @@ If you follow along with this project. You will need to set up some account. Her
 -  `Sign up for certification account <https://aws.amazon.com/certification/certification-prep/>`_
 -  `Sign up training account <https://www.aws.training/Training/>`_
 
-Before you start
-----------------
+Prepare
+-------
 You should familiarize yourself with the following whitepapers before you start.
 
 -  `Overview of Amazon Web Services <https://docs.aws.amazon.com/aws-technical-content/latest/aws-overview/aws-overview.pdf>`_
 -  `How AWS Pricing Works <https://d1.awsstatic.com/whitepapers/aws_pricing_overview.pdf>`_
 
-Along the way
--------------
+Exercises
+---------
+1. `Getting started <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
+1. Getting started
+2. Basic configuration your VPC environment
+3. To be added 
+
+Additional Resources
+--------------------
 You should familiarize yourself with the following whitepapers along the way.
 
 -  `An Overview of the AWS Cloud Adoption Framework <https://d1.awsstatic.com/whitepapers/aws_cloud_adoption_framework.pdf>`_
@@ -101,13 +108,6 @@ You should familiarize yourself with the following whitepapers along the way.
 -  `AWS Security Best Practices <https://d1.awsstatic.com/whitepapers/Security/AWS_Security_Best_Practices.pdf>`_
 -  `Architecting for the Cloud: AWS Best Practices <https://d1.awsstatic.com/whitepapers/AWS_Cloud_Best_Practices.pdf>`_
 -  `The Business Value of AWS: Succeeding at Twenty-First Century Business Infrastructure <https://d1.awsstatic.com/whitepapers/aws-whitepaper-business-value-of-aws.pdf>`_
-
-Workflow
---------
-- Prepare for local environment
-- Configure your basic VPC environment
-- Get familiar with instances
-- To be added 
 
 Important Links
 ---------------
