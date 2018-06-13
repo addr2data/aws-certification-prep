@@ -153,7 +153,7 @@ Availability Zones
 	aws ec2 describe-availability-zones
 
 
-https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-001-image-01.png
+.. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-001-image-01.png | width=100
 
 
 
