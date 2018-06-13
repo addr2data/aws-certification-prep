@@ -76,6 +76,7 @@ Create a configuration file
 	vi ~/.aws/config
 
 Insert the appropriate region for your location (see region table below).
+
 .. code-block::
 
 	[default]
@@ -130,11 +131,13 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-z
 Testing access
 --------------
 1. Verify that you are able to access the EC2 API.
+
 .. code-block::
 
 	aws ec2 describe-regions
 
 2. Verify that you are **NOT** able to access the IAM API.
+
 .. code-block::
 
 	aws iam get-account-summary
@@ -143,16 +146,25 @@ Testing access
 Availability Zones
 ------------------
 1. Take a look at the **Availability Zones** in your region.
+
 .. code-block::
 
 	aws ec2 describe-availability-zones
 
-2. Take a look at the **Availability Zones** in your region.
+2. Take a look at the **Availability Zones** in another region.
+
 .. code-block::
 
 	aws ec2 describe-availability-zones --region us-east-2
 
 
-
+Summary
+-------
+- You have set up your environment to be used with this repo.
+- You have created a user **apiuser01** and gave it API access.
+- You have assigned **apiuser01** full access to the EC2 API.
+- You used **awscli** to verify that **apiuser01** does have access to the EC2 API.
+- You used **awscli** to verify that **apiuser01** does NOT have access to the IAM API.
+- You used **awscli** to explore AWS **regions** and **Availability Zones**.
  
 
