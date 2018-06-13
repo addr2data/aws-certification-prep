@@ -137,11 +137,24 @@ Testing access
 
 	aws ec2 describe-regions
 
-2. Verify that you are NOT able to access the IAM API.
+2. Verify that you are **NOT** able to access the IAM API.
 
 .. code-block::
 
 	aws iam get-account-summary
 
+
+Availability Zones
+------------------
+1. Take a look at the Availability Zones in your region.
+
+.. code-block::
+
+	aws ec2 describe-availability-zones
+
+
+.. image:: images/ex-001-image-01.png
+    :scale: 40
+    :align: right
 
 
