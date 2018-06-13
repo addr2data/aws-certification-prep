@@ -104,8 +104,6 @@ Additional Resources
 
 Whitepapers
 ~~~~~~~~~~~
-You should familiarize yourself with the following whitepapers along the way.
-
 -  `An Overview of the AWS Cloud Adoption Framework <https://d1.awsstatic.com/whitepapers/aws_cloud_adoption_framework.pdf>`_
 -  `AWS Well-Architected Framework <https://d1.awsstatic.com/whitepapers/architecture/AWS_Well-Architected_Framework.pdf>`_
 -  `AWS Storage Services Overview <https://d1.awsstatic.com/whitepapers/Storage/AWS%20Storage%20Services%20Whitepaper-v9.pdf>`_
@@ -115,6 +113,7 @@ You should familiarize yourself with the following whitepapers along the way.
 
 Videos
 ~~~~~~
+-  `AWS re:Invent 2017: Advanced VPC Design and New Capabilities for Amazon VPC (NET305) <https://www.youtube.com/watch?v=Pj11NFXDbLY>`_
 
 Important Links
 ---------------
