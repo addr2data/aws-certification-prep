@@ -154,7 +154,7 @@ Availability Zones
 
 
 .. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-001-image-01.png
-    :scale: 40
+    :scale: 20
     :align: right
 
 
