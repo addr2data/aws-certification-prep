@@ -61,7 +61,7 @@ Create a credentials file
 	mkdir ~/.aws
 	vi ~/.aws/credentials
 
-Insert the **Access key ID** and **Secret access key** that your copied in the previous step. Save the file.
+Insert the **Access key ID** and **Secret access key** that you copied in the previous step. Save the file.
 
 .. code-block::
 
@@ -70,9 +70,62 @@ Insert the **Access key ID** and **Secret access key** that your copied in the p
 	aws_secret_access_key = YOUR_SECRET_KEY
 
 
-Configuration
-~~~~~~~~~~~~~
-vi ~/.aws/config
+Create a configuration file
+---------------------------
+.. code-block::
+
+	vi ~/.aws/config
+
+Insert the appropriate region for your location (see region table below).
+
+.. code-block::
 
 	[default]
-	region=us-east-1
+	region = YOUR_REGION
+
+
+AWS Regions
+-----------
+.. list-table::
+   :widths: 25, 25
+   :header-rows: 1
+
+   * - Code
+     - Name
+   * - us-east-1
+     - US East (N. Virginia)
+   * - us-east-2
+     - US East (Ohio)
+   * - us-west-1
+     - UUS West (N. California)
+   * - us-west-2
+     - US West (Oregon)
+   * - ca-central-1
+     - Canada (Central)
+   * - eu-central-1
+     - EU (Frankfurt)
+   * - eu-west-1
+     - EU (Ireland)
+   * - eu-west-2
+     - EU (London)
+   * - eu-west-3
+     - EU (Paris)
+   * - ap-northeast-1
+     - Asia Pacific (Tokyo)
+   * - ap-northeast-2
+     - Asia Pacific (Seoul)
+   * - ap-northeast-3
+     - Asia Pacific (Osaka-Local)
+   * - ap-southeast-1
+     - Asia Pacific (Singapore)
+   * - ap-southeast-2
+     - Asia Pacific (Sydney)
+   * - ap-south-1
+     - Asia Pacific (Mumbai)
+   * - sa-east-1
+     - South America (São Paulo)
+
+*Note: These regions are valid as of 06/13/18. Please use the following link to see the most up to list of regions*
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
+
+

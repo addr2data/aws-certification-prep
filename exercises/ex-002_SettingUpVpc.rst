@@ -25,6 +25,6 @@ VPC Limits
      - 1
      - This limit cannot be increased.
 
-*Note: The limits are valid as of 06/13/18. Please you the following link to see the most up to data limits*
+*Note: These limits are valid as of 06/13/18. Please you the following link to see the most up to data limits*
 https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html
 
