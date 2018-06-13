@@ -1,0 +1,24 @@
+---
+vpc:
+  id:             'none'            #Dynamically created
+  tag:            'ex002_vpc'
+
+subnets:
+  - 
+    tag:          'public-a'
+    cidr:         '10.0.1.0/24'
+    avail_zone:   'us-east-1a'
+  - 
+    tag:          'public-b'
+    cidr:         '10.0.2.0/24'
+    avail_zone:   'us-east-1b'
+  - 
+    tag:          'private-a'
+    cidr:         '10.0.11.0/24'
+    avail_zone:   'us-east-1c'
+  - 
+    tag:          'private-b'
+    cidr:         '10.0.12.0/24'
+    avail_zone:   'us-east-1d'
+
+...

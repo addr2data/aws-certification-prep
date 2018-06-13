@@ -4,7 +4,7 @@ AWS CERTIFICATION PREP
 Project Status
 --------------		
 - Start: 		Jun 4, 2018
-- Last Update:	Jun 12, 2018
+- Last Update:	Jun 13, 2018
 
 
 Introduction
