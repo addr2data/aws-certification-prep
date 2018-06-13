@@ -1,6 +1,15 @@
 ex-001: Getting started
 =======================
 
+Creating a virtual environment
+------------------------------
+
+If you are not familiar with virtualenv, here is a link to the project page.
+
+`virtualenv project page <https://virtualenv.pypa.io/en/stable/>`_
+
+
+
 - Install boto3
 
 Credentials
