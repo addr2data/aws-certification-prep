@@ -85,7 +85,7 @@ Insert the appropriate region for your location (see region table below).
 
 
 AWS Regions
------------
+~~~~~~~~~~~
 .. list-table::
    :widths: 25, 25
    :header-rows: 1
@@ -128,4 +128,12 @@ AWS Regions
 *Note: These regions are valid as of 06/13/18. Please use the following link to see the most up to list of regions*
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
 
+
+Testing access
+--------------
+Verify that you can access the EC2 API.
+
+.. code-block::
+
+	aws ec2 describe-regions
 
