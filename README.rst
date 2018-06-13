@@ -19,7 +19,7 @@ I have created this public GitHub project to force myself to be more organized w
 
 Certifications
 --------------
-At this point, my intention is to pursue the following certifications. I have chosen the **Solution Architect** certifications primarily for professional reasons and the **Advanced Networking** certification, primarily for personal reasons (I have some background in traditional networking). It is possible these choices with change over time, but for now that is the plan.  
+At this point, my intention is to pursue the following certifications. I have chosen the **Solution Architect** certifications primarily for professional reasons and the **Advanced Networking** certification primarily for personal reasons (I have some background in traditional networking). It is possible these choices with change over time, but for now that is the plan.  
 
 -  AWS Certified Solutions Architect – Associate
 -  AWS Certified Advanced Networking – Specialty
@@ -27,12 +27,16 @@ At this point, my intention is to pursue the following certifications. I have ch
 
 Exam Guides
 -----------
+Here are the links for each of the exam guides/blueprints.
+
 - `AWS Certified Solutions Architect – Associate <https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS_Certified_Solutions_Architect_Associate_Feb_2018_%20Exam_Guide_v1.5.2.pdf>`_
 -  `AWS Certified Advanced Networking – Specialty <https://d1.awsstatic.com/training-and-certification/docs-advnetworking-spec/AWS%20Certified%20Advanced%20Networking_Speciality_Exam_Guide_v1.1_FINAL.pdf>`_
 -  `AWS Certified Solutions Architect - Professional <https://d0.awsstatic.com/Train%20&%20Cert/docs/AWS_certified_solutions_architect_professional_blueprint.pdf>`_
 
-AWS Services (in-scope for this project)
-----------------------------------------
+AWS Services
+------------
+At this point, I feel like the following AWS services are in-scope for this project. I am sure this will change over time, but you have to start somewhere. I will start by building exercises and code-samples for EC2 and VPC, since I am most familiar with those services.  
+
 - Compute
 	EC2, ECS, Lamba
 - Storage
@@ -44,9 +48,16 @@ AWS Services (in-scope for this project)
 - Management Tools
 	CloudWatch, AWS Auto Scaling, CloudFormation, CloudTrail
 - Security, Identity & Compliance
-	IAM, Certificate Manager
+	IAM
 
-*Note: It is likely these will change as I develop my knowledge/skills.*
+Tools
+-----
+Initially, I will working with the following 'tools'. I will update this list as I start to work with other.
+
+- AWS Console (I hope to use this sparingly)
+- AWS CLI
+- Python (Python3)
+- Boto3
 
 Approach
 --------
