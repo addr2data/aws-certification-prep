@@ -1,6 +1,15 @@
 ex-001: Getting started
 =======================
 
+Clone this repo
+---------------
+.. code-block::
+
+	git@github.com:addr2data/aws-certification-prep.git
+
+.. code-block::
+	https://github.com/addr2data/aws-certification-prep.git
+
 Creating a virtual environment
 ------------------------------
 
@@ -8,12 +17,18 @@ Creating a virtual environment
 
  [sudo] pip3 install virtualenv
 
+	If you are not familiar with virtualenv, here is a link to the project page.
 
-If you are not familiar with virtualenv, here is a link to the project page.
-
-`virtualenv project page <https://virtualenv.pypa.io/en/stable/>`_
+	`virtualenv project page <https://virtualenv.pypa.io/en/stable/>`_
 
 
+
+
+Install requirements
+--------------------
+.. code-block::
+
+ [sudo] pip3 install virtualenv
 
 - Install boto3
 
