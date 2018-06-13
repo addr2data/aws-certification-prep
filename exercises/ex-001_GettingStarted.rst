@@ -1,40 +1,43 @@
 ex-001: Getting started
 =======================
 
+Initial
+-------
+Install **git** and **virtualenv**, if you don't already have them installed. Here are the links:
+
+`virtualenv <https://virtualenv.pypa.io/en/stable/>`_
+
+`git <https://git-scm.com/>`_
+
+
 Clone this GitHub repo
 ----------------------
-
 .. code-block::
 
-	git@github.com:addr2data/aws-certification-prep.git
+	git clone git@github.com:addr2data/aws-certification-prep.git
 
 *Note: If you don't your SSH keys set up on GitHub, you can use HTTP.*
 
 .. code-block::
 	
-	https://github.com/addr2data/aws-certification-prep.git
+	git clone https://github.com/addr2data/aws-certification-prep.git
 
 
-Installing virtualenvenv
-------------------------
-
+Set up your virtual environment
+--------------------------------
 .. code-block::
 
- [sudo] pip3 install virtualenv
-
-If you are not familiar with virtualenv, here is a link to the project page.
-`virtualenv project page <https://virtualenv.pypa.io/en/stable/>`_
-
+ virtualenv aws-certification-prep
+ cd aws-certification-prep
+ source bin/activate
 
 
-
-Install requirements
+Install the requirements
 --------------------
 .. code-block::
 
- [sudo] pip3 install virtualenv
+ pip install boto3 docopt awscli
 
-- Install boto3
 
 Credentials
 ~~~~~~~~~~~
