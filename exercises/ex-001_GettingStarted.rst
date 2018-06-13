@@ -61,7 +61,7 @@ Create a credentials file
 	mkdir ~/.aws
 	vi ~/.aws/credentials
 
-Insert you **Access key ID** and **Secret access key** and save the file.
+Insert the **Access key ID** and **Secret access key** that your copied in the previous step. Save the file.
 
 .. code-block::
 
