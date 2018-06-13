@@ -1,7 +1,8 @@
 ex-001: Getting started
 =======================
 
-1. Clone this GitHub repo.
+Clone this GitHub repo
+----------------------
 
 .. code-block::
 
@@ -13,8 +14,9 @@ ex-001: Getting started
 	
 	https://github.com/addr2data/aws-certification-prep.git
 
-Creating a virtual environment
-------------------------------
+
+Installing virtualenvenv
+------------------------
 
 .. code-block::
 
