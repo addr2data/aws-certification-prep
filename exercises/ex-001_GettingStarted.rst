@@ -49,6 +49,7 @@ Set up a user account for API access
 - Under **Set permissions for <user name>**, select **Attach existing policies directly**.
 - Click on **Next: Permissions**.
 - Search for **AmazonEC2FullAccess**, then select **AmazonEC2FullAccess**.
+  	*Note: we will add access to other services later*
 - Click on **Next: Review**.
 - Click **Create user**.
 - On the following screen, copy the values for **Access key ID** and **Secret access key**.
@@ -131,9 +132,17 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-z
 
 Testing access
 --------------
-Verify that you can access the EC2 API.
+1. Verify that you are able to access the EC2 API.
 
 .. code-block::
 
 	aws ec2 describe-regions
+
+2. Verify that you are NOT able to access the IAM API.
+
+.. code-block::
+
+	aws iam get-account-summary
+
+
 
