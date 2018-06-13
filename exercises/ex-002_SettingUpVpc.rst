@@ -16,7 +16,7 @@ https://aws.amazon.com/vpc/
 VPC Limits
 ----------
 .. list-table::
-   :widths: 10, 15, 65
+   :widths: 20, 20, 40
    :header-rows: 1
 
    * - Resource
