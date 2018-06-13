@@ -1,5 +1,5 @@
-EXERCISE-001 (GETTING STARTED)
-==============================
+EX-001 Getting started
+======================
 
 - Install boto3
 

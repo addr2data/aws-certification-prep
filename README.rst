@@ -95,8 +95,8 @@ Exercises
 ---------
 1. `Getting started <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
 
-1. Getting started
-2. Basic configuration your VPC environment
+2. `Basic configuration your VPC environment <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_SettingUpVpc.rst>`_
+
 3. To be added 
 
 Additional Resources
