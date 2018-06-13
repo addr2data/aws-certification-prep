@@ -86,42 +86,44 @@ Insert the appropriate region for your location (see region table below).
 AWS Regions
 ~~~~~~~~~~~
 .. list-table::
-   :widths: 25, 25
+   :widths: 25, 25, 25, 25
    :header-rows: 1
 
    * - Code
      - Name
+     - Code
+     - Name
    * - us-east-1
      - US East (N. Virginia)
-   * - us-east-2
+     - us-east-2
      - US East (Ohio)
    * - us-west-1
      - UUS West (N. California)
-   * - us-west-2
+     - us-west-2
      - US West (Oregon)
    * - ca-central-1
      - Canada (Central)
-   * - eu-central-1
+     - eu-central-1
      - EU (Frankfurt)
    * - eu-west-1
      - EU (Ireland)
-   * - eu-west-2
+     - eu-west-2
      - EU (London)
    * - eu-west-3
      - EU (Paris)
-   * - ap-northeast-1
+     - ap-northeast-1
      - Asia Pacific (Tokyo)
    * - ap-northeast-2
      - Asia Pacific (Seoul)
-   * - ap-northeast-3
+     - ap-northeast-3
      - Asia Pacific (Osaka-Local)
    * - ap-southeast-1
      - Asia Pacific (Singapore)
-   * - ap-southeast-2
+     - ap-southeast-2
      - Asia Pacific (Sydney)
    * - ap-south-1
      - Asia Pacific (Mumbai)
-   * - sa-east-1
+     - sa-east-1
      - South America (São Paulo)
 
 *Note: These regions are valid as of 06/13/18. Please use the following link to see the most up to list of regions*
