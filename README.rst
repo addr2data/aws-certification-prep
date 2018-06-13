@@ -61,7 +61,7 @@ Initially, I will be working with the following 'tools'. I will update this list
 
 Approach
 --------
-As I develop my knowledge and prepare for the exams listed above, I expect to go through the following steps.
+As I develop my knowledge and prepare for the exams listed above, I plan to use the following process.
 
 1. Learn the basics of a service (I am already there with EC2, VPC, S3 and IAM)
 2. Get comfortable with the basic configuration and use of that service.
