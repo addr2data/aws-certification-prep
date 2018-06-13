@@ -15,7 +15,7 @@ Clone this GitHub repo
 
 	git clone git@github.com:addr2data/aws-certification-prep.git
 
-If you don't your SSH keys set up on GitHub, you can use HTTP.
+If you don't your SSH keys set up on GitHub, you can use HTTP instead.
 
 .. code-block::
 	
@@ -35,7 +35,7 @@ Install requirements
 --------------------
 .. code-block::
 
- pip install boto3 docopt awscli
+ 	pip install boto3 docopt awscli
 
 
 Set up a user account for API access
@@ -54,14 +54,20 @@ Set up a user account for API access
 - On the following screen, copy the values for **Access key ID** and **Secret access key**.
 
 
-Credentials
-~~~~~~~~~~~
-mkdir ~/.aws
-vi ~/.aws/credentials
+Create a credentials file
+-------------------------
+.. code-block::
 
+	mkdir ~/.aws
+	vi ~/.aws/credentials
+
+Insert you **Access key ID** and **Secret access key** and save the file.
+
+.. code-block::
 	[default]
 	aws_access_key_id = YOUR_ACCESS_KEY
 	aws_secret_access_key = YOUR_SECRET_KEY
+
 
 Configuration
 ~~~~~~~~~~~~~
