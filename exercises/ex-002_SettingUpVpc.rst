@@ -1,6 +1,6 @@
-EXERCISE 002: SETTING UP A VPC
+EX-002: SETTING UP A VPC
 ===============================
-This exercise covers the basic setup for a VPC.
+This exercise explores the basic setup of a VPC.
 
 
 VPC Limits
