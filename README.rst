@@ -11,7 +11,7 @@ Introduction
 ------------
 Recently, I decided to pursue AWS certification. Mostly for career reasons, but also because being able to spin up infrastructure with a few API calls fascinates me. I've been playing with AWS EC2, off and on, since 2012, but have never used it in any meaningful way. Considering how much the AWS ecosystem has grown over the years, it seems I have my work cut out for me.
 
-In addition to certification, I want to become a skilled and knowledgeable user. I am willing to spend a few bucks, so I plan to get as much hands-on experience as possible. I intend to leverage the AWS CLI extensively, but I also want to get comfortable building software that uses the API directly, so I plan to leverage Python and Boto3.  
+In addition to certification, my goal is to become a skilled and knowledgeable user. I am willing to spend a few bucks, so I plan to get as much hands-on experience as possible. I intend to leverage the AWS CLI extensively, but I also want to get comfortable building software that uses the API directly, so I plan to leverage Python and Boto3.  
 
 I have created this public GitHub project to force myself to be more organized with my notes and code. I am going to approach this project, as if I am developing a training resource for others. I know this approach will help me on my journey, but I sincerely hope others will find value in it.
 
@@ -19,7 +19,7 @@ I have created this public GitHub project to force myself to be more organized w
 
 Certifications
 --------------
-I have decided to pursue the following certifications.
+At this point, my intention is to pursue the following certifications. I have chosen the 'Solution Architect' certifications, primarily for professional reasons and the 'Advanced Networking' certification, primarily for personal reasons (I have some background in traditional networking). It is possible these choices with change over time, but for now that is the plan.  
 
 -  AWS Certified Solutions Architect – Associate
 -  AWS Certified Advanced Networking – Specialty
@@ -28,9 +28,7 @@ I have decided to pursue the following certifications.
 Exam Guides
 -----------
 - `AWS Certified Solutions Architect – Associate <https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS_Certified_Solutions_Architect_Associate_Feb_2018_%20Exam_Guide_v1.5.2.pdf>`_
-
 -  `AWS Certified Advanced Networking – Specialty <https://d1.awsstatic.com/training-and-certification/docs-advnetworking-spec/AWS%20Certified%20Advanced%20Networking_Speciality_Exam_Guide_v1.1_FINAL.pdf>`_
-
 -  `AWS Certified Solutions Architect - Professional <https://d0.awsstatic.com/Train%20&%20Cert/docs/AWS_certified_solutions_architect_professional_blueprint.pdf>`_
 
 AWS Services (in-scope for this project)
