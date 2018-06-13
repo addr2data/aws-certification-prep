@@ -72,10 +72,14 @@ As I develop my knowledge and prepare for the exams listed above, I plan to use 
 7. Be able to discuss that service with others, in a sales/services context.
 8. Rinse and repeat.
 
-*Note: Following the exercises in this project will generate costs to your AWS account. These should be relatively small, especially if you are new to AWS (increased eligibility for free-tier). An explanation of the expected costs will be provided at the beginning of each exercise.*  
+Regarding the exercises in this project
+---------------------------------------
+Following the exercises in this project will generate costs to your AWS account. These should be relatively small, especially if you are new to AWS (increased eligibility for free-tier). An explanation of the expected costs will be provided at the beginning of each exercise.
 
 Account Setup
 -------------
+If you follow along with this project. You will need to set up some account. Here are the links.
+
 -  `Sign up for AWS account <https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/>`_
 -  `Sign up for certification account <https://aws.amazon.com/certification/certification-prep/>`_
 -  `Sign up training account <https://www.aws.training/Training/>`_
