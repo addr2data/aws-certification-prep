@@ -62,7 +62,6 @@ Create a credentials file
 	vi ~/.aws/credentials
 
 Insert the **Access key ID** and **Secret access key** that you copied in the previous step. Save the file.
-
 .. code-block::
 
 	[default]
@@ -77,7 +76,6 @@ Create a configuration file
 	vi ~/.aws/config
 
 Insert the appropriate region for your location (see region table below).
-
 .. code-block::
 
 	[default]
@@ -132,13 +130,11 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-z
 Testing access
 --------------
 1. Verify that you are able to access the EC2 API.
-
 .. code-block::
 
 	aws ec2 describe-regions
 
 2. Verify that you are **NOT** able to access the IAM API.
-
 .. code-block::
 
 	aws iam get-account-summary
@@ -146,29 +142,17 @@ Testing access
 
 Availability Zones
 ------------------
-1. Take a look at the Availability Zones in your region.
-
+1. Take a look at the **Availability Zones** in your region.
 .. code-block::
 
 	aws ec2 describe-availability-zones
 
-
+2. Take a look at the **Availability Zones** in your region.
 .. code-block::
 
-  	  describe-availability-zones
-	[--filters <value>]
-	[--zone-names <value>]
-	[--dry-run | --no-dry-run]
-	[--cli-input-json <value>]
-	[--generate-cli-skeleton <value>]
+	aws ec2 describe-availability-zones --region us-east-2
 
-	--filters (list)
 
-	One or more filters.
 
-	message - Information about the Availability Zone.
-	region-name - The name of the region for the Availability Zone (for example, us-east-1 ).
-	state - The state of the Availability Zone (available | information | impaired | unavailable ).
-	zone-name - The name of the Availability Zone (for example, us-east-1a ).
-
+ 
 
