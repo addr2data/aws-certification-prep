@@ -19,7 +19,7 @@ I have created this public GitHub project to force myself to be more organized w
 
 Certifications
 --------------
-At this point, my intention is to pursue the following certifications. I have chosen the 'Solution Architect' certifications, primarily for professional reasons and the 'Advanced Networking' certification, primarily for personal reasons (I have some background in traditional networking). It is possible these choices with change over time, but for now that is the plan.  
+At this point, my intention is to pursue the following certifications. I have chosen the **Solution Architect** certifications primarily for professional reasons and the **Advanced Networking** certification, primarily for personal reasons (I have some background in traditional networking). It is possible these choices with change over time, but for now that is the plan.  
 
 -  AWS Certified Solutions Architect – Associate
 -  AWS Certified Advanced Networking – Specialty
