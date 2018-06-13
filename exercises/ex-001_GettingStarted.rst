@@ -15,9 +15,9 @@ Clone this GitHub repo
 
 	git clone git@github.com:addr2data/aws-certification-prep.git
 
-.. code-block::
+If you don't your SSH keys set up on GitHub, you can use HTTP.
 
-	Note: If you don't your SSH keys set up on GitHub, you can use HTTP.
+.. code-block::
 	
 	git clone https://github.com/addr2data/aws-certification-prep.git
 
