@@ -22,9 +22,8 @@ Installing virtualenvenv
 
  [sudo] pip3 install virtualenv
 
-	If you are not familiar with virtualenv, here is a link to the project page.
-
-	`virtualenv project page <https://virtualenv.pypa.io/en/stable/>`_
+If you are not familiar with virtualenv, here is a link to the project page.
+`virtualenv project page <https://virtualenv.pypa.io/en/stable/>`_
 
 
 
