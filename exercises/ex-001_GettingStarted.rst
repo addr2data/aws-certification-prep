@@ -6,7 +6,6 @@ Initial
 Install **git** and **virtualenv**, if you don't already have them installed. Here are the links:
 
 `virtualenv <https://virtualenv.pypa.io/en/stable/>`_
-
 `git <https://git-scm.com/>`_
 
 
@@ -51,7 +50,7 @@ Set up a user account for API access
 - Click on **Next: Permissions**.
 - Search for **AmazonEC2FullAccess**, then select **AmazonEC2FullAccess**.
 - Click on **Next: Review**.
-- Click Create user**.
+- Click **Create user**.
 - On the following screen, copy the values for **Access key ID** and **Secret access key**.
 
 
