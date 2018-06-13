@@ -1,13 +1,13 @@
 ex-001: Getting started
 =======================
 
-Clone this repo
----------------
+1. Clone this GitHub repo.
+
 .. code-block::
 
 	git@github.com:addr2data/aws-certification-prep.git
 
-If you don't your SSH keys set up.
+*Note: If you don't your SSH keys set up on GitHub, you can use HTTP.*
 
 .. code-block::
 	
