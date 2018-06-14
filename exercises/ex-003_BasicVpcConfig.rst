@@ -44,6 +44,11 @@ Consider the response.
     test
 
 
+.. raw:: html
+
+    <style> .red {color:red} </style>
+
+
 
 Verify that the VPC is available
 --------------------------------
