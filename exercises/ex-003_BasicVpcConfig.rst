@@ -149,13 +149,13 @@ We can see the same single entry under **Routes**. This will allow for the routi
         }
     }
 
-Add a tag ('Name') to the second routing table
-----------------------------------------------
-Use the following awscli command to create a tag for the main/default routing table.
+Create a Tag
+------------
+Use the following awscli command to create a tag for the second Route Table.
 
 .. code-block::
 
-    aws ec2 create-tags --resources <RouteTableId> --tags Key=Name,Value=private
+    aws ec2 create-tags --resources <RouteTableId> --tags Key=Name,Value=public
 
 Create an Internet Gateway
 --------------------------
