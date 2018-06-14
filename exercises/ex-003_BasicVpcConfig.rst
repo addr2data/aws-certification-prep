@@ -22,14 +22,14 @@ Let's explore the response.
     {
         "Vpc": {
             "CidrBlock": "10.0.0.0/16",
-            "DhcpOptionsId": "dopt-267dc15d",
+            "DhcpOptionsId": "dopt-xxxxxxxx",
             "State": "pending",
-            "VpcId": "vpc-0ecc9b41c9206502b",
+            "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
             "InstanceTenancy": "default",
             "Ipv6CidrBlockAssociationSet": [],
             "CidrBlockAssociationSet": [
                 {
-                    "AssociationId": "vpc-cidr-assoc-033bb5db516b80b28",
+                    "AssociationId": "vpc-cidr-assoc-xxxxxxxxxxxxxxxxx",
                     "CidrBlock": "10.0.0.0/16",
                     "CidrBlockState": {
                         "State": "associated"
@@ -46,4 +46,4 @@ Creating a VPC in another **Region**
 ------------------------------------
 .. code-block::
     
-    aws ec2   create-vpc --cidr-block <value>
+    aws ec2   create-vpc --cidr-block 10.0.0.0/16 --region <region_name>
