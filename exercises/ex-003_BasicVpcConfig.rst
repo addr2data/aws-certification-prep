@@ -37,17 +37,9 @@ Create a VPC in your default **Region**
         }
     }
 
-Consider the response.
+``Consider the response.``
 
-.. code-block::
-
-    test
-
-
-.. raw:: html
-
-    <style> .red {color:red} </style>
-
+``test``
 
 
 Verify that the VPC is available
