@@ -239,9 +239,11 @@ We can see a second entry under **Routes**.
         ]
     }
 
-Create a subnet
+Create a Subnet
 ---------------
-We created the subnet with a /23. This results in 512 addresses, but 507 addresses are usable. This is because, the first address is the network address, the last address is the broadcast address and the second through fourth addresses are reserved by AWS. 
+Use the following awscli command to create a Subnet with a prefix length of /23 (512 addresses).
+
+We only 507 usable addresses. This is because, the first address is the network address, the last address is the broadcast address and the second through fourth addresses are reserved by AWS. 
 
 .. code-block::
    
@@ -262,11 +264,14 @@ We created the subnet with a /23. This results in 512 addresses, but 507 address
         }
     }
 
-Create a second subnet for this VPC
------------------------------------
-We can also see that both subnets were created in **Availability Zone us-east-1c**.
+Create a second Subnet
+----------------------
+Use the following awscli command to create a Subnet with a prefix length of /23 (512 addresses).
 
-If you wish to control where your subnets are created, you would use the **--availability-zone <value>** option with the **create-subnet** command.
+
+We can see that both Subnets were created in **Availability Zone us-east-1c**.
+
+If you wish to control where your subnets are created, you would use the **'--availability-zone <value>'** option with the **'create-subnet'** command.
 
 .. code-block::
     aws ec2 create-subnet --cidr-block 10.0.2.0/23 --vpc-id <VpcId>
