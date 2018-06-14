@@ -3,7 +3,7 @@ ex-003: Basic VPC configuration
 
 Status
 ------
-Draft (once the draft has been completed, a version number and date will be provided)
+Version 0.9 (6/14/18) - needs additional review before moving to version 1.0.
 
 Introduction
 ------------
