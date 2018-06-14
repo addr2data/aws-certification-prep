@@ -40,8 +40,10 @@ We will create a new VPC with a /16 prefix length (~64K addresses).
     }
 
 
-Verify that the VPC is available
---------------------------------
+Verify that the VPC **state**
+-----------------------------
+Ensure that **state** shows **available**.
+
 .. code-block::
     
     aws ec2 describe-vpc --vpc-ids <VpcId>
