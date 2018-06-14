@@ -4,7 +4,7 @@ AWS CERTIFICATION PREP
 Project Status
 --------------
 .. list-table::
-   :widths: 25, 25, 25, 25
+   :widths: 25, 25
    :header-rows: 0
 
    * - Project Start
