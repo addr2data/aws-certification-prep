@@ -25,6 +25,8 @@ Let's take a look at the default VPC with the **describe-vpcs** command, adding 
     aws ec2 describe-vpcs --filter Name=isDefault,Values=true
 
 
+Now let's examine the output from that command.
+
 .. code-block::
     
     {
@@ -48,6 +50,18 @@ Let's take a look at the default VPC with the **describe-vpcs** command, adding 
         }
     ]
     }
+
+- CidrBlock
+- DhcpOptionsId
+- State
+- VpcId
+- InstanceTenancy
+- CidrBlockAssociationSet
+- IsDefault
+
+Not shown in this example:
+- Tags
+
 
 
 VPC Limits
