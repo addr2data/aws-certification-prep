@@ -3,7 +3,7 @@ ex-002: Basic configuration your VPC environment
 
 Status
 ------
-Draft
+Draft (once the draft has been completed, a version number and date will be provided)
 
 Introduction
 ------------
