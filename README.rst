@@ -103,9 +103,12 @@ You should familiarize yourself with the following whitepapers before you start.
 Exercises
 ---------
 1. `Getting started <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
+
 2. `Exploring VPCs <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_ExploringVpcs.rst>`_
-2. `Basic VPC configuration <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_BasicVpcConfig.rst>`_
-3. To be added
+
+3. `Basic VPC configuration <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_BasicVpcConfig.rst>`_
+
+4. To be added
 
 Additional Resources
 --------------------
