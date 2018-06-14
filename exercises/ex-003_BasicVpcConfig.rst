@@ -1,5 +1,5 @@
-ex-002: Basic configuration your VPC environment
-================================================
+ex-003: Basic VPC configuration
+===============================
 
 Status
 ------
