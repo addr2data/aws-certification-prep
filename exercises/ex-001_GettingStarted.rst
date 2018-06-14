@@ -163,6 +163,12 @@ Availability Zones
 
 	aws ec2 describe-availability-zones --region us-east-2
 
+2. Now let's look at all the **Regions** and **Availability Zones** together.
+
+.. code-block::
+
+    python awscertprep_cli.py show_regions --avail_zones
+
 
 Summary
 -------
