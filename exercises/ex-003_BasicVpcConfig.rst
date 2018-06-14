@@ -177,7 +177,7 @@ We will leverage this 'device' to allow some Subnets to be accessible from the I
 
 Attach the Internet Gateway
 ---------------------------
-Use the following awscli command to create an Internet Gateway to the VPC.
+Use the following awscli command to attach the Internet Gateway to the VPC.
 
 .. code-block::
 
