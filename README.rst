@@ -4,7 +4,7 @@ AWS CERTIFICATION PREP
 Project Status
 --------------		
 - Start: 		Jun 4, 2018
-- Last Update:	Jun 13, 2018
+- Last Update:	Jun 14, 2018
 
 
 Introduction
@@ -44,7 +44,7 @@ At this point, I feel like the following AWS services are in-scope for this proj
 - Database
 	RDS, DynamoDB
 - Networking & Content Delivery
-	VPC
+	VPC, Route 53, CloudFront
 - Management Tools
 	CloudWatch, AWS Auto Scaling, CloudFormation, CloudTrail
 - Security, Identity & Compliance

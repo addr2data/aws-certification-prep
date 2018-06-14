@@ -50,8 +50,8 @@ Set up a user account for API access
 - Click **Add user**
 - Under **Set user details**, enter user name **apiuser01**.
 - Under **Select AWS access type**, select **Programmatic access**.
-- Under **Set permissions for <user name>**, select **Attach existing policies directly**.
 - Click on **Next: Permissions**.
+- Under **Set permissions for apiuser01**, select **Attach existing policies directly**.
 - Search for **AmazonEC2FullAccess**, then select **AmazonEC2FullAccess** (we will add access to other services later).
 - Click on **Next: Review**.
 - Click **Create user**.
