@@ -11,6 +11,8 @@ The primary purpose of this exercise is to have you perform a basic VPC configur
 
 Create a VPC in your default **Region**
 -----------------------------------------
+We will create a new VPC with a /16 prefix length (~64K addresses).
+
 .. code-block::
     
     aws ec2 create-vpc --cidr-block 10.0.0.0/16
@@ -37,23 +39,12 @@ Create a VPC in your default **Region**
         }
     }
 
-Consider the output
-~~~~~~~~~~~~~~~~~~~
-tetetetet
-
-
-``test``
-
 
 Verify that the VPC is available
 --------------------------------
 .. code-block::
     
     aws ec2 describe-vpc --vpc-ids <VpcId>
-
-Let's explore the response.
-
-.. code-block::
 
     {
         "Vpcs": [
