@@ -31,13 +31,13 @@ Let's take a look at the default VPC with the **describe-vpcs** command, adding 
     "Vpcs": [
         {
             "CidrBlock": "172.31.0.0/16",
-            "DhcpOptionsId": "dopt-267dc15d",
+            "DhcpOptionsId": "dopt-xxxxxxx",
             "State": "available",
-            "VpcId": "vpc-fffee284",
+            "VpcId": "vpc-xxxxxxxx",
             "InstanceTenancy": "default",
             "CidrBlockAssociationSet": [
                 {
-                    "AssociationId": "vpc-cidr-assoc-27ee0c4b",
+                    "AssociationId": "vpc-cidr-assoc-xxxxxxxx",
                     "CidrBlock": "172.31.0.0/16",
                     "CidrBlockState": {
                         "State": "associated"
