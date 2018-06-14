@@ -96,6 +96,7 @@ You can see the default VPC or all VPCs for another **Region** by using the foll
     aws ec2 describe-vpcs --filter Name=isDefault,Values=true --region REGION_NAME
     aws ec2 describe-vpcs --region REGION_NAME
 
+|
 
 VPC Limits
 ----------
