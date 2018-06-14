@@ -293,7 +293,7 @@ If you wish to control where your Subnets are created, you would use the **'--av
 
 Verify the Subnets
 ------------------
-Use the following awscli command to ensure that both State of both Subnets is **'available'**.
+Use the following awscli command to ensure that the State of both Subnets is **'available'**.
 
 .. code-block::
 
