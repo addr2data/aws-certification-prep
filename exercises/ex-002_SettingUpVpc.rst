@@ -16,9 +16,9 @@ https://aws.amazon.com/vpc/
 
 Default VPC
 -----------
-Even is you have just created your AWS account and haven't configured anything (other than the IAM user account you created in ex-001), you will still have a default VPC.
+Even is you have just created your AWS account and haven't configured anything (other than the IAM user account from ex-001), you will still have a default VPC.
 
-Let's take a look at the default VPC with the **describe-vpcs** command and using the **'--filter'** option to select only the default VPC.  
+Let's take a look at the default VPC with the **describe-vpcs** command, adding the **'--filter'** option to select only the default VPC.  
 
 .. code-block::
     
