@@ -40,9 +40,9 @@ We will create a new VPC with a /16 prefix length (~64K addresses).
     }
 
 
-Verify that the VPC **state**
------------------------------
-Ensure that **state** shows **available**.
+Verify that the VPC
+-------------------
+Ensure that **State** shows **available**.
 
 .. code-block::
     
