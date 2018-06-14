@@ -15,10 +15,6 @@ Create a VPC in your default **Region**
     
     aws ec2 create-vpc --cidr-block 10.0.0.0/16
 
-Let's explore the response.
-
-.. code-block::
-
     {
         "Vpc": {
             "CidrBlock": "10.0.0.0/16",
@@ -40,6 +36,14 @@ Let's explore the response.
             "Tags": []
         }
     }
+
+Consider the response.
+
+.. code-block::
+
+    test
+
+
 
 Verify that the VPC is available
 --------------------------------
