@@ -7,7 +7,9 @@ Draft (once the draft has been completed, a version number and date will be prov
 
 Introduction
 ------------
-The primary purpose of this exercise is to have you perform a basic VPC configuration.
+The primary purpose of this exercise become familiar with basic VPC configuration.
+
+*None of the configuration items in this exercise is expected to generate an costs to your AWS account.*
 
 Create a VPC
 ------------
