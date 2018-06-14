@@ -26,7 +26,7 @@ The AWS VPC (Virtual Private Cloud) gives you control over how your AWS network 
 
 See the following for detailed information on VPC.
 
-https://aws.amazon.com/vpc/
+-  `Amazon Virtual Private Cloud <https://aws.amazon.com/vpc/>`_
 
 Watch the following videos for more details on how VPCs work under the covers.
 
