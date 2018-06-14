@@ -7,15 +7,35 @@ Draft (once the draft has been completed, a version number and date will be prov
 
 Introduction
 ------------
-The primary purpose of this exercise is to get you familiar with basic VPC concepts and to configure a VPC for basic IPv4 connectivity.
+The primary purpose of this exercise is to get you familiar with basic VPC concepts, create a new VPC and configure it for basic IPv4 connectivity.
 
 
 VPC
 ---
-VPC stands for Virtual Private Cloud and provides significant control over how you configure your AWS cloud network environment.
+The AWS VPC (Virtual Private Cloud) gives you control over how your AWS network environment is laid out. You can:
+
+- Create multiple VPCs in each region (see limits below)
+- Assign a IPv4 CIDR block to your VPC
+- Assign a IPv6 CIDR block to your VPC
+- Create subnets
+- Define which subnets will be public or private
+- Create routing tables
+- Create and assocaite Internet Gateways
+- Configure NAT to allow private subnets to reach the Internet
+- And much more... 
 
 See the following for detailed information on VPC:
 https://aws.amazon.com/vpc/
+
+Watch the following videos for more details on how VPCs work under the covers.
+
+-  `AWS re:Invent 2015 | (NET403) Another Day, Another Billion Packets <https://www.youtube.com/watch?v=3qln2u1Vr2E>`_
+
+-  `AWS re:Invent 2017: Advanced VPC Design and New Capabilities for Amazon VPC (NET305) <https://www.youtube.com/watch?v=Pj11NFXDbLY>`_
+
+
+
+
 
 
 Default VPC
