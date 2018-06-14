@@ -77,7 +77,9 @@ Use the following awscli command to ensure that the VPC State is **'available'**
 
 Examine the default Route Table
 -------------------------------
-Use the following awscli command to view main/default Route Table. This is created automatically when a VPC is created. You can see a single entry under **Routes**. This entry will allow for the routing of local traffic for all Subnets associated with the main/default Route Table. If you don't explicit;y associate a subnet with another Route Table, it is implicitly associated with the main/default Route Table.
+Use the following awscli command to view main/default Route Table.
+
+This is created automatically when a VPC is created. You can see a single entry under **Routes**. This entry will allow for the routing of local traffic for all Subnets associated with the main/default Route Table. If you don't explicit;y associate a subnet with another Route Table, it is implicitly associated with the main/default Route Table.
 
 We won't be modifying this Route Table. We will use it to provide routing for the **'private'** Subnets we create later. Since newly created Subnets are implicitly associated with the main/default Route Table, it would seem to be a good practice to provide reachability from the Internet via a separate Route Table. 
 
