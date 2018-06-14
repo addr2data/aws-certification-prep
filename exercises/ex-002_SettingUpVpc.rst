@@ -1,6 +1,10 @@
 ex-002: Basic configuration your VPC environment
 ================================================
 
+Status
+------
+Draft
+
 Introduction
 ------------
 The primary purpose of this exercise is to get you familiar with basic VPC concepts and to configure a VPC for basic IPv4 connectivity.
@@ -25,7 +29,7 @@ Let's take a look at the default VPC with the **describe-vpcs** command, adding 
     aws ec2 describe-vpcs --filter Name=isDefault,Values=true
 
 
-Now let's examine the output from that command.
+Now let's examine the output from that command, rearranging the order a bit.
 
 .. code-block::
     
@@ -51,18 +55,39 @@ Now let's examine the output from that command.
     ]
     }
 
-- CidrBlock
-- DhcpOptionsId
-- State
-- VpcId
-- InstanceTenancy
-- CidrBlockAssociationSet
-- IsDefault
+.. list-table::
+   :widths: 20, 50
+   :header-rows: 1
 
-Not shown in this example:
-- Tags
+   * - Field
+     - Description
+   * - VpcId
+     - 
+   * - State
+     - 
+   * - CidrBlock
+     - The block of IPv4 addresses assigned to this VPC.
+   * - CidrBlockAssociationSet
+     - 
+   * - DhcpOptionsId
+     - 
+   * - InstanceTenancy
+     - 
+   * - IsDefault
+     - 
 
+Not shown in this example.
 
+.. list-table::
+   :widths: 20, 50
+   :header-rows: 1
+
+   * - Field
+     - Description
+   * - Ipv6CidrBlockAssociationSet
+     - The block of IPv6 addresses assigned to this VPC.
+   * - Tags
+     - 
 
 VPC Limits
 ----------
