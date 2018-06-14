@@ -97,6 +97,8 @@ You should familiarize yourself with the following whitepapers before you start.
 
 -  `Overview of Amazon Web Services <https://docs.aws.amazon.com/aws-technical-content/latest/aws-overview/aws-overview.pdf>`_
 -  `How AWS Pricing Works <https://d1.awsstatic.com/whitepapers/aws_pricing_overview.pdf>`_
+-  `AWS Global Infrastructure <https://aws.amazon.com/about-aws/global-infrastructure/>`_
+
 
 Exercises
 ---------
