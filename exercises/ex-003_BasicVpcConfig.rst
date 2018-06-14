@@ -7,15 +7,15 @@ Draft (once the draft has been completed, a version number and date will be prov
 
 Introduction
 ------------
-The primary purpose of this exercise become familiar with basic VPC configuration.
+The primary purpose of this exercise is to become familiar with basic VPC configuration.
 
-*None of the configuration items in this exercise is expected to generate an costs to your AWS account.*
+*Note:  None of the configuration activities in this exercise is expected to generate an costs to your AWS account.*
 
 Create a VPC
 ------------
 Use the following awscli command to create a new VPC with a /16 prefix length (~64K addresses). It will be created in your **Default Region** (we specified this in ex-001).
 
-If you wish to create a VPC in another **Region**, you would use the **--region <value>** option with the awscli.
+If you wish to create a VPC in another Region, you would use the **--region <value>** option with the awscli.
 
 .. code-block::
     
@@ -75,11 +75,11 @@ Use the following awscli command to ensure that the VPC **State** is **available
     }
 
 
-Examine the default routing table
----------------------------------
-Use the following awscli command to view main/default routing table. This is created automatically when a VPC is created. You can see a single entry under **Routes**. This will allow for the routing of traffic locally for all subnets associated with the main/default routing table. If you don't explicit;y associated a subnet with another routing table, it is implicitly associated with the main/default routing table.
+Examine the default Route Table
+-------------------------------
+Use the following awscli command to view main/default Route Table. This is created automatically when a VPC is created. You can see a single entry under **Routes**. This entry will allow for the routing of local traffic for all Subnets associated with the main/default Route Table. If you don't explicit;y associate a subnet with another Route Table, it is implicitly associated with the main/default Route Table.
 
-We won't be modifying this routing table. We will use it to provide routing for the **private** subnets we create later.    
+We won't be modifying this Route Table. We will use it to provide routing for the **'private'** Subnets we create later. Since newly created Subnets are implicitly associated with the main/default Route Table, it would seem to be a good practice to provide reachability from the Internet via a separate Route Table. 
 
 .. code-block::
 
@@ -111,15 +111,17 @@ We won't be modifying this routing table. We will use it to provide routing for 
         ]
     }
 
-Add a tag ('Name') to the main/default routing table
-----------------------------------------------------
+Create a tag
+------------
+Use the following awscli command to create a tag for the main/default routing table.
+
 .. code-block::
 
     aws ec2 create-tags --resources <RouteTableId> --tags Key=Name,Value=private
 
 Create a second routing table
 -----------------------------
-We can see the same single entry under **Routes**. This will allow for the routing of traffic locally for all subnets explicitly associated with this routing table
+Use the following awscli command to examine the **Routing Table** that was created above. We can see the same single entry under **Routes**. This will allow for the routing of traffic locally for all subnets explicitly associated with this routing table
 
 .. code-block::
 
@@ -145,13 +147,15 @@ We can see the same single entry under **Routes**. This will allow for the routi
 
 Add a tag ('Name') to the second routing table
 ----------------------------------------------
+Use the following awscli command to create a tag for the main/default routing table.
+
 .. code-block::
 
     aws ec2 create-tags --resources <RouteTableId> --tags Key=Name,Value=private
 
 Create an Internet Gateway
 --------------------------
-We will leverage the **Internet Gateway** to allow some subnets to be accessible from the Internet.
+Use the following awscli command to create an **Internet Gateway**. We will leverage this construct to allow some subnets to be accessible from the Internet.
 
 .. code-block::
 
