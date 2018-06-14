@@ -291,8 +291,10 @@ If you wish to control where your Subnets are created, you would use the **'--av
         }
     }
 
-Verify that both subnets are available
---------------------------------------
+Verify the Subnets
+------------------
+Use the following awscli command to ensure that both State of both Subnets is **'available'**.
+
 .. code-block::
 
     aws ec2 describe-subnets --filter Name=vpc-id,Values=<VpcId>
