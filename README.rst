@@ -2,10 +2,15 @@ AWS CERTIFICATION PREP
 ======================
 
 Project Status
---------------		
-- Start: 		Jun 4, 2018
-- Last Update:	Jun 14, 2018
+--------------
+.. list-table::
+   :widths: 25, 25, 25, 25
+   :header-rows: 0
 
+   * - Project Start
+     - Jun 4, 2018
+   * - Latest Update
+     - Jun 14, 2018
 
 Introduction
 ------------
