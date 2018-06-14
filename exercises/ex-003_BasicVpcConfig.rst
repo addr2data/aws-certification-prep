@@ -159,7 +159,9 @@ Use the following awscli command to create a tag for the second Route Table.
 
 Create an Internet Gateway
 --------------------------
-Use the following awscli command to create an **Internet Gateway**. We will leverage this construct to allow some subnets to be accessible from the Internet.
+Use the following awscli command to create an Internet Gateway.
+
+We will leverage this 'device' to allow some Subnets to be accessible from the Internet.
 
 .. code-block::
 
@@ -175,7 +177,7 @@ Use the following awscli command to create an **Internet Gateway**. We will leve
 
 Attach the Internet Gateway
 ---------------------------
-We need to attach the **Internet Gateway** to the VPC.
+Use the following awscli command to create an Internet Gateway to the VPC.
 
 .. code-block::
 
