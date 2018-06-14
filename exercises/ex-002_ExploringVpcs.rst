@@ -76,6 +76,40 @@ Now let's examine the output from that command, rearranging the order a bit.
     ]
     }
 
+.. code-block::
+
+    {
+        "RouteTables": [
+            {
+                "Associations": [
+                    {
+                        "Main": true,
+                        "RouteTableAssociationId": "rtbassoc-909d95ef",
+                        "RouteTableId": "rtb-8707cff8"
+                    }
+                ],
+                "PropagatingVgws": [],
+                "RouteTableId": "rtb-8707cff8",
+                "Routes": [
+                    {
+                        "DestinationCidrBlock": "172.31.0.0/16",
+                        "GatewayId": "local",
+                        "Origin": "CreateRouteTable",
+                        "State": "active"
+                    },
+                    {
+                        "DestinationCidrBlock": "0.0.0.0/0",
+                        "GatewayId": "igw-3eb6ea46",
+                        "Origin": "CreateRoute",
+                        "State": "active"
+                    }
+                ],
+                "Tags": [],
+                "VpcId": "vpc-fffee284"
+            }
+        ]
+    }
+
 .. list-table::
    :widths: 20, 50
    :header-rows: 1
