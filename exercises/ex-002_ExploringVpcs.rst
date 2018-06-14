@@ -1,5 +1,5 @@
 ex-002: Exploring VPCs
-=======================
+======================
 
 Status
 ------
@@ -7,7 +7,7 @@ Draft (once the draft has been completed, a version number and date will be prov
 
 Introduction
 ------------
-The primary purpose of this exercise is to get you familiar with basic VPC concepts, create a new VPC and configure it for basic IPv4 connectivity.
+The primary purpose of this exercise is to get you familiar with basic VPC concepts by exploring your default VPC environment.
 
 
 VPC
