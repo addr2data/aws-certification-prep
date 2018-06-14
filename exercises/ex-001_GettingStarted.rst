@@ -3,7 +3,7 @@ ex-001: Getting started
 
 Introduction
 ------------
-The primary purpose of this exercise is to get your local and AWS environments ready for basic connectivity to the EC2 API and to use **awscli** and **awscertprep_cli.py** (Python script include in the project) to briefly explore your EC2 environment.
+The primary purpose of this exercise is to get your local environment ready for basic connectivity to the AWS APIs and create a user that will allow access to the EC2 API only. You will also use **awscli** and **awscertprep_cli.py** (Python script include in the project) to test connectivity and briefly explore EC2.
 
 Initial
 -------
@@ -163,7 +163,7 @@ Availability Zones
 
 	aws ec2 describe-availability-zones --region us-east-2
 
-2. Now let's look at all the **Regions** and **Availability Zones** together.
+3. Now let's look at all the **Regions** and **Availability Zones** together.
 
 .. code-block::
 
