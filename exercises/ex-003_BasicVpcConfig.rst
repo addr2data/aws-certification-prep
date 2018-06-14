@@ -269,7 +269,7 @@ Create a second Subnet
 Use the following awscli command to create a Subnet with a prefix length of /23 (512 addresses).
 
 
-We can see that both Subnets were created in **Availability Zone 'us-east-1c'**.
+We can see that both Subnets were created in Availability Zone **'us-east-1c'**.
 
 If you wish to control where your Subnets are created, you would use the **'--availability-zone <value>'** option with the **'create-subnet'** command.
 
