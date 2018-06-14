@@ -79,9 +79,9 @@ Examine the default Route Table
 -------------------------------
 Use the following awscli command to view main/default Route Table.
 
-This is created automatically when a VPC is created. You can see a single entry under **Routes**. This entry will allow for the routing of local traffic for all Subnets associated with the main/default Route Table. If you don't explicit;y associate a subnet with another Route Table, it is implicitly associated with the main/default Route Table.
+This is created automatically when a VPC is created. You can see a single entry under **Routes**. This entry will allow for the routing of local traffic for all Subnets associated with the main/default Route Table. If you don't explicitly associate a subnet with another Route Table, it is implicitly associated with the main/default Route Table.
 
-We won't be modifying this Route Table. We will use it to provide routing for the **'private'** Subnets we create later. Since newly created Subnets are implicitly associated with the main/default Route Table, it would seem to be a good practice to provide reachability from the Internet via a separate Route Table. 
+We won't be modifying this Route Table. We will use it to provide routing for the **'private'** Subnets we will create later. Since newly created Subnets are implicitly associated with the main/default Route Table, it would seem to be a good practice to provide reachability from the Internet via a separate Route Table. 
 
 .. code-block::
 
@@ -113,17 +113,19 @@ We won't be modifying this Route Table. We will use it to provide routing for th
         ]
     }
 
-Create a tag
+Create a Tag
 ------------
-Use the following awscli command to create a tag for the main/default routing table.
+Use the following awscli command to create a **Tag** for the main/default Route Table.
 
 .. code-block::
 
     aws ec2 create-tags --resources <RouteTableId> --tags Key=Name,Value=private
 
-Create a second routing table
+Create a second Route Table
 -----------------------------
-Use the following awscli command to examine the **Routing Table** that was created above. We can see the same single entry under **Routes**. This will allow for the routing of traffic locally for all subnets explicitly associated with this routing table
+Use the following awscli command to create a second Route Table.
+
+We can see the same single entry under **Routes**. This will allow for the routing of local traffic for all subnets explicitly associated with this Route Table
 
 .. code-block::
 
