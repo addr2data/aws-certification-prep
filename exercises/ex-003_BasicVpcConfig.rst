@@ -341,7 +341,7 @@ Use the following awscli command to create a Tag for both Subnets.
 
 Associate one of the Subnets
 ----------------------------
-Use the following awscli command to associate the subnet with the Tag **Public** with second Route Table.
+Use the following awscli command to associate the subnet with the Tag **Public** with the second Route Table.
 
 .. code-block::
 
@@ -406,3 +406,13 @@ In the next exercise we will test that our configuration actually works by launc
 
 Summary
 -------
+- We created a VPC.
+- We created a second Route Table.
+- We created an Internet Gateway.
+- We attached the Internet Gateway to the VPC.
+- We created a Default Route that targeted the Internet Gateway in the second Route Table.
+- We created two Subnets.
+- We associated one of the Subnets with the second Route Table.
+- We created some Tags.
+
+
