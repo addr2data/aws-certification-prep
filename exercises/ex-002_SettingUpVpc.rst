@@ -24,7 +24,30 @@ Let's take a look at the default VPC with the **describe-vpcs** command, adding 
     
     aws ec2 describe-vpcs --filter Name=isDefault,Values=true
 
-  
+
+.. code-block::
+    
+    {
+    "Vpcs": [
+        {
+            "CidrBlock": "172.31.0.0/16",
+            "DhcpOptionsId": "dopt-267dc15d",
+            "State": "available",
+            "VpcId": "vpc-fffee284",
+            "InstanceTenancy": "default",
+            "CidrBlockAssociationSet": [
+                {
+                    "AssociationId": "vpc-cidr-assoc-27ee0c4b",
+                    "CidrBlock": "172.31.0.0/16",
+                    "CidrBlockState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "IsDefault": true
+        }
+    ]
+    }
 
 
 VPC Limits
