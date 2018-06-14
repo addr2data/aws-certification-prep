@@ -12,7 +12,7 @@ Project Status
    * - Latest Update
      - Jun 14, 2018
 
-`Change Log <https://github.com/addr2data/aws-certification-prep/changelog.rst>`_
+`Change Log <https://github.com/addr2data/aws-certification-prep/blob/master/changelog.rst>`_
 
 Introduction
 ------------
