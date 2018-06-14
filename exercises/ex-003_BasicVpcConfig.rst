@@ -9,13 +9,13 @@ Introduction
 ------------
 The primary purpose of this exercise is to become familiar with basic VPC configuration.
 
-*Note:  None of the configuration activities in this exercise is expected to generate an costs to your AWS account.*
+*Note:  None of the configuration activities in this exercise is expected to generate any costs to your AWS account.*
 
 Create a VPC
 ------------
 Use the following awscli command to create a new VPC with a /16 prefix length (~64K addresses). It will be created in your **Default Region** (we specified this in ex-001).
 
-If you wish to create a VPC in another Region, you would use the **--region <value>** option with the awscli.
+If you wish to create a VPC in another Region, you would use the **'--region <value>'** option with the awscli.
 
 .. code-block::
     
@@ -46,7 +46,7 @@ If you wish to create a VPC in another Region, you would use the **--region <val
 
 Verify the VPC
 --------------
-Use the following awscli command to ensure that the VPC **State** is **available**.
+Use the following awscli command to ensure that the VPC State is **'available'**.
 
 .. code-block::
     
