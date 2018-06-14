@@ -328,8 +328,10 @@ Use the following awscli command to ensure that the State of both Subnets is **'
         ]
     }
 
-Name (tag) the subnets **public** and **private**
--------------------------------------------------
+Create a Tag
+------------
+Use the following awscli command to create a Tag for both Subnets.
+
 .. code-block::
 
     aws ec2 create-tags --resources <SubnetId> --tags Key=Name,Value=public 
@@ -337,8 +339,10 @@ Name (tag) the subnets **public** and **private**
     aws ec2 create-tags --resources <SubnetId> --tags Key=Name,Value=private 
 
 
-Associate one of the subnets
+Associate one of the Subnets
 ----------------------------
+Use the following awscli command to associate the subnet with the Tag **Public** with second Route Table.
+
 .. code-block::
 
     aws ec2 associate-route-table --route-table-id <RouteTableId> --subnet-id <SubnetId>
@@ -347,9 +351,11 @@ Associate one of the subnets
         "AssociationId": "rtbassoc-xxxxxxxxxxxxxxxxx"
     }
 
-Re-examine the second routing table
------------------------------------
-We can see a an entry under **Associations**.
+Re-examine the second Route Table
+---------------------------------
+Use the following awscli command to examine the second Route Table.
+
+We can now see a an entry under **Associations**.
 
 .. code-block::
 
