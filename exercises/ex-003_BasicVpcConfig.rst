@@ -11,7 +11,9 @@ The primary purpose of this exercise is to have you perform a basic VPC configur
 
 Create a VPC
 ------------
-We will create a new VPC with a /16 prefix length (~64K addresses). It will be created in your **Default Region** (we specified this in ex-001). If you wish to create a VPC in another **Region**, you can use the **--region <value>** option with the awscli.
+Create a new VPC with a /16 prefix length (~64K addresses). It will be created in your **Default Region** (we specified this in ex-001).
+
+If you wish to create a VPC in another **Region**, you can use the **--region <value>** option with the awscli.
 
 .. code-block::
     
