@@ -19,19 +19,21 @@ The activities in this exercise may result in charges to your AWS account.
    :header-rows: 1
 
    * - Component
-     - Costs associated
+     - Applicable Costs
      - Notes
    * - Key Pairs
      - tbd
      - tbd
    * - Elastic IPs
-     -
-        + $0.00 per hour per EIP that is associated to a running instance
-        + $0.05 per hour per EIP that is NOT associated to a running instance
-        + $0.05 per hour per additional EIP that is associated to a running instance
-        + $0.00 per Elastic IP address remap for the first 100 remaps per month.
-        + $0.10 per Elastic IP address remap for additional remaps over 100 per month
-      - tbd
+     - $0.00 per hour per EIP that is associated to a running instance
+     - tbd
+   * - Elastic IPs
+     - $0.05 per hour per EIP that is NOT associated to a running instance
+     - tbd
+   * - Elastic IPs
+     - $0.00 per Elastic IP address remap for the first 100 remaps per month.
+     - tbd
+
 
 Create a Key Pair
 -----------------
