@@ -178,11 +178,17 @@ We have used the **'--client-token'** to option ensure this operation is  Idempo
         ...output excluded due to size...
     }
 
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+
+    export EX004_INST_PUB=<InstanceId>
+
 Launch a second Instance
 ------------------------
 Use the following awscli command to launch an Instance and attach to the **'private'** Subnet.
 
-*Reminder: The private Subnet is implicitly associated with the Default/Main Route Table, which does NOT have a Route to the Internet Gateway.
+``Reminder: The private Subnet is implicitly associated with the Default/Main Route Table, which does NOT have a Route to the Internet Gateway``
 
 .. code-block::
 
@@ -191,6 +197,12 @@ Use the following awscli command to launch an Instance and attach to the **'priv
     {
         ...output excluded due to size...
     }
+
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+
+    export EX004_INST_PRIV=<InstanceId>
 
 Allocate an Elastic IP
 ----------------------
@@ -202,9 +214,15 @@ Use the following awscli command to allocate a public IPv4 address
 
     {
         "PublicIp": "54.89.230.154",
-        "AllocationId": "eipalloc-090dfc687075050e2",
+        "AllocationId": "eipalloc-xxxxxxxxxxxxxxxxx",
         "Domain": "vpc"
     }
+
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+
+    export EX004_EIP=<AllocationId>
 
 Associate the Elastic IP
 ------------------------
@@ -212,17 +230,17 @@ Use the following awscli command to associate the Elastic IP with the Instance w
 
 .. code-block::
 
-    aws ec2 associate-address --allocation-id eipalloc-090dfc687075050e2 --instance-id i-0c19982239ebb148d
+    aws ec2 associate-address --allocation-id $EX004_EIP --instance-id $EX004_INST_PUB
 
     {
-        "AssociationId": "eipassoc-097543d512f520d2d"
+        "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
     }
 
 Test inbound connectivity
 -------------------------
 Use the following commands to test connectivity to the Instance in the public Subnet (via the Elastic IP).
 
-**'ping'** should fail and **'ssh'** should be successful.
+``Expected: 'ping'** should fail and **'ssh'** should be successful.``
 
 .. code-block::
     ping 54.89.230.154
@@ -232,7 +250,7 @@ Test outbound connectivity
 --------------------------
 Use the following command to test connectivity from the Instance in the public Subnet.
 
-**'apt update'** should be successful.
+``Expected: 'apt update'** should be successful``
 
 .. code-block::
     sudo apt update
