@@ -420,7 +420,7 @@ Use the following awscli command to create a Tag for both Subnets.
 
 Associate a Subnet
 ------------------
-Use the following awscli command to associate the **'public'**subnet with the **'public'** Route Table.
+Use the following awscli command to associate the **'public'** subnet with the **'public'** Route Table.
 
 .. code-block::
 
