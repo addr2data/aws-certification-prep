@@ -12,14 +12,14 @@ Dependencies
    :header-rows: 0
 
    * - Depends on exercise
-     - ex-003
+     - ex-001, ex-003
    * - Prerequisite for exercise
      - None
 
 
 Introduction
 ------------
-The primary purpose of this exercise is to become familiar with launching on-demand instances, connecting to those instances and testing connectivity for the VPC configuration performed in ex-003. 
+The primary purpose of this exercise is to test connectivity for the VPC configuration we created in ex-003. As part of the process, we will also become familiar with launching on-demand instances and accessing those instances. 
 
 
 Expected Costs
