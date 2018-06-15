@@ -320,7 +320,9 @@ Close the second terminal window
 
 Test local connectivity
 -----------------------
-Use the following commands to test connectivity to the Instance in the private Subnet via the private IP. You should still be connected to the Instance in the public Subnet.
+You should still be connected to the Instance in the public Subnet.
+
+Use the following commands to test connectivity to the Instance in the private Subnet via the private IP. 
 
 ``Expected results: 'ping' should fail and 'ssh' should be successful.``
 
