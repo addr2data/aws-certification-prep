@@ -313,6 +313,7 @@ Copy the Private Key
 From the second terminal window, use the following command to copy the **'acpkey1.pem'** file to the Instance on the public Subnet.
 
 .. code-block::
+
     scp -i acpkey1.pem acpkey1.pem ubuntu@54.89.230.154:/home/ubuntu
 
 Close the second terminal window
@@ -321,9 +322,10 @@ Test local connectivity
 -----------------------
 Use the following commands to test connectivity to the Instance in the private Subnet via the private IP. You should still be connected to the Instance in the public Subnet.
 
-**'ping'** should fail and **'ssh'** should now be successful.
+``Expected results: 'ping' should fail and 'ssh' should be successful.``
 
 .. code-block::
+
     ping 10.0.2.103
     ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@10.0.2.103
 
@@ -333,9 +335,10 @@ Test outbound connectivity
 --------------------------
 Use the following command to test oubound connectivity from the Instance in the private Subnet.
 
-**'apt update'** should be fail.
+`Expected results: 'apt update'** should be fail.``
 
 .. code-block::
+
     sudo apt update
 
     Type 'cntrl-c' to kill 'apt'
