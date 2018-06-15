@@ -5,11 +5,48 @@ Status
 ------
 Version 0.9 (6/14/18) - needs additional review before moving to version 1.0.
 
+Dependencies
+------------
+.. list-table::
+   :widths: 50, 30
+   :header-rows: 0
+
+   * - Depends on
+     - None
+   * - Prerequisite for
+     - ex-004
+
 Introduction
 ------------
-The primary purpose of this exercise is to become familiar with basic VPC configuration.
+The primary purpose of this exercise is to become familiar with perform a basic VPC configuration.
 
-*Note:  None of the configuration activities in this exercise is expected to generate any costs to your AWS account.*
+Expected Costs
+--------------
+The activities in this exercise are NOT expected to result in charges to your AWS account.
+
+.. list-table::
+   :widths: 20, 40, 50
+   :header-rows: 1
+
+   * - Component
+     - Applicable Costs
+     - Notes
+   * - VPC
+     - 
+        + $0.00
+     - 
+   * - Route Table
+     - 
+        + $0.00
+     -
+   * - Subnet
+     - 
+        + $0.00
+     -
+   * - Internet Gateway
+     - 
+        + $0.00
+     -
 
 Environment variables
 ---------------------
