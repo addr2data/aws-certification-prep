@@ -56,8 +56,13 @@ The activities in this exercise may result in charges to your AWS account.
         + $0.10 per EIP address remap for additional remaps over 100 per month
      - During this exercise we will remap an EIP a couple of times.  
 
+Environment variables
+---------------------
+During this exercise, we will be creating environment variables to simplify the syntax of commands run later in the exercise. I have decided to do this manually, because I want to show the the full output from each command and not redirect a filtered output directly into a variable.
 
+Once you are comfortable with the expected output of a command and wish filter the output, then you might want to try the **'--query'** and **'--output'** options available in the awscli command.
 
+Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
 Create a Key Pair
 -----------------
@@ -90,8 +95,14 @@ You can create up to 500 security groups per VPC
     aws ec2 create-security-group --group-name Int2Public --description "Security Group used to connect to instances on public subnet from Internet" --vpc-id vpc-0ecc9b41c9206502b
 
     {
-        "GroupId": "sg-01f180a16b3948693"
+        "GroupId": "sg-xxxxxxxxxxxxxxxxx"
     }
+
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+
+    export EX004_SG=<GroupId>
 
 Add a rule to the Security Group
 --------------------------------
