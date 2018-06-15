@@ -100,8 +100,8 @@ Insert the appropriate region for your location (see **AWS Regions** table below
 
 .. code-block::
 
-	[default]
-	region = YOUR_REGION
+    [default]
+    region = YOUR_REGION
     output = json
 
 AWS Regions
