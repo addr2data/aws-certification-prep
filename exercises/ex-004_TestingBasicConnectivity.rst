@@ -164,7 +164,7 @@ Launch an Instance
 -------------------
 Use the following awscli command to launch an Instance and attach to the **'public'** Subnet.
 
-``Reminder: The only thing that makes it a public Subnet is that it is associated with a Route Table that has a Route to the Internet Gateway.``
+``Reminder: The only thing that makes it a 'public' Subnet is the fact that it is associated with a Route Table that has a Route to the Internet Gateway.``
 
 We have used the **'--client-token'** to option ensure this operation is  Idempotent.
 
