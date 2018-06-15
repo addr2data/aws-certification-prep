@@ -162,11 +162,11 @@ Use the following awscli command to examine the above security group.
 
 Launch an Instance
 -------------------
-Use the following awscli command to launch an Instance in the 'public' Subnet.
+Use the following awscli command to launch an Instance and attach to the **'public'** Subnet.
 
-*Reminder: The only thing that makes it a public Subnet is that it is associated with a Route Table that has a Route to the Internet Gateway.
+``Reminder: The only thing that makes it a public Subnet is that it is associated with a Route Table that has a Route to the Internet Gateway.``
 
-We have used the option **'--client-token'** to ensure this operation is  Idempotent.
+We have used the **'--client-token'** to option ensure this operation is  Idempotent.
 
 - `More information on Idempotency <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html>`_
 
