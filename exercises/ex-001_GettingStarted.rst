@@ -29,7 +29,6 @@ Install **git** and **virtualenv**, if you don't already have them installed. He
 - `virtualenv <https://virtualenv.pypa.io/en/stable/>`_
 - `git <https://git-scm.com/>`_
 
-
 Clone this GitHub repo
 ----------------------
 .. code-block::
@@ -42,9 +41,9 @@ If you don't have your SSH key(s) added GitHub, you can use HTTP instead.
 	
 	git clone https://github.com/addr2data/aws-certification-prep.git
 
-
 Set up your virtual environment
 --------------------------------
+
 .. code-block::
 
  virtualenv aws-certification-prep
@@ -54,10 +53,10 @@ Set up your virtual environment
 
 Install requirements
 --------------------
+
 .. code-block::
 
  	pip install boto3 docopt awscli
-
 
 Set up a user account for API access
 ------------------------------------
@@ -74,24 +73,25 @@ Set up a user account for API access
 - Click **Create user**.
 - On the following screen, copy the values for **Access key ID** and **Secret access key**.
 
-
 Create a credentials file
 -------------------------
+
 .. code-block::
 
 	mkdir ~/.aws
 	vi ~/.aws/credentials
 
 Insert the **Access key ID** and **Secret access key** that you copied in the previous step. Save the file.
+
 .. code-block::
 
 	[default]
 	aws_access_key_id = YOUR_ACCESS_KEY
 	aws_secret_access_key = YOUR_SECRET_KEY
 
-
 Create a configuration file
 ---------------------------
+
 .. code-block::
 
 	vi ~/.aws/config
