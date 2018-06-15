@@ -11,6 +11,14 @@ The primary purpose of this exercise is to become familiar with basic VPC config
 
 *Note:  None of the configuration activities in this exercise is expected to generate any costs to your AWS account.*
 
+Environment variables
+---------------------
+Throughout this exercise we will be manually creating environment variables. I have decided to do it this way, because I want to show the the full output from each command and not redirect a parsed output directly into a variable.
+
+Once you are comfortable with the expected command output and wish parse it for only what is needed, then you might want to try the **'--query'** and **'--output'** options available in the awscli command.
+
+Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
+
 Create a VPC
 ------------
 Use the following awscli command to create a new VPC with a /16 prefix length (~64K addresses).
