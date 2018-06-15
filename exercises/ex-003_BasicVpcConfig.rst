@@ -8,12 +8,12 @@ Version 0.9 (6/14/18) - needs additional review before moving to version 1.0.
 Dependencies
 ------------
 .. list-table::
-   :widths: 50, 30
+   :widths: 25, 25
    :header-rows: 0
 
-   * - Depends on
+   * - Depends on exercise
      - None
-   * - Prerequisite for
+   * - Prerequisite for exercise
      - ex-004
 
 Introduction

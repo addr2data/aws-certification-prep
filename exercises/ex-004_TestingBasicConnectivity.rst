@@ -5,6 +5,18 @@ Status
 ------
 Draft (once the draft has been completed, a version number and date will be provided)
 
+Dependencies
+------------
+.. list-table::
+   :widths: 25, 25
+   :header-rows: 0
+
+   * - Depends on exercise
+     - ex-004
+   * - Prerequisite for exercise
+     - None
+
+
 Introduction
 ------------
 The primary purpose of this exercise is to become familiar with launching on-demand instances, connecting to those instances and testing connectivity for the VPC configuration performed in ex-003. 
