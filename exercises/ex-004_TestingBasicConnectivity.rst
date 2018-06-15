@@ -240,7 +240,7 @@ Test inbound connectivity
 -------------------------
 Use the following commands to test connectivity to the Instance in the public Subnet (via the Elastic IP).
 
-``Expected: 'ping'** should fail and **'ssh'** should be successful.``
+``Expected: 'ping' should fail and 'ssh' should be successful.``
 
 .. code-block::
     ping 54.89.230.154
@@ -250,7 +250,7 @@ Test outbound connectivity
 --------------------------
 Use the following command to test connectivity from the Instance in the public Subnet.
 
-``Expected: 'apt update'** should be successful``
+``Expected: 'apt update' should be successful.``
 
 .. code-block::
     sudo apt update
