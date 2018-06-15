@@ -224,7 +224,7 @@ Use the following awscli command to verify that you are able to access the EC2 A
         ]
     }
 
-Using the **'--dry-run'** option let you verify access without actually runninng the command.
+Using the **'--dry-run'** option lets you verify access without actually runninng the command. Don't be fooled by the statement **'An error occurred'**.
 
 .. code-block::
 
@@ -232,11 +232,18 @@ Using the **'--dry-run'** option let you verify access without actually runninng
 
     An error occurred (DryRunOperation) when calling the DescribeRegions operation: Request would have succeeded, but DryRun flag is set.
 
-2. Verify that you are **NOT** able to access the IAM API.
+Verify restriction
+------------------
+Use the following awscli command to verify that you NOT are able to access the EC2 API
 
 .. code-block::
 
-	aws iam get-account-summary
+    aws iam get-account-summary
+
+    An error occurred (AccessDenied) when calling the GetAccountSummary operation: User: arn:aws:iam::926075045128:user/apiuser01 is not authorized to perform: iam:GetAccountSummary on resource: *
+
+
+
 
 
 Availability Zones
