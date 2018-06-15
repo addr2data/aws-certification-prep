@@ -151,10 +151,9 @@ AWS Regions
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
 
 
-Testing access
---------------
-
-1a. Verify that you are able to access the EC2 API.
+Verify access
+-------------
+Use the following awscli command to verify that you are able to access the EC2 API
 
 .. code-block::
 
@@ -225,7 +224,7 @@ Testing access
         ]
     }
 
-1b. The **'--dry-run'** option let you verify access without actually runninng the command.
+Using the **'--dry-run'** option let you verify access without actually runninng the command.
 
 .. code-block::
 
