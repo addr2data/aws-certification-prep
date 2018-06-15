@@ -102,7 +102,7 @@ Insert the appropriate region for your location (see **AWS Regions** table below
 
 	[default]
 	region = YOUR_REGION
-
+    output = json
 
 AWS Regions
 ~~~~~~~~~~~
