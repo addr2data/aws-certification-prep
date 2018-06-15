@@ -252,8 +252,8 @@ Use the following awscli command to attach the Internet Gateway to the VPC.
       aws ec2 attach-internet-gateway --internet-gateway-id $EX003_IG --vpc-id $EX003_VPC
 
 
-Add a Route to the Route Table
-------------------------------
+Add a Route
+-----------
 Use the following awscli command to add a **Default Route** that targets the Internet Gateway to the **'public'** Route Table.
 
 This will allow connectivity from the Internet for Subnets explicitly associated with this Route Table.
