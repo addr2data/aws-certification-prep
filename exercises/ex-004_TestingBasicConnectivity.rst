@@ -88,7 +88,7 @@ Create a Security Group
 -----------------------
 Use the following awscli command to create a new Security Group.
 
-You can create up to 500 security groups per VPC
+``LIMITS: You can create up to 500 security groups per VPC``
 
 .. code-block::
 
