@@ -22,10 +22,12 @@ The activities in this exercise may result in charges to your AWS account.
      - Applicable Costs
      - Notes
    * - Key Pairs
-     - $0.00
+     - 
+        + $0.00
      - 
    * - Security Groups
-     - $0.00
+     - 
+        + $0.00
      -
    * - On-demand Instances
      - $0.0116 per hour per Instance (t2.micro)
