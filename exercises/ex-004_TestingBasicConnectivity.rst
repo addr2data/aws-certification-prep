@@ -7,7 +7,7 @@ Draft (once the draft has been completed, a version number and date will be prov
 
 Introduction
 ------------
-The primary purpose of this exercise is to become familiar with launching on-demand instances, connecting to those instances and testing the VPC configuration from ex-003. 
+The primary purpose of this exercise is to become familiar with launching on-demand instances, connecting to those instances and testing connectivity for the VPC configuration performed in ex-003. 
 
 *Note:  The activities in this exercise are expected to generate any costs to your AWS account.*
 
