@@ -243,6 +243,7 @@ Use the following commands to test connectivity to the Instance in the public Su
 ``Expected: 'ping' should fail and 'ssh' should be successful.``
 
 .. code-block::
+
     ping 54.89.230.154
     ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@54.89.230.154
 
@@ -253,6 +254,7 @@ Use the following command to test connectivity from the Instance in the public S
 ``Expected: 'apt update' should be successful.``
 
 .. code-block::
+
     sudo apt update
 
     Type 'exit' to disconnect from the Instance.
