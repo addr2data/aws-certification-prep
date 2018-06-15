@@ -26,9 +26,9 @@ The activities in this exercise may result in charges to your AWS account.
      - tbd
    * - Elastic IPs
      - 
-        + $0.00 per hour per EIP that is associated to a running instance
-        + $0.05 per hour per EIP that is NOT associated to a running instance
-     - tbd
+        + $0.00 per hour per EIP that is associated to a running Instance
+        + $0.05 per hour per EIP that is NOT associated to a running Instance
+     - During this exercise there will be short periods of time where the EIP we create will not be associated with an running Instance, so you might incur a small charge.  
    * - Elastic IPs
      - $0.05 per hour per EIP that is NOT associated to a running instance
      - tbd
