@@ -3,7 +3,7 @@ ex-004: Testing basic connectivity
 
 Status
 ------
-Draft (once the draft has been completed, a version number and date will be provided)
+Version 0.9 (6/15/18) - needs additional review before moving to version 1.0.
 
 Dependencies
 ------------
@@ -44,7 +44,7 @@ The activities in this exercise may result in charges to your AWS account.
    * - On-demand Instances
      - 
         + $0.0116 per hour per Instance (t2.micro)
-     - During this exercise we will be launching two Instance, using ami-a4dc46db (Ubuntu Server 16.04 LTS), which is 'Free tier eligible'. It is not expected that these Instances will need to be running for more than one hour. 
+     - During this exercise we will be launching two Instances, using ami-a4dc46db (Ubuntu Server 16.04 LTS), which is 'Free tier eligible'. It is not expected that these Instances will need to be running for more than one hour. 
    * - Elastic IPs
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
