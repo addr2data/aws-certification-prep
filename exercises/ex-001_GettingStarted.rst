@@ -153,11 +153,85 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-z
 
 Testing access
 --------------
-1. Verify that you are able to access the EC2 API.
+
+1a. Verify that you are able to access the EC2 API.
 
 .. code-block::
 
 	aws ec2 describe-regions
+
+    {
+        "Regions": [
+            {
+                "Endpoint": "ec2.ap-south-1.amazonaws.com",
+                "RegionName": "ap-south-1"
+            },
+            {
+                "Endpoint": "ec2.eu-west-3.amazonaws.com",
+                "RegionName": "eu-west-3"
+            },
+            {
+                "Endpoint": "ec2.eu-west-2.amazonaws.com",
+                "RegionName": "eu-west-2"
+            },
+            {
+                "Endpoint": "ec2.eu-west-1.amazonaws.com",
+                "RegionName": "eu-west-1"
+            },
+            {
+                "Endpoint": "ec2.ap-northeast-2.amazonaws.com",
+                "RegionName": "ap-northeast-2"
+            },
+            {
+                "Endpoint": "ec2.ap-northeast-1.amazonaws.com",
+                "RegionName": "ap-northeast-1"
+            },
+            {
+                "Endpoint": "ec2.sa-east-1.amazonaws.com",
+                "RegionName": "sa-east-1"
+            },
+            {
+                "Endpoint": "ec2.ca-central-1.amazonaws.com",
+                "RegionName": "ca-central-1"
+            },
+            {
+                "Endpoint": "ec2.ap-southeast-1.amazonaws.com",
+                "RegionName": "ap-southeast-1"
+            },
+            {
+                "Endpoint": "ec2.ap-southeast-2.amazonaws.com",
+                "RegionName": "ap-southeast-2"
+            },
+            {
+                "Endpoint": "ec2.eu-central-1.amazonaws.com",
+                "RegionName": "eu-central-1"
+            },
+            {
+                "Endpoint": "ec2.us-east-1.amazonaws.com",
+                "RegionName": "us-east-1"
+            },
+            {
+                "Endpoint": "ec2.us-east-2.amazonaws.com",
+                "RegionName": "us-east-2"
+            },
+            {
+                "Endpoint": "ec2.us-west-1.amazonaws.com",
+                "RegionName": "us-west-1"
+            },
+            {
+                "Endpoint": "ec2.us-west-2.amazonaws.com",
+                "RegionName": "us-west-2"
+            }
+        ]
+    }
+
+1b. The **'--dry-run'** option let you verify access without actually runninng the command.
+
+.. code-block::
+
+    aws ec2 describe-regions --dry-run
+
+    An error occurred (DryRunOperation) when calling the DescribeRegions operation: Request would have succeeded, but DryRun flag is set.
 
 2. Verify that you are **NOT** able to access the IAM API.
 
