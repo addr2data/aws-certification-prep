@@ -188,7 +188,7 @@ Launch a second Instance
 ------------------------
 Use the following awscli command to launch an Instance and attach to the **'private'** Subnet.
 
-``Reminder: The private Subnet is implicitly associated with the Default/Main Route Table, which does NOT have a Route to the Internet Gateway``
+``Reminder: The private Subnet is implicitly associated with the Default/Main Route Table, which does NOT have a Route to the Internet Gateway.``
 
 .. code-block::
 
