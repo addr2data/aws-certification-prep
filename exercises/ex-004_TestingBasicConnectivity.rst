@@ -172,10 +172,10 @@ We have used the **'--client-token'** to option ensure this operation is  Idempo
 
 .. code-block::
 
-    aws ec2 run-instances --image-id ami-a4dc46db --instance-type t2.micro --key-name acpkey1 --subnet-id subnet-00ab76a6ccaaee13d --security-group-ids $EX004_SG --client-token awscertprep-ex-004-001
+    aws ec2 run-instances --image-id ami-a4dc46db --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PUB --security-group-ids $EX004_SG --client-token awscertprep-ex-004-001
 
     {
-        ...output excluded do to size...
+        ...output excluded due to size...
     }
 
 Launch a second Instance
@@ -186,10 +186,10 @@ Use the following awscli command to launch an Instance and attach to the **'priv
 
 .. code-block::
 
-    aws ec2 run-instances --image-id ami-a4dc46db --instance-type t2.micro --key-name acpkey1 --subnet-id subnet-037dd3a0e579a8da7 --security-group-ids $EX004_SG --client-token awscertprep-ex-004-005
+    aws ec2 run-instances --image-id ami-a4dc46db --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PRIV --security-group-ids $EX004_SG --client-token awscertprep-ex-004-005
 
     {
-        ...output excluded do to size...
+        ...output excluded due to size...
     }
 
 Allocate an Elastic IP
