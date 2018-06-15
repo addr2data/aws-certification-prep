@@ -10,7 +10,7 @@ Project Status
    * - Project Start
      - Jun 4, 2018
    * - Latest Update
-     - Jun 14, 2018
+     - Jun 15, 2018
 
 `Change Log <https://github.com/addr2data/aws-certification-prep/blob/master/changelog.rst>`_
 
@@ -108,7 +108,9 @@ Exercises
 
 3. `Basic VPC configuration <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_BasicVpcConfig.rst>`_
 
-4. To be added
+4. `Testing basic connectivity <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_TestingBasicConnectivity.rst>`_
+
+5. To be added
 
 Additional Resources
 --------------------
