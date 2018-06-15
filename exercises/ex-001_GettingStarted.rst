@@ -3,7 +3,7 @@ ex-001: Getting started
 
 Status
 ------
-Draft (once the draft has been completed, a version number and date will be provided)
+Version 0.9 (6/14/18) - needs additional review before moving to version 1.0.
 
 Dependencies
 ------------
@@ -14,11 +14,13 @@ Dependencies
    * - Depends on exercise
      - None
    * - Prerequisite for exercise
-     - None
+     - All
 
 Introduction
 ------------
-The primary purpose of this exercise is to get your local environment ready for basic connectivity to the AWS APIs and create a user that will allow access to the EC2 API only. You will also use **awscli** and **awscertprep_cli.py** (Python script include in the project) to test connectivity and briefly explore EC2.
+The primary purpose of this exercise is to get your local environment ready for basic connectivity to the AWS APIs and to create a user that will allow access to the EC2 API only.
+
+You will use the **awscli** and **awscertprep_cli.py** (Python script included in the project) to test connectivity and briefly explore EC2.
 
 Initial
 -------
