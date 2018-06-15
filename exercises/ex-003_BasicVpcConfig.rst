@@ -43,6 +43,9 @@ It will be created in your **Default Region** (we specified this in ex-001). If 
         }
     }
 
+.. code-block::
+
+    export EX004_VPC=<VpcId>
 
 Verify the VPC
 --------------
@@ -50,7 +53,7 @@ Use the following awscli command to ensure that the VPC State is **'available'**
 
 .. code-block::
     
-    aws ec2 describe-vpc --vpc-ids <VpcId>
+    aws ec2 describe-vpcs --vpc-ids $EX004_VPC
 
     {
         "Vpcs": [
@@ -85,7 +88,7 @@ We won't be modifying this Route Table. We will use it to provide routing for th
 
 .. code-block::
 
-    aws ec2 describe-route-tables --filter Name=vpc-id,Values=<VpcId>
+    aws ec2 describe-route-tables --filter Name=vpc-id,Values=$EX004_VPC
 
     {
         "RouteTables": [
