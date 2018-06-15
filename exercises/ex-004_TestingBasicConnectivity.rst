@@ -9,7 +9,33 @@ Introduction
 ------------
 The primary purpose of this exercise is to become familiar with launching on-demand instances, connecting to those instances and testing connectivity for the VPC configuration performed in ex-003. 
 
-*Note:  The activities in this exercise are expected to generate any costs to your AWS account.*
+
+Expected Costs
+--------------
+The activities in this exercise may result in charges to your AWS account.
+
+.. list-table::
+   :widths: 25, 50,
+   :header-rows: 1
+
+   * - Component
+     - Costs associated
+   * - Key Pairs
+     - 
+   * - Elastic IPs
+     - 
+        + $0.005 per additional IP address associated with a running instance per hour
+        + $0.005 per Elastic IP address not associated with a running instance per hour on a pro rata basis
+        + $0.00 per Elastic IP address remap for the first 100 remaps per month
+        + $0.10 per Elastic IP address remap for additional remaps over 100 per month
+   * - 
+     - 
+   * - 
+     - 
+   * - 
+     - 
+   * - 
+     - 
 
 Create a Key Pair
 -----------------
