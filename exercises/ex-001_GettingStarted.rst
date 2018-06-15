@@ -242,8 +242,8 @@ Use the following awscli command to verify that you NOT are able to access the I
 
     An error occurred (AccessDenied) when calling the GetAccountSummary operation: User: arn:aws:iam::926075045128:user/apiuser01 is not authorized to perform: iam:GetAccountSummary on resource: *
 
-Output formats
---------------
+Formatting output
+-----------------
 Use the following awscli command with **'--output text'** and **'--output table'** options to see different output formats.
 
 .. code-block::
@@ -293,6 +293,33 @@ Use the following awscli command with **'--output text'** and **'--output table'
     ||  ec2.us-west-1.amazonaws.com      |  us-west-1       ||
     ||  ec2.us-west-2.amazonaws.com      |  us-west-2       ||
     |+-----------------------------------+------------------+|
+
+Filtering results
+-----------------
+Use the following awscli command with **'--query'** and **'--output'** filter results.
+
+.. code-block::
+
+    aws ec2 describe-regions --query Regions[*].RegionName
+
+    [
+        "ap-south-1",
+        "eu-west-3",
+        "eu-west-2",
+        "eu-west-1",
+        "ap-northeast-2",
+        "ap-northeast-1",
+        "sa-east-1",
+        "ca-central-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+    ]
+
 
 Explore your Region
 -------------------
@@ -350,6 +377,7 @@ Use the following awscli command to examine the **Availability Zones** in anothe
 .. code-block::
     
     aws ec2 describe-availability-zones --region us-east-2
+
     {
         "AvailabilityZones": [
             {
