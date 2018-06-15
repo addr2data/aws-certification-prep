@@ -62,6 +62,8 @@ Use the following awscli command to create a new VPC with a /16 prefix length (~
 
 It will be created in your **Default Region** (we specified this in ex-001). If you wish to create a VPC in another Region, you would use the **'--region <value>'** option with the awscli.
 
+``LIMITS: The default limit for VPCs per Region is 5. You would need to open a support case to increase that number.``
+
 .. code-block::
     
     aws ec2 create-vpc --cidr-block 10.0.0.0/16
