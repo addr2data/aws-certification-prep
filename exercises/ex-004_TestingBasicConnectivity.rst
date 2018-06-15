@@ -22,8 +22,14 @@ The activities in this exercise may result in charges to your AWS account.
      - Applicable Costs
      - Notes
    * - Key Pairs
-     - tbd
-     - tbd
+     - $0.00
+     - 
+   * - Security Groups
+     - $0.00
+     -
+   * - On-demand Instances
+     - $0.0116 per hour per Instance (t2.micro)
+     - We will be launching two Instance, using ami-a4dc46db (Ubuntu Server 16.04 LTS), which is 'Free tier eligible'. It is not expected that these Instances will need to be running for more than one hour. 
    * - Elastic IPs
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
