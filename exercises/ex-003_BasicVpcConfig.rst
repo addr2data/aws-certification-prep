@@ -92,7 +92,7 @@ Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX004_VPC=<VpcId>
+    export EX003_VPC=<VpcId>
 
 Verify the VPC
 --------------
@@ -100,7 +100,7 @@ Use the following awscli command to ensure that the VPC State is **'available'**
 
 .. code-block::
     
-    aws ec2 describe-vpcs --vpc-ids $EX004_VPC
+    aws ec2 describe-vpcs --vpc-ids $EX003_VPC
 
     {
         "Vpcs": [
@@ -131,11 +131,11 @@ Use the following awscli command to view main/default Route Table.
 
 This is created automatically when a VPC is created. You can see a single entry under **Routes**. This entry will allow for the routing of local traffic for all Subnets associated with the main/default Route Table. If you don't explicitly associate a subnet with another Route Table, it is implicitly associated with the main/default Route Table.
 
-We won't be modifying this Route Table. We will use it to provide routing for the **'private'** Subnets we will create later. Since newly created Subnets are implicitly associated with the main/default Route Table, it would seem to be a good practice to provide reachability from the Internet via a separate Route Table. 
+We won't be modifying this Route Table. We will use it to provide routing for the **'private'** Subnet we will create later. Since newly created Subnets are implicitly associated with the main/default Route Table, it would seem to be a good practice to provide reachability to/from the Internet via a separate Route Table. 
 
 .. code-block::
 
-    aws ec2 describe-route-tables --filter Name=vpc-id,Values=$EX004_VPC
+    aws ec2 describe-route-tables --filter Name=vpc-id,Values=$EX003_VPC
 
     {
         "RouteTables": [
@@ -163,23 +163,29 @@ We won't be modifying this Route Table. We will use it to provide routing for th
         ]
     }
 
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+
+    export EX003_RTB_PRIV=<RouteTableId>
+
 Create a Tag
 ------------
 Use the following awscli command to create a **Tag** for the main/default Route Table.
 
 .. code-block::
 
-    aws ec2 create-tags --resources <RouteTableId> --tags Key=Name,Value=private
+    aws ec2 create-tags --resources $EX003_RTB_PRIV --tags Key=Name,Value=private
 
 Create a second Route Table
------------------------------
+---------------------------
 Use the following awscli command to create a second Route Table.
 
 We can see the same single entry under **Routes**. This will allow for the routing of local traffic for all subnets explicitly associated with this Route Table
 
 .. code-block::
 
-    aws ec2 create-route-table --vpc-id <VpcId>
+    aws ec2 create-route-table --vpc-id $EX003_VPC
 
     {
         "RouteTable": {
@@ -199,13 +205,19 @@ We can see the same single entry under **Routes**. This will allow for the routi
         }
     }
 
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+
+    export EX003_RTB_PUB=<RouteTableId>
+
 Create a Tag
 ------------
 Use the following awscli command to create a tag for the second Route Table.
 
 .. code-block::
 
-    aws ec2 create-tags --resources <RouteTableId> --tags Key=Name,Value=public
+    aws ec2 create-tags --resources $EX003_RTB_PUB --tags Key=Name,Value=public
 
 Create an Internet Gateway
 --------------------------
@@ -225,38 +237,44 @@ We will leverage this 'device' to allow some Subnets to be accessible from the I
         }
     }
 
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+
+    export EX003_IG=<InternetGatewayId>
+
 Attach the Internet Gateway
 ---------------------------
 Use the following awscli command to attach the Internet Gateway to the VPC.
 
 .. code-block::
 
-      aws ec2 attach-internet-gateway --internet-gateway-id <InternetGatewayId> --vpc-id <VpcId>
+      aws ec2 attach-internet-gateway --internet-gateway-id $EX003_IG --vpc-id $EX003_VPC
 
 
-Add a Route to the second Route Table
----------------------------------
-Use the following awscli command to add a **Default Route** that targets the Internet Gateway to the second Route Table.
+Add a Route to the Route Table
+------------------------------
+Use the following awscli command to add a **Default Route** that targets the Internet Gateway to the **'public'** Route Table.
 
-This will allow connectivity from the Internet for Subnets explicitly associated with the second Route Table.
+This will allow connectivity from the Internet for Subnets explicitly associated with this Route Table.
 
 .. code-block::
 
-    aws ec2 create-route --destination-cidr-block 0.0.0.0/0 --gateway-id <igw-InternetGatewayId> --route-table-id <RouteTableId>
+    aws ec2 create-route --destination-cidr-block 0.0.0.0/0 --gateway-id $EX003_IG --route-table-id $EX003_RTB_PUB
 
     {
         "Return": true
     }
 
-Re-examine the second Route Table
----------------------------------
-Use the following awscli command to re-examine the second Route Table.
+Examine the Route Table
+-----------------------
+Use the following awscli command to re-examine the **'public'** Route Table.
 
 We can see a second entry under **Routes**.
 
 .. code-block::
 
-    aws ec2 describe-route-tables --filter Name=route-table-id,Values=<RouteTableId>
+    aws ec2 describe-route-tables --filter Name=route-table-id,Values=$EX003_RTB_PUB
 
     {
         "RouteTables": [
@@ -297,7 +315,7 @@ We only 507 usable addresses. This is because, the first address is the network 
 
 .. code-block::
    
-   aws ec2 create-subnet --cidr-block 10.0.0.0/23 --vpc-id <VpcId>
+   aws ec2 create-subnet --cidr-block 10.0.0.0/23 --vpc-id $EX003_VPC
 
     {
         "Subnet": {
@@ -314,17 +332,18 @@ We only 507 usable addresses. This is because, the first address is the network 
         }
     }
 
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+
+    export EX003_SUBNET_PUB=<SubnetId>
+
 Create a second Subnet
 ----------------------
 Use the following awscli command to create a Subnet with a prefix length of /23 (512 addresses).
 
-
-We can see that both Subnets were created in Availability Zone **'us-east-1c'**.
-
-If you wish to control where your Subnets are created, you would use the **'--availability-zone <value>'** option with the **'create-subnet'** command.
-
 .. code-block::
-    aws ec2 create-subnet --cidr-block 10.0.2.0/23 --vpc-id <VpcId>
+    aws ec2 create-subnet --cidr-block 10.0.2.0/23 --vpc-id $EX003_VPC
 
     {
         "Subnet": {
@@ -341,13 +360,23 @@ If you wish to control where your Subnets are created, you would use the **'--av
         }
     }
 
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+
+    export EX003_SUBNET_PRIV=<SubnetId>
+
 Verify the Subnets
 ------------------
 Use the following awscli command to ensure that the State of both Subnets is **'available'**.
 
+We can see that both Subnets were created in Availability Zone **'us-east-1c'**.
+
+If you wish to control where your Subnets are created, you would use the **'--availability-zone <value>'** option with the **'create-subnet'** command.
+
 .. code-block::
 
-    aws ec2 describe-subnets --filter Name=vpc-id,Values=<VpcId>
+    aws ec2 describe-subnets --filter Name=vpc-id,Values=$EX003_VPC
 
     {
         "Subnets": [
@@ -384,32 +413,32 @@ Use the following awscli command to create a Tag for both Subnets.
 
 .. code-block::
 
-    aws ec2 create-tags --resources <SubnetId> --tags Key=Name,Value=public 
+    aws ec2 create-tags --resources $EX003_SUBNET_PUB --tags Key=Name,Value=public 
 
-    aws ec2 create-tags --resources <SubnetId> --tags Key=Name,Value=private 
+    aws ec2 create-tags --resources $EX003_SUBNET_PRIV --tags Key=Name,Value=private 
 
 
-Associate one of the Subnets
-----------------------------
-Use the following awscli command to associate the subnet with the Tag **Public** with the second Route Table.
+Associate a Subnet
+------------------
+Use the following awscli command to associate the **'public'**subnet with the **'public'** Route Table.
 
 .. code-block::
 
-    aws ec2 associate-route-table --route-table-id <RouteTableId> --subnet-id <SubnetId>
+    aws ec2 associate-route-table --route-table-id $EX003_RTB_PUB --subnet-id $EX003_SUBNET_PUB
 
     {
         "AssociationId": "rtbassoc-xxxxxxxxxxxxxxxxx"
     }
 
-Re-examine the second Route Table
----------------------------------
-Use the following awscli command to examine the second Route Table.
+Examine the Route Table
+-----------------------
+Use the following awscli command to re-examine the **'public'** Route Table.
 
-We can now see a an entry under **Associations**.
+We can now see an entry under **Associations**.
 
 .. code-block::
 
-    aws ec2 describe-route-tables --filter Name=route-table-id,Values=<RouteTableId>
+    aws ec2 describe-route-tables --filter Name=route-table-id,Values=$EX003_RTB_PUB
 
 
     {
