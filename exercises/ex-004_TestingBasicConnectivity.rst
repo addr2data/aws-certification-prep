@@ -337,7 +337,7 @@ Test outbound connectivity
 --------------------------
 Use the following command to test oubound connectivity from the Instance in the private Subnet.
 
-``Expected results: 'apt update'** should be fail.``
+``Expected results: 'apt update' should be fail.``
 
 .. code-block::
 
@@ -347,7 +347,7 @@ Use the following command to test oubound connectivity from the Instance in the 
 
     Type 'exit' twice to disconnect from both Instances.
 
-The private subnet has no inbound or outbound path to the Internet. In a later exercise we will create a **NAT Gateway** to allow for outbound connectivity to the Internet.
+The private subnet has no inbound or outbound path to the Internet. In a later exercise we will create a **NAT Gateway** to allow for outbound connectivity for priavte Subnets to the Internet.
 
 Add a rule to the Security Group
 --------------------------------
@@ -359,15 +359,30 @@ Use the following awscli command to create a new rule to the above security grou
 
 Test connectivity
 -----------------
-Use the following command to test ICMP connectivity to the Instance in the public Subnet via the private IP.
-
-You should still be connected to the Instance in the public Subnet.
+Use the following commands to test connectivity to the Instance in the public Subnet.
 
 `Expected results: 'ping' should fail and 'ssh' should now be successful.
 
 .. code-block::
 
     ping 54.89.230.154
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@54.89.230.154
+
+You are now connected to the Instance on the public subnet.
+
+Test local connectivity
+-----------------------
+You should still be connected to the Instance in the public Subnet.
+
+Use the following commands to test connectivity to the Instance in the private Subnet via the private IP. 
+
+``Expected results: 'ping' should now be successful.``
+
+.. code-block::
+
+    ping 10.0.2.103
+
+    Type 'exit' to disconnect from the public Instances.
 
 Terminate Instances
 -------------------
@@ -379,7 +394,7 @@ This operation is idempotent. Rerun the command until you see a **'currentState'
 
 .. code-block::
 
-    aws ec2  terminate-instances --instance-ids i-0c19982239ebb148d i-0e93ed17d9c9819f7
+    aws ec2  terminate-instances --instance-ids $EX004_INST_PUB $EX004_INST_PRIV
 
     {
         "TerminatingInstances": [
@@ -414,7 +429,7 @@ Use the following awscli command to release the public IPv4 address
 
 .. code-block::
 
-    aws ec2 release-address --allocation-id eipalloc-090dfc687075050e2
+    aws ec2 release-address --allocation-id $EX004_EIP
 
 Delete the Security Group
 -------------------------
@@ -422,7 +437,7 @@ Use the following awscli command to delete the Security Group.
 
 .. code-block::
 
-    aws ec2 delete-security-group --group-id sg-01f180a16b3948693
+    aws ec2 delete-security-group --group-id $EX004_SG
 
 
 
