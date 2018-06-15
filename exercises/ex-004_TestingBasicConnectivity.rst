@@ -106,11 +106,11 @@ Environment variable
 
 Add a rule to the Security Group
 --------------------------------
-Use the following awscli command to create a new rule to the above security group.
+Use the following awscli command to add a rule to the above security group.
 
 .. code-block::
 
-    aws ec2 authorize-security-group-ingress --group-id sg-01f180a16b3948693 --protocol tcp --port 22 --cidr 0.0.0.0/0
+    aws ec2 authorize-security-group-ingress --group-id $EX004_SG --protocol tcp --port 22 --cidr 0.0.0.0/0
 
 Examine the Security Group
 --------------------------
@@ -118,7 +118,7 @@ Use the following awscli command to examine the above security group.
 
 .. code-block::
 
-    aws ec2 describe-security-groups --group-ids sg-0d7c69511ecdbf73a
+    aws ec2 describe-security-groups --group-ids $EX004_SG
 
     {
         "SecurityGroups": [
