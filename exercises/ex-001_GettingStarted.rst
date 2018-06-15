@@ -300,7 +300,7 @@ Use the following awscli command to examine the **Availability Zones** in your r
 
 .. code-block::
 
-	aws ec2 describe-availability-zones
+    aws ec2 describe-availability-zones
 
     {
         "AvailabilityZones": [
@@ -348,9 +348,8 @@ Explore another Region
 Use the following awscli command to examine the **Availability Zones** in another region.
 
 .. code-block::
-
-	aws ec2 describe-availability-zones --region us-east-2
-
+    
+    aws ec2 describe-availability-zones --region us-east-2
     {
         "AvailabilityZones": [
             {
