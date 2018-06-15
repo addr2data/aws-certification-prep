@@ -12,7 +12,7 @@ Dependencies
    :header-rows: 0
 
    * - Depends on exercise
-     - ex-004
+     - ex-003
    * - Prerequisite for exercise
      - None
 

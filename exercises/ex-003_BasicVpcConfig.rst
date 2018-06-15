@@ -88,6 +88,8 @@ It will be created in your **Default Region** (we specified this in ex-001). If 
         }
     }
 
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
     export EX004_VPC=<VpcId>
