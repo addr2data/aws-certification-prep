@@ -240,7 +240,7 @@ Test inbound connectivity
 -------------------------
 Use the following commands to test connectivity to the Instance in the public Subnet (via the Elastic IP).
 
-``Expected: 'ping' should fail and 'ssh' should be successful.``
+``Expected results: 'ping' should fail and 'ssh' should be successful.``
 
 .. code-block::
 
@@ -251,7 +251,7 @@ Test outbound connectivity
 --------------------------
 Use the following command to test connectivity from the Instance in the public Subnet.
 
-``Expected: 'apt update' should be successful.``
+``Expected results: 'apt update' should be successful.``
 
 .. code-block::
 
@@ -265,19 +265,20 @@ Use the following awscli command to re-associate the Elastic IP with the Instanc
 
 .. code-block::
 
-    aws ec2 associate-address --allocation-id eipalloc-090dfc687075050e2 --instance-id i-0e93ed17d9c9819f7
+    aws ec2 associate-address --allocation-id $EX004_EIP --instance-id $EX004_INST_PRIV
 
     {
-        "AssociationId": "eipassoc-0c11541cbd138171d"
+        "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
     }
 
 Test inbound connectivity
 -------------------------
 Use the following commands to test connectivity to the Instance in the private Subnet via the Elastic IP.
 
-Both **'ping'** and **'ssh'** should be fail.
+``Expected results: both 'ping' and 'ssh' should be fail.``
 
 .. code-block::
+
     ping 54.89.230.154
     ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@54.89.230.154
 
@@ -287,19 +288,20 @@ Use the following awscli command to re-associate the Elastic IP with the Instanc
 
 .. code-block::
 
-    aws ec2 associate-address --allocation-id eipalloc-090dfc687075050e2 --instance-id i-0c19982239ebb148d
+    aws ec2 associate-address --allocation-id $EX004_EIP --instance-id $EX004_INST_PUB
 
     {
-        "AssociationId": "eipassoc-0675e7c77e1dfc852"
+        "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
     }
 
 Try to connect
 --------------
 Use the following command to reconnect to the Instance in the public Subnet.
 
-**'ssh'** should be successful.
+``Expected results: 'ssh'** should be successful.``
 
 .. code-block::
+
     ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@54.89.230.154
 
     Do NOT 'exit'
