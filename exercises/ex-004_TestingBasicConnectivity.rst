@@ -337,7 +337,7 @@ Test outbound connectivity
 --------------------------
 Use the following command to test oubound connectivity from the Instance in the private Subnet.
 
-`Expected results: 'apt update'** should be fail.``
+``Expected results: 'apt update'** should be fail.``
 
 .. code-block::
 
