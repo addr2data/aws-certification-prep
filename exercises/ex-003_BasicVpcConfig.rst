@@ -481,7 +481,7 @@ We can now see an entry under **Associations**.
 
 Next steps
 ----------
-In the next exercise we will test that our configuration actually works by launching some instances and verifying connectivity. 
+In the next exercise we will test that our configuration actually works by launching Instances and verifying connectivity. 
 
 Summary
 -------
