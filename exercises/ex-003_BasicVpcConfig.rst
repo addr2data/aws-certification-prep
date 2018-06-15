@@ -13,9 +13,9 @@ The primary purpose of this exercise is to become familiar with basic VPC config
 
 Environment variables
 ---------------------
-Throughout this exercise we will be manually creating environment variables. I have decided to do it this way, because I want to show the the full output from each command and not redirect a parsed output directly into a variable.
+During this exercise we will be creating environment variables to simplify the syntax of commands run later in the exercise. I have decided to do this manually, because I want to show the the full output from each command and not redirect a filtered output directly into a variable.
 
-Once you are comfortable with the expected command output and wish parse it for only what is needed, then you might want to try the **'--query'** and **'--output'** options available in the awscli command.
+Once you are comfortable with the expected output of a command and wish filter that output for only what is needed, then you might want to try the **'--query'** and **'--output'** options available in the awscli command.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
