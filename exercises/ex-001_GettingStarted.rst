@@ -296,7 +296,7 @@ Use the following awscli command with **'--output text'** and **'--output table'
 
 Filtering results
 -----------------
-Use the following awscli command with **'--query'** and **'--output'** filter results.
+Use the following awscli command with **'--query'** option to filter results.
 
 .. code-block::
 
@@ -319,6 +319,12 @@ Use the following awscli command with **'--query'** and **'--output'** filter re
         "us-west-1",
         "us-west-2"
     ]
+
+.. code-block::
+
+    aws ec2 describe-regions --query Regions[*].RegionName --output text
+
+    ap-south-1  eu-west-3   eu-west-2   eu-west-1   ap-northeast-2  ap-northeast-1  sa-east-1   ca-central-1    ap-southeast-1  ap-southeast-2  eu-central-1    us-east-1   us-east-2   us-west-1   us-west-2
 
 
 Explore your Region
