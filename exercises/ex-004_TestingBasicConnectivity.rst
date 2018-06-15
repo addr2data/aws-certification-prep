@@ -15,9 +15,9 @@ Create a Key Pair
 -----------------
 Use the following awscli command to create a new **Key Pair** and save the resulting **'.pem'** file.
 
-You can have up to 5000 Key Pairs per region.
+Note:  You can have up to 5000 Key Pairs per region.
 
-*Note: I have only verified that **'> <filename>'** produces a valid '.pem' on macOS.*
+**Note: I have only verified that **'> <filename>'** produces a valid '.pem' on macOS.**
 
 .. code-block::
     
