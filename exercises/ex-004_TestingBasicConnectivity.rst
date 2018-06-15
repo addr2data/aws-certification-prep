@@ -349,11 +349,11 @@ The private subnet has no inbound or outbound path to the Internet. In a later e
 
 Add a rule to the Security Group
 --------------------------------
-From the second terminal window (not connected to the Instance), use the following awscli command to create a new rule to the above security group.
+Use the following awscli command to create a new rule to the above security group.
 
 .. code-block::
 
-    aws ec2 authorize-security-group-ingress --group-id sg-01f180a16b3948693 --protocol icmp --port -1 --cidr 0.0.0.0/0
+    aws ec2 authorize-security-group-ingress --group-id $EX004_SG --protocol icmp --port -1 --cidr 0.0.0.0/0
 
 Test connectivity
 -----------------
@@ -361,9 +361,10 @@ Use the following command to test ICMP connectivity to the Instance in the publi
 
 You should still be connected to the Instance in the public Subnet.
 
-**'ping'** should fail and **'ssh'** should now be successful.
+`Expected results: 'ping' should fail and 'ssh' should now be successful.
 
 .. code-block::
+
     ping 54.89.230.154
 
 Terminate Instances
