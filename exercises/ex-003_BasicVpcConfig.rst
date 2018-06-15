@@ -18,7 +18,7 @@ Dependencies
 
 Introduction
 ------------
-The primary purpose of this exercise is to become familiar with perform a basic VPC configuration.
+The primary purpose of this exercise is to become familiar with performing a basic VPC configuration.
 
 Expected Costs
 --------------

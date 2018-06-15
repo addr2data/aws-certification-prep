@@ -5,10 +5,20 @@ Status
 ------
 Draft (once the draft has been completed, a version number and date will be provided)
 
+Dependencies
+------------
+.. list-table::
+   :widths: 25, 25
+   :header-rows: 0
+
+   * - Depends on exercise
+     - None
+   * - Prerequisite for exercise
+     - None
+
 Introduction
 ------------
 The primary purpose of this exercise is to get you familiar with basic VPC concepts by exploring your default VPC environment.
-
 
 VPC
 ---

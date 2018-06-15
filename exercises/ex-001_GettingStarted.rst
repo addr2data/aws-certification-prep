@@ -5,6 +5,17 @@ Status
 ------
 Draft (once the draft has been completed, a version number and date will be provided)
 
+Dependencies
+------------
+.. list-table::
+   :widths: 25, 25
+   :header-rows: 0
+
+   * - Depends on exercise
+     - None
+   * - Prerequisite for exercise
+     - None
+
 Introduction
 ------------
 The primary purpose of this exercise is to get your local environment ready for basic connectivity to the AWS APIs and create a user that will allow access to the EC2 API only. You will also use **awscli** and **awscertprep_cli.py** (Python script include in the project) to test connectivity and briefly explore EC2.
