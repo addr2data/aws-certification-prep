@@ -21,7 +21,9 @@ The activities in this exercise may result in charges to your AWS account.
    * - Component
      - Costs associated
    * - Key Pairs
-     - tbd
+     -
+        + tbd
+        + tbd
    * - Elastic IPs
      - tbd
 
