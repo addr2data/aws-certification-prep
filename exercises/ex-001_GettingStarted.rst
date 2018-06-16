@@ -230,7 +230,7 @@ Use the following awscli command to verify that you are able to access the EC2 A
         ]
     }
 
-Using the **'--dry-run'** option lets you verify access without actually runninng the command. Don't be fooled by the message **'An error occurred'**.
+Using the **'--dry-run'** option lets you verify access without actually runninng the command. Don't be fooled by the **'An error occurred'** part of the message, the operation was successful.
 
 .. code-block::
 
