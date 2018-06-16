@@ -413,7 +413,7 @@ If you wish to control where your Subnets are created, you would use the **'--av
 
 Create a Tag
 ------------
-Use the following awscli command to create a Tag for both Subnets.
+Use the following awscli commands to create a Tag for both Subnets.
 
 .. code-block::
 
@@ -486,13 +486,12 @@ We can now see an entry under **Associations**.
 Summary
 -------
 - We created a VPC.
-- We created a second Route Table.
+- We created a second Route Table and Tagged it 'public'
 - We created an Internet Gateway.
 - We attached the Internet Gateway to the VPC.
-- We created a Default Route that targeted the Internet Gateway in the second Route Table.
-- We created two Subnets.
-- We associated one of the Subnets with the second Route Table.
-- We created some Tags.
+- We created a Default Route that targeted the Internet Gateway in the 'public' Route Table.
+- We created two Subnets and Tagged them 'public' and 'private', respectively.
+- We associated the 'public' Subnet with the 'public' Route Table.
 
 Next steps
 ----------
