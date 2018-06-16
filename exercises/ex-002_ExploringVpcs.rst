@@ -16,9 +16,11 @@ Dependencies
    * - Prerequisite for exercise(s)
      - None
 
-Introduction
-------------
-The primary purpose of this exercise is to get you familiar with basic VPC concepts by exploring your default VPC environment.
+Objectives
+----------
+ 
+ - Become familiar with the basic concepts of VPC
+ - Explore the default VPC in your default region. 
 
 VPC
 ---
