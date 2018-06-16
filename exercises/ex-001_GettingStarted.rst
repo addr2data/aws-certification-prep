@@ -16,11 +16,12 @@ Dependencies
    * - Prerequisite for exercise(s)
      - All
 
-Introduction
-------------
-The primary purpose of this exercise is to get your local environment ready for basic connectivity to the AWS APIs and to create a user that will allow access to the EC2 API only.
+Objectives
+----------
 
-You will use the **awscli** and **awscertprep_cli.py** (Python script included in the project) to test connectivity and briefly explore EC2.
+- Get your local environment ready for basic connectivity to the AWS APIs
+- Create an AWS user that will allow programmatic access to the EC2 API only.
+- Use **awscli** to briefly explore 
 
 Initial
 -------
