@@ -259,7 +259,7 @@ Add a Route
 -----------
 Use the following awscli command to add a **Default Route** that targets the Internet Gateway to the **'public'** Route Table.
 
-This will allow connectivity from the Internet for Subnets explicitly associated with this Route Table.
+This will allow connectivity to/from the Internet for Subnets explicitly associated with this Route Table.
 
 .. code-block::
 
