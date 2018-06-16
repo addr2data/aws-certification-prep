@@ -194,3 +194,10 @@ VPC Limits
 *Note: These limits are valid as of 06/13/18. Please you the following link to see the most up to data limits*
 https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html
 
+Summary
+-------
+- To be added
+
+Next steps
+----------
+Perform a basic VPC configuration in ex-003.

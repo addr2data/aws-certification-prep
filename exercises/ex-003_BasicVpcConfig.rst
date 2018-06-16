@@ -482,10 +482,6 @@ We can now see an entry under **Associations**.
         ]
     }
 
-Next steps
-----------
-In the next exercise we will test that our configuration actually works by launching Instances and verifying connectivity. 
-
 Summary
 -------
 - We created a VPC.
@@ -497,4 +493,7 @@ Summary
 - We associated one of the Subnets with the second Route Table.
 - We created some Tags.
 
+Next steps
+----------
+Test that our VPC configuration actually works in ex-004
 

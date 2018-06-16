@@ -449,5 +449,8 @@ Summary
 - You used **awscli** to verify that **apiuser01** does NOT have access to the IAM API.
 - You used **awscli** to explore AWS **regions** and **Availability Zones**.
 - You experimented with a couple of **awscli** commandline options.
- 
+
+Next steps
+----------
+Explore VPC concepts in ex-002.
 
