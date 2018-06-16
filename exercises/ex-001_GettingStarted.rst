@@ -442,11 +442,12 @@ Run the following script to see all the **Regions** and **Availability Zones** t
 
 Summary
 -------
-- You have set up your environment to be used with this repo.
-- You have created a user **apiuser01** and gave it API access.
+- You have set up your local environment.
+- You have created a IAM user **apiuser01** and gave it programmatic access only.
 - You have assigned **apiuser01** full access to the EC2 API.
-- You used **awscli** to verify that **apiuser01** does have access to the EC2 API.
+- You used **awscli** to verify that **apiuser01** has access to the EC2 API.
 - You used **awscli** to verify that **apiuser01** does NOT have access to the IAM API.
 - You used **awscli** to explore AWS **regions** and **Availability Zones**.
+- You experimented with a couple of **awscli** commandline options.
  
 
