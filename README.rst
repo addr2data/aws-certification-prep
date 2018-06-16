@@ -10,7 +10,7 @@ Project Status
    * - Project Start
      - Jun 4, 2018
    * - Latest Update
-     - Jun 15, 2018
+     - Jun 16, 2018
 
 `Change Log <https://github.com/addr2data/aws-certification-prep/blob/master/changelog.rst>`_
 
@@ -85,7 +85,7 @@ Following the exercises in this project will generate costs to your AWS account.
 
 Account Setup
 -------------
-If you follow along with this project. You will need to set up some account. Here are the links.
+If you follow along with this project. You will need to set up some accounts. Here are the links.
 
 -  `Sign up for AWS account <https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/>`_
 -  `Sign up for certification account <https://aws.amazon.com/certification/certification-prep/>`_
@@ -102,6 +102,8 @@ You should familiarize yourself with the following whitepapers before you start.
 
 Exercises
 ---------
+I hope you enjoy following these exercises, as much as I enjoyed building them.
+
 1. `Getting started <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
 
 2. `Exploring VPCs <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_ExploringVpcs.rst>`_

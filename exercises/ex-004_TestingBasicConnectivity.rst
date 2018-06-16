@@ -403,7 +403,7 @@ This operation is idempotent. Rerun the command until you see a **'currentState'
                     "Code": 32,
                     "Name": "shutting-down"
                 },
-                "InstanceId": "i-0c19982239ebb148d",
+                "InstanceId": "i-xxxxxxxxxxxxxxxxx",
                 "PreviousState": {
                     "Code": 16,
                     "Name": "running"
@@ -414,7 +414,7 @@ This operation is idempotent. Rerun the command until you see a **'currentState'
                     "Code": 32,
                     "Name": "shutting-down"
                 },
-                "InstanceId": "i-0e93ed17d9c9819f7",
+                "InstanceId": "i-xxxxxxxxxxxxxxxxx",
                 "PreviousState": {
                     "Code": 16,
                     "Name": "running"
