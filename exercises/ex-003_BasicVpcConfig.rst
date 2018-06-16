@@ -346,6 +346,7 @@ Create a second Subnet
 Use the following awscli command to create a Subnet with a prefix length of /23 (512 addresses).
 
 .. code-block::
+
     aws ec2 create-subnet --cidr-block 10.0.2.0/23 --vpc-id $EX003_VPC
 
     {
