@@ -11,9 +11,9 @@ Dependencies
    :widths: 25, 25
    :header-rows: 0
 
-   * - Depends on exercise
+   * - Depends on exercise(s)
      - ex-001, ex-003
-   * - Prerequisite for exercise
+   * - Prerequisite for exercise(s)
      - None
 
 

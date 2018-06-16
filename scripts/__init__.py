@@ -1,8 +1,6 @@
 """Scripts."""
 
 from .showregions import show_regions
-from .createvpc import create_vpc
-from .showvpc import show_vpc
 
 import logging
 logger = logging.getLogger(__name__)

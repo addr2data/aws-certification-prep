@@ -6,12 +6,13 @@ import scripts
 
 
 def show_regions(avail_zones=False):
-    """Show region and availability zone data."""
+    """Show Regions/AvailabilityZones."""
+    ec2 = boto3.client('ec2')
+
     # Dry run to check permissions
     try:
-        ec2 = boto3.client('ec2')
         ec2.describe_regions(DryRun=True)
-    except (EndpointConnectionError) as err:
+    except EndpointConnectionError as err:
         raise scripts.ScriptError(str(err))
     except ClientError as err:
         if 'DryRunOperation' not in str(err):
@@ -26,7 +27,7 @@ def show_regions(avail_zones=False):
         raise scripts.ScriptError(str(err))
     except KeyError as err:
         raise scripts.ScriptError(
-            "Expected 'key' not found in response: {}".format(err))
+            "Expected 'key' was not found in response: {}".format(err))
 
     # Collect availability zone data per region
     if avail_zones:
@@ -43,7 +44,7 @@ def show_regions(avail_zones=False):
             raise scripts.ScriptError(str(err))
         except KeyError as err:
             raise scripts.ScriptError(
-                "Expected 'key' not found in response: {}".format(err))
+                "Expected 'key' was not found in response: {}".format(err))
     else:
         print("Regions")
         print("-------")
