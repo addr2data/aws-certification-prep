@@ -23,6 +23,10 @@ Objectives
 - Create an AWS user that will allow programmatic access to the EC2 API only.
 - Use **awscli** to briefly explore 
 
+Expected Costs
+--------------
+The activities in this exercise are NOT expected to result in charges to your AWS account.
+
 Initial
 -------
 Install **git** and **virtualenv**, if you don't already have them installed. Here are the links:

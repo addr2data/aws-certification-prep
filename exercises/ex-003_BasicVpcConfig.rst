@@ -16,9 +16,10 @@ Dependencies
    * - Prerequisite for exercise(s)
      - ex-004
 
-Introduction
-------------
-The primary purpose of this exercise is to become familiar with performing a basic VPC configuration.
+Objectives
+----------
+
+    - Become familiar with basic VPC configuration.
 
 Expected Costs
 --------------

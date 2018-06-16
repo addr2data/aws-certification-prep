@@ -22,6 +22,10 @@ Objectives
  - Become familiar with the basic concepts of VPC
  - Explore the default VPC in your default region. 
 
+Expected Costs
+--------------
+The activities in this exercise are NOT expected to result in charges to your AWS account.
+
 VPC
 ---
 The AWS VPC (Virtual Private Cloud) gives you control over how your AWS network environment is laid out. You can:

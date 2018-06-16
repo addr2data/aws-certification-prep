@@ -16,11 +16,11 @@ Dependencies
    * - Prerequisite for exercise(s)
      - None
 
+Objectives
+----------
 
-Introduction
-------------
-The primary purpose of this exercise is to test connectivity for the VPC configuration we created in ex-003. As part of the process, we will also become familiar with launching on-demand instances and accessing those instances. 
-
+    - Become familiar with launching and accessing on-demand Instances.
+    - Test connectivity for the VPC configuration we created in ex-003.
 
 Expected Costs
 --------------
