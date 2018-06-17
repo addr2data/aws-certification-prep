@@ -110,11 +110,11 @@ Verify access
 Use the following awscli command to verify access to CloudFormation API.
 
 .. code-block::
-    
-    aws cloudformation describe-stacks
 
-    {
-    	"Stacks": []
+	aws cloudformation describe-stacks
+
+	{
+		"Stacks": []
 	}
 
 Review the template
@@ -126,118 +126,117 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **template
 	---
 
 	Resources:
-		VPC:
-    		Type: AWS::EC2::VPC
-    		Properties: 
-      	  		CidrBlock: 10.0.0.0/16
-      	  		Tags:
-        			- Key: Name
-          			  Value: vpc_ex005
+	  VPC:
+	    Type: AWS::EC2::VPC
+	    Properties: 
+	      CidrBlock: 10.0.0.0/16
+	      Tags:
+	        - Key: Name
+	          Value: vpc_ex005
 
-  		InternetGateway:
-    		Type: AWS::EC2::InternetGateway
-    		Properties: 
-      			Tags:
-        			- Key: Name
-          			  Value: ig_ex005
+	  InternetGateway:
+	    Type: AWS::EC2::InternetGateway
+	    Properties: 
+	      Tags:
+	        - Key: Name
+	          Value: ig_ex005
 
-  		AttachInternetGateway:
-    		Type: AWS::EC2::VPCGatewayAttachment
-    		Properties: 
-      			InternetGatewayId: !Ref InternetGateway
-      			VpcId: !Ref VPC
+	  AttachInternetGateway:
+	    Type: AWS::EC2::VPCGatewayAttachment
+	    Properties: 
+	      InternetGatewayId: !Ref InternetGateway
+	      VpcId: !Ref VPC
 
-  		RouteTable:
-    		Type: AWS::EC2::RouteTable
-    		Properties: 
-      			VpcId: !Ref VPC
-      			Tags:
-        			- Key: Name
-          			  Value: rtb_pub_ex005
+	  RouteTable:
+	    Type: AWS::EC2::RouteTable
+	    Properties: 
+	      VpcId: !Ref VPC
+	      Tags:
+	        - Key: Name
+	          Value: rtb_pub_ex005
 
-  		DefaultRoute:
-    		Type: AWS::EC2::Route
-    		Properties: 
-      			DestinationCidrBlock: 0.0.0.0/0
-      			GatewayId: !Ref InternetGateway
-      			RouteTableId: !Ref RouteTable
+	  DefaultRoute:
+	    Type: AWS::EC2::Route
+	    Properties: 
+	      DestinationCidrBlock: 0.0.0.0/0
+	      GatewayId: !Ref InternetGateway
+	      RouteTableId: !Ref RouteTable
 
-  		SubnetPublic:
-    		Type: AWS::EC2::Subnet
-    		Properties:
-      			CidrBlock: 10.0.0.0/23
-      			Tags:
-        			- Key: Name
-          		  	  Value: sub_pub_ex005
-      			VpcId: !Ref VPC
-  
-  		SubnetPrivate:
-    		Type: AWS::EC2::Subnet
-    		Properties:
-      			CidrBlock: 10.0.2.0/23
-      			Tags:
-        		- Key: Name
-          		  Value: sub_pri_ex005
-      			VpcId: !Ref VPC
+	  SubnetPublic:
+	    Type: AWS::EC2::Subnet
+	    Properties:
+	      CidrBlock: 10.0.0.0/23
+	      Tags:
+	        - Key: Name
+	          Value: sub_pub_ex005
+	      VpcId: !Ref VPC
+	  
+	  SubnetPrivate:
+	    Type: AWS::EC2::Subnet
+	    Properties:
+	      CidrBlock: 10.0.2.0/23
+	      Tags:
+	        - Key: Name
+	          Value: sub_pri_ex005
+	      VpcId: !Ref VPC
 
-  AssociateSubnetRouteTable:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties: 
-      RouteTableId: !Ref RouteTable
-      SubnetId: !Ref SubnetPublic
+	  AssociateSubnetRouteTable:
+	    Type: AWS::EC2::SubnetRouteTableAssociation
+	    Properties: 
+	      RouteTableId: !Ref RouteTable
+	      SubnetId: !Ref SubnetPublic
 
-  SecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties: 
-      GroupName: sg_ex005
-      GroupDescription: "Security Group for ex-005"
-      SecurityGroupIngress:
-        - 
-          CidrIp: 0.0.0.0/0
-          IpProtocol: tcp
-          FromPort: 22
-          ToPort: 22
-        - 
-          CidrIp: 0.0.0.0/0
-          IpProtocol: icmp
-          FromPort: -1
-          ToPort: -1
-      VpcId: !Ref VPC
+	  SecurityGroup:
+	    Type: AWS::EC2::SecurityGroup
+	    Properties: 
+	      GroupName: sg_ex005
+	      GroupDescription: "Security Group for ex-005"
+	      SecurityGroupIngress:
+	        - 
+	          CidrIp: 0.0.0.0/0
+	          IpProtocol: tcp
+	          FromPort: 22
+	          ToPort: 22
+	        - 
+	          CidrIp: 0.0.0.0/0
+	          IpProtocol: icmp
+	          FromPort: -1
+	          ToPort: -1
+	      VpcId: !Ref VPC
 
-  PublicInstance:
-    Type: AWS::EC2::Instance
-    Properties: 
-      ImageId: ami-a4dc46db
-      InstanceType: t2.micro
-      KeyName: acpkey1
-      SecurityGroupIds: 
-        - !Ref SecurityGroup
-      SubnetId: !Ref SubnetPublic
-      Tags: 
-        - Key: Name
-          Value: i_pub_ex005
+	  PublicInstance:
+	    Type: AWS::EC2::Instance
+	    Properties: 
+	      ImageId: ami-a4dc46db
+	      InstanceType: t2.micro
+	      KeyName: acpkey1
+	      SecurityGroupIds: 
+	        - !Ref SecurityGroup
+	      SubnetId: !Ref SubnetPublic
+	      Tags: 
+	        - Key: Name
+	          Value: i_pub_ex005
 
-  PrivateInstance:
-    Type: AWS::EC2::Instance
-    Properties: 
-      ImageId: ami-a4dc46db
-      InstanceType: t2.micro
-      KeyName: acpkey1
-      SecurityGroupIds: 
-        - !Ref SecurityGroup
-      SubnetId: !Ref SubnetPrivate
-      Tags: 
-        - Key: Name
-          Value: i_pri_ex005
+	  PrivateInstance:
+	    Type: AWS::EC2::Instance
+	    Properties: 
+	      ImageId: ami-a4dc46db
+	      InstanceType: t2.micro
+	      KeyName: acpkey1
+	      SecurityGroupIds: 
+	        - !Ref SecurityGroup
+	      SubnetId: !Ref SubnetPrivate
+	      Tags: 
+	        - Key: Name
+	          Value: i_pri_ex005
 
-  FloatingIpAddress:
-    Type: "AWS::EC2::EIP"
-    Properties:
-      InstanceId: !Ref PublicInstance
-      Domain: vpc
+	  FloatingIpAddress:
+	    Type: "AWS::EC2::EIP"
+	    Properties:
+	      InstanceId: !Ref PublicInstance
+	      Domain: vpc
 
-...
-
+	...
 
 
 
