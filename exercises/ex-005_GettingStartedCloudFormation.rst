@@ -138,7 +138,7 @@ For more information on CloudFormation account limits:
             	"Name": "StackOutputsLimit",
             	"Value": 60
         	}
-    	]
+        ]
 	}
 
 Review the template
