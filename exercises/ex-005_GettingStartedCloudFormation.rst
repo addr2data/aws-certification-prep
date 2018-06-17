@@ -263,8 +263,8 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **'templat
 
 	...
 
-Validate Stack
---------------
+Validate template
+-----------------
 Use the following awscli command to validate the structure of the template file.
 
 .. code-block::
@@ -275,9 +275,48 @@ Use the following awscli command to validate the structure of the template file.
     	"Parameters": []
 	}
 
+Template summary
+----------------
+Use the following awscli command to get a summary of the template.
+
+.. code-block::
+
+	aws cloudformation get-template-summary --template-body file://./templates/ex-005_template.yaml
+
+	{
+    	"Parameters": [],
+    	"ResourceTypes": [
+        	"AWS::EC2::InternetGateway",
+        	"AWS::EC2::VPC",
+        	"AWS::EC2::RouteTable",
+        	"AWS::EC2::VPCGatewayAttachment",
+        	"AWS::EC2::Subnet",
+        	"AWS::EC2::SecurityGroup",
+        	"AWS::EC2::Subnet",
+        	"AWS::EC2::Route",
+        	"AWS::EC2::SubnetRouteTableAssociation",
+        	"AWS::EC2::Instance",
+        	"AWS::EC2::Instance",
+        	"AWS::EC2::EIP"
+    	],
+    	"Version": "2010-09-09"
+	}
+
+Estimated costs 
+---------------
+Use the following awscli command to get an estimated monthly cost for the components in the template.
+
+.. code-block::
+	
+	aws cloudformation estimate-template-cost --template-body file://./templates/ex-005_template.yaml
+
+	{
+    	"Url": "http://calculator.s3.amazonaws.com/calc5.html?key=cloudformation/4fd01c4d-7530-4462-a0c3-608cb6df057d"
+	}
+
 Create Stack
 ------------
-Use the following awscli command to validate the structure of the template file.
+Use the following awscli command to create a new **'Stack'** based on the template.
 
 .. code-block::
 
@@ -287,13 +326,56 @@ Use the following awscli command to validate the structure of the template file.
     	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-005/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 	}
 
-Create Stack
-------------
-Use the following awscli command to validate the structure of the template file.
+Check the status
+----------------
+Use the following awscli command to check the **'StackStatus'**.
+
+Rerun this command until **'StackStatus'** is **'CREATE_COMPLETE'**.
 
 .. code-block::
 
-	aws cloudformation describe-stack-events --stack-name <value>
+	aws cloudformation describe-stacks --stack-name ex-005
+
+	{
+    	"Stacks": [
+        	{
+            	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-005/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            	"StackName": "ex-005",
+            	"CreationTime": "2018-06-17T21:47:13.883Z",
+            	"RollbackConfiguration": {},
+            	"StackStatus": "CREATE_IN_PROGRESS",
+            	"DisableRollback": false,
+            	"NotificationARNs": [],
+            	"Tags": [],
+            	"EnableTerminationProtection": false
+        	}
+    	]
+	}
+
+Review the events
+-----------------
+Use the following awscli command to check the*.
+
+.. code-block::
+
+	aws cloudformation describe-stack-events --stack-name ex-005
+
+	... not included do to size ...
+
+Summary
+-------
+- We created a Key Pair.
+- We created a Security Group.
+- We added rules to the Security Group.
+- We create two Instances.
+- We allocated a Elastic IP.
+- We map/re-mapped that Elastic IP to Instances.
+- We tested connectivity to/from both the 'public' and 'private' Instances.
+
+Next steps
+----------
+In ex-005, we will recreate the configuration built in ex-003 andd ex-004, using CloudFormation.
+
 
 
 
@@ -303,28 +385,7 @@ Use the following awscli command to validate the structure of the template file.
 aws cloudformation delete-stack --stack-name ex-005
 
 
-.. code-block::
-    
-    aws cloudformation describe-stacks
 
-{
-    "Stacks": [
-        {
-            "StackId": "arn:aws:cloudformation:us-east-1:926075045128:stack/ex-005/dbb88910-7234-11e8-afde-500c221b72d1",
-            "StackName": "ex-005",
-            "CreationTime": "2018-06-17T13:46:38.508Z",
-            "RollbackConfiguration": {},
-            "StackStatus": "CREATE_COMPLETE",
-            "DisableRollback": false,
-            "NotificationARNs": [],
-            "Tags": []
-        }
-    ]
-}
-
-.. code-block::
-    
-    aws cloudformation list-stack-instances --stack-set-name ex-005
 
 
 
