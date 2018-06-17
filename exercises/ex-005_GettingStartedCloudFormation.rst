@@ -354,13 +354,50 @@ Rerun this command until **'StackStatus'** is **'CREATE_COMPLETE'**.
 
 Review the events
 -----------------
-Use the following awscli command to check the*.
+Use the following awscli command to check the **StackEvents**.
 
 .. code-block::
 
 	aws cloudformation describe-stack-events --stack-name ex-005
 
 	... not included do to size ...
+
+Kill the Stack (if not planning to complete ex-006 immediately)
+---------------------------------------------------------------
+Use the following awscli command to delete the Stack.
+
+.. code-block::
+
+	aws cloudformation delete-stack --stack-name ex-005
+
+	... not included do to size ...
+
+Check the status
+----------------
+Use the following awscli command to check the **'StackStatus'**.
+
+Rerun this command until **'StackStatus'** is **'DELETE_COMPLETE'**.
+
+.. code-block::
+
+	aws cloudformation describe-stacks --stack-name ex-005
+
+	{
+    	"Stacks": [
+        	{
+            	"StackId": "arn:aws:cloudformation:us-east-1:926075045128:stack/ex-005/fef146e0-7277-11e8-a610-50d5ca63261e",
+            	"StackName": "ex-005",
+            	"CreationTime": "2018-06-17T21:47:13.883Z",
+            	"DeletionTime": "2018-06-17T23:25:39.791Z",
+            	"RollbackConfiguration": {},
+            	"StackStatus": "DELETE_IN_PROGRESS",
+            	"DisableRollback": false,
+            	"NotificationARNs": [],
+            	"Tags": [],
+            	"EnableTerminationProtection": false
+        	}
+    	]
+	}
 
 Summary
 -------
@@ -382,7 +419,7 @@ In ex-005, we will recreate the configuration built in ex-003 andd ex-004, using
 
 
 
-aws cloudformation delete-stack --stack-name ex-005
+
 
 
 
