@@ -76,11 +76,23 @@ The activities in this exercise may result in charges to your AWS account.
         + $0.10 per EIP address remap for additional remaps over 100 per month
      - During this exercise we will remap an EIP a couple of times.
 
-Set up a user account for API access
-------------------------------------
+Add CloudFormation API access to user 'apiuser01' 
+-------------------------------------------------
 - Login to your AWS account.
 - Under services select **IAM**.
-- Select **users**
+- Select **Policies**.
+- Click **Create policy**.
+- Under **Service**, click on the **Choose a service** link.
+- In the search box, type **CloudFormation**, the select **CloudFormation**.
+- Under **Manual actions**, check the box for **All CloudFormation actions**.
+- Click on the **Resources** section to expand it.
+- Select **All resources**.
+- Click on **Review policy**.
+- In the name box, type **CloudFormationFullAccess**.
+- Click **Create policy**.
+
+
+- Select **Users**
 - Click **Add user**
 - Under **Set user details**, enter user name **apiuser01**.
 - Under **Select AWS access type**, select **Programmatic access**.
