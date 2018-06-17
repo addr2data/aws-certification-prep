@@ -128,6 +128,7 @@ For more information on CloudFormation account limits:
 .. code-block::
 
 	aws cloudformation describe-account-limits
+	
 	{
 		"AccountLimits": [
 			{
@@ -138,7 +139,7 @@ For more information on CloudFormation account limits:
             	"Name": "StackOutputsLimit",
             	"Value": 60
         	}
-        ]
+		]
 	}
 
 Review the template
