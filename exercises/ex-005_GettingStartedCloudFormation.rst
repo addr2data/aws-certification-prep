@@ -287,10 +287,18 @@ Use the following awscli command to validate the structure of the template file.
     	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-005/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 	}
 
+Create Stack
+------------
+Use the following awscli command to validate the structure of the template file.
+
+.. code-block::
+
+	aws cloudformation describe-stack-events --stack-name <value>
 
 
-  describe-stack-events
-[--stack-name <value>]
+
+
+
 
 aws cloudformation delete-stack --stack-name ex-005
 
