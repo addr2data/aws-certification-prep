@@ -37,6 +37,22 @@ The activities in this exercise may result in charges to your AWS account.
      - 
         + $0.00
      -
+   * - VPC
+     - 
+        + $0.00
+     - 
+   * - Route Table
+     - 
+        + $0.00
+     -
+   * - Subnet
+     - 
+        + $0.00
+     -
+   * - Internet Gateway
+     - 
+        + $0.00
+     -
    * - Key Pairs
      - 
         + $0.00
