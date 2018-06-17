@@ -80,6 +80,10 @@ Add CloudFormation API access to user 'apiuser01'
 -------------------------------------------------
 - Login to your AWS account.
 - Under services select **IAM**.
+
+Create a policy
+~~~~~~~~~~~~~~~
+
 - Select **Policies**.
 - Click **Create policy**.
 - Under **Service**, click on the **Choose a service** link.
@@ -91,6 +95,8 @@ Add CloudFormation API access to user 'apiuser01'
 - In the name box, type **CloudFormationFullAccess**.
 - Click **Create policy**.
 
+Add permissions to 'apiuser01'
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Select **Users**
 - Click **Add user**
