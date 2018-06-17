@@ -376,7 +376,7 @@ Check the status
 ----------------
 Use the following awscli command to check the **'StackStatus'**.
 
-Rerun this command until **'StackStatus'** is **'DELETE_COMPLETE'**.
+Rerun this until you get the following error: "An error occurred (ValidationError) when calling the DescribeStacks operation: Stack with id ex-005 does not exist"
 
 .. code-block::
 
