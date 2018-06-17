@@ -495,5 +495,5 @@ Summary
 
 Next steps
 ----------
-Test that our VPC configuration actually works in ex-004
+In ex-004, we will test that our VPC configuration actually works as expected.
 

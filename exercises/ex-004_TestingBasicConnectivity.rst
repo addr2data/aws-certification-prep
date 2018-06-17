@@ -92,7 +92,7 @@ Use the following awscli command to create a new Security Group.
 
 .. code-block::
 
-    aws ec2 create-security-group --group-name Int2Public --description "Security Group used to connect to instances on public subnet from Internet" --vpc-id vpc-0ecc9b41c9206502b
+    aws ec2 create-security-group --group-name Int2Public --description "Security Group used to connect to instances on public subnet from Internet" --vpc-id $EX003_VPC
 
     {
         "GroupId": "sg-xxxxxxxxxxxxxxxxx"
@@ -439,7 +439,27 @@ Use the following awscli command to delete the Security Group.
 
     aws ec2 delete-security-group --group-id $EX004_SG
 
+Delete the VPC
+--------------
+Use the following awscli command to delete the VPC.
 
+This will delete the VPC itself, plus the Subnets, Route Tables and Internet Gateway.
 
+.. code-block::
 
+    aws ec2 delete-vpc --vpc-id $EX003_VPC
+
+Summary
+-------
+- We created a Key Pair.
+- We created a Security Group.
+- We added rules to the Security Group.
+- We create two Instances.
+- We allocated a Elastic IP.
+- We map/re-mapped that Elastic IP to Instances.
+- We tested connectivity to/from both the 'public' and 'private' Instances.
+
+Next steps
+----------
+In ex-005, we will recreate the configuration built in ex-003 andd ex-004, using CloudFormation.
 
