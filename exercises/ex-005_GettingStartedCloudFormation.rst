@@ -99,15 +99,11 @@ Add permissions to 'apiuser01'
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Select **Users**
-- Click **Add user**
-- Under **Set user details**, enter user name **apiuser01**.
-- Under **Select AWS access type**, select **Programmatic access**.
-- Click on **Next: Permissions**.
-- Under **Set permissions for apiuser01**, select **Attach existing policies directly**.
-- Search for **AmazonEC2FullAccess**, then select **AmazonEC2FullAccess** (we will add access to other services later).
+- Click on **apiuser01**
+- Under **Add permissions to admin01**, select **Attach existing policies directly**.
+- In the search box, type **CloudFormationFullAccess**, then select **CloudFormationFullAccess**.
 - Click on **Next: Review**.
-- Click **Create user**.
-- On the following screen, copy the values for **Access key ID** and **Secret access key**.
+- Click **Add permissions**.
 
 Verify access
 -------------
