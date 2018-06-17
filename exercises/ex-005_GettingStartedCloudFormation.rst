@@ -33,7 +33,7 @@ The activities in this exercise may result in charges to your AWS account.
    * - Component
      - Applicable Costs
      - Notes
-	* - CloudFormation
+   * - CloudFormation
      - 
         + $0.00
      -
