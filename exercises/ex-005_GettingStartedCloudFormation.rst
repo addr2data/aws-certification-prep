@@ -117,9 +117,34 @@ Use the following awscli command to verify access to CloudFormation API.
 		"Stacks": []
 	}
 
+View account limits
+-------------------
+Use the following awscli command to verify access to CloudFormation API.
+
+For more information on CloudFormation account limits:
+`CloudFormation limits <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html>`_
+
+
+.. code-block::
+
+	aws cloudformation describe-account-limits
+
+	{
+    	"AccountLimits": [
+        	{
+            	"Name": "StackLimit",
+            	"Value": 200
+        	},
+        	{
+            	"Name": "StackOutputsLimit",
+            	"Value": 60
+        	}
+    	]
+	}
+
 Review the template
 -------------------
-Below is the contents of the **'ex-005_template.yaml'** file from the **templates/** directory.
+Below is the contents of the **'ex-005_template.yaml'** file from the **'templates/'** directory.
 
 .. code-block::
 
@@ -238,36 +263,36 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **template
 
 	...
 
-
-
-
-
-
-
-
 Validate Stack
 --------------
-aws cloudformation validate-template --template-body file:////Users/addr2data/docs-sphinx/aws-cert-prep/templates/ex-005_template.yaml
+Use the following awscli command to validate the structure of the template file.
 
-{
-    "Parameters": []
-}
+.. code-block::
 
+	aws-cert-prep addr2data$ aws cloudformation validate-template --template-body file://./templates/ex-005_template.yaml
 
-aws cloudformation delete-stack --stack-name ex-005
-
-
+	{
+    	"Parameters": []
+	}
 
 Create Stack
 ------------
-aws cloudformation create-stack --stack-name ex-005 --template-body file:////Users/addr2data/docs-sphinx/aws-cert-prep/templates/ex-005_template.yaml
+Use the following awscli command to validate the structure of the template file.
 
-{
-    "StackId": "arn:aws:cloudformation:us-east-1:926075045128:stack/ex-005/7931a220-7231-11e8-ae07-500c28b12efe"
-}
+.. code-block::
+
+	aws cloudformation create-stack --stack-name ex-005 --template-body file://./templates/ex-005_template.yaml
+
+	{
+    	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-005/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+	}
 
 
 
+  describe-stack-events
+[--stack-name <value>]
+
+aws cloudformation delete-stack --stack-name ex-005
 
 
 .. code-block::
