@@ -112,7 +112,9 @@ I hope you enjoy following these exercises as much as I enjoyed building them.
 
 4. `Testing basic connectivity <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_TestingBasicConnectivity.rst>`_
 
-5. To be added
+5. `Getting started with CloudFormation <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-005_GettingStartedCloudFormation.rst>`_
+
+6. To be added
 
 Additional Resources
 --------------------
