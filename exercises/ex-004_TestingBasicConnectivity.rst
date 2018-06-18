@@ -187,7 +187,7 @@ We are going to use the following AMI, but the 'imageIds' are different for each
 
 ``Ubuntu Server 16.04 LTS (HVM), SSD Volume Type``
 
-Use the following table to identify the 'image-id' for your default region.
+Use the following table to identify the 'imageId' for your default region.
 
 .. list-table::
    :widths: 25, 25, 25, 25, 25, 25

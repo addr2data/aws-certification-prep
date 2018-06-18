@@ -155,11 +155,44 @@ Review the template
 -------------------
 Below is the contents of the **'ex-005_template.yaml'** file from the **'templates'** directory.
 
+``Notice how the 'Mappings' work to allow us to select the correct image for a region`` 
 ``Notice how '!Ref' is used to reference other resources where needed.``
 
 .. code-block::
 
 	---
+	Mappings: 
+	  RegionMap: 
+	    us-east-1: 
+	      "64": "ami-a4dc46db"
+	    us-east-2: 
+	      "64": "ami-6a003c0f"
+	    us-west-1:
+	      "64": "ami-8d948ced"
+	    us-west-2:
+	      "64": "ami-db710fa3"
+	    ca-central-1:
+	      "64": "ami-7e21a11a"
+	    eu-west-1:
+	      "64": "ami-58d7e821"
+	    eu-west-2:
+	      "64": "ami-5daa463a"
+	    eu-west-3:
+	      "64": "ami-1960d164"
+	    eu-central-1:
+	      "64": "ami-c7e0c82c"
+	    ap-northeast-1:
+	      "64": "ami-48a45937"
+	    ap-northeast-2:
+	      "64": "ami-f030989e"
+	    ap-southeast-1:
+	      "64": "ami-81cefcfd"
+	    ap-southeast-2:
+	      "64": "ami-963cecf4"
+	    ap-south-1:
+	      "64": "ami-41e9c52e"
+	    sa-east-1:
+	      "64": "ami-67fca30b"
 
 	Resources:
 	  VPC:
@@ -243,7 +276,7 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **'templat
 	  PublicInstance:
 	    Type: AWS::EC2::Instance
 	    Properties: 
-	      ImageId: ami-a4dc46db
+	      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
 	      InstanceType: t2.micro
 	      KeyName: acpkey1
 	      SecurityGroupIds: 
@@ -256,7 +289,7 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **'templat
 	  PrivateInstance:
 	    Type: AWS::EC2::Instance
 	    Properties: 
-	      ImageId: ami-a4dc46db
+	      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
 	      InstanceType: t2.micro
 	      KeyName: acpkey1
 	      SecurityGroupIds: 
@@ -280,7 +313,7 @@ Use the following awscli command to validate the structure of the template file.
 
 .. code-block::
 
-	aws-cert-prep addr2data$ aws cloudformation validate-template --template-body file://./templates/ex-005_template.yaml
+	aws cloudformation validate-template --template-body file://./templates/ex-005_template.yaml
 
 	{
     	"Parameters": []
