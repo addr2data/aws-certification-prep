@@ -85,7 +85,7 @@ Environment variables
 ---------------------
 During this exercise, we will be creating environment variables to simplify the syntax of commands run later in the exercise. I have decided to do this manually, because I want to show the the full output from each command and not redirect a filtered output directly into a variable.
 
-``Note: there is one exception in this exercise.``
+``Note: There are two exceptions in this exercise.``
 
 Once you are comfortable with the expected output of a command and wish filter the output, then you might want to try the **'--query'** and **'--output'** options available in the awscli command.
 
@@ -227,8 +227,16 @@ Environment variable
 
     export EX004_INST_PRIV=<InstanceId>
 
-    export EX004_INST_PRIV_IP=$(aws ec2 describe-instances --instance-ids $EX004_INST_PRIV --output text --query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress)
 
+Private IP address
+------------------
+Use the following awscli command to collect the IP address of the Instance on the **'private'** Subnet.
+
+``Note: you will use this address from ssh session, so record it.``
+
+.. code-block::
+    
+    aws ec2 describe-instances --instance-ids $EX004_INST_PRIV --output text --query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress
 
 Allocate an Elastic IP
 ----------------------
@@ -321,11 +329,11 @@ Use the following awscli command to re-associate the Elastic IP with the Instanc
         "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
     }
 
-Connect
+Reconnect
 -------
 Use the following command to reconnect to the Instance in the public Subnet.
 
-``Expected results: 'ssh'** should be successful.``
+``Expected results: 'ssh'** should be successful again.``
 
 .. code-block::
 
@@ -355,8 +363,8 @@ Use the following commands to test connectivity to the Instance in the private S
 
 .. code-block::
 
-    ping $EX004_INST_PRIV_IP
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX004_INST_PRIV_IP
+    ping <ip-addr-private-instance>
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@<ip-addr-private-instance>
 
 You are now connected to the Instance on the private subnet.
 
@@ -407,7 +415,7 @@ Use the following commands to test connectivity to the Instance in the private S
 
 .. code-block::
 
-    ping 10.0.2.103
+    ping <ip-addr-private-instance>
 
     Type 'exit' to disconnect from the public Instances.
 
