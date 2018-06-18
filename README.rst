@@ -51,9 +51,9 @@ At this point, I feel like the following AWS services are in-scope for this proj
    :header-rows: 0
 
    * - **Category**
-     - Service
-     - Basic level exercises
-     - Advanced level exercises
+     - **Service**
+     - **Basic level exercises**
+     - **Advanced level exercises**
    * - Compute
      - EC2, ECS, Lambda
      - EC2
