@@ -201,4 +201,4 @@ Summary
 Next steps
 ----------
 Perform a basic VPC configuration in 
-`ex-003 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_BasicVpcConfiguration.rst>`_
+`ex-003 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_BasicVpcConfig.rst>`_
