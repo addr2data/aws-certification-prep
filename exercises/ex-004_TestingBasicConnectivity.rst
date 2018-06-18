@@ -230,7 +230,7 @@ Private IP address
 ------------------
 Use the following awscli command to collect the IP address of the Instance on the **'private'** Subnet.
 
-``Note: you will use this address from ssh session, so record it.``
+``Note: you will type this address in a ssh session, so jot it down.``
 
 .. code-block::
     
