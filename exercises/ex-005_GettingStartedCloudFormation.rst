@@ -34,32 +34,16 @@ The activities in this exercise may result in charges to your AWS account.
      - Applicable Costs
      - Notes
    * - CloudFormation
+     - None
+     - There is no charge for CloudFormation itself, only for the resources that you deploy with it.
+   * - VPC (including Subnets, Route Tables and Internet Gateways)
+     - None
      - 
-        + $0.00
-     -
-   * - VPC
-     - 
-        + $0.00
-     - 
-   * - Route Table
-     - 
-        + $0.00
-     -
-   * - Subnet
-     - 
-        + $0.00
-     -
-   * - Internet Gateway
-     - 
-        + $0.00
-     -
    * - Key Pairs
-     - 
-        + $0.00
+     - None
      - 
    * - Security Groups
-     - 
-        + $0.00
+     - None
      -
    * - On-demand Instances
      - 
