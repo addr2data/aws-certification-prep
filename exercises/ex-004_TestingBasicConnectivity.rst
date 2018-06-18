@@ -85,8 +85,6 @@ Environment variables
 ---------------------
 During this exercise, we will be creating environment variables to simplify the syntax of commands run later in the exercise. I have decided to do this manually, because I want to show the the full output from each command and not redirect a filtered output directly into a variable.
 
-``Note: There are two exceptions in this exercise.``
-
 Once you are comfortable with the expected output of a command and wish filter the output, then you might want to try the **'--query'** and **'--output'** options available in the awscli command.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
