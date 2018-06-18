@@ -33,8 +33,7 @@ The activities in this exercise are NOT expected to result in any charges to you
      - Applicable Costs
      - Notes
    * - VPC (including subnets, Route Tables and IntenetGateways).
-     - 
-        + $0.00
+     - None
      - AWS does not charge for the basic VPC building blocks used in this exercise. We will be leaving this configuration in place to support ex-003.
 
 Environment variables
