@@ -484,5 +484,5 @@ Summary
 
 Next steps
 ----------
-In ex-004, we will test that our VPC configuration actually works as expected.
-
+We will test that our VPC configuration actually works as expected in 
+`ex-004 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_TestingBasicConnectivity.rst>`_
