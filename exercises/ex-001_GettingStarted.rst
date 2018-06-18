@@ -452,5 +452,6 @@ Summary
 
 Next steps
 ----------
-Explore VPC concepts in ex-002.
+Explore VPC concepts in 
+`ex-002 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_ExploringVpcs.rst>`_
 
