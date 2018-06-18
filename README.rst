@@ -57,7 +57,7 @@ At this point, I feel like the following AWS services are in-scope for this proj
    * - Compute
      - EC2, ECS, Lambda
      - EC2
-     - *to be added*
+     - *To be added*
    * - Storage
      - S3, EFS, Glacier
      - *To be added*

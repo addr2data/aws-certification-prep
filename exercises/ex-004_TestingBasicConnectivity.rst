@@ -19,7 +19,7 @@ Dependencies
 Objectives
 ----------
 
-    - Become familiar with launching and accessing on-demand Instances.
+    - Become familiar with launching and connecting to on-demand Instances.
     - Test connectivity for the VPC configuration we created in ex-003.
 
 Expected Costs
@@ -56,6 +56,29 @@ The activities in this exercise may result in charges to your AWS account.
         + $0.10 per EIP address remap for additional remaps over 100 per month
      - During this exercise we will remap an EIP a couple of times.  
 
+Limits
+------
+The following table shows the default limits for the components utilized in this exercise.
+
+.. list-table::
+   :widths: 25, 25
+   :header-rows: 1
+
+   * - **Component**
+     - **Limit**
+   * - Key Pairs
+     - 5000 per region
+   * - Security Groups
+     - 500 per VPC
+   * - Security Groups per Elastic Network Interface
+     - 5
+   * - Rules per Security Group
+     - 50
+   * - On-demand Instances
+     - 20 per region
+   * - Elastic IP adresses
+     - 5 per region
+
 Environment variables
 ---------------------
 During this exercise, we will be creating environment variables to simplify the syntax of commands run later in the exercise. I have decided to do this manually, because I want to show the the full output from each command and not redirect a filtered output directly into a variable.
@@ -67,8 +90,6 @@ Setting environment variables may be different on different OSs. Please refer to
 Create a Key Pair
 -----------------
 Use the following awscli command to create a new **Key Pair** and save the resulting **'.pem'** file.
-
-``LIMITS: You can have up to 5000 Key Pairs per region.``
 
 **Note: I have only verified that directly redirecting the 'KeyMaterial' to a file produces a valid '.pem' on macOS. Other OSs may have subtle differences.**
 
@@ -87,8 +108,6 @@ Use the following command to modify the permissions on the '.pem'.
 Create a Security Group
 -----------------------
 Use the following awscli command to create a new Security Group.
-
-``LIMITS: You can create up to 500 security groups per VPC``
 
 .. code-block::
 
