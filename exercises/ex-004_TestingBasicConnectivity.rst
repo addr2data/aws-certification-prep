@@ -199,37 +199,36 @@ Use the following table to identify the 'image-id' for your default region.
      - **ImageId**
      - **Region**
      - **ImageId**
-
    * - us-east-1
-     - 
+     - ami-a4dc46db
      - us-east-2
-     - 
+     - ami-6a003c0f
      - us-west-1
-     - 
+     - ami-8d948ced
    * - us-west-2
-     - 
+     - ami-db710fa3
      - ca-central-1
-     - 
+     - ami-7e21a11a
      - eu-west-1
-     - 
+     - ami-58d7e821
    * - eu-west-2
-     - 
+     - ami-5daa463a
      - eu-west-3
-     - 
+     - ami-1960d164
      - eu-central-1
-     -        
+     - ami-c7e0c82c
    * - ap-northeast-1
-     - 
+     - ami-48a45937
      - ap-northeast-2
-     - 
+     - ami-f030989e
      - ap-southeast-1
-     - 
+     - ami-81cefcfd
    * - ap-southeast-2
-     - 
+     - ami-963cecf4
+     - ap-south-1
+     - ami-41e9c52e
      - sa-east-1
-     - 
-     - 
-     - 
+     - ami-67fca30b
 
 .. code-block::
 
