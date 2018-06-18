@@ -79,20 +79,6 @@ At this point, I feel like the following AWS services are in-scope for this proj
      - IAM
      - To be added
 
-
-- Compute
-	EC2, ECS, Lamba
-- Storage
-	S3, EFS, Glacier
-- Database
-	RDS, DynamoDB
-- Networking & Content Delivery
-	VPC, Route 53, CloudFront
-- Management Tools
-	CloudWatch, AWS Auto Scaling, CloudFormation, CloudTrail
-- Security, Identity & Compliance
-	IAM
-
 Tools
 -----
 Initially, I will be working with the following 'tools'. I will update this list as I start to work with others.
