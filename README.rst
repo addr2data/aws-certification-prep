@@ -57,7 +57,28 @@ At this point, I feel like the following AWS services are in-scope for this proj
    * - Compute
      - EC2, ECS, Lambda
      - EC2
-     -
+     - To be added
+   * - Storage
+     - S3, EFS, Glacier
+     - To be added
+     - To be added
+   * - Database
+     - RDS, DynamoDB
+     - To be added
+     - To be added
+   * - Networking & Content Delivery
+     - VPC, Route 53, CloudFront
+     - VPC
+     - To be added
+   * - Management Tools
+     - CloudWatch, AWS Auto Scaling, CloudFormation, CloudTrail
+     - CloudFormation
+     - To be added
+   * - Security, Identity & Compliance
+     - IAM
+     - IAM
+     - To be added
+
 
 - Compute
 	EC2, ECS, Lamba
