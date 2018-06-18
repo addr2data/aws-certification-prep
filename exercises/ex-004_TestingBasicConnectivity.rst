@@ -3,7 +3,7 @@ ex-004: Testing basic connectivity
 
 Status
 ------
-Version 0.9 (6/15/18) - needs additional review before moving to version 1.0.
+Version 1.0 (6/18/18)
 
 Dependencies
 ------------
@@ -370,7 +370,7 @@ Test outbound connectivity
 --------------------------
 Use the following command to test oubound connectivity from the Instance in the private Subnet.
 
-``Expected results: 'apt update' should be fail.``
+``Expected results: 'apt update' should fail.``
 
 .. code-block::
 
@@ -407,7 +407,7 @@ Test local connectivity
 -----------------------
 You should still be connected to the Instance in the public Subnet.
 
-Use the following commands to test connectivity to the Instance in the private Subnet via the private IP. 
+Use the following command to test connectivity to the Instance in the private Subnet via the private IP. 
 
 ``Expected results: 'ping' should now be successful.``
 
@@ -419,7 +419,7 @@ Use the following commands to test connectivity to the Instance in the private S
 
 Terminate Instances
 -------------------
-Use the following awscli commands to terminate both instances.
+Use the following awscli command to terminate both instances.
 
 Examine the current state. Both should show a **'currentState'** of **'shutting-down'**.
 
