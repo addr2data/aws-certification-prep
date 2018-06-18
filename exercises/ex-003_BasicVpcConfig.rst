@@ -215,7 +215,7 @@ Create an Internet Gateway
 --------------------------
 Use the following awscli command to create an Internet Gateway.
 
-We will leverage this 'device' to allow the **'public'** Subnet we create later to access and be accessible from the Internet.
+We will leverage this component to provide connectivity to/from the Internet for the **'public'** Subnet we create later.
 
 .. code-block::
 
