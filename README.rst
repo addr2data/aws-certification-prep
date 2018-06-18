@@ -20,13 +20,13 @@ Recently, I decided to pursue AWS certification. Mostly for career reasons, but 
 
 In addition to certification, my goal is to become a skilled user of AWS services. I am willing to spend a few bucks each month, so I should be able to get a decent amount of hands-on experience. I plan to leverage the AWS CLI extensively, but I also want to get comfortable writing scripts that leverage the API directly, so I plan to work with Python and Boto3.  
 
-I have created this public GitHub project to force myself to be more organized with my notes and code. I am going to approach this project, as if I am developing a training resource for others. I know this approach will help me on my journey, but I sincerely hope others will find value in it.
+I have created this public GitHub project to force myself to be more organized with my notes and code. I am going to approach this project, as if I am building a training resource for others. I know this approach will help me on my journey, but I sincerely hope others find value in it.
 
 **I expect this project to be a work-in-progress for at least 12 months.**
 
 Certifications
 --------------
-At this point, my intention is to pursue the following certifications. I have chosen the **Solution Architect** certifications primarily for professional reasons and the **Advanced Networking** certification primarily for personal reasons (I have some background in traditional networking). It is possible these choices with change over time, but for now that is the plan.  
+At this point, my intention is to pursue the following certifications. I choose the **Solution Architect** certifications, because I felt they would provide the most bang for my buck, from a career perspective. I added the **Advanced Networking** certification, because I have a strong interesting in networking. It is possible these choices with change over time, but for now that is the plan.  
 
 -  AWS Certified Solutions Architect – Associate
 -  AWS Certified Advanced Networking – Specialty
