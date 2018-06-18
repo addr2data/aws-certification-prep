@@ -52,8 +52,8 @@ At this point, I feel like the following AWS services are in-scope for this proj
 
    * - Category
      - Service
-     - Exercises at a basic level
-     - Exercises at a advanced level 
+     - Basic level exercises
+     - Advanced level exercises
    * - Compute
      - EC2, ECS, Lambda
      - EC2
