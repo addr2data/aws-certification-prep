@@ -34,12 +34,10 @@ The activities in this exercise may result in charges to your AWS account.
      - Applicable Costs
      - Notes
    * - Key Pairs
-     - 
-        + $0.00
+     - None
      - 
    * - Security Groups
-     - 
-        + $0.00
+     - None
      -
    * - On-demand Instances
      - 
