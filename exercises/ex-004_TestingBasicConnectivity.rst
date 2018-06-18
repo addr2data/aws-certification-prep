@@ -60,7 +60,7 @@ Limits
 ------
 The following table shows the default limits for the components utilized in this exercise.
 
-``FYI: You can all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.``
+``NOTE: You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.``
 
 .. list-table::
    :widths: 25, 25
