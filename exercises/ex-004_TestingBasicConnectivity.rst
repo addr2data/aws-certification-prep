@@ -181,9 +181,9 @@ Use the following awscli command to examine the above security group.
         ]
     }
 
-Image ID
---------
-We are going to use the following Amazon Machine Image (AMI), but the 'imageIds' are different for each region:
+Amazon Machine Image (AMI)
+--------------------------
+We are going to use the following AMI, but the 'imageIds' are different for each region:
 
 ``Ubuntu Server 16.04 LTS (HVM), SSD Volume Type``
 
