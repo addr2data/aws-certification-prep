@@ -85,6 +85,8 @@ Environment variables
 ---------------------
 During this exercise, we will be creating environment variables to simplify the syntax of commands run later in the exercise. I have decided to do this manually, because I want to show the the full output from each command and not redirect a filtered output directly into a variable.
 
+``Note: there is one exception in this exercise.``
+
 Once you are comfortable with the expected output of a command and wish filter the output, then you might want to try the **'--query'** and **'--output'** options available in the awscli command.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
@@ -225,6 +227,9 @@ Environment variable
 
     export EX004_INST_PRIV=<InstanceId>
 
+    export EX004_INST_PRIV_IP=$(aws ec2 describe-instances --instance-ids $EX004_INST_PRIV --output text --query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress)
+
+
 Allocate an Elastic IP
 ----------------------
 Use the following awscli command to allocate a public IPv4 address
@@ -234,7 +239,7 @@ Use the following awscli command to allocate a public IPv4 address
     aws ec2 allocate-address --domain vpc
 
     {
-        "PublicIp": "54.89.230.154",
+        "PublicIp": "xxx.xxx.xxx.xxx",
         "AllocationId": "eipalloc-xxxxxxxxxxxxxxxxx",
         "Domain": "vpc"
     }
@@ -244,6 +249,7 @@ Environment variable
 .. code-block::
 
     export EX004_EIP=<AllocationId>
+    export EX004_PUB_IP=<PublicIp>
 
 Associate the Elastic IP
 ------------------------
@@ -265,8 +271,8 @@ Use the following commands to test connectivity to the Instance in the public Su
 
 .. code-block::
 
-    ping 54.89.230.154
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@54.89.230.154
+    ping $EX004_PUB_IP
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX004_PUB_IP
 
 Test outbound connectivity
 --------------------------
@@ -300,8 +306,8 @@ Use the following commands to test connectivity to the Instance in the private S
 
 .. code-block::
 
-    ping 54.89.230.154
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@54.89.230.154
+    ping $EX004_PUB_IP
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX004_PUB_IP
 
 Re-associate the Elastic IP
 ---------------------------
@@ -315,15 +321,15 @@ Use the following awscli command to re-associate the Elastic IP with the Instanc
         "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
     }
 
-Try to connect
---------------
+Connect
+-------
 Use the following command to reconnect to the Instance in the public Subnet.
 
 ``Expected results: 'ssh'** should be successful.``
 
 .. code-block::
 
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@54.89.230.154
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX004_PUB_IP
 
     Do NOT 'exit'
 
@@ -335,7 +341,7 @@ From the second terminal window, use the following command to copy the **'acpkey
 
 .. code-block::
 
-    scp -i acpkey1.pem acpkey1.pem ubuntu@54.89.230.154:/home/ubuntu
+    scp -i acpkey1.pem acpkey1.pem ubuntu@$EX004_PUB_IP:/home/ubuntu
 
 Close the second terminal window
 
@@ -349,8 +355,8 @@ Use the following commands to test connectivity to the Instance in the private S
 
 .. code-block::
 
-    ping <private ip of private Instance>
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@<private ip of private Instance>
+    ping $EX004_INST_PRIV_IP
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX004_INST_PRIV_IP
 
 You are now connected to the Instance on the private subnet.
 
@@ -382,12 +388,12 @@ Test connectivity
 -----------------
 Use the following commands to test connectivity to the Instance in the public Subnet.
 
-`Expected results: 'ping' should fail and 'ssh' should now be successful.
+`Expected results: 'ping' and 'ssh' should now be successful.
 
 .. code-block::
 
-    ping 54.89.230.154
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@54.89.230.154
+    ping $EX004_PUB_IP
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX004_PUB_IP
 
 You are now connected to the Instance on the public subnet.
 
