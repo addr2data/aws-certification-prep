@@ -68,9 +68,9 @@ Initially, I will be working with the following 'tools'. I will update this list
 
 Approach
 --------
-As I develop my knowledge and prepare for the exams listed above, I will be using the following process.
+As I develop my knowledge and prepare for the exams listed above, I will be using the following process (for multiple services in parallel).
 
-1. Learn the basics of a service (I am already there with EC2, VPC, S3 and IAM)
+1. Learn the basics of a service.
 2. Get comfortable with the basic configuration and use of that service.
 3. Build some basic exercises that others could follow and in the process solidify my own understanding.
 4. Dig deeper into that service. Get comfortable with advanced configuration, use and design considerations.
