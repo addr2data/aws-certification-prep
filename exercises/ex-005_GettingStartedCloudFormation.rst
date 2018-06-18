@@ -53,12 +53,12 @@ The activities in this exercise may result in charges to your AWS account.
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
         + $0.05 per hour per EIP that is NOT associated to a running Instance
-     - During this exercise there will be short periods of time where an EIP is not associated with an running Instance, so you might incur a very small charge.
+     - Unlike ex-004, there will not be periods of time where an EIP is not associated with an running Instance.
    * - Elastic IPs
      - 
         + $0.00 per EIP address remap for the first 100 remaps per month.
         + $0.10 per EIP address remap for additional remaps over 100 per month
-     - During this exercise we will remap an EIP a couple of times.
+     - Unlike ex-004, we will not be re-mapping EIPs.
 
 Add CloudFormation API access to user 'apiuser01' 
 -------------------------------------------------
