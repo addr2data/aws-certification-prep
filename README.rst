@@ -26,7 +26,7 @@ I have created this public GitHub project to force myself to be more organized w
 
 Certifications
 --------------
-At this point, my intention is to pursue the following certifications. I choose the **Solution Architect** certifications, because I felt they would provide the most bang for my buck, from a career perspective. I added the **Advanced Networking** certification, because I have a strong interesting in networking. It is possible these choices with change over time, but for now that is the plan.  
+At this point, my intention is to pursue the following certifications. I choose the **Solution Architect** certifications, because I felt, they would provide the most bang for my buck, from a career perspective. I added the **Advanced Networking** certification, because I have a strong interesting in networking. It is possible these choices with change over time, but for now that is the plan.  
 
 -  AWS Certified Solutions Architect – Associate
 -  AWS Certified Advanced Networking – Specialty
@@ -68,7 +68,7 @@ Initially, I will be working with the following 'tools'. I will update this list
 
 Approach
 --------
-As I develop my knowledge and prepare for the exams listed above, I plan to use the following process.
+As I develop my knowledge and prepare for the exams listed above, I will be using the following process.
 
 1. Learn the basics of a service (I am already there with EC2, VPC, S3 and IAM)
 2. Get comfortable with the basic configuration and use of that service.
