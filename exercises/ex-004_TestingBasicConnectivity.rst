@@ -461,5 +461,6 @@ Summary
 
 Next steps
 ----------
-In ex-005, we will recreate the configuration built in ex-003 andd ex-004, using CloudFormation.
+We will recreate the configuration built in ex-003 and ex-004, using CloudFormation, in 
+`ex-005 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-005_GettingStartedCloudFormation.rst>`_
 
