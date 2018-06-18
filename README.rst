@@ -44,10 +44,9 @@ AWS Services
 ------------
 At this point, I feel like the following AWS services are in-scope for this project. I am sure this will change over time, but you have to start somewhere. I will start by building exercises and code-samples for EC2 and VPC, since I am most familiar with those services.
 
-
 .. list-table::
-   :widths: 25, 25
-   :header-rows: 0
+   :widths: 25, 25, 25, 25
+   :header-rows: 1
 
    * - Category
      - Service
