@@ -50,7 +50,7 @@ At this point, I feel like the following AWS services are in-scope for this proj
    :widths: 25, 25, 25, 25
    :header-rows: 0
 
-   * - Category
+   * - **Category**
      - Service
      - Basic level exercises
      - Advanced level exercises
