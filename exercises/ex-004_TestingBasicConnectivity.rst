@@ -181,9 +181,9 @@ Use the following awscli command to examine the above security group.
         ]
     }
 
-Environment variable
-~~~~~~~~~~~~~~~~~~~~
-We are going to use the following image, but the 'image-ids' are different in each region:
+Image ID
+--------
+We are going to use the following Amazon Machine Image (AMI), but the 'imageIds' are different for each region:
 
 ``Ubuntu Server 16.04 LTS (HVM), SSD Volume Type``
 
@@ -247,7 +247,7 @@ We have used the **'--client-token'** to option ensure this operation is  Idempo
 
 .. code-block::
 
-    aws ec2 run-instances --image-id ami-a4dc46db --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PUB --security-group-ids $EX004_SG --client-token awscertprep-ex-004-001
+    aws ec2 run-instances --image-id $EX004_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PUB --security-group-ids $EX004_SG --client-token awscertprep-ex-004-001
 
     {
         ...output excluded due to size...
@@ -267,7 +267,7 @@ Use the following awscli command to launch an Instance and attach to the **'priv
 
 .. code-block::
 
-    aws ec2 run-instances --image-id ami-a4dc46db --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PRIV --security-group-ids $EX004_SG --client-token awscertprep-ex-004-005
+    aws ec2 run-instances --image-id $EX004_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PRIV --security-group-ids $EX004_SG --client-token awscertprep-ex-004-005
 
     {
         ...output excluded due to size...
