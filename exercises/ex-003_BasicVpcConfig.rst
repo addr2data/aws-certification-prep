@@ -23,7 +23,7 @@ Objectives
 
 Expected Costs
 --------------
-The activities in this exercise are NOT expected to result in charges to your AWS account.
+The activities in this exercise are NOT expected to result in any charges to your AWS account.
 
 .. list-table::
    :widths: 20, 40, 50
@@ -32,7 +32,7 @@ The activities in this exercise are NOT expected to result in charges to your AW
    * - Component
      - Applicable Costs
      - Notes
-   * - VPC, including subnets, Route Tables and IntenetGateways.
+   * - VPC (including subnets, Route Tables and IntenetGateways).
      - 
         + $0.00
      - AWS does not charge for the basic VPC building blocks used in this exercise. We will be leaving this configuration in place to support ex-003.
