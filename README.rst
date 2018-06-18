@@ -10,7 +10,7 @@ Project Status
    * - Project Start
      - Jun 4, 2018
    * - Latest Update
-     - Jun 17, 2018
+     - Jun 18, 2018
 
 `Change Log <https://github.com/addr2data/aws-certification-prep/blob/master/changelog.rst>`_
 
@@ -18,7 +18,7 @@ Introduction
 ------------
 Recently, I decided to pursue AWS certification. Mostly for career reasons, but also because being able to spin up infrastructure with a few API calls fascinates me. I've been playing with AWS EC2, off and on, since 2012, but have never used it in any meaningful way. Considering how much the AWS ecosystem has grown over the years, it seems I have my work cut out for me.
 
-In addition to certification, my goal is to become a skilled and knowledgeable user. I am willing to spend a few bucks, so I plan to get as much hands-on experience as possible. I intend to leverage the AWS CLI extensively, but I also want to get comfortable building software that uses the API directly, so I plan to leverage Python and Boto3.  
+In addition to certification, my goal is to become a skilled user of AWS services. I am willing to spend a few bucks each month, so I should be able to get a decent amount of hands-on experience. I plan to leverage the AWS CLI extensively, but I also want to get comfortable writing scripts that leverage the API directly, so I plan to work with Python and Boto3.  
 
 I have created this public GitHub project to force myself to be more organized with my notes and code. I am going to approach this project, as if I am developing a training resource for others. I know this approach will help me on my journey, but I sincerely hope others will find value in it.
 
