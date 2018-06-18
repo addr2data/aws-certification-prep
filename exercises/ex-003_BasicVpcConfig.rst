@@ -38,6 +38,27 @@ The activities in this exercise are NOT expected to result in any charges to you
         + AWS does not charge for the basic VPC building blocks used in this exercise.
         + We will be leaving this configuration in place to support ex-003.
 
+Limits
+------
+The following table shows the default limits for the components utilized in this exercise.
+
+``NOTE: You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.``
+
+.. list-table::
+   :widths: 25, 25
+   :header-rows: 1
+
+   * - **Component**
+     - **Limit**
+   * - VPC
+     - 5 per region
+   * - Route Tables
+     - 200 per VPC
+   * - Entries per Route Table
+     - 50
+   * - Subnets
+     - 200 per VPC
+
 Environment variables
 ---------------------
 During this exercise, we will be creating environment variables to simplify the syntax of commands run later in the exercise. I have decided to do this manually, because I want to show the the full output from each command and not redirect a filtered output directly into a variable.
