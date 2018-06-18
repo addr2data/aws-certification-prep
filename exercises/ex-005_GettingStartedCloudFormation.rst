@@ -22,7 +22,7 @@ Objectives
     - Learn how CloudFormation Templates are constructed using YAML.
     - Create a Stack in CloudFormation from a Template that mimics the configuration from ex-003 and ex-004.
 
-**Note: Going forward, CloudFormation will allow us to quickly spin up a 'starting configuration' at the beginning of an exercise and delete it at the end. This will allow us to minimize costs without having to rebuild configurations by hand.**   
+``Note: Going forward, CloudFormation will allow us to quickly spin up a 'starting configuration' at the beginning of an exercise and delete it at the end. This will allow us to minimize costs without having to rebuild configurations by hand.``
 
 Expected Costs
 --------------
@@ -61,6 +61,31 @@ The activities in this exercise may result in charges to your AWS account.
         + $0.00 per EIP address remap for the first 100 remaps per month.
         + $0.10 per EIP address remap for additional remaps over 100 per month
      - Unlike ex-004, we will not be re-mapping EIPs.
+
+Limits
+------
+The following table shows the default limits for the components utilized in this exercise.
+
+``NOTE: You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.``
+
+.. list-table::
+   :widths: 25, 25
+   :header-rows: 1
+
+   * - **Component**
+     - **Limit**
+   * - Key Pairs
+     - 5000 per region
+   * - Security Groups
+     - 500 per VPC
+   * - Security Groups per Elastic Network Interface
+     - 5
+   * - Rules per Security Group
+     - 50
+   * - On-demand Instances
+     - 20 per region
+   * - Elastic IP adresses
+     - 5 per region
 
 Add CloudFormation API access to user 'apiuser01' 
 -------------------------------------------------
