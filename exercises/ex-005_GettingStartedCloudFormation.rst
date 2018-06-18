@@ -132,7 +132,7 @@ Review the template
 -------------------
 Below is the contents of the **'ex-005_template.yaml'** file from the **'templates'** directory.
 
-``Notice how '!ref' is used to reference other resources where needed.``
+``Notice how '!Ref' is used to reference other resources where needed.``
 
 .. code-block::
 
