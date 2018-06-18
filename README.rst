@@ -48,7 +48,7 @@ At this point, I feel like the following AWS services are in-scope for this proj
 
 .. list-table::
    :widths: 25, 25, 25, 25
-   :header-rows: 1
+   :header-rows: 0
 
    * - Category
      - Service
