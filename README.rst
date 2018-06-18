@@ -44,14 +44,16 @@ AWS Services
 ------------
 At this point, I feel like the following AWS services are in-scope for this project. I am sure this will change over time, but you have to start somewhere. I will start by building exercises and code-samples for EC2 and VPC, since I am most familiar with those services.
 
+**Last update: 6/18/18**
+
 .. list-table::
    :widths: 25, 25, 25, 25
    :header-rows: 1
 
    * - Category
      - Service
-     - Included in project at a basic level (as of 6/18/18)
-     - Included in project at a advanced level (as of 6/18/18) 
+     - Exercises at a basic level
+     - Exercises at a advanced level 
    * - Compute
      - EC2, ECS, Lambda
      - EC2
