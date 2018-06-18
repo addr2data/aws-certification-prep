@@ -343,14 +343,14 @@ Test local connectivity
 -----------------------
 You should still be connected to the Instance in the public Subnet.
 
-Use the following commands to test connectivity to the Instance in the private Subnet via the private IP. 
+Use the following commands to test connectivity to the Instance in the private Subnet.
 
 ``Expected results: 'ping' should fail and 'ssh' should be successful.``
 
 .. code-block::
 
-    ping 10.0.2.103
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@10.0.2.103
+    ping <private ip of private Instance>
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@<private ip of private Instance>
 
 You are now connected to the Instance on the private subnet.
 
