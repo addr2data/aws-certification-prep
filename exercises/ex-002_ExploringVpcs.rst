@@ -3,7 +3,7 @@ ex-002: Exploring VPCs
 
 Status
 ------
-Draft (once the draft has been completed, a version number and date will be provided)
+Draft (still a work-in-progess. once I finish the draft, a version number and date will be provided).
 
 Dependencies
 ------------
@@ -200,4 +200,5 @@ Summary
 
 Next steps
 ----------
-Perform a basic VPC configuration in ex-003.
+Perform a basic VPC configuration in 
+`ex-003 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_BasicVpcConfiguration.rst>`_

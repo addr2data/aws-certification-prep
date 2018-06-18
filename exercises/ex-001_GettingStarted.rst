@@ -3,7 +3,7 @@ ex-001: Getting started
 
 Status
 ------
-Version 0.95 (6/15/18) - needs a final review before moving to version 1.0.
+Version 1.0 (6/18/18)
 
 Dependencies
 ------------
