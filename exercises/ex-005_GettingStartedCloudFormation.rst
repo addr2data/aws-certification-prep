@@ -12,7 +12,7 @@ Dependencies
    :header-rows: 0
 
    * - Depends on exercise(s)
-     - ex-001
+     - ex-001, ex-004
    * - Prerequisite for exercise(s)
      - tbd
 
@@ -64,9 +64,7 @@ The activities in this exercise may result in charges to your AWS account.
 
 Limits
 ------
-The following table shows the default limits for the components utilized in this exercise.
-
-``NOTE: You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.``
+The following table shows the CloudFormation template limits that are relevant to this exercise.
 
 .. list-table::
    :widths: 25, 25
@@ -74,10 +72,10 @@ The following table shows the default limits for the components utilized in this
 
    * - **Component**
      - **Limit**
-   * - Key Pairs
-     - 5000 per region
-   * - Security Groups
-     - 500 per VPC
+   * - Resources per Template
+     - 200
+   * - Max length of Resource name 
+     - 255 characters
    * - Security Groups per Elastic Network Interface
      - 5
    * - Rules per Security Group

@@ -181,6 +181,61 @@ Use the following awscli command to examine the above security group.
         ]
     }
 
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+We are going to use the following image, but the 'image-ids' are different in each region:
+
+``Ubuntu Server 16.04 LTS (HVM), SSD Volume Type``
+
+Use the following table to identify the 'image-id' for your default region.
+
+.. list-table::
+   :widths: 25, 25, 25, 25, 25, 25
+   :header-rows: 0
+
+   * - **Region**
+     - **ImageId**
+     - **Region**
+     - **ImageId**
+     - **Region**
+     - **ImageId**
+
+   * - us-east-1
+     - 
+     - us-east-2
+     - 
+     - us-west-1
+     - 
+   * - us-west-2
+     - 
+     - ca-central-1
+     - 
+     - eu-west-1
+     - 
+   * - eu-west-2
+     - 
+     - eu-west-3
+     - 
+     - eu-central-1
+     -        
+   * - ap-northeast-1
+     - 
+     - ap-northeast-2
+     - 
+     - ap-southeast-1
+     - 
+   * - ap-southeast-2
+     - 
+     - sa-east-1
+     - 
+     - 
+     - 
+
+.. code-block::
+
+    export EX004_IMAGE_ID=<ImageId>
+
+
 Launch an Instance
 -------------------
 Use the following awscli command to launch an Instance and attach to the **'public'** Subnet.
