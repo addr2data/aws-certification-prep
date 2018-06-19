@@ -41,14 +41,12 @@ On Ubuntu, you would simply run
 .. code-block::
     
     sudo apt-get install git virtualenv jq
-    Here are the links:
 
 Here are the links:
 
 - `virtualenv <https://virtualenv.pypa.io/en/stable/>`_
 - `git <https://git-scm.com/>`_
-- `virtualenv <https://virtualenv.pypa.io/en/stable/>`_
-- `git <https://stedolan.github.io/jq/download/>`_
+- `jq <https://stedolan.github.io/jq/download/>`_
 
 Clone this GitHub repo
 ----------------------
