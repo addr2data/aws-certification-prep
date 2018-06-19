@@ -22,6 +22,8 @@ Objectives
     - Learn how CloudFormation Templates are constructed using YAML.
     - Create a Stack in CloudFormation from a Template that mimics the configuration from ex-003 and ex-004.
 
+|
+
 ``Note: Going forward, CloudFormation will allow us to quickly spin up a 'starting configuration' at the beginning of an exercise and delete it at the end. This will allow us to minimize costs without having to rebuild configurations by hand.``
 
 Expected Costs
