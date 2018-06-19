@@ -30,10 +30,25 @@ The activities in this exercise are NOT expected to result in charges to your AW
 
 Initial
 -------
-Install **git** and **virtualenv**, if you don't already have them installed. Here are the links:
+Install **git** and **virtualenv**, if you don't already have them installed.
+
+- git is used to acquire the latest version of this repository
+- virtualenv is used to to manage Python packages for different projects. Using virtualenv allows you to avoid installing Python packages globally which could break system tools or other projects. 
+- jq is used to parse json data
+
+On Ubuntu, you would simply run
+
+.. code-block::
+    
+    sudo apt-get install git virtualenv jq
+    Here are the links:
+
+Here are the links:
 
 - `virtualenv <https://virtualenv.pypa.io/en/stable/>`_
 - `git <https://git-scm.com/>`_
+- `virtualenv <https://virtualenv.pypa.io/en/stable/>`_
+- `git <https://stedolan.github.io/jq/download/>`_
 
 Clone this GitHub repo
 ----------------------
