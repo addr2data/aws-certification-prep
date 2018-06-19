@@ -149,9 +149,9 @@ Review the template
 -------------------
 Below is the contents of the **'ex-005_template.yaml'** file from the **'templates'** directory.
 
-``Notice how the 'Mappings' allow us to create 'lookup' table for **'ImageIds'** per region.``
+``Notice how 'Mappings' allow us to create a 'lookup' table for 'ImageIds' per region.``
 
-``Notice how under 'PublicInstance' and 'Private Instance', we use '!FindInMap' to have CloudFormation lookup the correct ImageId, based on the 'Region' we are deploying to.``
+``Notice how under 'PublicInstance' and 'Private Instance', we use '!FindInMap' to have CloudFormation lookup the correct ImageId, based on the AWS Region we are deploying to.``
 
 ``Notice how '!Ref' is used to reference other resources by name where needed.``
 
