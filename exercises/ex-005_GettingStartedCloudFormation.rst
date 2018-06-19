@@ -403,11 +403,8 @@ Use the following awscli command to explore the **StackEvents**.
 
 	... not included do to size ...
 
-If you're not planning to move onto ex-006 immediately
-------------------------------------------------------
-
 Delete the Stack
-~~~~~~~~~~~~~~~~
+----------------
 Use the following awscli command to delete the Stack.
 
 .. code-block::
@@ -417,7 +414,7 @@ Use the following awscli command to delete the Stack.
 	... not included do to size ...
 
 Check the status
-~~~~~~~~~~~~~~~~
+----------------
 Use the following awscli command to check the **'StackStatus'**.
 
 Rerun this until you get the following error: "An error occurred (ValidationError) when calling the DescribeStacks operation: Stack with id ex-005 does not exist"
