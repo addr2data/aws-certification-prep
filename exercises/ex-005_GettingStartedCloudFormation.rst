@@ -76,14 +76,6 @@ The following table shows the CloudFormation template limits that are relevant t
      - 200
    * - Max length of Resource name 
      - 255 characters
-   * - Security Groups per Elastic Network Interface
-     - 5
-   * - Rules per Security Group
-     - 50
-   * - On-demand Instances
-     - 20 per region
-   * - Elastic IP adresses
-     - 5 per region
 
 Add CloudFormation API access to user 'apiuser01' 
 -------------------------------------------------
@@ -109,7 +101,7 @@ Add permissions to 'apiuser01'
 
 - Select **Users**
 - Click on **apiuser01**
-- Under **Add permissions to admin01**, select **Attach existing policies directly**.
+- Under **Add permissions to apiuser01**, select **Attach existing policies directly**.
 - In the search box, type **CloudFormationFullAccess**, then select **CloudFormationFullAccess**.
 - Click on **Next: Review**.
 - Click **Add permissions**.
@@ -155,8 +147,11 @@ Review the template
 -------------------
 Below is the contents of the **'ex-005_template.yaml'** file from the **'templates'** directory.
 
-``Notice how the 'Mappings' work to allow us to select the correct image for a region`` 
-``Notice how '!Ref' is used to reference other resources where needed.``
+``Notice how the 'Mappings' allow us to create 'lookup' table for **'ImageIds'** per region.
+
+\\Notice how under 'PublicInstance' and 'Private Instance', we use '!FindInMap' to have CloudFormation lookup the correct ImageId, based on the 'Region' we are deploying to.
+
+``Notice how '!Ref' is used to reference other resources by name where needed.``
 
 .. code-block::
 

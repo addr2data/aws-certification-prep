@@ -115,7 +115,7 @@ Create a configuration file
 
 	vi ~/.aws/config
 
-Insert the appropriate region for your location (see **AWS Regions** table below).
+Insert the appropriate region for your location (see the URL where you logged into the AWS Console above. For example **us-east-2**).
 
 .. code-block::
 
