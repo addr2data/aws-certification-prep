@@ -3,7 +3,7 @@ ex-005: Getting Started with CloudFormation
 
 Status
 ------
-Draft (once the draft has been completed, a version number and date will be provided)
+Version 0.9 (6/19/18) - additional review required.
 
 Dependencies
 ------------
@@ -449,11 +449,11 @@ Summary
 - We reviewed the **Template** provided for this exercise. 
 - We created a **Stack** and checked the status. 
 - We explored the **StackEvents** for this **Stack**.
-- We deleted the **Stack** and checked the status (optional)
+- We deleted the **Stack** and checked the status
 
 Next steps
 ----------
-In ex-006, we will use this **Stack** as a starting configuration and add some new VPC components.
+In ex-006, we will use this **Stack** as a starting configuration, then add some new VPC components.
 
 
 
