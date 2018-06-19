@@ -395,7 +395,7 @@ Rerun this command until **'StackStatus'** is **'CREATE_COMPLETE'**.
 
 Review the events
 -----------------
-Use the following awscli command to check the **StackEvents**.
+Use the following awscli command to explore the **StackEvents**.
 
 .. code-block::
 
@@ -403,8 +403,11 @@ Use the following awscli command to check the **StackEvents**.
 
 	... not included do to size ...
 
-Kill the Stack (if not planning to complete ex-006 immediately)
----------------------------------------------------------------
+If you're not planning to move onto ex-006 immediately
+------------------------------------------------------
+
+Delete the Stack
+~~~~~~~~~~~~~~~~
 Use the following awscli command to delete the Stack.
 
 .. code-block::
@@ -414,7 +417,7 @@ Use the following awscli command to delete the Stack.
 	... not included do to size ...
 
 Check the status
-----------------
+~~~~~~~~~~~~~~~~
 Use the following awscli command to check the **'StackStatus'**.
 
 Rerun this until you get the following error: "An error occurred (ValidationError) when calling the DescribeStacks operation: Stack with id ex-005 does not exist"
@@ -442,29 +445,18 @@ Rerun this until you get the following error: "An error occurred (ValidationErro
 
 Summary
 -------
-- We created a Key Pair.
-- We created a Security Group.
-- We added rules to the Security Group.
-- We create two Instances.
-- We allocated a Elastic IP.
-- We map/re-mapped that Elastic IP to Instances.
-- We tested connectivity to/from both the 'public' and 'private' Instances.
+- We created a policy that allows full access to CloudFormation.
+- Using applied this policy to **apiuser01**. 
+- We verified access to CloudFormation for **apiuser01**.
+- We reviewed CloudFormation account limits.
+- We reviewed the **Template** provided for this exercise. 
+- We created a **Stack** and checked the status. 
+- We explored the **StackEvents** for this **Stack**.
+- We deleted the **Stack** and checked the status (optional)
 
 Next steps
 ----------
-In ex-005, we will recreate the configuration built in ex-003 andd ex-004, using CloudFormation.
-
-
-
-
-
-
-
-
-
-
-
-
+In ex-006, we will use this **Stack** as a starting configuration and add some new VPC components.
 
 
 
