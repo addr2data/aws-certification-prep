@@ -197,7 +197,7 @@ Output:
 
 Formatting output
 -----------------
-Use the following awscli command with **'--output text'** and **'--output table'** options to see different output formats.
+Use the following awscli command with the **'--output text'** option.
 
 .. code-block::
 
@@ -215,6 +215,8 @@ Output:
 
     REGIONS ec2.us-west-1.amazonaws.com us-west-1
     REGIONS ec2.us-west-2.amazonaws.com us-west-2
+
+Use the following awscli command with the **'--output table'** option.
 
 .. code-block::
 
