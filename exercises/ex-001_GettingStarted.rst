@@ -3,7 +3,7 @@ ex-001: Getting started
 
 Status
 ------
-Version 1.1 (6/19/18)
+Version 1.1 (6/20/18)
 
 Dependencies
 ------------
