@@ -62,6 +62,9 @@ If you don't have your SSH key(s) added GitHub, you can use HTTP instead.
 
 Set up your virtual environment
 --------------------------------
+Use these commands to set up your virtual environment. This allows the packages installed in the next section to be isolated from the rest of your environment.
+
+Afterwards, be sure that your command prompt begins with (aws-certification-prep), which indicates that you are in the correct virtual environment
 
 .. code-block::
 
@@ -72,6 +75,7 @@ Set up your virtual environment
 
 Install requirements
 --------------------
+Use this command to install the required packages. We will use **awscli** directly thoughout the exercises. **boto3** and **docopt** are required by the **awscertprep_cli.py** Python script provided in the project.
 
 .. code-block::
 
@@ -84,16 +88,17 @@ Set up a user account for API access
 - Select **users**
 - Click **Add user**
 - Under **Set user details**, enter user name **apiuser01**.
-- Under **Select AWS access type**, select **Programmatic access**.
+- Under **Select AWS access type**, select **Programmatic access** (this account does not require AWS Management Console access.)
 - Click on **Next: Permissions**.
 - Under **Set permissions for apiuser01**, select **Attach existing policies directly**.
 - Search for **AmazonEC2FullAccess**, then select **AmazonEC2FullAccess** (we will add access to other services later).
 - Click on **Next: Review**.
 - Click **Create user**.
-- On the following screen, copy the values for **Access key ID** and **Secret access key**.
+- On the following screen, copy the values for **Access key ID** and **Secret access key**. You'll have to click the Show link in order to display teh actual Secret Key value. Once copied and saved, click Close
 
 Create a credentials file
 -------------------------
+Back on our workstation, we'll set up the tools to automatically authenticate using the account we just set up.
 
 .. code-block::
 
@@ -115,7 +120,7 @@ Create a configuration file
 
 	vi ~/.aws/config
 
-Insert the appropriate region for your location (see the URL where you logged into the AWS Console above. For example **us-east-2**).
+Insert the appropriate region for your location (see the URL where you logged into the AWS Console above. For example us-east-2).
 
 .. code-block::
 
@@ -123,51 +128,9 @@ Insert the appropriate region for your location (see the URL where you logged in
     region = YOUR_REGION
     output = json
 
-AWS Regions
-~~~~~~~~~~~
-.. list-table::
-   :widths: 25, 25, 25, 25
-   :header-rows: 1
 
-   * - Code
-     - Name
-     - Code
-     - Name
-   * - us-east-1
-     - US East (N. Virginia)
-     - us-east-2
-     - US East (Ohio)
-   * - us-west-1
-     - UUS West (N. California)
-     - us-west-2
-     - US West (Oregon)
-   * - ca-central-1
-     - Canada (Central)
-     - eu-central-1
-     - EU (Frankfurt)
-   * - eu-west-1
-     - EU (Ireland)
-     - eu-west-2
-     - EU (London)
-   * - eu-west-3
-     - EU (Paris)
-     - ap-northeast-1
-     - Asia Pacific (Tokyo)
-   * - ap-northeast-2
-     - Asia Pacific (Seoul)
-     - ap-northeast-3
-     - Asia Pacific (Osaka-Local)
-   * - ap-southeast-1
-     - Asia Pacific (Singapore)
-     - ap-southeast-2
-     - Asia Pacific (Sydney)
-   * - ap-south-1
-     - Asia Pacific (Mumbai)
-     - sa-east-1
-     - South America (São Paulo)
-
-*Note: These regions are valid as of 06/13/18. Please use the following link to see the most up to list of regions*
-https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
+For more information on AWS Regions:
+`AWS Regions and Availability Zones <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html>`_
 
 
 Verify access
@@ -177,6 +140,10 @@ Use the following awscli command to verify that you are able to access the EC2 A
 .. code-block::
 
 	aws ec2 describe-regions
+
+Output:
+
+.. code-block::
 
     {
         "Regions": [
@@ -188,50 +155,9 @@ Use the following awscli command to verify that you are able to access the EC2 A
                 "Endpoint": "ec2.eu-west-3.amazonaws.com",
                 "RegionName": "eu-west-3"
             },
-            {
-                "Endpoint": "ec2.eu-west-2.amazonaws.com",
-                "RegionName": "eu-west-2"
-            },
-            {
-                "Endpoint": "ec2.eu-west-1.amazonaws.com",
-                "RegionName": "eu-west-1"
-            },
-            {
-                "Endpoint": "ec2.ap-northeast-2.amazonaws.com",
-                "RegionName": "ap-northeast-2"
-            },
-            {
-                "Endpoint": "ec2.ap-northeast-1.amazonaws.com",
-                "RegionName": "ap-northeast-1"
-            },
-            {
-                "Endpoint": "ec2.sa-east-1.amazonaws.com",
-                "RegionName": "sa-east-1"
-            },
-            {
-                "Endpoint": "ec2.ca-central-1.amazonaws.com",
-                "RegionName": "ca-central-1"
-            },
-            {
-                "Endpoint": "ec2.ap-southeast-1.amazonaws.com",
-                "RegionName": "ap-southeast-1"
-            },
-            {
-                "Endpoint": "ec2.ap-southeast-2.amazonaws.com",
-                "RegionName": "ap-southeast-2"
-            },
-            {
-                "Endpoint": "ec2.eu-central-1.amazonaws.com",
-                "RegionName": "eu-central-1"
-            },
-            {
-                "Endpoint": "ec2.us-east-1.amazonaws.com",
-                "RegionName": "us-east-1"
-            },
-            {
-                "Endpoint": "ec2.us-east-2.amazonaws.com",
-                "RegionName": "us-east-2"
-            },
+
+            <--- SNIP --->
+  
             {
                 "Endpoint": "ec2.us-west-1.amazonaws.com",
                 "RegionName": "us-west-1"
