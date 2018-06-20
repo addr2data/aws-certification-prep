@@ -131,7 +131,9 @@ Use the following awscli command to collect check the **'PhysicalResourceIds'** 
     |  VPC                       |  vpc-0fc4ba21b51dd7c94       |
     +----------------------------+------------------------------+
 
-aws ec2 describe-addresses --public-ips <FloatingIpAddress>
+.. code-block::
+    
+    aws ec2 describe-addresses --public-ips <FloatingIpAddress>
 
     {
         "Addresses": [
@@ -144,13 +146,14 @@ aws ec2 describe-addresses --public-ips <FloatingIpAddress>
     }
 
 
-aws cloudformation list-stack-resources --stack-name ex--006
+.. code-block::
 
-aws cloudformation describe-stack-resource --stack-name ex-005 --logical-resource-id FloatingIpAddress
+    aws cloudformation describe-stack-resource --stack-name ex-005 --logical-resource-id FloatingIpAddress
 
 
 Environment variables
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+
 .. code-block::
 
     export EX006_PUB_SUBNET=<SubnetPublic>
@@ -190,24 +193,26 @@ Rerun comman until 'State' is 'available'.
     }
 }
 
-
-aws ec2 describe-route-tables --filters Name=vpc-id,Values=$EX006_VPC --output table --query 'RouteTables[*].Associations[*].{Main: Main,RouteTableId: RouteTableId}'
-
-------------------------------------
-|        DescribeRouteTables       |
-+--------+-------------------------+
-|  Main  |      RouteTableId       |
-+--------+-------------------------+
-|  True  |  rtb-028f77b7ef9209f43  |
-|  False |  rtb-066460c2ca5b8f0f7  |
-+--------+-------------------------+
-
-Environment variables
-~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX006_RTB_MAIN=rtb-028f77b7ef9209f43
-    export EX006_NAT=nat-03393ba7a629738ca
+    aws ec2 describe-route-tables --filters Name=vpc-id,Values=$EX006_VPC --output table --query 'RouteTables[*].Associations[*].{Main: Main,RouteTableId: RouteTableId}'
+
+    ------------------------------------
+    |        DescribeRouteTables       |
+    +--------+-------------------------+
+    |  Main  |      RouteTableId       |
+    +--------+-------------------------+
+    |  True  |  rtb-028f77b7ef9209f43  |
+    |  False |  rtb-066460c2ca5b8f0f7  |
+    +--------+-------------------------+
+
+
+Environment variables
+~~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+
+    export EX005_RTB_MAIN=rtb-028f77b7ef9209f43
+    export EX005_NAT=nat-03393ba7a629738ca
 
 Add a Route
 -----------
