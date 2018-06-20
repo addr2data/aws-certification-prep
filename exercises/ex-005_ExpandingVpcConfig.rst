@@ -44,8 +44,8 @@ The activities in this exercise may result in charges to your AWS account.
    * - Data Transfer
      -
         + $0.00 per GB - Data Transfer IN to Amazon EC2 from Internet
-        + $0.00 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(Up to 1 GB)**
-        + $0.09 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(Next 9.999 TB)**
+        + $0.00 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(up to 1 GB)**
+        + $0.09 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(next 9.999 TB)**
      - We also need to consider Data Transfer charges when using a NAT Gateway.
 
 Limits
@@ -60,14 +60,12 @@ The following table shows the default limits for the components utilized in this
 
    * - **Component**
      - **Limit**
-   * - VPC
-     - 5 per region
-   * - Route Tables
-     - 200 per VPC
-   * - Entries per Route Table
-     - 50
-   * - Subnets
-     - 200 per VPC
+   * - NAT Gateway
+     - A NAT gateway supports 5 Gbps of bandwidth and automatically scales up to 45 Gbps.
+   * - Nat Gateway
+     - Once you associated and Elastic IP with a NAT Gateway, you can not disassociate it. You must delete the NAT Gateway.
+   * - Nat Gateway
+     - A NAT gateway can support up to 55,000 simultaneous connections to each unique destination.
 
 Environment variables
 ---------------------
