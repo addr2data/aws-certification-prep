@@ -132,7 +132,7 @@ Collect the Stack details
 -------------------------
 Use the following awscli command to collect the **'LogicalResourceId'** and **'PhysicalResourceId'** for all the components in the **Stack**
 
-``Notice the format of this portion of the query string **'{LogicalResourceId: LogicalResourceId,PhysicalResourceId: PhysicalResourceId}'**, it adds a header for each column.`` 
+``Notice the format of this portion of the query string '{LogicalResourceId: LogicalResourceId,PhysicalResourceId: PhysicalResourceId}', it adds a header for each column.`` 
 
 .. code-block::
 
