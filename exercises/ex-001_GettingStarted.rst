@@ -75,7 +75,7 @@ Afterwards, be sure that your command prompt begins with (aws-certification-prep
 
 Install requirements
 --------------------
-Use this command to install the required packages. We will use **awscli** directly thoughout the exercises. **boto3** and **docopt** are required by the **awscertprep_cli.py** Python script provided in the project.
+Use this command to install the required packages. We will use **'awscli'** directly throughout the exercises. **'boto'3** and **'docopt'** are required by the **'awscertprep_cli.py'** Python script provided in the project.
 
 .. code-block::
 
@@ -175,6 +175,10 @@ Using the **'--dry-run'** option lets you verify access without actually runninn
 
     aws ec2 describe-regions --dry-run
 
+Output:
+
+.. code-block::
+
     An error occurred (DryRunOperation) when calling the DescribeRegions operation: Request would have succeeded, but DryRun flag is set.
 
 Verify restriction
@@ -184,6 +188,10 @@ Use the following awscli command to verify that you NOT are able to access the I
 .. code-block::
 
     aws iam get-account-summary
+
+Output:
+
+.. code-block::
 
     An error occurred (AccessDenied) when calling the GetAccountSummary operation: User: arn:aws:iam::926075045128:user/apiuser01 is not authorized to perform: iam:GetAccountSummary on resource: *
 
@@ -195,25 +203,26 @@ Use the following awscli command with **'--output text'** and **'--output table'
 
     aws ec2 describe-regions --output text
 
+Output:
+
+.. code-block::
+
     REGIONS ec2.ap-south-1.amazonaws.com    ap-south-1
     REGIONS ec2.eu-west-3.amazonaws.com eu-west-3
     REGIONS ec2.eu-west-2.amazonaws.com eu-west-2
-    REGIONS ec2.eu-west-1.amazonaws.com eu-west-1
-    REGIONS ec2.ap-northeast-2.amazonaws.com    ap-northeast-2
-    REGIONS ec2.ap-northeast-1.amazonaws.com    ap-northeast-1
-    REGIONS ec2.sa-east-1.amazonaws.com sa-east-1
-    REGIONS ec2.ca-central-1.amazonaws.com  ca-central-1
-    REGIONS ec2.ap-southeast-1.amazonaws.com    ap-southeast-1
-    REGIONS ec2.ap-southeast-2.amazonaws.com    ap-southeast-2
-    REGIONS ec2.eu-central-1.amazonaws.com  eu-central-1
-    REGIONS ec2.us-east-1.amazonaws.com us-east-1
-    REGIONS ec2.us-east-2.amazonaws.com us-east-2
+
+    <--- SNIP --->
+
     REGIONS ec2.us-west-1.amazonaws.com us-west-1
     REGIONS ec2.us-west-2.amazonaws.com us-west-2
 
 .. code-block::
 
     aws ec2 describe-regions --output table
+
+Output:
+
+.. code-block::
 
     ----------------------------------------------------------
     |                     DescribeRegions                    |
@@ -224,58 +233,48 @@ Use the following awscli command with **'--output text'** and **'--output table'
     |+-----------------------------------+------------------+|
     ||  ec2.ap-south-1.amazonaws.com     |  ap-south-1      ||
     ||  ec2.eu-west-3.amazonaws.com      |  eu-west-3       ||
-    ||  ec2.eu-west-2.amazonaws.com      |  eu-west-2       ||
-    ||  ec2.eu-west-1.amazonaws.com      |  eu-west-1       ||
-    ||  ec2.ap-northeast-2.amazonaws.com |  ap-northeast-2  ||
-    ||  ec2.ap-northeast-1.amazonaws.com |  ap-northeast-1  ||
-    ||  ec2.sa-east-1.amazonaws.com      |  sa-east-1       ||
-    ||  ec2.ca-central-1.amazonaws.com   |  ca-central-1    ||
-    ||  ec2.ap-southeast-1.amazonaws.com |  ap-southeast-1  ||
-    ||  ec2.ap-southeast-2.amazonaws.com |  ap-southeast-2  ||
-    ||  ec2.eu-central-1.amazonaws.com   |  eu-central-1    ||
-    ||  ec2.us-east-1.amazonaws.com      |  us-east-1       ||
-    ||  ec2.us-east-2.amazonaws.com      |  us-east-2       ||
+
+    <--- SNIP --->
+
     ||  ec2.us-west-1.amazonaws.com      |  us-west-1       ||
     ||  ec2.us-west-2.amazonaws.com      |  us-west-2       ||
     |+-----------------------------------+------------------+|
 
+The --output option is valuable in overriding the default output (json). If you wish to set the output to always be **'text'** or **'table'**, then modify the output parameter we set as default in the ~/.aws/config file
+
 Filtering results
 -----------------
-Use the following awscli command with **'--query'** option to filter results.
+Use the following awscli command with **'--query'** option to filter results. In this case, only the **'RegionName'** is returned.
 
 .. code-block::
 
     aws ec2 describe-regions --query Regions[*].RegionName
 
+Output:
+
+.. code-block::
+
     [
         "ap-south-1",
         "eu-west-3",
-        "eu-west-2",
-        "eu-west-1",
-        "ap-northeast-2",
-        "ap-northeast-1",
-        "sa-east-1",
-        "ca-central-1",
-        "ap-southeast-1",
-        "ap-southeast-2",
-        "eu-central-1",
-        "us-east-1",
-        "us-east-2",
+
+        <--- SNIP --->
+
         "us-west-1",
         "us-west-2"
     ]
 
-.. code-block::
-
-    aws ec2 describe-regions --query Regions[*].RegionName --output text
-
-    ap-south-1  eu-west-3   eu-west-2   eu-west-1   ap-northeast-2  ap-northeast-1  sa-east-1   ca-central-1    ap-southeast-1  ap-southeast-2  eu-central-1    us-east-1   us-east-2   us-west-1   us-west-2
+Another use of the query subcommand is to return values for only records that match your criteria. In this case, the **'Endpoint'** is returned for only Region **'us-east-2'**.
 
 .. code-block::
 
-    aws ec2 describe-regions --query Regions[0].RegionName --output text
+    aws ec2 describe-regions --query 'Regions[?RegionName==`us-east-2`].Endpoint' --output text
 
-    ap-south-1
+Output:
+
+.. code-block::
+
+    ec2.us-east-2.amazonaws.com
 
 Explore your Region
 -------------------
@@ -284,6 +283,10 @@ Use the following awscli command to examine the **Availability Zones** in your r
 .. code-block::
 
     aws ec2 describe-availability-zones
+
+Output:
+
+.. code-block::
 
     {
         "AvailabilityZones": [
@@ -334,6 +337,10 @@ Use the following awscli command to examine the **Availability Zones** in anothe
     
     aws ec2 describe-availability-zones --region us-east-2
 
+Output:
+
+.. code-block::
+
     {
         "AvailabilityZones": [
             {
@@ -361,9 +368,16 @@ Custom scripts
 --------------
 Run the following script to see all the **Regions** and **Availability Zones** together.
 
+Python
+~~~~~~
+
 .. code-block::
 
     python awscertprep_cli.py show_regions --avail_zones
+
+Output:
+
+.. code-block::
 
     Regions                  Availability Zones
     -------                  ------------------
@@ -383,6 +397,22 @@ Run the following script to see all the **Regions** and **Availability Zones** t
     us-west-1                (us-west-1a, us-west-1b)
     us-west-2                (us-west-2a, us-west-2b, us-west-2c)
 
+
+Bash
+~~~~
+Create a bash script using the following commands and see the results for yourself:
+
+.. code-block::
+
+    #!/bin/bash
+
+    REGIONS=$(aws ec2 describe-regions | jq -r '.Regions[] | .RegionName')
+
+    for reg in $REGIONS
+        do
+        AZS=$(aws ec2 describe-availability-zones --region $reg | jq -r '.AvailabilityZones | map(.ZoneName) | join (", ")')
+        echo REGION:$reg%AZs:$AZS | column -s % -t
+        done
 
 Summary
 -------
