@@ -174,6 +174,8 @@ Environment variables
     export EX005_PUB_SUBNET=<SubnetPublic>
     export EX005_VPC=<VPC>
     export EX005_RTB_PRIV=<RouteTablePrivate>
+    export EX005_IP_PUBLIC=<FloatingIpAddressInstance>
+    export EX005_INST_PRIV=<PrivateInstance>
 
 Also, collect the **'AllocationId'** for the **'FloatingIpAddressNatGateway'**.
 
@@ -188,8 +190,8 @@ Output:
     {
         "Addresses": [
             {
-                "PublicIp": "18.233.207.198",
-                "AllocationId": "eipalloc-0e7a961dab989f4b8",
+                "PublicIp": "xxx.xxx.xxx.xxx",
+                "AllocationId": "eipalloc-xxxxxxxxxxxxxxxxx",
                 "Domain": "vpc"
             }
         ]
@@ -200,82 +202,155 @@ Environment variable
 
 .. code-block::
 
-    export EX005_EIP=eipalloc-0e7a961dab989f4b8
-
-
-
-
-.. code-block::
-
-    aws cloudformation describe-stack-resource --stack-name ex-005 --logical-resource-id FloatingIpAddress
-
-
-    export EX005_PUB_SUBNET=subnet-0a63cccd8930927cf
-    export EX005_EIP=eipalloc-0e7a961dab989f4b8
-    export EX005_VPC=vpc-09ca97dcc166ba6c1
-    export EX005_RTB_PRIV=rtb-06d4437e94da8d880
-
+    export EX005_EIP_ALLOC=<AllocationId>
 
 Create NAT Gateway
 ------------------
-Use the following awscli command to collect check the **'PhysicalResourceIds'* for the **Stack**
+Use the following awscli command to create the **'NAT Gateway'**.
 
-Rerun comman until 'State' is 'available'.
+``Notice the use of '--client-token', this makes the operation idempotent. Rerun this command until 'State' is 'available'.``
 
 .. code-block::
 
-    aws ec2 create-nat-gateway --allocation-id $EX006_EIP --subnet-id $EX006_PUB_SUBNET --client-token addr2data
+    aws ec2 create-nat-gateway --allocation-id $EX005_EIP_ALLOC --subnet-id $EX005_PUB_SUBNET --client-token ex005_001
+
+Output:
+
+.. code-block::
 
     {
-    "ClientToken": "addr2data",
-    "NatGateway": {
-        "CreateTime": "2018-06-19T20:38:06.000Z",
-        "NatGatewayAddresses": [
-            {
-                "AllocationId": "eipalloc-09617e997c4f04173",
-                "NetworkInterfaceId": "eni-f1b3a561",
-                "PrivateIp": "10.0.1.79"
-            }
-        ],
-        "NatGatewayId": "nat-03393ba7a629738ca",
-        "State": "pending",
-        "SubnetId": "subnet-03ff850c3d2da5855",
-        "VpcId": "vpc-0fc4ba21b51dd7c94"
+        "ClientToken": "ex005_001",
+        "NatGateway": {
+            "CreateTime": "2018-06-20T16:54:05.000Z",
+            "NatGatewayAddresses": [
+                {
+                    "AllocationId": "eipalloc-0e7a961dab989f4b8"
+                }
+            ],
+            "NatGatewayId": "nat-0bd8ea5771f6626c3",
+            "State": "pending",
+            "SubnetId": "subnet-0a63cccd8930927cf",
+            "VpcId": "vpc-09ca97dcc166ba6c1"
+        }
     }
-}
+
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
 
-    aws ec2 describe-route-tables --filters Name=vpc-id,Values=$EX006_VPC --output table --query 'RouteTables[*].Associations[*].{Main: Main,RouteTableId: RouteTableId}'
+    export EX005_NAT_GATEWAY=<NatGatewayId>
 
-    ------------------------------------
-    |        DescribeRouteTables       |
-    +--------+-------------------------+
-    |  Main  |      RouteTableId       |
-    +--------+-------------------------+
-    |  True  |  rtb-028f77b7ef9209f43  |
-    |  False |  rtb-066460c2ca5b8f0f7  |
-    +--------+-------------------------+
+Private IP address
+------------------
+Use the following awscli command to collect the IP address of the 'private' Instance.
 
+``Note: you will type this address in a ssh session, so jot it down.``
 
-Environment variables
-~~~~~~~~~~~~~~~~~~~~~
+.. code-block::
+    
+    aws ec2 describe-instances --instance-ids $EX005_INST_PRIV --output text --query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress
+
+Output:
+
+.. code-block::
+    xxx.xxx.xxx.xxx
+
+Connect to public Instance
+--------------------------
+Use the following commands to:
+    
+    - Copy of the 'acpkey1.pem' to the 'public' Instance
+    - Connect to the 'public' Instance
+
 .. code-block::
 
-    export EX005_RTB_MAIN=rtb-028f77b7ef9209f43
-    export EX005_NAT=nat-03393ba7a629738ca
+    scp -i acpkey1.pem acpkey1.pem ubuntu@$EX005_IP_PUBLIC:/home/ubuntu
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX005_IP_PUBLIC
+
+    Do NOT exit.
+
+Connect to private Instance
+---------------------------
+You should still be connected to the Instance in the public Subnet.
+
+Use the following command to connect to the 'private' Instance.
+
+.. code-block::
+
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@<ip-addr-private-instance>
+
+    Do NOT exit.
+
+Test outbound connectivity
+--------------------------
+Use the following command to test outbound connectivity from the 'private' Instance.
+
+``Expected results: 'apt update' should fail.``
+
+.. code-block::
+
+    sudo apt update
+
+    Type 'cntrl-c' to kill 'apt'
+
+    Type 'exit' twice to disconnect from both Instances.
+
+Even though we created a NAT Gateway, we have created a Route to it in the 'private' Route Table.
+
 
 Add a Route
 -----------
-Use the following awscli command to add a Route to the 'main' Route Table.
+Use the following awscli command to add a Route to the 'private' Route Table.
 
 .. code-block::
 
-    aws ec2 create-route --destination-cidr-block 0.0.0.0/0 --nat-gateway-id $EX006_NAT --route-table-id $EX006_RTB_MAIN
+    aws ec2 create-route --destination-cidr-block 0.0.0.0/0 --nat-gateway-id $EX005_NAT_GATEWAY --route-table-id $EX005_RTB_PRIV
 
     {
         "Return": true
     }
+
+Connect to public Instance
+--------------------------
+Use the following command to reconnect to the 'public' Instance
+
+.. code-block::
+
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX005_IP_PUBLIC
+
+    Do NOT exit.
+
+Connect to private Instance
+---------------------------
+You should still be connected to the Instance in the public Subnet.
+
+Use the following command to connect to the 'private' Instance.
+
+.. code-block::
+
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@<ip-addr-private-instance>
+
+    Do NOT exit.
+
+Test outbound connectivity
+--------------------------
+Use the following command to test outbound connectivity from the 'private' Instance.
+
+``Expected results: 'apt update' should now succeed.``
+
+.. code-block::
+
+    sudo apt update
+
+    Type 'exit' twice to disconnect from both Instances.
+
+
+
+
+
+
+
 
 Summary
 -------
@@ -291,3 +366,21 @@ Next steps
 ----------
 We will test that our VPC configuration actually works as expected in 
 `ex-004 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_TestingBasicConnectivity.rst>`_
+
+
+
+
+Dave's Stuff
+------------
+
+.. code-block::
+
+    export EX005_PUB_SUBNET=subnet-0a63cccd8930927cf
+    export EX005_EIP_ALLOC=eipalloc-0e7a961dab989f4b8
+    export EX005_VPC=vpc-09ca97dcc166ba6c1
+    export EX005_RTB_PRIV=rtb-06d4437e94da8d880
+    export EX005_IP_PUBLIC=18.205.251.20
+    export EX005_NAT_GATEWAY=nat-0bd8ea5771f6626c3
+    export EX005_INST_PRIV=i-010507233a97824fc
+
+    10.0.3.212
