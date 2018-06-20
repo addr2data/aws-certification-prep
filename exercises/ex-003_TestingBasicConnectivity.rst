@@ -1,4 +1,4 @@
-ex-004: Testing basic connectivity
+ex-003: Testing basic connectivity
 ==================================
 
 Status

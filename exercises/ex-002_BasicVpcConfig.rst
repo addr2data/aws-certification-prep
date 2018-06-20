@@ -1,4 +1,4 @@
-ex-003: Basic VPC configuration
+ex-002: Basic VPC configuration
 ===============================
 
 Status
