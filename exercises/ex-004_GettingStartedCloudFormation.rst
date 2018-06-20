@@ -1,4 +1,4 @@
-ex-005: Getting Started with CloudFormation
+ex-004: Getting Started with CloudFormation
 ===========================================
 
 Status
@@ -12,7 +12,7 @@ Dependencies
    :header-rows: 0
 
    * - Depends on exercise(s)
-     - ex-001, ex-004
+     - ex-001, ex-003
    * - Prerequisite for exercise(s)
      - tbd
 
@@ -20,7 +20,7 @@ Objectives
 ----------
 
     - Learn how CloudFormation Templates are constructed using YAML.
-    - Create a Stack in CloudFormation from a Template that mimics the configuration from ex-003 and ex-004.
+    - Create a Stack in CloudFormation from a Template that mimics the configuration from ex-002 and ex-003.
 
 |
 
@@ -147,7 +147,7 @@ For more information on CloudFormation account limits:
 
 Review the template
 -------------------
-Below is the contents of the **'ex-005_template.yaml'** file from the **'templates'** directory.
+Below is the contents of the **'ex-004_template.yaml'** file from the **'templates'** directory.
 
 ``Notice how 'Mappings' allow us to create a 'lookup' table for 'ImageIds' per region.``
 
@@ -198,14 +198,14 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **'templat
 	      CidrBlock: 10.0.0.0/16
 	      Tags:
 	        - Key: Name
-	          Value: vpc_ex005
+	          Value: vpc_ex004
 
 	  InternetGateway:
 	    Type: AWS::EC2::InternetGateway
 	    Properties: 
 	      Tags:
 	        - Key: Name
-	          Value: ig_ex005
+	          Value: ig_ex004
 
 	  AttachInternetGateway:
 	    Type: AWS::EC2::VPCGatewayAttachment
@@ -219,7 +219,7 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **'templat
 	      VpcId: !Ref VPC
 	      Tags:
 	        - Key: Name
-	          Value: rtb_pub_ex005
+	          Value: rtb_pub_ex004
 
 	  DefaultRoute:
 	    Type: AWS::EC2::Route
@@ -234,7 +234,7 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **'templat
 	      CidrBlock: 10.0.0.0/23
 	      Tags:
 	        - Key: Name
-	          Value: sub_pub_ex005
+	          Value: sub_pub_ex004
 	      VpcId: !Ref VPC
 	  
 	  SubnetPrivate:
@@ -243,7 +243,7 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **'templat
 	      CidrBlock: 10.0.2.0/23
 	      Tags:
 	        - Key: Name
-	          Value: sub_pri_ex005
+	          Value: sub_pri_ex004
 	      VpcId: !Ref VPC
 
 	  AssociateSubnetRouteTable:
@@ -256,7 +256,7 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **'templat
 	    Type: AWS::EC2::SecurityGroup
 	    Properties: 
 	      GroupName: sg_ex005
-	      GroupDescription: "Security Group for ex-005"
+	      GroupDescription: "Security Group for ex-004"
 	      SecurityGroupIngress:
 	        - 
 	          CidrIp: 0.0.0.0/0
@@ -281,7 +281,7 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **'templat
 	      SubnetId: !Ref SubnetPublic
 	      Tags: 
 	        - Key: Name
-	          Value: i_pub_ex005
+	          Value: i_pub_ex004
 
 	  PrivateInstance:
 	    Type: AWS::EC2::Instance
@@ -294,7 +294,7 @@ Below is the contents of the **'ex-005_template.yaml'** file from the **'templat
 	      SubnetId: !Ref SubnetPrivate
 	      Tags: 
 	        - Key: Name
-	          Value: i_pri_ex005
+	          Value: i_pri_ex004
 
 	  FloatingIpAddress:
 	    Type: "AWS::EC2::EIP"
@@ -310,7 +310,7 @@ Use the following awscli command to validate the structure of the template file.
 
 .. code-block::
 
-	aws cloudformation validate-template --template-body file://./templates/ex-005_template.yaml
+	aws cloudformation validate-template --template-body file://./templates/ex-004_template.yaml
 
 	{
     	"Parameters": []
@@ -322,7 +322,7 @@ Use the following awscli command to get a summary of the template.
 
 .. code-block::
 
-	aws cloudformation get-template-summary --template-body file://./templates/ex-005_template.yaml
+	aws cloudformation get-template-summary --template-body file://./templates/ex-004_template.yaml
 
 	{
     	"Parameters": [],
@@ -349,7 +349,7 @@ Use the following awscli command to get an estimated monthly cost for the compon
 
 .. code-block::
 	
-	aws cloudformation estimate-template-cost --template-body file://./templates/ex-005_template.yaml
+	aws cloudformation estimate-template-cost --template-body file://./templates/ex-004_template.yaml
 
 	{
     	"Url": "http://calculator.s3.amazonaws.com/calc5.html?key=cloudformation/4fd01c4d-7530-4462-a0c3-608cb6df057d"
@@ -361,10 +361,10 @@ Use the following awscli command to create a new **'Stack'** based on the templa
 
 .. code-block::
 
-	aws cloudformation create-stack --stack-name ex-005 --template-body file://./templates/ex-005_template.yaml
+	aws cloudformation create-stack --stack-name ex-004 --template-body file://./templates/ex-004_template.yaml
 
 	{
-    	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-005/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-004/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 	}
 
 Check the status
@@ -375,13 +375,13 @@ Rerun this command until **'StackStatus'** is **'CREATE_COMPLETE'**.
 
 .. code-block::
 
-	aws cloudformation describe-stacks --stack-name ex-005
+	aws cloudformation describe-stacks --stack-name ex-004
 
 	{
     	"Stacks": [
         	{
-            	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-005/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            	"StackName": "ex-005",
+            	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-004/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            	"StackName": "ex-004",
             	"CreationTime": "2018-06-17T21:47:13.883Z",
             	"RollbackConfiguration": {},
             	"StackStatus": "CREATE_IN_PROGRESS",
@@ -399,7 +399,7 @@ Use the following awscli command to explore the **StackEvents**.
 
 .. code-block::
 
-	aws cloudformation describe-stack-events --stack-name ex-005
+	aws cloudformation describe-stack-events --stack-name ex-004
 
 	... not included do to size ...
 
@@ -409,7 +409,7 @@ Use the following awscli command to delete the Stack.
 
 .. code-block::
 
-	aws cloudformation delete-stack --stack-name ex-005
+	aws cloudformation delete-stack --stack-name ex-004
 
 	... not included do to size ...
 
@@ -417,17 +417,17 @@ Check the status
 ----------------
 Use the following awscli command to check the **'StackStatus'**.
 
-Rerun this until you get the following error: "An error occurred (ValidationError) when calling the DescribeStacks operation: Stack with id ex-005 does not exist"
+Rerun this until you get the following error: "An error occurred (ValidationError) when calling the DescribeStacks operation: Stack with id ex-004 does not exist"
 
 .. code-block::
 
-	aws cloudformation describe-stacks --stack-name ex-005
+	aws cloudformation describe-stacks --stack-name ex-004
 
 	{
     	"Stacks": [
         	{
-            	"StackId": "arn:aws:cloudformation:us-east-1:926075045128:stack/ex-005/fef146e0-7277-11e8-a610-50d5ca63261e",
-            	"StackName": "ex-005",
+            	"StackId": "arn:aws:cloudformation:us-east-1:926075045128:stack/ex-004/fef146e0-7277-11e8-a610-50d5ca63261e",
+            	"StackName": "ex-004",
             	"CreationTime": "2018-06-17T21:47:13.883Z",
             	"DeletionTime": "2018-06-17T23:25:39.791Z",
             	"RollbackConfiguration": {},

@@ -128,13 +128,13 @@ I hope you enjoy following these exercises as much as I enjoyed building them.
 
 1. `Getting started <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
 
-2. `Exploring VPCs <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_ExploringVpcs.rst>`_
+2. `Basic VPC configuration <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfig.rst>`_
 
-3. `Basic VPC configuration <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_BasicVpcConfig.rst>`_
+3. `Testing basic connectivity <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_TestingBasicConnectivity.rst>`_
 
-4. `Testing basic connectivity <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_TestingBasicConnectivity.rst>`_
+4. `Getting started with CloudFormation <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_GettingStartedCloudFormation.rst>`_
 
-5. `Getting started with CloudFormation <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-005_GettingStartedCloudFormation.rst>`_
+5. `Expanding the VPC configuration <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-005_ExpandingVpcConfig.rst>`_
 
 6. To be added
 
