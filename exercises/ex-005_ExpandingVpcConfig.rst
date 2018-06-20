@@ -19,11 +19,11 @@ Dependencies
 Objectives
 ----------
 
-    - Become familiar with additional VPC configuration features.
+    - Become familiar with additional VPC components by expanding the VPC configuration created in ex-002 (Basic VPC configuration).
 
 Expected Costs
 --------------
-The activities in this exercise are NOT expected to result in any charges to your AWS account.
+The activities in this exercise may result in charges to your AWS account.
 
 .. list-table::
    :widths: 20, 40, 50
@@ -32,11 +32,15 @@ The activities in this exercise are NOT expected to result in any charges to you
    * - Component
      - Applicable Costs
      - Notes
-   * - VPC (including subnets, Route Tables and IntenetGateways).
+   * - VPC (including Subnets, Route Tables and IntenetGateways).
      - None
-     - 
-        + AWS does not charge for the basic VPC building blocks used in this exercise.
-        + We will be leaving this configuration in place to support ex-003.
+     - AWS does not charge for the basic VPC building blocks used in this exercise.
+   * - NAT Gateway
+     - Between $0.045 and $ 0.093 per hour, depending on Region.
+     - During this exercise, we will creating a NAT Gateway. It should not need to run for more than hour or so.
+   * - NAT Gateway
+     - Between $0.045 and $ 0.093 per GB of data processed, depending on Region.
+     - During this exercise, we will creating a NAT Gateway. It should not need to run for more than hour or so.
 
 Limits
 ------
