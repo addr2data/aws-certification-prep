@@ -54,20 +54,28 @@ Resources:
       InternetGatewayId: !Ref InternetGateway
       VpcId: !Ref VPC
 
-  RouteTable:
+  RouteTablePublic:
     Type: AWS::EC2::RouteTable
     Properties: 
       VpcId: !Ref VPC
       Tags:
         - Key: Name
           Value: rtb_pub_ex005
+  
+  RouteTablePrivate:
+    Type: AWS::EC2::RouteTable
+    Properties: 
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: rtb_pri_ex005
 
-  DefaultRoute:
+  DefaultRoutePublic:
     Type: AWS::EC2::Route
     Properties: 
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref InternetGateway
-      RouteTableId: !Ref RouteTable
+      RouteTableId: !Ref RouteTablePublic
 
   SubnetPublic:
     Type: AWS::EC2::Subnet
@@ -87,11 +95,17 @@ Resources:
           Value: sub_pri_ex005
       VpcId: !Ref VPC
 
-  AssociateSubnetRouteTable:
+  AssociateSubnetRouteTablePublic:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties: 
-      RouteTableId: !Ref RouteTable
+      RouteTableId: !Ref RouteTablePublic
       SubnetId: !Ref SubnetPublic
+
+  AssociateSubnetRouteTablePrivate:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: 
+      RouteTableId: !Ref RouteTablePrivate
+      SubnetId: !Ref SubnetPrivate
 
   SecurityGroup:
     Type: AWS::EC2::SecurityGroup

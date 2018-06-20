@@ -80,6 +80,8 @@ Template
 In order to build the starting configuration, we will be using a CloudFormation Template that is based on the one we used in **'ex-004', but with the following modifications:
 
 - Added an additional Elastic IP (unassociated).
+- Create a new 'private' Route Table.
+- Associated the 'private' Subnet with the 'private' Route Table.
 
 Create Stack
 ------------
@@ -142,39 +144,65 @@ Output:
 
 .. code-block::
 
-    ---------------------------------------------------------------
-    |                   DescribeStackResources                    |
-    +------------------------------+------------------------------+
-    |       LogicalResourceId      |     PhysicalResourceId       |
-    +------------------------------+------------------------------+
-    |  AssociateSubnetRouteTable   |  rtbassoc-02b6dcbe242a84d1a  |
-    |  AttachInternetGateway       |  ex-00-Attac-OQ01DLJPWZO2    |
-    |  DefaultRoute                |  ex-00-Defau-1CKFV83ZZ9BXF   |
-    |  FloatingIpAddressInstance   |  34.193.249.126              |
-    |  FloatingIpAddressNatGateway |  18.232.223.133              |
-    |  InternetGateway             |  igw-009c768a14f2d1e1d       |
-    |  PrivateInstance             |  i-04077bb625579148f         |
-    |  PublicInstance              |  i-0e1da5e16a72df5d5         |
-    |  RouteTable                  |  rtb-0545d415ace739fab       |
-    |  SecurityGroup               |  sg-073dd822b01d5a8df        |
-    |  SubnetPrivate               |  subnet-024d47ad632a3146d    |
-    |  SubnetPublic                |  subnet-0381d3cf0bf7cc589    |
-    |  VPC                         |  vpc-0cb69149f39bd9fe4       |
-    +------------------------------+------------------------------+
+    --------------------------------------------------------------------
+    |                      DescribeStackResources                      |
+    +-----------------------------------+------------------------------+
+    |         LogicalResourceId         |     PhysicalResourceId       |
+    +-----------------------------------+------------------------------+
+    |  AssociateSubnetRouteTablePrivate |  rtbassoc-0d241d3c9bb2dc49f  |
+    |  AssociateSubnetRouteTablePublic  |  rtbassoc-06aff24c36acac6e0  |
+    |  AttachInternetGateway            |  ex-00-Attac-1VF12BB0ZDLSF   |
+    |  DefaultRoutePublic               |  ex-00-Defau-1N09WMGQ4J1ZB   |
+    |  FloatingIpAddressInstance        |  18.205.251.20               |
+    |  FloatingIpAddressNatGateway      |  18.233.207.198              |
+    |  InternetGateway                  |  igw-0464cdfdfe38e889a       |
+    |  PrivateInstance                  |  i-010507233a97824fc         |
+    |  PublicInstance                   |  i-0b989e42e6e390ad3         |
+    |  RouteTablePrivate                |  rtb-06d4437e94da8d880       |
+    |  RouteTablePublic                 |  rtb-0299307de3927c7ba       |
+    |  SecurityGroup                    |  sg-067dab68bcdd1330b        |
+    |  SubnetPrivate                    |  subnet-05302080bc4e3c993    |
+    |  SubnetPublic                     |  subnet-0a63cccd8930927cf    |
+    |  VPC                              |  vpc-09ca97dcc166ba6c1       |
+    +-----------------------------------+------------------------------+
+
+Environment variables
+~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    export EX005_PUB_SUBNET=<SubnetPublic>
+    export EX005_VPC=<VPC>
+    export EX005_RTB_PRIV=<RouteTablePrivate>
+
+Also, collect the **'AllocationId'** for the **'FloatingIpAddressNatGateway'**.
 
 .. code-block::
     
-    aws ec2 describe-addresses --public-ips <FloatingIpAddress>
+    aws ec2 describe-addresses --public-ips <FloatingIpAddressNatGateway>
+
+Output:
+
+.. code-block::
 
     {
         "Addresses": [
             {
-                "PublicIp": "35.169.144.76",
-                "AllocationId": "eipalloc-09617e997c4f04173",
+                "PublicIp": "18.233.207.198",
+                "AllocationId": "eipalloc-0e7a961dab989f4b8",
                 "Domain": "vpc"
             }
         ]
     }
+
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    export EX005_EIP=eipalloc-0e7a961dab989f4b8
+
+
 
 
 .. code-block::
@@ -182,18 +210,10 @@ Output:
     aws cloudformation describe-stack-resource --stack-name ex-005 --logical-resource-id FloatingIpAddress
 
 
-Environment variables
-~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block::
-
-    export EX006_PUB_SUBNET=<SubnetPublic>
-    export EX006_EIP=<AllocationId>
-    export EX006_VPC=<VPC>
-
-    export EX006_PUB_SUBNET=subnet-03ff850c3d2da5855
-    export EX006_EIP=eipalloc-09617e997c4f04173
-    export EX006_VPC=vpc-0fc4ba21b51dd7c94 
+    export EX005_PUB_SUBNET=subnet-0a63cccd8930927cf
+    export EX005_EIP=eipalloc-0e7a961dab989f4b8
+    export EX005_VPC=vpc-09ca97dcc166ba6c1
+    export EX005_RTB_PRIV=rtb-06d4437e94da8d880
 
 
 Create NAT Gateway
