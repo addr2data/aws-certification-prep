@@ -44,8 +44,8 @@ The activities in this exercise may result in charges to your AWS account.
    * - Data Transfer
      -
         + $0.00 per GB - Data Transfer IN to Amazon EC2 from Internet
-        + $0.00 per GB per month - Data Transfer OUT of Amazon EC2 to Internet (Up to 1 GB)
-        + $0.09 per GB per month - Data Transfer OUT of Amazon EC2 to Internet (Next 9.999 TB)
+        + $0.00 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(Up to 1 GB)**
+        + $0.09 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(Next 9.999 TB)**
      - We also need to consider Data Transfer charges when using a NAT Gateway.
 
 Limits
