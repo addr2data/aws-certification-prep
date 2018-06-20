@@ -77,10 +77,9 @@ Setting environment variables may be different on different OSs. Please refer to
 
 Template
 --------
-We will be using a Template that is based on the one we used in **'ex-004', but with the following modifications:
+In order to build the starting configuration, we will be using a CloudFormation Template that is based on the one we used in **'ex-004', but with the following modifications:
 
-- Added an additional Elastic IP.
-
+- Added an additional Elastic IP (unassociated).
 
 Create Stack
 ------------
@@ -90,8 +89,12 @@ Use the following awscli command to create a new **'Stack'** based on the templa
 
     aws cloudformation create-stack --stack-name ex-005 --template-body file://./templates/ex-005_template.yaml
 
+Output:
+
+.. code-block::
+
     {
-        "StackId": "arn:aws:cloudformation:us-east-1:926075045128:stack/ex-005/def0a050-73fa-11e8-a0ab-500c286e44d1"
+        "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-005/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
 
 Check the status
@@ -103,6 +106,10 @@ Rerun this command until **'StackStatus'** is **'CREATE_COMPLETE'**.
 .. code-block::
 
     aws cloudformation describe-stacks --stack-name ex-005
+
+Output:
+
+.. code-block::
 
     {
         "Stacks": [
