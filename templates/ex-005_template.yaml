@@ -137,10 +137,15 @@ Resources:
         - Key: Name
           Value: i_pri_ex005
 
-  FloatingIpAddress:
+  FloatingIpAddressInstance:
     Type: "AWS::EC2::EIP"
     Properties:
       InstanceId: !Ref PublicInstance
+      Domain: vpc
+
+ FloatingIpAddressNatGateway:
+    Type: "AWS::EC2::EIP"
+    Properties:
       Domain: vpc
 
 ...

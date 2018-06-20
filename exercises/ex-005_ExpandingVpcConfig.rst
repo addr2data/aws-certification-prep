@@ -75,6 +75,13 @@ Once you are comfortable with the expected output of a command and wish filter t
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
+Template
+--------
+We will be using a Template that is based on the one we used in **'ex-004', but with the following modifications:
+
+- Added an additional Elastic IP.
+
+
 Create Stack
 ------------
 Use the following awscli command to create a new **'Stack'** based on the template.
