@@ -255,7 +255,7 @@ Below is the contents of the **'ex-004_template.yaml'** file from the **'templat
 	  SecurityGroup:
 	    Type: AWS::EC2::SecurityGroup
 	    Properties: 
-	      GroupName: sg_ex005
+	      GroupName: sg_ex004
 	      GroupDescription: "Security Group for ex-004"
 	      SecurityGroupIngress:
 	        - 

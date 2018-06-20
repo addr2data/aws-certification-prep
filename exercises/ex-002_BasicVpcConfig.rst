@@ -14,7 +14,7 @@ Dependencies
    * - Depends on exercise(s)
      - ex-001
    * - Prerequisite for exercise(s)
-     - ex-004
+     - ex-003
 
 Objectives
 ----------
@@ -105,7 +105,7 @@ Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX003_VPC=<VpcId>
+    export EX002_VPC=<VpcId>
 
 Verify the VPC
 --------------
@@ -113,7 +113,7 @@ Use the following awscli command to ensure that the VPC State is **'available'**
 
 .. code-block::
     
-    aws ec2 describe-vpcs --vpc-ids $EX003_VPC
+    aws ec2 describe-vpcs --vpc-ids $EX002_VPC
 
     {
         "Vpcs": [
@@ -148,7 +148,7 @@ We won't be modifying this Route Table. We will use it to provide routing for th
 
 .. code-block::
 
-    aws ec2 describe-route-tables --filter Name=vpc-id,Values=$EX003_VPC
+    aws ec2 describe-route-tables --filter Name=vpc-id,Values=$EX002_VPC
 
     {
         "RouteTables": [
@@ -180,7 +180,7 @@ Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX003_RTB_PRIV=<RouteTableId>
+    export EX002_RTB_PRIV=<RouteTableId>
 
 Create a Tag
 ------------
@@ -188,7 +188,7 @@ Use the following awscli command to create a **Tag** for the main/default Route 
 
 .. code-block::
 
-    aws ec2 create-tags --resources $EX003_RTB_PRIV --tags Key=Name,Value=private
+    aws ec2 create-tags --resources $EX002_RTB_PRIV --tags Key=Name,Value=private
 
 Create a second Route Table
 ---------------------------
@@ -198,7 +198,7 @@ We can see the same single entry under **Routes**. This will allow for the routi
 
 .. code-block::
 
-    aws ec2 create-route-table --vpc-id $EX003_VPC
+    aws ec2 create-route-table --vpc-id $EX002_VPC
 
     {
         "RouteTable": {
@@ -222,7 +222,7 @@ Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX003_RTB_PUB=<RouteTableId>
+    export EX002_RTB_PUB=<RouteTableId>
 
 Create a Tag
 ------------
@@ -230,7 +230,7 @@ Use the following awscli command to create a tag for the second Route Table.
 
 .. code-block::
 
-    aws ec2 create-tags --resources $EX003_RTB_PUB --tags Key=Name,Value=public
+    aws ec2 create-tags --resources $EX002_RTB_PUB --tags Key=Name,Value=public
 
 Create an Internet Gateway
 --------------------------
@@ -254,7 +254,7 @@ Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX003_IG=<InternetGatewayId>
+    export EX002_IG=<InternetGatewayId>
 
 Attach the Internet Gateway
 ---------------------------
@@ -262,7 +262,7 @@ Use the following awscli command to attach the Internet Gateway to the VPC.
 
 .. code-block::
 
-      aws ec2 attach-internet-gateway --internet-gateway-id $EX003_IG --vpc-id $EX003_VPC
+      aws ec2 attach-internet-gateway --internet-gateway-id $EX002_IG --vpc-id $EX002_VPC
 
 
 Add a Route
@@ -273,7 +273,7 @@ This will allow connectivity to/from the Internet for Subnets explicitly associa
 
 .. code-block::
 
-    aws ec2 create-route --destination-cidr-block 0.0.0.0/0 --gateway-id $EX003_IG --route-table-id $EX003_RTB_PUB
+    aws ec2 create-route --destination-cidr-block 0.0.0.0/0 --gateway-id $EX002_IG --route-table-id $EX002_RTB_PUB
 
     {
         "Return": true
@@ -287,7 +287,7 @@ We can see a second entry under **Routes**.
 
 .. code-block::
 
-    aws ec2 describe-route-tables --filter Name=route-table-id,Values=$EX003_RTB_PUB
+    aws ec2 describe-route-tables --filter Name=route-table-id,Values=$EX002_RTB_PUB
 
     {
         "RouteTables": [
@@ -328,7 +328,7 @@ We only 507 usable addresses. This is because, the first address is the network 
 
 .. code-block::
    
-   aws ec2 create-subnet --cidr-block 10.0.0.0/23 --vpc-id $EX003_VPC
+   aws ec2 create-subnet --cidr-block 10.0.0.0/23 --vpc-id $EX002_VPC
 
     {
         "Subnet": {
@@ -349,7 +349,7 @@ Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX003_SUBNET_PUB=<SubnetId>
+    export EX002_SUBNET_PUB=<SubnetId>
 
 Create a second Subnet
 ----------------------
@@ -357,7 +357,7 @@ Use the following awscli command to create a Subnet with a prefix length of /23 
 
 .. code-block::
 
-    aws ec2 create-subnet --cidr-block 10.0.2.0/23 --vpc-id $EX003_VPC
+    aws ec2 create-subnet --cidr-block 10.0.2.0/23 --vpc-id $EX002_VPC
 
     {
         "Subnet": {
@@ -378,7 +378,7 @@ Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX003_SUBNET_PRIV=<SubnetId>
+    export EX002_SUBNET_PRIV=<SubnetId>
 
 Verify the Subnets
 ------------------
@@ -390,7 +390,7 @@ If you wish to control where your Subnets are created, you would use the **'--av
 
 .. code-block::
 
-    aws ec2 describe-subnets --filter Name=vpc-id,Values=$EX003_VPC
+    aws ec2 describe-subnets --filter Name=vpc-id,Values=$EX002_VPC
 
     {
         "Subnets": [
@@ -427,9 +427,9 @@ Use the following awscli commands to create a Tag for both Subnets.
 
 .. code-block::
 
-    aws ec2 create-tags --resources $EX003_SUBNET_PUB --tags Key=Name,Value=public 
+    aws ec2 create-tags --resources $EX002_SUBNET_PUB --tags Key=Name,Value=public 
 
-    aws ec2 create-tags --resources $EX003_SUBNET_PRIV --tags Key=Name,Value=private 
+    aws ec2 create-tags --resources $EX002_SUBNET_PRIV --tags Key=Name,Value=private 
 
 
 Associate a Subnet
@@ -438,7 +438,7 @@ Use the following awscli command to associate the **'public'** subnet with the *
 
 .. code-block::
 
-    aws ec2 associate-route-table --route-table-id $EX003_RTB_PUB --subnet-id $EX003_SUBNET_PUB
+    aws ec2 associate-route-table --route-table-id $EX002_RTB_PUB --subnet-id $EX002_SUBNET_PUB
 
     {
         "AssociationId": "rtbassoc-xxxxxxxxxxxxxxxxx"
@@ -452,7 +452,7 @@ We can now see an entry under **Associations**.
 
 .. code-block::
 
-    aws ec2 describe-route-tables --filter Name=route-table-id,Values=$EX003_RTB_PUB
+    aws ec2 describe-route-tables --filter Name=route-table-id,Values=$EX002_RTB_PUB
 
 
     {

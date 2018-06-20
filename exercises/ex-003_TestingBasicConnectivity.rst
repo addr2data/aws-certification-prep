@@ -12,7 +12,7 @@ Dependencies
    :header-rows: 0
 
    * - Depends on exercise(s)
-     - ex-001, ex-003
+     - ex-001, ex-002
    * - Prerequisite for exercise(s)
      - None
 
@@ -20,7 +20,7 @@ Objectives
 ----------
 
     - Become familiar with launching and connecting to on-demand Instances.
-    - Test connectivity for the VPC configuration we created in ex-003.
+    - Test connectivity for the VPC configuration we created in ex-002.
 
 Expected Costs
 --------------
@@ -123,7 +123,7 @@ Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX004_SG=<GroupId>
+    export EX003_SG=<GroupId>
 
 Add a rule to the Security Group
 --------------------------------
@@ -131,7 +131,7 @@ Use the following awscli command to add a rule to the above security group.
 
 .. code-block::
 
-    aws ec2 authorize-security-group-ingress --group-id $EX004_SG --protocol tcp --port 22 --cidr 0.0.0.0/0
+    aws ec2 authorize-security-group-ingress --group-id $EX003_SG --protocol tcp --port 22 --cidr 0.0.0.0/0
 
 Examine the Security Group
 --------------------------
@@ -139,7 +139,7 @@ Use the following awscli command to examine the above security group.
 
 .. code-block::
 
-    aws ec2 describe-security-groups --group-ids $EX004_SG
+    aws ec2 describe-security-groups --group-ids $EX003_SG
 
     {
         "SecurityGroups": [
@@ -232,7 +232,7 @@ Use the following table to identify the 'imageId' for your default region.
 
 .. code-block::
 
-    export EX004_IMAGE_ID=<ImageId>
+    export EX003_IMAGE_ID=<ImageId>
 
 
 Launch an Instance
@@ -247,7 +247,7 @@ We have used the **'--client-token'** to option ensure this operation is  Idempo
 
 .. code-block::
 
-    aws ec2 run-instances --image-id $EX004_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PUB --security-group-ids $EX004_SG --client-token awscertprep-ex-004-001
+    aws ec2 run-instances --image-id $EX003_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PUB --security-group-ids $EX003_SG --client-token awscertprep-ex-003-001
 
     {
         ...output excluded due to size...
@@ -257,7 +257,7 @@ Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX004_INST_PUB=<InstanceId>
+    export EX003_INST_PUB=<InstanceId>
 
 Launch a second Instance
 ------------------------
@@ -267,7 +267,7 @@ Use the following awscli command to launch an Instance and attach to the **'priv
 
 .. code-block::
 
-    aws ec2 run-instances --image-id $EX004_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PRIV --security-group-ids $EX004_SG --client-token awscertprep-ex-004-005
+    aws ec2 run-instances --image-id $EX003_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PRIV --security-group-ids $EX003_SG --client-token awscertprep-ex-003-005
 
     {
         ...output excluded due to size...
@@ -277,7 +277,7 @@ Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX004_INST_PRIV=<InstanceId>
+    export EX003_INST_PRIV=<InstanceId>
 
 
 Private IP address
@@ -288,7 +288,7 @@ Use the following awscli command to collect the IP address of the Instance on th
 
 .. code-block::
     
-    aws ec2 describe-instances --instance-ids $EX004_INST_PRIV --output text --query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress
+    aws ec2 describe-instances --instance-ids $EX003_INST_PRIV --output text --query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress
 
 Allocate an Elastic IP
 ----------------------
@@ -308,8 +308,8 @@ Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
 
-    export EX004_EIP=<AllocationId>
-    export EX004_PUB_IP=<PublicIp>
+    export EX003_EIP=<AllocationId>
+    export EX003_PUB_IP=<PublicIp>
 
 Associate the Elastic IP
 ------------------------
@@ -317,7 +317,7 @@ Use the following awscli command to associate the Elastic IP with the Instance w
 
 .. code-block::
 
-    aws ec2 associate-address --allocation-id $EX004_EIP --instance-id $EX004_INST_PUB
+    aws ec2 associate-address --allocation-id $EX003_EIP --instance-id $EX003_INST_PUB
 
     {
         "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
@@ -331,8 +331,8 @@ Use the following commands to test connectivity to the Instance in the public Su
 
 .. code-block::
 
-    ping $EX004_PUB_IP
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX004_PUB_IP
+    ping $EX003_PUB_IP
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX003_PUB_IP
 
 Test outbound connectivity
 --------------------------
@@ -352,7 +352,7 @@ Use the following awscli command to re-associate the Elastic IP with the Instanc
 
 .. code-block::
 
-    aws ec2 associate-address --allocation-id $EX004_EIP --instance-id $EX004_INST_PRIV
+    aws ec2 associate-address --allocation-id $EX003_EIP --instance-id $EX003_INST_PRIV
 
     {
         "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
@@ -366,8 +366,8 @@ Use the following commands to test connectivity to the Instance in the private S
 
 .. code-block::
 
-    ping $EX004_PUB_IP
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX004_PUB_IP
+    ping $EX003_PUB_IP
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX003_PUB_IP
 
 Re-associate the Elastic IP
 ---------------------------
@@ -375,7 +375,7 @@ Use the following awscli command to re-associate the Elastic IP with the Instanc
 
 .. code-block::
 
-    aws ec2 associate-address --allocation-id $EX004_EIP --instance-id $EX004_INST_PUB
+    aws ec2 associate-address --allocation-id $EX003_EIP --instance-id $EX003_INST_PUB
 
     {
         "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
@@ -389,7 +389,7 @@ Use the following command to reconnect to the Instance in the public Subnet.
 
 .. code-block::
 
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX004_PUB_IP
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX003_PUB_IP
 
     Do NOT 'exit'
 
@@ -401,7 +401,7 @@ From the second terminal window, use the following command to copy the **'acpkey
 
 .. code-block::
 
-    scp -i acpkey1.pem acpkey1.pem ubuntu@$EX004_PUB_IP:/home/ubuntu
+    scp -i acpkey1.pem acpkey1.pem ubuntu@$EX003_PUB_IP:/home/ubuntu
 
 Close the second terminal window
 
@@ -442,7 +442,7 @@ Use the following awscli command to create a new rule to the above security grou
 
 .. code-block::
 
-    aws ec2 authorize-security-group-ingress --group-id $EX004_SG --protocol icmp --port -1 --cidr 0.0.0.0/0
+    aws ec2 authorize-security-group-ingress --group-id $EX003_SG --protocol icmp --port -1 --cidr 0.0.0.0/0
 
 Test connectivity
 -----------------
@@ -452,8 +452,8 @@ Use the following commands to test connectivity to the Instance in the public Su
 
 .. code-block::
 
-    ping $EX004_PUB_IP
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX004_PUB_IP
+    ping $EX003_PUB_IP
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX003_PUB_IP
 
 You are now connected to the Instance on the public subnet.
 
@@ -481,7 +481,7 @@ This operation is idempotent. Rerun the command until you see a **'currentState'
 
 .. code-block::
 
-    aws ec2  terminate-instances --instance-ids $EX004_INST_PUB $EX004_INST_PRIV
+    aws ec2  terminate-instances --instance-ids $EX003_INST_PUB $EX003_INST_PRIV
 
     {
         "TerminatingInstances": [
@@ -516,7 +516,7 @@ Use the following awscli command to release the public IPv4 address
 
 .. code-block::
 
-    aws ec2 release-address --allocation-id $EX004_EIP
+    aws ec2 release-address --allocation-id $EX003_EIP
 
 Delete the Security Group
 -------------------------
@@ -524,7 +524,7 @@ Use the following awscli command to delete the Security Group.
 
 .. code-block::
 
-    aws ec2 delete-security-group --group-id $EX004_SG
+    aws ec2 delete-security-group --group-id $EX003_SG
 
 Delete the VPC
 --------------
@@ -548,6 +548,6 @@ Summary
 
 Next steps
 ----------
-We will recreate the configuration built in ex-003 and ex-004, using CloudFormation, in 
+We will recreate the configuration built in ex-003 and ex-003, using CloudFormation, in 
 `ex-005 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-005_GettingStartedCloudFormation.rst>`_
 
