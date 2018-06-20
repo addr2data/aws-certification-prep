@@ -114,7 +114,7 @@ Output:
     {
         "Stacks": [
             {
-                "StackId": "arn:aws:cloudformation:us-east-1:926075045128:stack/ex-005/def0a050-73fa-11e8-a0ab-500c286e44d1",
+                "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-005/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                 "StackName": "ex-005",
                 "CreationTime": "2018-06-19T19:56:35.434Z",
                 "RollbackConfiguration": {},
@@ -134,24 +134,31 @@ Use the following awscli command to collect check the **'PhysicalResourceIds'** 
 
 .. code-block::
 
-    aws cloudformation describe-stack-resources --stack-name ex-005 --output table --query 'StackResources[*].[LogicalResourceId, PhysicalResourceId]'
+    aws cloudformation describe-stack-resources --stack-name ex-005 --output table --query 'StackResources[*].{LogicalResourceId: LogicalResourceId,PhysicalResourceId: PhysicalResourceId}'
 
-    -------------------------------------------------------------
-    |                  DescribeStackResources                   |
-    +----------------------------+------------------------------+
-    |  AssociateSubnetRouteTable |  rtbassoc-0842e4eb1e9d1edb0  |
-    |  AttachInternetGateway     |  ex-00-Attac-10R4E8BTLQ479   |
-    |  DefaultRoute              |  ex-00-Defau-Y1F3ACELJ5C3    |
-    |  FloatingIpAddress         |  35.169.144.76               |
-    |  InternetGateway           |  igw-0786fa8e8b02cea0e       |
-    |  PrivateInstance           |  i-04d0be81131ccec17         |
-    |  PublicInstance            |  i-039d3e6cfae506c77         |
-    |  RouteTable                |  rtb-066460c2ca5b8f0f7       |
-    |  SecurityGroup             |  sg-0011153ed095f008f        |
-    |  SubnetPrivate             |  subnet-05652264047aabc87    |
-    |  SubnetPublic              |  subnet-03ff850c3d2da5855    |
-    |  VPC                       |  vpc-0fc4ba21b51dd7c94       |
-    +----------------------------+------------------------------+
+Output:
+
+.. code-block::
+
+    ---------------------------------------------------------------
+    |                   DescribeStackResources                    |
+    +------------------------------+------------------------------+
+    |       LogicalResourceId      |     PhysicalResourceId       |
+    +------------------------------+------------------------------+
+    |  AssociateSubnetRouteTable   |  rtbassoc-02b6dcbe242a84d1a  |
+    |  AttachInternetGateway       |  ex-00-Attac-OQ01DLJPWZO2    |
+    |  DefaultRoute                |  ex-00-Defau-1CKFV83ZZ9BXF   |
+    |  FloatingIpAddressInstance   |  34.193.249.126              |
+    |  FloatingIpAddressNatGateway |  18.232.223.133              |
+    |  InternetGateway             |  igw-009c768a14f2d1e1d       |
+    |  PrivateInstance             |  i-04077bb625579148f         |
+    |  PublicInstance              |  i-0e1da5e16a72df5d5         |
+    |  RouteTable                  |  rtb-0545d415ace739fab       |
+    |  SecurityGroup               |  sg-073dd822b01d5a8df        |
+    |  SubnetPrivate               |  subnet-024d47ad632a3146d    |
+    |  SubnetPublic                |  subnet-0381d3cf0bf7cc589    |
+    |  VPC                         |  vpc-0cb69149f39bd9fe4       |
+    +------------------------------+------------------------------+
 
 .. code-block::
     
