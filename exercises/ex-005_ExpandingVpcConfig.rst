@@ -41,6 +41,12 @@ The activities in this exercise may result in charges to your AWS account.
    * - NAT Gateway
      - Between $0.045 and $ 0.093 per GB of data processed, depending on Region.
      - During this exercise, we will creating a NAT Gateway. It should not need to run for more than hour or so.
+   * - Data Transfer
+     -
+        + $0.00 per GB - Data Transfer IN to Amazon EC2 from Internet
+        + $0.00 per GB per month - Data Transfer OUT of Amazon EC2 to Internet (Up to 1 GB)
+        + $0.09 per GB per month - Data Transfer OUT of Amazon EC2 to Internet (Next 9.999 TB)
+     - We also need to consider Data Transfer charges when using a NAT Gateway.
 
 Limits
 ------
