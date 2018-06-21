@@ -3,7 +3,7 @@ ex-001: Getting started
 
 Status
 ------
-Version 1.1 (6/20/18)
+Version 1.2 (6/20/18)
 
 Dependencies
 ------------
@@ -415,6 +415,31 @@ Create a bash script using the following commands and see the results for yourse
         AZS=$(aws ec2 describe-availability-zones --region $reg | jq -r '.AvailabilityZones | map(.ZoneName) | join (", ")')
         echo REGION:$reg%AZs:$AZS | column -s % -t
         done
+
+Set up a budget
+---------------
+As move through these exercises, it is expected that you will incur small charges to you AWS account. To ensure these expenses don't get away from you, we are going to set up a budget.  
+
+- Login to your AWS account.
+- Under services, type **Billing** into the search box and select it.
+- In the navigation pane, select **'Budgets'**.
+- Click **Create budget**.
+
+Section 1
+~~~~~~~~~
+
+- Under **Budget type**, select **Cost**.
+- Under **Name**, enter a name for your Budget.
+- Under **Period**, select **Monthly** (default).
+- Under **Start date**, select a start dates (defaults to start of billing cycle)
+- Under **Budgeted amount**, enter an amount that you don't want to exceed in a month (I set $20.00).
+- Skip section 2.
+
+Section 3
+~~~~~~~~~
+- Under **Notify me when**, enter values that make sense for you (I set it to notify me when 'actual' costs are 'greater than' 50 '%' of 'budgeted amount')
+- Under **Email contacts**, enter you email address.
+- Click **Create**
 
 Summary
 -------
