@@ -115,6 +115,10 @@ Use the following awscli command to create a new Security Group.
 
     aws ec2 create-security-group --group-name Int2Public --description "Security Group used to connect to instances on public subnet from Internet" --vpc-id $EX003_VPC
 
+Output:
+
+.. code-block::
+
     {
         "GroupId": "sg-xxxxxxxxxxxxxxxxx"
     }
@@ -140,6 +144,10 @@ Use the following awscli command to examine the above security group.
 .. code-block::
 
     aws ec2 describe-security-groups --group-ids $EX003_SG
+
+Output:
+
+.. code-block::
 
     {
         "SecurityGroups": [
@@ -187,7 +195,7 @@ We are going to use the following AMI, but the 'imageIds' are different for each
 
 ``Ubuntu Server 16.04 LTS (HVM), SSD Volume Type``
 
-Use the following table to identify the 'imageId' for your default region.
+Use the following table to identify the 'imageId' for your region.
 
 .. list-table::
    :widths: 25, 25, 25, 25, 25, 25
@@ -249,6 +257,10 @@ We have used the **'--client-token'** to option ensure this operation is  Idempo
 
     aws ec2 run-instances --image-id $EX003_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PUB --security-group-ids $EX003_SG --client-token awscertprep-ex-003-001
 
+Output:
+
+.. code-block::
+
     {
         ...output excluded due to size...
     }
@@ -269,6 +281,10 @@ Use the following awscli command to launch an Instance and attach to the **'priv
 
     aws ec2 run-instances --image-id $EX003_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PRIV --security-group-ids $EX003_SG --client-token awscertprep-ex-003-005
 
+Output:
+
+.. code-block::
+
     {
         ...output excluded due to size...
     }
@@ -278,7 +294,6 @@ Environment variable
 .. code-block::
 
     export EX003_INST_PRIV=<InstanceId>
-
 
 Private IP address
 ------------------
@@ -290,6 +305,12 @@ Use the following awscli command to collect the IP address of the Instance on th
     
     aws ec2 describe-instances --instance-ids $EX003_INST_PRIV --output text --query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress
 
+Output:
+
+.. code-block::
+    
+    xxx.xxx.xxx.xxx
+
 Allocate an Elastic IP
 ----------------------
 Use the following awscli command to allocate a public IPv4 address
@@ -297,6 +318,10 @@ Use the following awscli command to allocate a public IPv4 address
 .. code-block::
 
     aws ec2 allocate-address --domain vpc
+
+Output:
+
+.. code-block::
 
     {
         "PublicIp": "xxx.xxx.xxx.xxx",
@@ -318,6 +343,10 @@ Use the following awscli command to associate the Elastic IP with the Instance w
 .. code-block::
 
     aws ec2 associate-address --allocation-id $EX003_EIP --instance-id $EX003_INST_PUB
+
+Output:
+
+.. code-block::
 
     {
         "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
@@ -354,6 +383,10 @@ Use the following awscli command to re-associate the Elastic IP with the Instanc
 
     aws ec2 associate-address --allocation-id $EX003_EIP --instance-id $EX003_INST_PRIV
 
+Output:
+
+.. code-block::
+
     {
         "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
     }
@@ -377,6 +410,10 @@ Use the following awscli command to re-associate the Elastic IP with the Instanc
 
     aws ec2 associate-address --allocation-id $EX003_EIP --instance-id $EX003_INST_PUB
 
+Output:
+
+.. code-block::
+
     {
         "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
     }
@@ -385,25 +422,13 @@ Reconnect
 -------
 Use the following command to reconnect to the Instance in the public Subnet.
 
-``Expected results: 'ssh'** should be successful again.``
-
-.. code-block::
-
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX003_PUB_IP
-
-    Do NOT 'exit'
-
-Open a second terminal window and 'cd' to the aws-cert-prep directory. No need to 'activate' virtualenv.
-
-Copy the Private Key
---------------------
-From the second terminal window, use the following command to copy the **'acpkey1.pem'** file to the Instance on the public Subnet.
 
 .. code-block::
 
     scp -i acpkey1.pem acpkey1.pem ubuntu@$EX003_PUB_IP:/home/ubuntu
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX003_PUB_IP
 
-Close the second terminal window
+    Do NOT 'exit'
 
 Test local connectivity
 -----------------------
@@ -459,9 +484,9 @@ You are now connected to the Instance on the public subnet.
 
 Test local connectivity
 -----------------------
-You should still be connected to the Instance in the public Subnet.
+You should still be connected to the 'public' Instance.
 
-Use the following command to test connectivity to the Instance in the private Subnet via the private IP. 
+Use the following command to test connectivity to the 'private' Instance. 
 
 ``Expected results: 'ping' should now be successful.``
 
@@ -482,6 +507,10 @@ This operation is idempotent. Rerun the command until you see a **'currentState'
 .. code-block::
 
     aws ec2  terminate-instances --instance-ids $EX003_INST_PUB $EX003_INST_PRIV
+
+Output:
+
+.. code-block::
 
     {
         "TerminatingInstances": [
@@ -548,6 +577,6 @@ Summary
 
 Next steps
 ----------
-We will recreate the configuration built in ex-003 and ex-003, using CloudFormation, in 
-`ex-005 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-005_GettingStartedCloudFormation.rst>`_
+We will recreate the configuration built in ex-002 and ex-003, using CloudFormation, in 
+`ex-004 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_GettingStartedCloudFormation.rst>`_
 
