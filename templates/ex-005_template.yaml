@@ -107,11 +107,11 @@ Resources:
       RouteTableId: !Ref RouteTablePrivate
       SubnetId: !Ref SubnetPrivate
 
-  SecurityGroup:
+  SecurityGroupInstances:
     Type: AWS::EC2::SecurityGroup
     Properties: 
-      GroupName: sg_ex005
-      GroupDescription: "Security Group for ex-006"
+      GroupName: sg_instances_ex005
+      GroupDescription: "Security Group for Instances in ex-005"
       SecurityGroupIngress:
         - 
           CidrIp: 0.0.0.0/0
@@ -125,6 +125,25 @@ Resources:
           ToPort: -1
       VpcId: !Ref VPC
 
+  SecurityGroupEndpoint:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupName: sg_endpoint_ex005
+      GroupDescription: "Security Group for Endpoint in ex-005"
+      SecurityGroupIngress:
+        - 
+          CidrIp: 0.0.0.0/0
+          IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+        - 
+          CidrIp: 0.0.0.0/0
+          IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+      VpcId: !Ref VPC
+
+
   PublicInstance:
     Type: AWS::EC2::Instance
     Properties: 
@@ -132,7 +151,7 @@ Resources:
       InstanceType: t2.micro
       KeyName: acpkey1
       SecurityGroupIds: 
-        - !Ref SecurityGroup
+        - !Ref SecurityGroupInstances
       SubnetId: !Ref SubnetPublic
       Tags: 
         - Key: Name
@@ -145,7 +164,7 @@ Resources:
       InstanceType: t2.micro
       KeyName: acpkey1
       SecurityGroupIds: 
-        - !Ref SecurityGroup
+        - !Ref SecurityGroupInstances
       SubnetId: !Ref SubnetPrivate
       Tags: 
         - Key: Name

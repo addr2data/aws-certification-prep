@@ -30,7 +30,7 @@ The activities in this exercise may result in charges to your AWS account.
    :header-rows: 0
 
    * - **Component**
-     - **Applicable Costs**
+     - **Applicable costs**
      - **Notes**
    * - VPC (including Subnets, Route Tables and IntenetGateways).
      - None
@@ -75,13 +75,28 @@ Once you are comfortable with the expected output of a command and wish filter t
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
+Add IAM API access to user 'apiuser01' 
+--------------------------------------
+- Login to your AWS account.
+- Under services select **IAM**.
+
+Add permissions to 'apiuser01'
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Select **Users**
+- Click on **apiuser01**
+- Under **Add permissions to apiuser01**, select **Attach existing policies directly**.
+- In the search box, type **IAMFullAccess**, then select **IAMFullAccess**.
+- Click on **Next: Review**.
+- Click **Add permissions**.
+
 Template
 --------
 In order to build the starting configuration, we will be using a CloudFormation Template that is based on the one we used in **'ex-004', but with the following modifications:
 
 - Added an additional Elastic IP (unassociated).
-- Create a new 'private' Route Table.
+- Added a new 'private' Route Table.
 - Associated the 'private' Subnet with the 'private' Route Table.
+- Added a new security group
 
 Create Stack
 ------------
@@ -149,21 +164,21 @@ Output:
     +-----------------------------------+------------------------------+
     |         LogicalResourceId         |     PhysicalResourceId       |
     +-----------------------------------+------------------------------+
-    |  AssociateSubnetRouteTablePrivate |  rtbassoc-0d241d3c9bb2dc49f  |
-    |  AssociateSubnetRouteTablePublic  |  rtbassoc-06aff24c36acac6e0  |
-    |  AttachInternetGateway            |  ex-00-Attac-1VF12BB0ZDLSF   |
-    |  DefaultRoutePublic               |  ex-00-Defau-1N09WMGQ4J1ZB   |
-    |  FloatingIpAddressInstance        |  18.205.251.20               |
-    |  FloatingIpAddressNatGateway      |  18.233.207.198              |
-    |  InternetGateway                  |  igw-0464cdfdfe38e889a       |
-    |  PrivateInstance                  |  i-010507233a97824fc         |
-    |  PublicInstance                   |  i-0b989e42e6e390ad3         |
-    |  RouteTablePrivate                |  rtb-06d4437e94da8d880       |
-    |  RouteTablePublic                 |  rtb-0299307de3927c7ba       |
-    |  SecurityGroup                    |  sg-067dab68bcdd1330b        |
-    |  SubnetPrivate                    |  subnet-05302080bc4e3c993    |
-    |  SubnetPublic                     |  subnet-0a63cccd8930927cf    |
-    |  VPC                              |  vpc-09ca97dcc166ba6c1       |
+    |  AssociateSubnetRouteTablePrivate |  rtbassoc-xxxxxxxxxxxxxxxxx  |
+    |  AssociateSubnetRouteTablePublic  |  rtbassoc-xxxxxxxxxxxxxxxxx  |
+    |  AttachInternetGateway            |  ex-00-Attac-xxxxxxxxxxxxx   |
+    |  DefaultRoutePublic               |  ex-00-Defau-xxxxxxxxxxxxx   |
+    |  FloatingIpAddressInstance        |  xxx.xxx.xxx.xxx             |
+    |  FloatingIpAddressNatGateway      |  xxx.xxx.xxx.xxx             |
+    |  InternetGateway                  |  igw-xxxxxxxxxxxxxxxxx       |
+    |  PrivateInstance                  |  i-xxxxxxxxxxxxxxxxx         |
+    |  PublicInstance                   |  i-xxxxxxxxxxxxxxxxx         |
+    |  RouteTablePrivate                |  rtb-xxxxxxxxxxxxxxxxx       |
+    |  RouteTablePublic                 |  rtb-xxxxxxxxxxxxxxxxx       |
+    |  SecurityGroup                    |  sg-xxxxxxxxxxxxxxxxx        |
+    |  SubnetPrivate                    |  subnet-xxxxxxxxxxxxxxxxx    |
+    |  SubnetPublic                     |  subnet-xxxxxxxxxxxxxxxxx    |
+    |  VPC                              |  vpc-xxxxxxxxxxxxxxxxx       |
     +-----------------------------------+------------------------------+
 
 Environment variables
@@ -172,10 +187,12 @@ Environment variables
 .. code-block::
 
     export EX005_PUB_SUBNET=<SubnetPublic>
+    export EX005_PRIV_SUBNET=<SubnetPrivate>
     export EX005_VPC=<VPC>
     export EX005_RTB_PRIV=<RouteTablePrivate>
     export EX005_IP_PUBLIC=<FloatingIpAddressInstance>
     export EX005_INST_PRIV=<PrivateInstance>
+    export EX005_SG_ENDPOINT=<SecurityGroupEndpoint>
 
 Also, collect the **'AllocationId'** for the **'FloatingIpAddressNatGateway'**.
 
@@ -224,13 +241,13 @@ Output:
             "CreateTime": "2018-06-20T16:54:05.000Z",
             "NatGatewayAddresses": [
                 {
-                    "AllocationId": "eipalloc-0e7a961dab989f4b8"
+                    "AllocationId": "eipalloc-xxxxxxxxxxxxxxxxx"
                 }
             ],
-            "NatGatewayId": "nat-0bd8ea5771f6626c3",
+            "NatGatewayId": "nat-xxxxxxxxxxxxxxxxx",
             "State": "pending",
-            "SubnetId": "subnet-0a63cccd8930927cf",
-            "VpcId": "vpc-09ca97dcc166ba6c1"
+            "SubnetId": "subnet-xxxxxxxxxxxxxxxxx",
+            "VpcId": "vpc-xxxxxxxxxxxxxxxxx"
         }
     }
 
@@ -272,7 +289,7 @@ Use the following commands to:
 
 Connect to private Instance
 ---------------------------
-You should still be connected to the Instance in the public Subnet.
+You should still be connected to the 'public' Instance.
 
 Use the following command to connect to the 'private' Instance.
 
@@ -296,7 +313,7 @@ Use the following command to test outbound connectivity from the 'private' Insta
 
     Type 'exit' twice to disconnect from both Instances.
 
-Even though we created a NAT Gateway, we have created a Route to it in the 'private' Route Table.
+Even though we created a NAT Gateway, we also need created a default route that targets the NAT Gateway in the 'private' Route Table.
 
 
 Add a Route
@@ -323,9 +340,9 @@ Use the following command to reconnect to the 'public' Instance
 
 Connect to private Instance
 ---------------------------
-You should still be connected to the Instance in the public Subnet.
+You should still be connected to the 'public' Instance.
 
-Use the following command to connect to the 'private' Instance.
+Use the following command to reconnect to the 'private' Instance.
 
 .. code-block::
 
@@ -343,11 +360,320 @@ Use the following command to test outbound connectivity from the 'private' Insta
 
     sudo apt update
 
+    Do NOT exit.
+
+
+Install 'awscli'
+----------------
+Use the following command to test outbound connectivity from the 'private' Instance.
+
+``Expected results: 'apt update' should now succeed.``
+
+.. code-block::
+
+    sudo apt install awscli
+
+    Do NOT exit.
+
+
+aws configure
+
+AWS Access Key ID [None]:
+AWS Secret Access Key [None]:
+Default region name [None]: us-east-1
+Default output format [None]: json
+
+
+aws ec2 describe-regions
+Unable to locate credentials. You can configure credentials by running "aws configure".
+
+
     Type 'exit' twice to disconnect from both Instances.
 
+sudo apt install python3-pip
+
+
+aws ec2 associate-iam-instance-profile --instance-id $EX005_INST_PRIV --iam-instance-profile Name=EC2ForInstances
+
+{
+    "IamInstanceProfileAssociation": {
+        "AssociationId": "iip-assoc-033488be77d6a4ef1",
+        "InstanceId": "i-010507233a97824fc",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::926075045128:instance-profile/EC2ForInstances",
+            "Id": "AIPAIP7IETIKUVOSU3PJK"
+        },
+        "State": "associating"
+    }
+}
+
+
+aws ec2 describe-iam-instance-profile-associations
+{
+    "IamInstanceProfileAssociations": [
+        {
+            "AssociationId": "iip-assoc-033488be77d6a4ef1",
+            "InstanceId": "i-010507233a97824fc",
+            "IamInstanceProfile": {
+                "Arn": "arn:aws:iam::926075045128:instance-profile/EC2ForInstances",
+                "Id": "AIPAIP7IETIKUVOSU3PJK"
+            },
+            "State": "associated"
+        }
+    ]
+}
+
+
+aws ec2 describe-regions
+{
+    "Regions": [
+        {
+            "RegionName": "ap-south-1",
+            "Endpoint": "ec2.ap-south-1.amazonaws.com"
+        },
+        {
+            "RegionName": "eu-west-3",
+            "Endpoint": "ec2.eu-west-3.amazonaws.com"
+        },
+        {
+            "RegionName": "eu-west-2",
+            "Endpoint": "ec2.eu-west-2.amazonaws.com"
+        },
+        {
+            "RegionName": "eu-west-1",
+            "Endpoint": "ec2.eu-west-1.amazonaws.com"
+        },
+        {
+            "RegionName": "ap-northeast-2",
+            "Endpoint": "ec2.ap-northeast-2.amazonaws.com"
+        },
+        {
+            "RegionName": "ap-northeast-1",
+            "Endpoint": "ec2.ap-northeast-1.amazonaws.com"
+        },
+        {
+            "RegionName": "sa-east-1",
+            "Endpoint": "ec2.sa-east-1.amazonaws.com"
+        },
+        {
+            "RegionName": "ca-central-1",
+            "Endpoint": "ec2.ca-central-1.amazonaws.com"
+        },
+        {
+            "RegionName": "ap-southeast-1",
+            "Endpoint": "ec2.ap-southeast-1.amazonaws.com"
+        },
+        {
+            "RegionName": "ap-southeast-2",
+            "Endpoint": "ec2.ap-southeast-2.amazonaws.com"
+        },
+        {
+            "RegionName": "eu-central-1",
+            "Endpoint": "ec2.eu-central-1.amazonaws.com"
+        },
+        {
+            "RegionName": "us-east-1",
+            "Endpoint": "ec2.us-east-1.amazonaws.com"
+        },
+        {
+            "RegionName": "us-east-2",
+            "Endpoint": "ec2.us-east-2.amazonaws.com"
+        },
+        {
+            "RegionName": "us-west-1",
+            "Endpoint": "ec2.us-west-1.amazonaws.com"
+        },
+        {
+            "RegionName": "us-west-2",
+            "Endpoint": "ec2.us-west-2.amazonaws.com"
+        }
+    ]
+}
+
+
+aws ec2 delete-nat-gateway --nat-gateway-id $EX005_NAT_GATEWAY
+
+{
+    "NatGatewayId": "nat-0bd8ea5771f6626c3"
+}
+
+
+aws ec2 describe-nat-gateways
+
+{
+    "NatGateways": [
+        {
+            "CreateTime": "2018-06-20T16:54:05.000Z",
+            "DeleteTime": "2018-06-20T19:00:40.000Z",
+            "NatGatewayAddresses": [
+                {
+                    "AllocationId": "eipalloc-0e7a961dab989f4b8",
+                    "NetworkInterfaceId": "eni-06204113",
+                    "PrivateIp": "10.0.1.95",
+                    "PublicIp": "18.233.207.198"
+                }
+            ],
+            "NatGatewayId": "nat-0bd8ea5771f6626c3",
+            "State": "deleted",
+            "SubnetId": "subnet-0a63cccd8930927cf",
+            "VpcId": "vpc-09ca97dcc166ba6c1"
+        }
+    ]
+}
+
+aws ec2 describe-route-tables --route-table-ids $EX005_RTB_PRIV --query RouteTables[*].Routes
+
+[
+    [
+        {
+            "DestinationCidrBlock": "10.0.0.0/16",
+            "GatewayId": "local",
+            "Origin": "CreateRouteTable",
+            "State": "active"
+        },
+        {
+            "DestinationCidrBlock": "0.0.0.0/0",
+            "NatGatewayId": "nat-0bd8ea5771f6626c3",
+            "Origin": "CreateRoute",
+            "State": "blackhole"
+        }
+    ]
+]
 
 
 
+aws ec2 delete-route --destination-cidr-block 0.0.0.0/0 --route-table-id $EX005_RTB_PRIV
+
+
+aws ec2 describe-route-tables --route-table-ids $EX005_RTB_PRIV --query RouteTables[*].Routes
+[
+    [
+        {
+            "DestinationCidrBlock": "10.0.0.0/16",
+            "GatewayId": "local",
+            "Origin": "CreateRouteTable",
+            "State": "active"
+        }
+    ]
+]
+
+
+aws ec2 describe-regions
+
+cntrl-z to kill
+
+
+aws ec2 describe-vpc-endpoint-services --query ServiceNames
+
+[
+    "com.amazonaws.us-east-1.codebuild",
+    "com.amazonaws.us-east-1.codebuild-fips",
+    "com.amazonaws.us-east-1.dynamodb",
+    "com.amazonaws.us-east-1.ec2",
+    "com.amazonaws.us-east-1.ec2messages",
+    "com.amazonaws.us-east-1.elasticloadbalancing",
+    "com.amazonaws.us-east-1.execute-api",
+    "com.amazonaws.us-east-1.kinesis-streams",
+    "com.amazonaws.us-east-1.kms",
+    "com.amazonaws.us-east-1.logs",
+    "com.amazonaws.us-east-1.s3",
+    "com.amazonaws.us-east-1.servicecatalog",
+    "com.amazonaws.us-east-1.sns",
+    "com.amazonaws.us-east-1.ssm"
+]
+
+aws ec2 describe-vpc-endpoint-services --service-names com.amazonaws.us-east-1.ec2
+
+{
+    "ServiceNames": [
+        "com.amazonaws.us-east-1.ec2"
+    ],
+    "ServiceDetails": [
+        {
+            "ServiceName": "com.amazonaws.us-east-1.ec2",
+            "ServiceType": [
+                {
+                    "ServiceType": "Interface"
+                }
+            ],
+            "AvailabilityZones": [
+                "us-east-1a",
+                "us-east-1b",
+                "us-east-1c",
+                "us-east-1d",
+                "us-east-1e",
+                "us-east-1f"
+            ],
+            "Owner": "amazon",
+            "BaseEndpointDnsNames": [
+                "ec2.us-east-1.vpce.amazonaws.com"
+            ],
+            "PrivateDnsName": "ec2.us-east-1.amazonaws.com",
+            "VpcEndpointPolicySupported": false,
+            "AcceptanceRequired": false
+        }
+    ]
+}
+
+
+
+
+
+aws ec2 create-vpc-endpoint --vpc-endpoint-type Interface --vpc-id $EX005_VPC --service-name com.amazonaws.us-east-1.ec2 --subnet-ids $EX005_PRIV_SUBNET --no-private-dns-enabled --client-token ex005_002
+
+{
+    "VpcEndpoint": {
+        "VpcEndpointId": "vpce-00c85c41acae918a4",
+        "VpcEndpointType": "Interface",
+        "VpcId": "vpc-09ca97dcc166ba6c1",
+        "ServiceName": "com.amazonaws.us-east-1.ec2",
+        "State": "pending",
+        "PolicyDocument": "{\n  \"Statement\": [\n    {\n      \"Action\": \"*\", \n      \"Effect\": \"Allow\", \n      \"Principal\": \"*\", \n      \"Resource\": \"*\"\n    }\n  ]\n}",
+        "RouteTableIds": [],
+        "SubnetIds": [
+            "subnet-05302080bc4e3c993"
+        ],
+        "Groups": [
+            {
+                "GroupId": "sg-097e6344b484220d2",
+                "GroupName": "default"
+            }
+        ],
+        "PrivateDnsEnabled": false,
+        "NetworkInterfaceIds": [
+            "eni-08c9cee27844d3a4b"
+        ],
+        "DnsEntries": [
+            {
+                "DnsName": "vpce-00c85c41acae918a4-p8mkeogq.ec2.us-east-1.vpce.amazonaws.com",
+                "HostedZoneId": "Z7HUB22UULQXV"
+            },
+            {
+                "DnsName": "vpce-00c85c41acae918a4-p8mkeogq-us-east-1f.ec2.us-east-1.vpce.amazonaws.com",
+                "HostedZoneId": "Z7HUB22UULQXV"
+            }
+        ],
+        "CreationTimestamp": "2018-06-20T19:36:06.547Z"
+    }
+} 
+
+
+
+
+[--security-group-ids <value>]
+
+[--private-dns-enabled | --no-private-dns-enabled]
+[--cli-input-json <value>]
+[--generate-cli-skeleton <value>]
+
+export EX005_VPC_ENDPOINT=<VpcEndpointId>
+
+
+aws ec2 delete-vpc-endpoints --vpc-endpoint-ids $EX005_VPC_ENDPOINT
+
+{
+    "Unsuccessful": []
+}
 
 
 
@@ -364,23 +690,5 @@ Summary
 
 Next steps
 ----------
-We will test that our VPC configuration actually works as expected in 
-`ex-004 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_TestingBasicConnectivity.rst>`_
+To be added
 
-
-
-
-Dave's Stuff
-------------
-
-.. code-block::
-
-    export EX005_PUB_SUBNET=subnet-0a63cccd8930927cf
-    export EX005_EIP_ALLOC=eipalloc-0e7a961dab989f4b8
-    export EX005_VPC=vpc-09ca97dcc166ba6c1
-    export EX005_RTB_PRIV=rtb-06d4437e94da8d880
-    export EX005_IP_PUBLIC=18.205.251.20
-    export EX005_NAT_GATEWAY=nat-0bd8ea5771f6626c3
-    export EX005_INST_PRIV=i-010507233a97824fc
-
-    10.0.3.212
