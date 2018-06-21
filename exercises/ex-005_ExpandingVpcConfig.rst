@@ -90,13 +90,9 @@ Add permissions
 - Click on **apiuser01**
 - Under **Add permissions to apiuser01**, select **Attach existing policies directly**.
 - In the search box, type **IAMFullAccess**, then select **IAMFullAccess**.
-- In the search box, type **AmazonSSMFullAccess**, then select **IAMFullAccess**.
+- In the search box, type **AmazonSSMFullAccess**, then select **AmazonSSMFullAccess**.
 - Click on **Next: Review**.
 - Click **Add permissions**.
-
-
-
-
 
 Template
 --------
