@@ -96,19 +96,7 @@ Add permissions
 
 Verify access
 -------------
-Use the following awscli commands to verify access to the services we just added permissions for.
-
-.. code-block::
-
-    aws ssm describe-parameters
-
-Output:
-
-.. code-block::
-
-    {
-        "Parameters": []
-    }
+Use the following awscli command to verify access **iam**.
 
 .. code-block::
 
@@ -127,6 +115,21 @@ Output:
             "CreateDate": "2018-06-11T19:27:07Z"
         }
     }
+
+Use the following awscli command to verify access **ssm**.
+
+.. code-block::
+
+    aws ssm describe-parameters
+
+Output:
+
+.. code-block::
+
+    {
+        "Parameters": []
+    }
+
 
 Template
 --------
