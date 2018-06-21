@@ -96,12 +96,111 @@ Add permissions
 
 Template
 --------
-In order to build the starting configuration, we will be using a CloudFormation Template that is based on the one we used in **'ex-004', but with the following modifications:
+In order to build our starting configuration, we will be using a CloudFormation Template. This template is based on the one we used in **'ex-004', but with the following modifications:
 
 - Added an additional Elastic IP (unassociated).
 - Added a new 'private' Route Table.
 - Associated the 'private' Subnet with the 'private' Route Table.
 - Added a new security group
+- Added some commands to run at startup for both the 'public' and 'private' Instances.
+- Changed connectivity for the 'private' Instance to the 'public' Subnet, so it has access to the Internet when running the above commands at startup.
+- Changed all the Tags to include 'ex005'
+
+Only the new and modified resources are shown below (excluded if only the tag changed)
+
+.. code-block::
+
+    ---
+    Resources:
+      RouteTablePrivate:
+        Type: AWS::EC2::RouteTable
+        Properties: 
+          VpcId: !Ref VPC
+          Tags:
+            - Key: Name
+              Value: rtb_pri_ex005
+
+      AssociateSubnetRouteTablePrivate:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties: 
+          RouteTableId: !Ref RouteTablePrivate
+          SubnetId: !Ref SubnetPrivate
+
+      SecurityGroupEndpoint:
+        Type: AWS::EC2::SecurityGroup
+        Properties: 
+          GroupName: sg_endpoint_ex005
+          GroupDescription: "Security Group for Endpoint in ex-005"
+          SecurityGroupIngress:
+            - 
+              CidrIp: 0.0.0.0/0
+              IpProtocol: tcp
+              FromPort: 80
+              ToPort: 80
+            - 
+              CidrIp: 0.0.0.0/0
+              IpProtocol: tcp
+              FromPort: 443
+              ToPort: 443
+          VpcId: !Ref VPC
+
+      PublicInstance:
+        Type: AWS::EC2::Instance
+        Properties: 
+          ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+          InstanceType: t2.micro
+          KeyName: acpkey1
+          SecurityGroupIds: 
+            - !Ref SecurityGroupInstances
+          SubnetId: !Ref SubnetPublic
+          Tags: 
+            - Key: Name
+              Value: i_pub_ex005
+          UserData:
+            "Fn::Base64":
+                "Fn::Join": [
+                    "\n",
+                    [
+                        "#!/bin/bash",
+                        "apt-get update",
+                        "apt-get dist-upgrade -y",
+                        "apt-get install python3-pip -y",
+                        "pip3 install awscli"
+                    ]
+                ]
+
+      PrivateInstance:
+        Type: AWS::EC2::Instance
+        Properties: 
+          ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+          InstanceType: t2.micro
+          KeyName: acpkey1
+          SecurityGroupIds: 
+            - !Ref SecurityGroupInstances
+          SubnetId: !Ref SubnetPublic
+          Tags: 
+            - Key: Name
+              Value: i_pri_ex005
+          UserData:
+            "Fn::Base64":
+                "Fn::Join": [
+                    "\n",
+                    [
+                        "#!/bin/bash",
+                        "apt-get update",
+                        "apt-get dist-upgrade -y",
+                        "apt-get install python3-pip -y",
+                        "pip3 install awscli"
+                    ]
+                ]
+
+      FloatingIpAddressNatGateway:
+        Type: "AWS::EC2::EIP"
+        Properties:
+          Domain: vpc
+    ...
+
+
 
 Create Stack
 ------------
