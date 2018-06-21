@@ -309,8 +309,8 @@ Output:
     +-----------------------------------+------------------------------+
     |  AssociateSubnetRouteTablePrivate |  rtbassoc-xxxxxxxxxxxxxxxxx  |
     |  AssociateSubnetRouteTablePublic  |  rtbassoc-xxxxxxxxxxxxxxxxx  |
-    |  AttachInternetGateway            |  ex-00-Attac-xxxxxxxxxxxxx   |
-    |  DefaultRoutePublic               |  ex-00-Defau-xxxxxxxxxxxxx   |
+    |  AttachInternetGateway            |  ex-00-Attac-XXXXXXXXXXXXX   |
+    |  DefaultRoutePublic               |  ex-00-Defau-XXXXXXXXXXXXX   |
     |  FloatingIpAddressInstance        |  xxx.xxx.xxx.xxx             |
     |  FloatingIpAddressNatGateway      |  xxx.xxx.xxx.xxx             |
     |  InternetGateway                  |  igw-xxxxxxxxxxxxxxxxx       |
@@ -318,7 +318,8 @@ Output:
     |  PublicInstance                   |  i-xxxxxxxxxxxxxxxxx         |
     |  RouteTablePrivate                |  rtb-xxxxxxxxxxxxxxxxx       |
     |  RouteTablePublic                 |  rtb-xxxxxxxxxxxxxxxxx       |
-    |  SecurityGroup                    |  sg-xxxxxxxxxxxxxxxxx        |
+    |  SecurityGroupEndpoint            |  sg-xxxxxxxxxxxxxxxxx        |
+    |  SecurityGroupInstances           |  sg-xxxxxxxxxxxxxxxxx        |
     |  SubnetPrivate                    |  subnet-xxxxxxxxxxxxxxxxx    |
     |  SubnetPublic                     |  subnet-xxxxxxxxxxxxxxxxx    |
     |  VPC                              |  vpc-xxxxxxxxxxxxxxxxx       |
