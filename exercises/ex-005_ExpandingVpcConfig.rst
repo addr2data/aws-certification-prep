@@ -82,11 +82,10 @@ In this exercise, we will access to two additional services through the API:
     - IAM: Up to this point we have accessed IAM through the AWS Console.
     - SSM: The AWS Systems Manager. 
 
+Add permissions
+~~~~~~~~~~~~~~~
 - Login to your AWS account.
 - Under services select **IAM**.
-
-Add permissions to 'apiuser01'
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Select **Users**
 - Click on **apiuser01**
 - Under **Add permissions to apiuser01**, select **Attach existing policies directly**.
