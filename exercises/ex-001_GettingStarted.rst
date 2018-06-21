@@ -418,7 +418,7 @@ Create a bash script using the following commands and see the results for yourse
 
 Set up a budget
 ---------------
-As move through these exercises, it is expected that you will incur small charges to you AWS account. To ensure these expenses don't get away from you, we are going to set up a budget.  
+As you move through these exercises, it is expected that you will incur small charges to you AWS account. To ensure these expenses don't get away from you, we are going to set up a budget.  
 
 - Login to your AWS account.
 - Under services, type **Billing** into the search box and select it.
@@ -431,7 +431,7 @@ Section 1
 - Under **Budget type**, select **Cost**.
 - Under **Name**, enter a name for your Budget.
 - Under **Period**, select **Monthly** (default).
-- Under **Start date**, select a start dates (defaults to start of billing cycle)
+- Under **Start date**, select a start date (defaults to start of billing cycle)
 - Under **Budgeted amount**, enter an amount that you don't want to exceed in a month (I set $20.00).
 - Skip section 2.
 
@@ -450,6 +450,7 @@ Summary
 - You used **awscli** to verify that **apiuser01** does NOT have access to the IAM API.
 - You used **awscli** to explore AWS **regions** and **Availability Zones**.
 - You experimented with a couple of **awscli** commandline options.
+- You created a **Budget**.
 
 Next steps
 ----------
