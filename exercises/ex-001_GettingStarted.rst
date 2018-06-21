@@ -416,7 +416,7 @@ Create a bash script using the following commands and see the results for yourse
         echo REGION:$reg%AZs:$AZS | column -s % -t
         done
 
-Set up a budget
+Create a budget
 ---------------
 As you move through these exercises, it is expected that you will incur small charges to you AWS account. To ensure these expenses don't get away from you, we are going to set up a budget.  
 
