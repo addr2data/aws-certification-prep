@@ -96,17 +96,17 @@ Add permissions
 
 Template
 --------
-In order to build our starting configuration, we will be using a CloudFormation Template. This template is based on the one we used in **'ex-004', but with the following modifications:
+In order to build our starting configuration, we will use a CloudFormation Template. This template is based on the one that we used in **'ex-004'**, but with the following modifications:
 
-- Added an additional Elastic IP (unassociated).
 - Added a new 'private' Route Table.
 - Associated the 'private' Subnet with the 'private' Route Table.
 - Added a new security group
-- Added some commands to run at startup for both the 'public' and 'private' Instances.
-- Changed connectivity for the 'private' Instance to the 'public' Subnet, so it has access to the Internet when running the above commands at startup.
+- Changed connectivity for the 'private' Instance to the 'public' Subnet, so it has access to the Internet (supports step below).
+- Added an additional Elastic IP and associated with the 'private' Instance (supports step below).
+- Added some commands to run at startup for both the 'public' and 'private' Instances (required Internet access)
 - Changed all the Tags to include 'ex005'
 
-Only the new and modified resources are shown below (excluded if only the tag changed)
+Only the new and modified resources are shown below (excludes those resources where only the tag changed):
 
 .. code-block::
 
@@ -162,9 +162,9 @@ Only the new and modified resources are shown below (excluded if only the tag ch
                     "\n",
                     [
                         "#!/bin/bash",
-                        "apt-get update",
-                        "apt-get dist-upgrade -y",
-                        "apt-get install python3-pip -y",
+                        "sudo apt-get update",
+                        "sudo apt-get dist-upgrade -y",
+                        "sudo apt-get install python3-pip -y",
                         "pip3 install awscli"
                     ]
                 ]
@@ -187,9 +187,9 @@ Only the new and modified resources are shown below (excluded if only the tag ch
                     "\n",
                     [
                         "#!/bin/bash",
-                        "apt-get update",
-                        "apt-get dist-upgrade -y",
-                        "apt-get install python3-pip -y",
+                        "sudo apt-get update",
+                        "sudo apt-get dist-upgrade -y",
+                        "sudo apt-get install python3-pip -y",
                         "pip3 install awscli"
                     ]
                 ]
@@ -197,7 +197,9 @@ Only the new and modified resources are shown below (excluded if only the tag ch
       FloatingIpAddressNatGateway:
         Type: "AWS::EC2::EIP"
         Properties:
+          InstanceId: !Ref PrivateInstance
           Domain: vpc
+
     ...
 
 

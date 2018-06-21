@@ -162,9 +162,9 @@ Resources:
                 "\n",
                 [
                     "#!/bin/bash",
-                    "apt-get update",
-                    "apt-get dist-upgrade -y",
-                    "apt-get install python3-pip -y",
+                    "sudo apt-get update",
+                    "sudo apt-get dist-upgrade -y",
+                    "sudo apt-get install python3-pip -y",
                     "pip3 install awscli"
                 ]
             ]
@@ -187,9 +187,9 @@ Resources:
                 "\n",
                 [
                     "#!/bin/bash",
-                    "apt-get update",
-                    "apt-get dist-upgrade -y",
-                    "apt-get install python3-pip -y",
+                    "sudo apt-get update",
+                    "sudo apt-get dist-upgrade -y",
+                    "sudo apt-get install python3-pip -y",
                     "pip3 install awscli"
                 ]
             ]
@@ -203,6 +203,7 @@ Resources:
   FloatingIpAddressNatGateway:
     Type: "AWS::EC2::EIP"
     Properties:
+      InstanceId: !Ref PrivateInstance
       Domain: vpc
 
 ...
