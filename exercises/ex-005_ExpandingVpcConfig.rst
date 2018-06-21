@@ -94,6 +94,40 @@ Add permissions
 - Click on **Next: Review**.
 - Click **Add permissions**.
 
+Verify access
+-------------
+Use the following awscli commands to verify access to the services we just added permissions for.
+
+.. code-block::
+
+    aws ssm describe-parameters
+
+Output:
+
+.. code-block::
+
+    {
+        "Parameters": []
+    }
+
+.. code-block::
+
+    aws iam get-user --user-name apiuser01
+
+Output:
+
+.. code-block::
+
+    {
+        "User": {
+            "Path": "/",
+            "UserName": "apiuser01",
+            "UserId": "XXXXXXXXXXXXXXXXXXXXX",
+            "Arn": "arn:aws:iam::xxxxxxxxxxx:user/apiuser01",
+            "CreateDate": "2018-06-11T19:27:07Z"
+        }
+    }
+
 Template
 --------
 In order to build our starting configuration, we will use a CloudFormation Template. This template is based on the one that we used in **'ex-004'**, but with the following modifications:
