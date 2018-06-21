@@ -75,8 +75,13 @@ Once you are comfortable with the expected output of a command and wish filter t
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
-Add IAM API access to user 'apiuser01' 
---------------------------------------
+Additional access for 'apiuser01' 
+---------------------------------
+In this exercise, we will access to two additional services through the API:
+    
+    - IAM: Up to this point we have accessed IAM through the AWS Console.
+    - SSM: The AWS Systems Manager. 
+
 - Login to your AWS account.
 - Under services select **IAM**.
 
@@ -86,8 +91,13 @@ Add permissions to 'apiuser01'
 - Click on **apiuser01**
 - Under **Add permissions to apiuser01**, select **Attach existing policies directly**.
 - In the search box, type **IAMFullAccess**, then select **IAMFullAccess**.
+- In the search box, type **AmazonSSMFullAccess**, then select **IAMFullAccess**.
 - Click on **Next: Review**.
 - Click **Add permissions**.
+
+
+
+
 
 Template
 --------
