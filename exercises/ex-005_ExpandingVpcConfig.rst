@@ -812,122 +812,96 @@ Test
 
     aws ec2 describe-regions
 
-    Command should 'hang'. Cntrl-c to kill it.
-
+    Command should hang. 'cntrl-c' to kill it.
 
 Type 'exit' twice to exit both ssh sessions.
-
-Even though we added a Nat Gateway, we didn't add a route to it.
-
-
-
-
-
-
-
-
-
-
-
-You must specify a region. You can also configure your region by running "aws configure".
-
-
-
-Connect to private Instance
----------------------------
-You should still be connected to the 'public' Instance.
-
-Use the following command to connect to the 'private' Instance.
-
-.. code-block::
-
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@<ip-addr-private-instance>
-
-    Do NOT exit.
-
-Test outbound connectivity
---------------------------
-Use the following command to test outbound connectivity from the 'private' Instance.
-
-``Expected results: 'apt update' should fail.``
-
-.. code-block::
-
-    sudo apt update
-
-    Type 'cntrl-c' to kill 'apt'
-
-    Type 'exit' twice to disconnect from both Instances.
-
-Even though we created a NAT Gateway, we also need created a default route that targets the NAT Gateway in the 'private' Route Table.
 
 
 Add a Route
 -----------
-Use the following awscli command to add a Route to the 'private' Route Table.
+Even though we added a Nat Gateway, there is no Route that directs traffic to it.
+
+Use the following awscli command to add a default Route to the 'private' Route Table.
 
 .. code-block::
 
     aws ec2 create-route --destination-cidr-block 0.0.0.0/0 --nat-gateway-id $EX005_NAT_GATEWAY --route-table-id $EX005_RTB_PRIV
 
+Output:
+
+.. code-block::
+    
     {
         "Return": true
     }
 
-Connect to public Instance
---------------------------
-Use the following command to reconnect to the 'public' Instance
+Instance ('public')
+-------------------
+
+Connect
+~~~~~~~
+Next we need to connect to the 'public' Instance. Run the following command to do that.
 
 .. code-block::
 
     ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX005_IP_PUBLIC
 
-    Do NOT exit.
+Do NOT exit ssh session.
 
-Connect to private Instance
----------------------------
-You should still be connected to the 'public' Instance.
+Instance ('private')
+-------------------
 
-Use the following command to reconnect to the 'private' Instance.
-
-.. code-block::
-
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@<ip-addr-private-instance>
-
-    Do NOT exit.
-
-Test outbound connectivity
---------------------------
-Use the following command to test outbound connectivity from the 'private' Instance.
-
-``Expected results: 'apt update' should now succeed.``
+Connect
+~~~~~~~
 
 .. code-block::
 
-    sudo apt update
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$(aws ssm get-parameter --name Ex005-PrivInstancePrivIP --output text --query Parameter.Value)
 
-    Do NOT exit.
-
-
-Install 'awscli'
-----------------
-Use the following command to test outbound connectivity from the 'private' Instance.
-
-``Expected results: 'apt update' should now succeed.``
+Test
+~~~~
 
 .. code-block::
 
-    sudo apt install awscli
+    aws ec2 describe-regions --region-names <YOUR_REGION>
 
-    Do NOT exit.
+{
+    "Regions": [
+        {
+            "RegionName": "us-east-1",
+            "Endpoint": "ec2.us-east-1.amazonaws.com"
+        }
+    ]
+}
+
+Output:
+
+.. code-block::
+
+    {
+        "Regions": [
+            {
+                "RegionName": "us-east-1",
+                "Endpoint": "ec2.us-east-1.amazonaws.com"
+            }
+        ]
+    }
+
+You are connecting to the public **'Endpoint'** for EC2. In the output, you can see that I am using **'ec2.us-east-1.amazonaws.com'**.
 
 
-aws configure
+ 
 
-AWS Access Key ID [None]:
-AWS Secret Access Key [None]:
-Default region name [None]: us-east-1
-Default output format [None]: json
+
+
+
+
+
+
+
+
+
+
 
 
 aws ec2 describe-regions
