@@ -82,15 +82,19 @@ Once you are comfortable with the expected output of a command and wish filter t
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
-Additional 
-----------
-In this exercise, we will access to two additional services through the API:
-    
-    - IAM: Up to this point we have accessed IAM through the AWS Console.
-    - SSM: The AWS Systems Manager. 
+IAM
+---
+In this exercise, we will:
 
-Add permissions for 'apiuser01'
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Access to two additional services through the API:
+    
+    + IAM: Up to this point we have only accessed IAM through the AWS Console.
+    + SSM: The AWS Systems Manager.
+
+- Leverage **Roles**  
+
+Add permissions
+~~~~~~~~~~~~~~~
 - Login to your AWS account.
 - Under services select **IAM**.
 - Select **Users**
