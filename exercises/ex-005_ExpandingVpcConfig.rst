@@ -571,11 +571,36 @@ Output:
         ]
     }
 
+Add a Route
+-----------
+Even though we added a Nat Gateway, there is no Route that directs traffic to it.
+
+Use the following awscli command to add a default Route to the 'private' Route Table.
+
+.. code-block::
+
+    aws ec2 create-route --destination-cidr-block 0.0.0.0/0 --nat-gateway-id $EX005_NAT_GATEWAY --route-table-id $EX005_RTB_PRIV
+
+Output:
+
+.. code-block::
+    
+    {
+        "Return": true
+    }
+
 Instance ('private')
 --------------------
-In previous steps, we disassociated an Elastic IP from the 'private' Instance and removed the default Route from the 'private' subnet.
+In an earlier step, we:
 
-The only way to connect to the 'private' Instance now is through the 'public' Instance. In order to do this we will need to collect the 'private' IP address of the 'private' Instance.
+    + Disassociated an Elastic IP from the 'private' Instance
+    + Removed the default Route, that targeted the **'Internet Gateway'**,  from the 'private' subnet.
+
+In the above step, we added a new default Route, that targets the **'NAT Gateway'**, to the 'private' subnet.
+
+The combination of the **'NAT Gateway'** and the new **'default Route'** will only allow Internet traffic that originates from the 'private' Subnet. 
+
+At this point, the only way to connect to the 'private' Instance now is through the 'public' Instance. In order to do this we will need to collect the 'private' IP address of the 'private' Instance.
 
 Parameter store
 ---------------
@@ -775,7 +800,6 @@ Output:
 
 Do NOT exit ssh session.
 
-
 Instance ('private')
 -------------------
 
@@ -810,30 +834,97 @@ Test
 
 .. code-block::
 
-    aws ec2 describe-regions
-
-    Command should hang. 'cntrl-c' to kill it.
-
-Type 'exit' twice to exit both ssh sessions.
-
-
-Add a Route
------------
-Even though we added a Nat Gateway, there is no Route that directs traffic to it.
-
-Use the following awscli command to add a default Route to the 'private' Route Table.
-
-.. code-block::
-
-    aws ec2 create-route --destination-cidr-block 0.0.0.0/0 --nat-gateway-id $EX005_NAT_GATEWAY --route-table-id $EX005_RTB_PRIV
+    aws ec2 describe-regions --region-names <YOUR_REGION>
 
 Output:
 
 .. code-block::
-    
+
     {
-        "Return": true
+        "Regions": [
+            {
+                "RegionName": "us-east-1",
+                "Endpoint": "ec2.us-east-1.amazonaws.com"
+            }
+        ]
     }
+
+When we run 'awscli ec2' commands, we are connecting to the public **'Endpoint'** for EC2, through the **'NAT Gateway'**.
+
+Type 'exit' twice to exit both ssh sessions.
+
+Create an Endpoint
+------------------
+Instead of accessing the public **'Endpoint'**, we can create our own VPC **'Endpoint'** that doesn't require our API calls to EC2 to leave the AWS network.
+
+Use the following awscli command to create a VPC Endpoint. 
+
+.. code-block::
+
+    aws ec2 create-vpc-endpoint --vpc-endpoint-type Interface --vpc-id $EX005_VPC --service-name com.amazonaws.us-east-1.ec2 --subnet-ids $EX005_SUBNET_PRIV --no-private-dns-enabled --security-group-ids $EX005_SG_ENDPOINT
+
+Output:
+
+.. code-block::
+
+    {
+        "VpcEndpoint": {
+            "VpcEndpointId": "vpce-08994fcde67df4657",
+            "VpcEndpointType": "Interface",
+            "VpcId": "vpc-0e023b84eab8c4fb0",
+            "ServiceName": "com.amazonaws.us-east-1.ec2",
+            "State": "pending",
+            "PolicyDocument": "{\n  \"Statement\": [\n    {\n      \"Action\": \"*\", \n      \"Effect\": \"Allow\", \n      \"Principal\": \"*\", \n      \"Resource\": \"*\"\n    }\n  ]\n}",
+            "RouteTableIds": [],
+            "SubnetIds": [
+                "subnet-0653d3fee3e302a9b"
+            ],
+            "Groups": [
+                {
+                    "GroupId": "sg-049958eab8dbc14c8",
+                    "GroupName": "sg_endpoint_ex005"
+                }
+            ],
+            "PrivateDnsEnabled": false,
+            "NetworkInterfaceIds": [
+                "eni-02a3fc8b69e6f2d72"
+            ],
+            "DnsEntries": [
+                {
+                    "DnsName": "vpce-08994fcde67df4657-1bqis1fj.ec2.us-east-1.vpce.amazonaws.com",
+                    "HostedZoneId": "Z7HUB22UULQXV"
+                },
+                {
+                    "DnsName": "vpce-08994fcde67df4657-1bqis1fj-us-east-1e.ec2.us-east-1.vpce.amazonaws.com",
+                    "HostedZoneId": "Z7HUB22UULQXV"
+                }
+            ],
+            "CreationTimestamp": "2018-06-22T17:05:19.778Z"
+        }
+    }
+
+Notes
+~~~~~
+    
+    We only created this Endpoint EC2
+    We used the **'--no-private-dns-enabled'** option, so we will have to use the public 'DnsName' identified in the output above.
+
+DNS Name
+~~~~~~~~
+Copy the DNS specified in the output above. 
+
+Environment Variable
+~~~~~~~~~~~~~~~~~~~~
+export EX005_ENDPOINT=<VpcEndpointId>
+export EX005_ENDPOINT=vpce-08994fcde67df4657
+
+Delete a Route
+--------------
+Use the following awscli command to delete the default Route that targets in Nat Gateway in the 'private' Route Table. This will prevent us from getting to public Endpoint for EC2.
+
+.. code-block::
+
+    aws ec2 delete-route --destination-cidr-block 0.0.0.0/0 --route-table-id $EX005_RTB_PRIV
 
 Instance ('public')
 -------------------
@@ -858,21 +949,18 @@ Connect
 
     ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$(aws ssm get-parameter --name Ex005-PrivInstancePrivIP --output text --query Parameter.Value)
 
-Test
+test
 ~~~~
 
 .. code-block::
 
-    aws ec2 describe-regions --region-names <YOUR_REGION>
+    aws ec2 describe-regions --region-names us-east-1
 
-{
-    "Regions": [
-        {
-            "RegionName": "us-east-1",
-            "Endpoint": "ec2.us-east-1.amazonaws.com"
-        }
-    ]
-}
+    Command will hang. 'cntrl-c' quit. 
+
+.. code-block::
+
+    aws ec2 describe-regions --region-names us-east-1 --endpoint-url https://<your-dns-name>
 
 Output:
 
@@ -887,314 +975,111 @@ Output:
         ]
     }
 
-You are connecting to the public **'Endpoint'** for EC2. In the output, you can see that I am using **'ec2.us-east-1.amazonaws.com'**.
+Cleanup
+-------
 
+NAT Gateway
+~~~~~~~~~~~
+Use the following awscli command to delete the **'NAT Gateway'**.
 
- 
+.. code-block::
 
+    aws ec2 delete-nat-gateway --nat-gateway-id $EX005_NAT_GATEWAY
 
+Output:
 
+.. code-block::
 
-
-
-
-
-
-
-
-
-
-aws ec2 describe-regions
-Unable to locate credentials. You can configure credentials by running "aws configure".
-
-
-    Type 'exit' twice to disconnect from both Instances.
-
-sudo apt install python3-pip
-
-
-aws ec2 associate-iam-instance-profile --instance-id $EX005_INST_PRIV --iam-instance-profile Name=EC2ForInstances
-
-{
-    "IamInstanceProfileAssociation": {
-        "AssociationId": "iip-assoc-033488be77d6a4ef1",
-        "InstanceId": "i-010507233a97824fc",
-        "IamInstanceProfile": {
-            "Arn": "arn:aws:iam::926075045128:instance-profile/EC2ForInstances",
-            "Id": "AIPAIP7IETIKUVOSU3PJK"
-        },
-        "State": "associating"
+    {
+        "NatGatewayId": "nat-027ce1b40eea72b49"
     }
-}
 
+Use the following awscli command to verify that the **'NAT Gateway'** State is is **'deleted'**.
 
-aws ec2 describe-iam-instance-profile-associations
-{
-    "IamInstanceProfileAssociations": [
-        {
-            "AssociationId": "iip-assoc-033488be77d6a4ef1",
-            "InstanceId": "i-010507233a97824fc",
-            "IamInstanceProfile": {
-                "Arn": "arn:aws:iam::926075045128:instance-profile/EC2ForInstances",
-                "Id": "AIPAIP7IETIKUVOSU3PJK"
-            },
-            "State": "associated"
-        }
-    ]
-}
+.. code-block::
 
+    aws ec2 describe-nat-gateways --nat-gateway-ids $EX005_NAT_GATEWAY
 
-aws ec2 describe-regions
-{
-    "Regions": [
-        {
-            "RegionName": "ap-south-1",
-            "Endpoint": "ec2.ap-south-1.amazonaws.com"
-        },
-        {
-            "RegionName": "eu-west-3",
-            "Endpoint": "ec2.eu-west-3.amazonaws.com"
-        },
-        {
-            "RegionName": "eu-west-2",
-            "Endpoint": "ec2.eu-west-2.amazonaws.com"
-        },
-        {
-            "RegionName": "eu-west-1",
-            "Endpoint": "ec2.eu-west-1.amazonaws.com"
-        },
-        {
-            "RegionName": "ap-northeast-2",
-            "Endpoint": "ec2.ap-northeast-2.amazonaws.com"
-        },
-        {
-            "RegionName": "ap-northeast-1",
-            "Endpoint": "ec2.ap-northeast-1.amazonaws.com"
-        },
-        {
-            "RegionName": "sa-east-1",
-            "Endpoint": "ec2.sa-east-1.amazonaws.com"
-        },
-        {
-            "RegionName": "ca-central-1",
-            "Endpoint": "ec2.ca-central-1.amazonaws.com"
-        },
-        {
-            "RegionName": "ap-southeast-1",
-            "Endpoint": "ec2.ap-southeast-1.amazonaws.com"
-        },
-        {
-            "RegionName": "ap-southeast-2",
-            "Endpoint": "ec2.ap-southeast-2.amazonaws.com"
-        },
-        {
-            "RegionName": "eu-central-1",
-            "Endpoint": "ec2.eu-central-1.amazonaws.com"
-        },
-        {
-            "RegionName": "us-east-1",
-            "Endpoint": "ec2.us-east-1.amazonaws.com"
-        },
-        {
-            "RegionName": "us-east-2",
-            "Endpoint": "ec2.us-east-2.amazonaws.com"
-        },
-        {
-            "RegionName": "us-west-1",
-            "Endpoint": "ec2.us-west-1.amazonaws.com"
-        },
-        {
-            "RegionName": "us-west-2",
-            "Endpoint": "ec2.us-west-2.amazonaws.com"
-        }
-    ]
-}
+Output:
 
+.. code-block::
 
-aws ec2 delete-nat-gateway --nat-gateway-id $EX005_NAT_GATEWAY
-
-{
-    "NatGatewayId": "nat-0bd8ea5771f6626c3"
-}
-
-
-aws ec2 describe-nat-gateways
-
-{
-    "NatGateways": [
-        {
-            "CreateTime": "2018-06-20T16:54:05.000Z",
-            "DeleteTime": "2018-06-20T19:00:40.000Z",
-            "NatGatewayAddresses": [
-                {
-                    "AllocationId": "eipalloc-0e7a961dab989f4b8",
-                    "NetworkInterfaceId": "eni-06204113",
-                    "PrivateIp": "10.0.1.95",
-                    "PublicIp": "18.233.207.198"
-                }
-            ],
-            "NatGatewayId": "nat-0bd8ea5771f6626c3",
-            "State": "deleted",
-            "SubnetId": "subnet-0a63cccd8930927cf",
-            "VpcId": "vpc-09ca97dcc166ba6c1"
-        }
-    ]
-}
-
-aws ec2 describe-route-tables --route-table-ids $EX005_RTB_PRIV --query RouteTables[*].Routes
-
-[
-    [
-        {
-            "DestinationCidrBlock": "10.0.0.0/16",
-            "GatewayId": "local",
-            "Origin": "CreateRouteTable",
-            "State": "active"
-        },
-        {
-            "DestinationCidrBlock": "0.0.0.0/0",
-            "NatGatewayId": "nat-0bd8ea5771f6626c3",
-            "Origin": "CreateRoute",
-            "State": "blackhole"
-        }
-    ]
-]
-
-
-
-aws ec2 delete-route --destination-cidr-block 0.0.0.0/0 --route-table-id $EX005_RTB_PRIV
-
-
-aws ec2 describe-route-tables --route-table-ids $EX005_RTB_PRIV --query RouteTables[*].Routes
-[
-    [
-        {
-            "DestinationCidrBlock": "10.0.0.0/16",
-            "GatewayId": "local",
-            "Origin": "CreateRouteTable",
-            "State": "active"
-        }
-    ]
-]
-
-
-aws ec2 describe-regions
-
-cntrl-z to kill
-
-
-aws ec2 describe-vpc-endpoint-services --query ServiceNames
-
-[
-    "com.amazonaws.us-east-1.codebuild",
-    "com.amazonaws.us-east-1.codebuild-fips",
-    "com.amazonaws.us-east-1.dynamodb",
-    "com.amazonaws.us-east-1.ec2",
-    "com.amazonaws.us-east-1.ec2messages",
-    "com.amazonaws.us-east-1.elasticloadbalancing",
-    "com.amazonaws.us-east-1.execute-api",
-    "com.amazonaws.us-east-1.kinesis-streams",
-    "com.amazonaws.us-east-1.kms",
-    "com.amazonaws.us-east-1.logs",
-    "com.amazonaws.us-east-1.s3",
-    "com.amazonaws.us-east-1.servicecatalog",
-    "com.amazonaws.us-east-1.sns",
-    "com.amazonaws.us-east-1.ssm"
-]
-
-aws ec2 describe-vpc-endpoint-services --service-names com.amazonaws.us-east-1.ec2
-
-{
-    "ServiceNames": [
-        "com.amazonaws.us-east-1.ec2"
-    ],
-    "ServiceDetails": [
-        {
-            "ServiceName": "com.amazonaws.us-east-1.ec2",
-            "ServiceType": [
-                {
-                    "ServiceType": "Interface"
-                }
-            ],
-            "AvailabilityZones": [
-                "us-east-1a",
-                "us-east-1b",
-                "us-east-1c",
-                "us-east-1d",
-                "us-east-1e",
-                "us-east-1f"
-            ],
-            "Owner": "amazon",
-            "BaseEndpointDnsNames": [
-                "ec2.us-east-1.vpce.amazonaws.com"
-            ],
-            "PrivateDnsName": "ec2.us-east-1.amazonaws.com",
-            "VpcEndpointPolicySupported": false,
-            "AcceptanceRequired": false
-        }
-    ]
-}
-
-
-
-
-
-aws ec2 create-vpc-endpoint --vpc-endpoint-type Interface --vpc-id $EX005_VPC --service-name com.amazonaws.us-east-1.ec2 --subnet-ids $EX005_PRIV_SUBNET --no-private-dns-enabled --client-token ex005_002
-
-{
-    "VpcEndpoint": {
-        "VpcEndpointId": "vpce-00c85c41acae918a4",
-        "VpcEndpointType": "Interface",
-        "VpcId": "vpc-09ca97dcc166ba6c1",
-        "ServiceName": "com.amazonaws.us-east-1.ec2",
-        "State": "pending",
-        "PolicyDocument": "{\n  \"Statement\": [\n    {\n      \"Action\": \"*\", \n      \"Effect\": \"Allow\", \n      \"Principal\": \"*\", \n      \"Resource\": \"*\"\n    }\n  ]\n}",
-        "RouteTableIds": [],
-        "SubnetIds": [
-            "subnet-05302080bc4e3c993"
-        ],
-        "Groups": [
+    {
+        "NatGateways": [
             {
-                "GroupId": "sg-097e6344b484220d2",
-                "GroupName": "default"
+                "CreateTime": "2018-06-22T14:32:42.000Z",
+                "DeleteTime": "2018-06-22T17:39:27.000Z",
+                "NatGatewayAddresses": [
+                    {
+                        "AllocationId": "eipalloc-01e30ff85d3c3fb1d",
+                        "NetworkInterfaceId": "eni-e52f27dc",
+                        "PrivateIp": "10.0.1.144",
+                        "PublicIp": "34.196.25.177"
+                    }
+                ],
+                "NatGatewayId": "nat-027ce1b40eea72b49",
+                "State": "deleted",
+                "SubnetId": "subnet-0ae46bfc8cb541824",
+                "VpcId": "vpc-0e023b84eab8c4fb0"
             }
-        ],
-        "PrivateDnsEnabled": false,
-        "NetworkInterfaceIds": [
-            "eni-08c9cee27844d3a4b"
-        ],
-        "DnsEntries": [
-            {
-                "DnsName": "vpce-00c85c41acae918a4-p8mkeogq.ec2.us-east-1.vpce.amazonaws.com",
-                "HostedZoneId": "Z7HUB22UULQXV"
-            },
-            {
-                "DnsName": "vpce-00c85c41acae918a4-p8mkeogq-us-east-1f.ec2.us-east-1.vpce.amazonaws.com",
-                "HostedZoneId": "Z7HUB22UULQXV"
-            }
-        ],
-        "CreationTimestamp": "2018-06-20T19:36:06.547Z"
+        ]
     }
-} 
+
+VPC Endpoint
+~~~~~~~~~~~~
+Use the following awscli command to delete the **'VPC Endpoint'**.
+
+.. code-block::
+
+    aws ec2 delete-vpc-endpoints --vpc-endpoint-ids $EX005_ENDPOINT
+
+Output:
+
+.. code-block::
+
+    {
+        "Unsuccessful": []
+    }
 
 
+Stack
+~~~~~
+
+.. code-block::
+
+    aws cloudformation delete-stack --stack-name ex-005
 
 
-[--security-group-ids <value>]
+.. code-block::
 
-[--private-dns-enabled | --no-private-dns-enabled]
-[--cli-input-json <value>]
-[--generate-cli-skeleton <value>]
+    aws cloudformation describe-stack --stack-name ex-005
 
-export EX005_VPC_ENDPOINT=<VpcEndpointId>
+Output:
 
+.. code-block::
 
-aws ec2 delete-vpc-endpoints --vpc-endpoint-ids $EX005_VPC_ENDPOINT
+    {
+        "Stacks": [
+            {
+                "StackId": "arn:aws:cloudformation:us-east-1:926075045128:stack/ex-005/523f72f0-7619-11e8-b431-50fae583d0fe",
+                "StackName": "ex-005",
+                "CreationTime": "2018-06-22T12:39:36.117Z",
+                "DeletionTime": "2018-06-22T17:51:31.095Z",
+                "RollbackConfiguration": {},
+                "StackStatus": "DELETE_IN_PROGRESS",
+                "DisableRollback": false,
+                "NotificationARNs": [],
+                "Tags": [],
+                "EnableTerminationProtection": false
+            }
+        ]
+    }
 
-{
-    "Unsuccessful": []
-}
+Output:
 
+.. code-block::
+
+    An error occurred (ValidationError) when calling the DescribeStacks operation: Stack with id ex-005 does not exist
 
 
 
