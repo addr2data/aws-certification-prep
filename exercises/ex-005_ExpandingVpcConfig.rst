@@ -359,42 +359,24 @@ Output:
 
 Environment variables
 ~~~~~~~~~~~~~~~~~~~~~
-It would be best to create a shell script from these commands and those under 'Sanity check'.
+Run the following commands.
 
 .. code-block::
 
-    ##################################
-    # Public address for Elastic IPs #
-    ##################################
     export EX005_IP_PUBLIC=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`FloatingIpAddressInstance`].PhysicalResourceId')
 
     export EX005_IP_NAT=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`FloatingIpAddressNatGateway`].PhysicalResourceId')
 
-    #####################################
-    # InstanceId for 'private' Instance #
-    #####################################
     export EX005_INST_PRIV=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`PrivateInstance`].PhysicalResourceId')
 
-    ##########################################
-    # RouteTableId for 'private' Route Table #
-    ##########################################
     export EX005_RTB_PRIV=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`RouteTablePrivate`].PhysicalResourceId')
 
-    #################################################
-    # SecurityGroupId for 'endpoint' Security Group #
-    #################################################
     export EX005_SG_ENDPOINT=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`SecurityGroupEndpoint`].PhysicalResourceId')
 
-    #############################
-    # SubnetId for both Subnets #
-    #############################
     export EX005_SUBNET_PUB=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`SubnetPublic`].PhysicalResourceId')
 
     export EX005_SUBNET_PRIV=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`SubnetPrivate`].PhysicalResourceId')
 
-    #################
-    # VpcId for VPC #
-    #################
     export EX005_VPC=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`VPC`].PhysicalResourceId')
 
 Sanity check
@@ -445,33 +427,6 @@ Run the following command to verify that 'awscli' is installed (version should b
     aws --version
 
     Type 'exit' to exit the ssh session.
-
-
-
-
-
-
-
-Type exit to exit the ssh session.
-
-.. code-block::
-
-    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX005_IP_NAT
-
-You are now connected to the 'public' instance.
-
-.. code-block::
-
-    aws --version
-
-Output:
-
-.. code-block::
-
-    aws-cli/1.15.43 Python/3.5.2 Linux/4.4.0-1060-aws botocore/1.10.43
-
-Type exit to exit the ssh session.
-
 
 Disassociate Elastic IP
 -----------------------
