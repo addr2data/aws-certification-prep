@@ -369,6 +369,8 @@ Run the following commands to capture the 'PhysicalResourceId' for the applicabl
 
     export EX005_INST_PRIV=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`PrivateInstance`].PhysicalResourceId')
 
+    export EX005_INST_PUB=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`PublicInstance`].PhysicalResourceId')
+
     export EX005_RTB_PRIV=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`RouteTablePrivate`].PhysicalResourceId')
 
     export EX005_SG_ENDPOINT=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`SecurityGroupEndpoint`].PhysicalResourceId')
@@ -386,6 +388,7 @@ Sanity check
     
     echo $EX005_IP_PUBLIC
     echo $EX005_IP_NAT
+    echo $EX005_INST_PRIV
     echo $EX005_INST_PRIV
     echo $EX005_RTB_PRIV
     echo $EX005_SG_ENDPOINT
@@ -595,7 +598,7 @@ Output:
 
 Instance ('public')
 -------------------
-In order to access the **'Parameter store'** from the 'public' Instance, we will need to run an 'awscli'. We verify that the 'awscli' was installed on both Instances in a previous step.
+In order to access the **'Parameter store'** from the 'public' Instance, we will need to run an 'awscli' command. We verified that the 'awscli' was installed on both Instances in a previous step.
 
 Before we can use the 'awscli' on the 'public' Instance, we must configure it. We are only going to configure the 'region' and NOT the credentials. We will use another method for that.
 
@@ -634,10 +637,108 @@ Output:
     Default region name [None]: <YOUR_REGION>
     Default output format [None]:
 
+Test
+~~~~
+Use the following awscli command to test our configuration.
+
+.. code-block::
+
+    aws ec2 describe-regions
+
+Output:
+
+.. code-block::
+
+    Unable to locate credentials. You can configure credentials by running "aws configure".
+
+Type 'exit' to exit the ssh session.
 
 
+Add a Role
+----------
+Now we are going to add the 'Role' we created at the beginning of this exercise to both Instances.
 
+Instance ('public')
+~~~~~~~~~~~~~~~~~~~
 
+.. code-block::
+
+    aws ec2 associate-iam-instance-profile --instance-id $EX005_INST_PUB --iam-instance-profile Name=Ec2AccessForInstances
+
+Output:
+
+.. code-block::
+
+    {
+        "IamInstanceProfileAssociation": {
+            "AssociationId": "iip-assoc-xxxxxxxxxxxxxxxxx",
+            "InstanceId": "i-xxxxxxxxxxxxxxxxx",
+            "IamInstanceProfile": {
+                "Arn": "arn:aws:iam::xxxxxxxxxxxx:instance-profile/Ec2AccessForInstances",
+                "Id": "XXXXXXXXXXXXXXXXX"
+            },
+            "State": "associating"
+        }
+    }
+
+Instance ('private')
+~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    aws ec2 associate-iam-instance-profile --instance-id $EX005_INST_PRIV --iam-instance-profile Name=Ec2AccessForInstances
+
+Output:
+
+.. code-block::
+
+    {
+        "IamInstanceProfileAssociation": {
+            "AssociationId": "iip-assoc-xxxxxxxxxxxxxxxxx",
+            "InstanceId": "i-xxxxxxxxxxxxxxxxx",
+            "IamInstanceProfile": {
+                "Arn": "arn:aws:iam::xxxxxxxxxxxx:instance-profile/Ec2AccessForInstances",
+                "Id": "XXXXXXXXXXXXXXXXX"
+            },
+            "State": "associating"
+        }
+    }
+
+Sanity check
+~~~~~~~~~~~~
+
+.. code-block::
+
+    aws ec2 describe-iam-instance-profile-associations
+
+Output:
+
+.. code-block::
+
+    {
+        "IamInstanceProfileAssociations": [
+            {
+                "AssociationId": "iip-assoc-xxxxxxxxxxxxxxxxx",
+                "InstanceId": "i-xxxxxxxxxxxxxxxxx",
+                "IamInstanceProfile": {
+                    "Arn": "arn:aws:iam::xxxxxxxxxxxx:instance-profile/Ec2AccessForInstances",
+                    "Id": "XXXXXXXXXXXXXXXXX"
+                },
+                "State": "associated"
+            },
+            {
+                "AssociationId": "iip-assoc-xxxxxxxxxxxxxxxxx",
+                "InstanceId": "i-xxxxxxxxxxxxxxxxx",
+                "IamInstanceProfile": {
+                    "Arn": "arn:aws:iam::xxxxxxxxxxxx:instance-profile/Ec2AccessForInstances",
+                    "Id": "XXXXXXXXXXXXXXXXX"
+                },
+                "State": "associated"
+            }
+        ]
+    }
+
+Ensure that the 'State' is **'associated'**
 
 Configure awscli
 ----------------
