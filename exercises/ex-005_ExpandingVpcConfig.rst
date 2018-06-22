@@ -359,6 +359,7 @@ Output:
 
 Environment variables
 ~~~~~~~~~~~~~~~~~~~~~
+It would be best to create a shell script from these commands and the one under 'Sanity check'.
 
 .. code-block::
 
@@ -396,7 +397,6 @@ Environment variables
     #################
     export EX005_VPC=$(aws cloudformation describe-stack-resources --stack-name ex-005 --output text --query 'StackResources[?LogicalResourceId==`VPC`].PhysicalResourceId')
 
-
 Sanity check
 ~~~~~~~~~~~~
 
@@ -410,12 +410,6 @@ Sanity check
     echo $EX005_SUBNET_PUB
     echo $EX005_SUBNET_PRIV
     echo $EX005_VPC
-
-
-
-
-
-
 
 Verify package installation
 ---------------------------
