@@ -76,9 +76,9 @@ The following table shows the default limits for the components utilized in this
 
 Environment variables
 ---------------------
-During this exercise, we will be creating environment variables to simplify the syntax of commands run later in the exercise. I have decided to do this manually, because I want to show the the full output from each command and not redirect a filtered output directly into a variable.
+In this exercise, we will deviate from our previous position on creating environment variables.
 
-Once you are comfortable with the expected output of a command and wish filter the output, then you might want to try the **'--query'** and **'--output'** options available in the awscli command.
+At one point, we will need to close to a dozen environment variable, so we will do this by using the **'--query'** and **'--output'** options available in the awscli command.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
@@ -319,15 +319,15 @@ Output:
         ]
     }
 
-Collect the Stack details
--------------------------
-Use the following awscli command to collect the **'LogicalResourceId'** and **'PhysicalResourceId'** for all the components in the **Stack**
+Review the Stack details
+------------------------
+Use the following awscli command to display the **'LogicalResourceId'** and **'PhysicalResourceId'** for all the components in the **Stack**
 
-``Notice the format of this portion of the query string '{LogicalResourceId: LogicalResourceId,PhysicalResourceId: PhysicalResourceId}', it adds a header for each column.`` 
+Notice the format of this portion of the query string **'{Logical Resource Id: LogicalResourceId,Physical Resource Id: PhysicalResourceId}'**, it adds a header for each column.** 
 
 .. code-block::
 
-    aws cloudformation describe-stack-resources --stack-name ex-005 --output table --query 'StackResources[*].{LogicalResourceId: LogicalResourceId,PhysicalResourceId: PhysicalResourceId}'
+    aws cloudformation describe-stack-resources --stack-name ex-005 --output table --query 'StackResources[*].{"Logical Resource Id": LogicalResourceId,"Physical Resource Id": PhysicalResourceId}'
 
 Output:
 
