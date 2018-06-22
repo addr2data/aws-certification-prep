@@ -43,11 +43,17 @@ The activities in this exercise may result in charges to your AWS account.
      - None
      - AWS does not charge for the basic VPC building blocks used in this exercise.
    * - NAT Gateway
-     - Between $0.045 and $ 0.093 per hour, depending on Region.
+     - Between $0.045 and $0.093 per hour, depending on Region.
      - During this exercise, we will creating a NAT Gateway. It should not need to run for more than hour or so.
    * - NAT Gateway
-     - Between $0.045 and $ 0.093 per GB of data processed, depending on Region.
-     - During this exercise, we will creating a NAT Gateway. It should not need to run for more than hour or so.
+     - Between $0.045 and $0.093 per GB of data processed, depending on Region.
+     - During this exercise, we will creating a NAT Gateway. A small amount of data will be processed.
+   * - VPC Endpoint
+     - Between $0.01 and $0.021 per hour, depending on Region.
+     - During this exercise, we will creating a VPC Endpoint. It should not need to run for more than hour or so.
+   * - VPC Endpoint
+     - $0.01 per GB of data processed.
+     - During this exercise, we will creating a NAT Gateway. A small amount of data will be processed.
    * - Data Transfer
      -
         + $0.00 per GB - Data Transfer IN to Amazon EC2 from Internet
