@@ -359,7 +359,7 @@ Output:
 
 Environment variables
 ~~~~~~~~~~~~~~~~~~~~~
-Run the following commands.
+Run the following commands to capture the 'PhysicalResourceId' for the applicable components.
 
 .. code-block::
 
@@ -444,7 +444,7 @@ Now that you have verified that awscli is installed on both Instances, use the f
 
     aws ec2 delete-route --destination-cidr-block 0.0.0.0/0 --route-table-id $EX005_RTB_PRIV
 
-Collect the Elastic IP details
+View the Elastic IP details
 ------------------------------
 Use the following awscli command to show the **'AllocationId'** for both Elastic IP addresses.
 
@@ -459,37 +459,39 @@ Output:
     {
         "Addresses": [
             {
-                "InstanceId": "i-0f7330c25b6d0f104",
-                "PublicIp": "34.206.65.237",
-                "AllocationId": "eipalloc-0b7d64f6df9f80f3f",
-                "AssociationId": "eipassoc-0f0f10754fe61a7e8",
-                "Domain": "vpc",
-                "NetworkInterfaceId": "eni-01ef6e3f2adf74ca9",
-                "NetworkInterfaceOwnerId": "926075045128",
-                "PrivateIpAddress": "10.0.0.19"
+                "PublicIp": "xxx.xxx.xxx.xxx",
+                "AllocationId": "eipalloc-xxxxxxxxxxxxxxxxx",
+                "Domain": "vpc"
             },
             {
-                "InstanceId": "i-0aaeed60c8b12d28e",
-                "PublicIp": "52.3.43.107",
-                "AllocationId": "eipalloc-086c8e2ad16d6d0dc",
-                "AssociationId": "eipassoc-024bf10e595476ff3",
+                "InstanceId": "i-xxxxxxxxxxxxxxxxx",
+                "PublicIp": "xxx.xxx.xxx.xxx",
+                "AllocationId": "eipalloc-xxxxxxxxxxxxxxxxx",
+                "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx",
                 "Domain": "vpc",
-                "NetworkInterfaceId": "eni-0fff02db0513e638f",
-                "NetworkInterfaceOwnerId": "926075045128",
-                "PrivateIpAddress": "10.0.1.17"
+                "NetworkInterfaceId": "eni-xxxxxxxxxxxxxxxxx",
+                "NetworkInterfaceOwnerId": "xxxxxxxxxxxx",
+                "PrivateIpAddress": "xxx.xxx.xxx.xxx"
             }
         ]
     }
 
+We can see that only one of the Elastic IPs is associated with an Instance.
+
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
-Here we are going to break our rule about manually creating environment variables to prevent confusion.
+Run the following commands to capture the 'AllocationId' for Elastic IPs.
 
 .. code-block::
 
     export EX005_EIP_PUB_ALLOC=$(aws ec2 describe-addresses --public-ips $EX005_IP_PUBLIC --output text --query Addresses[*].AllocationId)
 
     export EX005_EIP_NAT_ALLOC=$(aws ec2 describe-addresses --public-ips $EX005_IP_NAT --output text --query Addresses[*].AllocationId)
+
+Sanity check
+~~~~~~~~~~~~
+
+.. code-block::
 
     echo $EX005_EIP_PUB_ALLOC $EX005_EIP_NAT_ALLOC
 
