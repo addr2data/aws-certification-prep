@@ -499,20 +499,17 @@ Create NAT Gateway
 ------------------
 Use the following awscli command to create the **'NAT Gateway'**.
 
-``Notice the use of '--client-token', this makes the operation idempotent. Rerun this command until 'State' is 'available'.``
-
 .. code-block::
 
-    aws ec2 create-nat-gateway --allocation-id $EX005_EIP_NAT_ALLOC --subnet-id $EX005_SUBNET_PUB --client-token ex005_001
+    aws ec2 create-nat-gateway --allocation-id $EX005_EIP_NAT_ALLOC --subnet-id $EX005_SUBNET_PUB
 
 Output:
 
 .. code-block::
 
     {
-        "ClientToken": "ex005_001",
         "NatGateway": {
-            "CreateTime": "2018-06-20T16:54:05.000Z",
+            "CreateTime": "2018-06-22T14:32:42.000Z",
             "NatGatewayAddresses": [
                 {
                     "AllocationId": "eipalloc-xxxxxxxxxxxxxxxxx"
@@ -525,12 +522,52 @@ Output:
         }
     }
 
+Notice that the 'State' is **'pending'**.
+
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
+Manually create the following environment variable.
 
 .. code-block::
 
     export EX005_NAT_GATEWAY=<NatGatewayId>
+
+
+Check the status of the Nat Gateway
+-----------------------------------
+Use the following awscli command to check the status of the **'NAT Gateway'**.
+
+ Rerun this command until the 'State' is **'available'**.
+
+.. code-block::
+
+      aws ec2 describe-nat-gateways --nat-gateway-ids $EX005_NAT_GATEWAY
+
+Output:
+
+.. code-block::
+
+    {
+        "NatGateways": [
+            {
+                "CreateTime": "2018-06-22T14:32:42.000Z",
+                "NatGatewayAddresses": [
+                    {
+                        "AllocationId": "eipalloc-xxxxxxxxxxxxxxxxx",
+                        "NetworkInterfaceId": "eni-xxxxxxxx",
+                        "PrivateIp": "xxx.xxx.xxx.xxx",
+                        "PublicIp": "xxx.xxx.xxx.xxx"
+                    }
+                ],
+                "NatGatewayId": "nat-xxxxxxxxxxxxxxxxx",
+                "State": "available",
+                "SubnetId": "subnet-xxxxxxxxxxxxxxxxx",
+                "VpcId": "vpc-xxxxxxxxxxxxxxxxx"
+            }
+        ]
+    }
+
+
 
 Parameter Store
 ---------------
