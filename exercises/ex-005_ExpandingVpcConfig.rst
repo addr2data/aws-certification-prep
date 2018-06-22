@@ -359,7 +359,7 @@ Output:
 
 Environment variables
 ~~~~~~~~~~~~~~~~~~~~~
-It would be best to create a shell script from these commands and the one under 'Sanity check'.
+It would be best to create a shell script from these commands and those under 'Sanity check'.
 
 .. code-block::
 
@@ -413,23 +413,44 @@ Sanity check
 
 Verify package installation
 ---------------------------
-Run the following commands to verify that 'awscli' was installed on both Instances. 
+
+Instance ('public')
+~~~~~~~~~~~~~~~~~~~
+Run the following command to connect the 'public' Instance. 
 
 .. code-block::
 
     ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX005_IP_PUBLIC
 
-You are now connected to the 'public' instance.
+Run the following command to verify that 'awscli' is installed (version should be 1.15.xx or greater).
 
 .. code-block::
 
     aws --version
 
-Output:
+    Type 'exit' to exit the ssh session.
+
+Instance ('private')
+~~~~~~~~~~~~~~~~~~~
+Run the following command to connect the 'private' Instance. 
 
 .. code-block::
 
-    aws-cli/1.15.43 Python/3.5.2 Linux/4.4.0-1060-aws botocore/1.10.43
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX005_IP_NAT
+
+Run the following command to verify that 'awscli' is installed (version should be 1.15.xx or greater).
+
+.. code-block::
+
+    aws --version
+
+    Type 'exit' to exit the ssh session.
+
+
+
+
+
+
 
 Type exit to exit the ssh session.
 
