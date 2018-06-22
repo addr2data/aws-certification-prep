@@ -84,7 +84,7 @@ Setting environment variables may be different on different OSs. Please refer to
 
 Access Management
 -----------------
-We need to make the following changes.
+We need to make the following changes in IAM
 
 - Add permissions for IAM to 'apiuser01' (up to this point we have only accessed IAM through the AWS Console).
 - Add permissions for SSM to 'apiuser01'
@@ -94,13 +94,25 @@ Add permissions
 ~~~~~~~~~~~~~~~
 - Login to your AWS account.
 - Under services select **IAM**.
-- Select **Users**
-- Click on **apiuser01**
+- In navigation pane, select **Users**.
+- Click on **apiuser01**.
 - Under **Add permissions to apiuser01**, select **Attach existing policies directly**.
 - In the search box, type **IAMFullAccess**, then select **IAMFullAccess**.
 - In the search box, type **AmazonSSMFullAccess**, then select **AmazonSSMFullAccess**.
 - Click on **Next: Review**.
 - Click **Add permissions**.
+
+Create Role
+~~~~~~~~~~~
+- In navigation pane, select **Roles**.
+- Click **Create role**.
+- Under **Select type of trusted entity**, select **AWS service**.
+- Under **Choose the service that will use this role**, select **EC2**.
+- Click **Next: permissions**.
+- In the search box, type **AmazonEC2FullAccess**, then select **AmazonEC2FullAccess**.
+- Click on **Next: Review**.
+- Under **Role name**, enter **ec2AccessForInstances**.
+- Click **Create role**.
 
 Verify access
 -------------
