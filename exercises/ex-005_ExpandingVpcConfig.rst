@@ -537,7 +537,7 @@ Check the status of the Nat Gateway
 -----------------------------------
 Use the following awscli command to check the status of the **'NAT Gateway'**.
 
- Rerun this command until the 'State' is **'available'**.
+Rerun this command until the 'State' is **'available'**.
 
 .. code-block::
 
@@ -567,18 +567,23 @@ Output:
         ]
     }
 
+Instance ('private')
+--------------------
+In a previous steps, we disassociated an Elastic IP from the 'private' Instance and removed the default Route from the 'private' subnet.
 
+The only way to connect to the 'private' Instance now is through the 'public' Instance. In order to do this we will need to collect the 'private' IP address of the 'private' Instance.
 
 Parameter Store
 ---------------
-Here we are going to use the **'Parameter Store'**, which is part of the **'AWS Systems Manager'** to store the 'private' IP of the 'private' Instance.
-This will be useful, because the Parameter Store is available to use anywhere we have the 'awscli' and access to 'ssm'.
+Since we will need access to the above value from the 'public' Instance, an environment variable in our local environment won't be of much use.
+
+Instead, we are going to the **'Parameter Store'**, which is part of the **'AWS Systems Manager'**, to store the value of the 'private' IP address of the 'private' instance.
 
 Use the following awscli command to collect and store the 'private' IP address of the 'private' Instance.
 
 .. code-block::
 
-    aws ssm put-parameter --name Ex005-PrivateIP --type String --value $(aws ec2 describe-instances --instance-ids $EX005_INST_PRIV --output text --query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress)
+    aws ssm put-parameter --name Ex005-PrivInstancePrivIP --type String --value $(aws ec2 describe-instances --instance-ids $EX005_INST_PRIV --output text --query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress)
 
 Output:
 
@@ -587,6 +592,10 @@ Output:
     {
         "Version": 1
     }
+
+
+
+
 
 Connect to public Instance
 --------------------------
