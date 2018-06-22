@@ -79,20 +79,7 @@ Limits
 ------
 The following table shows the default limits for the components utilized in this exercise.
 
-``NOTE: You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.``
-
-.. list-table::
-   :widths: 25, 25
-   :header-rows: 0
-
-   * - **Component**
-     - **Limit**
-   * - NAT Gateway
-     - A NAT gateway supports 5 Gbps of bandwidth and automatically scales up to 45 Gbps.
-   * - Nat Gateway
-     - Once you associated and Elastic IP with a NAT Gateway, you can not disassociate it. You must delete the NAT Gateway.
-   * - Nat Gateway
-     - A NAT gateway can support up to 55,000 simultaneous connections to each unique destination.
+You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.
 
 Environment variables
 ---------------------
