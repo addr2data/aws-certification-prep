@@ -86,25 +86,6 @@ At this point, I feel like the following AWS services are in-scope for this proj
      - *To be added*
      - *To be added*
 
-.. list-table:: Sample list table
-   :widths: 10 20 20
-   :header-rows: 1
-   :stub-columns: 1
-
-   * - 
-     - Column 1
-     - Column 2
-   * - Row 1
-     - Hello
-     - World!
-   * - Row 2
-     - Hello
-     - List Table!
-   * - Row 3
-     - This
-     - Work
-
-
 Tools
 -----
 Initially, I will be working with the following 'tools'. I will update this list as I start to work with others.
