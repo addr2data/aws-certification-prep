@@ -85,7 +85,7 @@ Setting environment variables may be different on different OSs. Please refer to
 Access Management
 -----------------
 We need to make the following changes in IAM
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Add permissions for IAM to 'apiuser01' (up to this point we have only accessed IAM through the AWS Console).
 - Add permissions for SSM to 'apiuser01'
 - Create a new Role for use later in the exercise.  
