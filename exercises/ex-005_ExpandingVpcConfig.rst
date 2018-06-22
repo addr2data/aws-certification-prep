@@ -42,6 +42,20 @@ The activities in this exercise may result in charges to your AWS account.
    * - VPC (including Subnets, Route Tables and IntenetGateways).
      - None
      - AWS does not charge for the basic VPC building blocks used in this exercise.
+   * - On-demand Instances
+     - 
+        + $0.0116 per hour per Instance (t2.micro)
+     - During this exercise we will be launching two Instances, using Ubuntu Server 16.04 LTS image, which is 'Free tier eligible'. It is not expected that these Instances will need to be running for more than one hour. 
+   * - Elastic IPs
+     - 
+        + $0.00 per hour per EIP that is associated to a running Instance
+        + $0.05 per hour per EIP that is NOT associated to a running Instance
+     - Unlike ex-004, there will not be periods of time where an EIP is not associated with an running Instance.
+   * - Elastic IPs
+     - 
+        + $0.00 per EIP address remap for the first 100 remaps per month.
+        + $0.10 per EIP address remap for additional remaps over 100 per month
+     - Unlike ex-004, we will not be re-mapping EIPs.
    * - NAT Gateway
      - Between $0.045 and $0.093 per hour, depending on Region.
      - During this exercise, we will creating a NAT Gateway. It should not need to run for more than hour or so.
