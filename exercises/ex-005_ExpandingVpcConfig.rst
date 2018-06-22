@@ -569,15 +569,15 @@ Output:
 
 Instance ('private')
 --------------------
-In a previous steps, we disassociated an Elastic IP from the 'private' Instance and removed the default Route from the 'private' subnet.
+In previous steps, we disassociated an Elastic IP from the 'private' Instance and removed the default Route from the 'private' subnet.
 
 The only way to connect to the 'private' Instance now is through the 'public' Instance. In order to do this we will need to collect the 'private' IP address of the 'private' Instance.
 
-Parameter Store
+Parameter store
 ---------------
 Since we will need access to the above value from the 'public' Instance, an environment variable in our local environment won't be of much use.
 
-Instead, we are going to the **'Parameter Store'**, which is part of the **'AWS Systems Manager'**, to store the value of the 'private' IP address of the 'private' instance.
+Instead, we are going to the **'Parameter store'**, which is part of the **'AWS Systems Manager'**, to store the value of the 'private' IP address of the 'private' instance.
 
 Use the following awscli command to collect and store the 'private' IP address of the 'private' Instance.
 
@@ -593,23 +593,51 @@ Output:
         "Version": 1
     }
 
+Instance ('public')
+-------------------
+In order to access the **'Parameter store'** from the 'public' Instance, we will need to run an 'awscli'. We verify that the 'awscli' was installed on both Instances in a previous step.
 
+Before we can use the 'awscli' on the 'public' Instance, we must configure it. We are only going to configure the 'region' and NOT the credentials. We will use another method for that.
 
-
-
-Connect to public Instance
---------------------------
-Use the following commands to:
-    
-    - Copy of the 'acpkey1.pem' to the 'public' Instance
-    - Connect to the 'public' Instance
+Key file
+~~~~~~~~
+First we need to copy the **Private Key** file to the 'public' Instance. Use the following command to do that.
 
 .. code-block::
 
     scp -i acpkey1.pem acpkey1.pem ubuntu@$EX005_IP_PUBLIC:/home/ubuntu
+
+Connect
+~~~~~~~
+Next we need to connect to the 'public' Instance. Run the following command to do that.
+
+.. code-block::
+
     ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX005_IP_PUBLIC
 
-    Do NOT exit.
+Configure
+~~~~~~~~~
+Next we need to configure the 'awscli'. 
+
+**We will only configure the 'region' and leave everything else blank.**
+
+.. code-block::
+
+    aws configure
+
+Output:
+
+.. code-block::
+
+    AWS Access Key ID [None]:
+    AWS Secret Access Key [None]:
+    Default region name [None]: <YOUR_REGION>
+    Default output format [None]:
+
+
+
+
+
 
 Configure awscli
 ----------------
