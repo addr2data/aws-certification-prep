@@ -19,7 +19,12 @@ Dependencies
 Objectives
 ----------
 
-    - Become familiar with additional VPC components by expanding the VPC configuration created in ex-002 (Basic VPC configuration).
+    - Expand upon the basic VPC configuration created in **ex-002** to include the following VPC components:
+      + NAT Gateway
+      + Endpoint
+    - Introduce the **Parameter Store** from **AWS Systems Manager (ssm)**.
+    - Introduce applying **IAM Roles** to Instances.
+   
 
 Expected Costs
 --------------
