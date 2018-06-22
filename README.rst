@@ -10,7 +10,7 @@ Project Status
    * - Project Start
      - Jun 4, 2018
    * - Latest Update
-     - Jun 21, 2018
+     - Jun 22, 2018
 
 `Change Log <https://github.com/addr2data/aws-certification-prep/blob/master/changelog.rst>`_
 
@@ -47,36 +47,43 @@ At this point, I feel like the following AWS services are in-scope for this proj
 **Last update: 6/18/18**
 
 .. list-table::
-   :widths: 25, 25, 25, 25
+   :widths: 20, 20, 20, 20, 20
    :header-rows: 0
 
    * - **Category**
      - **Service**
      - **Basic level exercises**
+     - **Intermediate level exercises**
      - **Advanced level exercises**
    * - Compute
      - EC2, ECS, Lambda
      - EC2
      - *To be added*
+     - *To be added*
    * - Storage
      - S3, EFS, Glacier
+     - *To be added*
      - *To be added*
      - *To be added*
    * - Database
      - RDS, DynamoDB
      - *To be added*
      - *To be added*
+     - *To be added*
    * - Networking & Content Delivery
      - VPC, Route 53, CloudFront
+     - VPC
      - VPC
      - *To be added*
    * - Management Tools
      - CloudWatch, AWS Auto Scaling, CloudFormation, CloudTrail
      - CloudFormation
      - *To be added*
+     - *To be added*
    * - Security, Identity & Compliance
      - IAM
      - IAM
+     - *To be added*
      - *To be added*
 
 Tools
