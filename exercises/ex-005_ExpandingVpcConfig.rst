@@ -110,6 +110,7 @@ Create Role
 - Under **Choose the service that will use this role**, select **EC2**.
 - Click **Next: permissions**.
 - In the search box, type **AmazonEC2FullAccess**, then select **AmazonEC2FullAccess**.
+- In the search box, type **AmazonSSMFullAccess**, then select **AmazonSSMFullAccess**.
 - Click on **Next: Review**.
 - Under **Role name**, enter **ec2AccessForInstances**.
 - Click **Create role**.
@@ -740,20 +741,89 @@ Output:
 
 Ensure that the 'State' is **'associated'**
 
-Configure awscli
-----------------
-You are connected to the 'public' Instance.
+Instance ('public')
+-------------------
+
+Connect
+~~~~~~~
+Next we need to connect to the 'public' Instance. Run the following command to do that.
 
 .. code-block::
-    aws ssm get-parameter --name Ex005-PrivateIP --region <YourRegion>
+
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX005_IP_PUBLIC
+
+Test
+~~~~
+Use the following awscli command to check that we can now access the **'Parameter store'**.
+
+.. code-block::
+
+    aws ssm get-parameter --name Ex005-PrivInstancePrivIP
 
 Output:
 
 .. code-block::
 
-    Unable to locate credentials. You can configure credentials by running "aws configure".
+    {
+        "Parameter": {
+            "Version": 1,
+            "Name": "Ex005-PrivInstancePrivIP",
+            "Value": "xxx.xxx.xxx.xxx",
+            "Type": "String"
+        }
+    }
 
-We won't configure credentials on the Instances, instead will will create a role in IAM and add that role to both Instances. 
+Do NOT exit ssh session.
+
+
+Instance ('private')
+-------------------
+
+Connect
+~~~~~~~
+
+.. code-block::
+
+    ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$(aws ssm get-parameter --name Ex005-PrivInstancePrivIP --output text --query Parameter.Value)
+
+Configure
+~~~~~~~~~
+Next we need to configure the 'awscli'. 
+
+**We will only configure the 'region' and leave everything else blank.**
+
+.. code-block::
+
+    aws configure
+
+Output:
+
+.. code-block::
+
+    AWS Access Key ID [None]:
+    AWS Secret Access Key [None]:
+    Default region name [None]: <YOUR_REGION>
+    Default output format [None]:
+
+Test
+~~~~
+
+.. code-block::
+
+    aws ec2 describe-regions
+
+    Command should 'hang'. Cntrl-c to kill it.
+
+
+Type 'exit' twice to exit both ssh sessions.
+
+Even though we added a Nat Gateway, we didn't add a route to it.
+
+
+
+
+
+
 
 
 
