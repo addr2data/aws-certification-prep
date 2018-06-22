@@ -176,102 +176,102 @@ Only the new and modified resources are shown below:
 
 .. code-block::
 
----
-Resources:
-  RouteTablePrivate:
-    Type: AWS::EC2::RouteTable
-    Properties: 
-      VpcId: !Ref VPC
-      Tags:
-        - Key: Name
-          Value: rtb_pri_ex005
-  
-  DefaultRoutePrivate:
-    Type: AWS::EC2::Route
-    Properties: 
-      DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: !Ref InternetGateway
-      RouteTableId: !Ref RouteTablePrivate
+    ---
+    Resources:
+    RouteTablePrivate:
+      Type: AWS::EC2::RouteTable
+      Properties: 
+        VpcId: !Ref VPC
+        Tags:
+          - Key: Name
+            Value: rtb_pri_ex005
 
-  AssociateSubnetRouteTablePrivate:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties: 
-      RouteTableId: !Ref RouteTablePrivate
-      SubnetId: !Ref SubnetPrivate
+    DefaultRoutePrivate:
+      Type: AWS::EC2::Route
+      Properties: 
+        DestinationCidrBlock: 0.0.0.0/0
+        GatewayId: !Ref InternetGateway
+        RouteTableId: !Ref RouteTablePrivate
 
-  SecurityGroupEndpoint:
-    Type: AWS::EC2::SecurityGroup
-    Properties: 
-      GroupName: sg_endpoint_ex005
-      GroupDescription: "Security Group for EC2 Endpoint in ex-005"
-      SecurityGroupIngress:
-        - 
-          CidrIp: 0.0.0.0/0
-          IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80
-        - 
-          CidrIp: 0.0.0.0/0
-          IpProtocol: tcp
-          FromPort: 443
-          ToPort: 443
-      VpcId: !Ref VPC
+    AssociateSubnetRouteTablePrivate:
+      Type: AWS::EC2::SubnetRouteTableAssociation
+      Properties: 
+        RouteTableId: !Ref RouteTablePrivate
+        SubnetId: !Ref SubnetPrivate
 
-  PublicInstance:
-    Type: AWS::EC2::Instance
-    Properties: 
-      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
-      InstanceType: t2.micro
-      KeyName: acpkey1
-      SecurityGroupIds: 
-        - !Ref SecurityGroupInstances
-      SubnetId: !Ref SubnetPublic
-      Tags: 
-        - Key: Name
-          Value: i_pub_ex005
-      UserData:
-        "Fn::Base64":
-            "Fn::Join": [
-                "\n",
-                [
-                    "#!/bin/bash",
-                    "sudo apt-get update",
-                    "sudo apt-get dist-upgrade -y",
-                    "sudo apt-get install python3-pip -y",
-                    "pip3 install awscli"
-                ]
-            ]
+    SecurityGroupEndpoint:
+      Type: AWS::EC2::SecurityGroup
+      Properties: 
+        GroupName: sg_endpoint_ex005
+        GroupDescription: "Security Group for EC2 Endpoint in ex-005"
+        SecurityGroupIngress:
+          - 
+            CidrIp: 0.0.0.0/0
+            IpProtocol: tcp
+            FromPort: 80
+            ToPort: 80
+          - 
+            CidrIp: 0.0.0.0/0
+            IpProtocol: tcp
+            FromPort: 443
+            ToPort: 443
+        VpcId: !Ref VPC
 
-  PrivateInstance:
-    Type: AWS::EC2::Instance
-    Properties: 
-      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
-      InstanceType: t2.micro
-      KeyName: acpkey1
-      SecurityGroupIds: 
-        - !Ref SecurityGroupInstances
-      SubnetId: !Ref SubnetPrivate
-      Tags: 
-        - Key: Name
-          Value: i_pri_ex005
-      UserData:
-        "Fn::Base64":
-            "Fn::Join": [
-                "\n",
-                [
-                    "#!/bin/bash",
-                    "sudo apt-get update",
-                    "sudo apt-get dist-upgrade -y",
-                    "sudo apt-get install python3-pip -y",
-                    "pip3 install awscli"
-                ]
-            ]
+    PublicInstance:
+      Type: AWS::EC2::Instance
+      Properties: 
+        ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+        InstanceType: t2.micro
+        KeyName: acpkey1
+        SecurityGroupIds: 
+          - !Ref SecurityGroupInstances
+        SubnetId: !Ref SubnetPublic
+        Tags: 
+          - Key: Name
+            Value: i_pub_ex005
+        UserData:
+          "Fn::Base64":
+              "Fn::Join": [
+                  "\n",
+                  [
+                      "#!/bin/bash",
+                      "sudo apt-get update",
+                      "sudo apt-get dist-upgrade -y",
+                      "sudo apt-get install python3-pip -y",
+                      "pip3 install awscli"
+                  ]
+              ]
 
-  FloatingIpAddressNatGateway:
-    Type: "AWS::EC2::EIP"
-    Properties:
-      InstanceId: !Ref PrivateInstance
-      Domain: vpc
+    PrivateInstance:
+      Type: AWS::EC2::Instance
+      Properties: 
+        ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+        InstanceType: t2.micro
+        KeyName: acpkey1
+        SecurityGroupIds: 
+          - !Ref SecurityGroupInstances
+        SubnetId: !Ref SubnetPrivate
+        Tags: 
+          - Key: Name
+            Value: i_pri_ex005
+        UserData:
+          "Fn::Base64":
+              "Fn::Join": [
+                  "\n",
+                  [
+                      "#!/bin/bash",
+                      "sudo apt-get update",
+                      "sudo apt-get dist-upgrade -y",
+                      "sudo apt-get install python3-pip -y",
+                      "pip3 install awscli"
+                  ]
+              ]
+
+    FloatingIpAddressNatGateway:
+      Type: "AWS::EC2::EIP"
+      Properties:
+        InstanceId: !Ref PrivateInstance
+        Domain: vpc
 
 Create Stack
 ------------
