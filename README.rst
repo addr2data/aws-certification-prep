@@ -42,9 +42,9 @@ Here are the links for each of the exam guides/blueprints.
 
 AWS Services
 ------------
-At this point, I feel like the following AWS services are in-scope for this project. I am sure this will change over time, but you have to start somewhere. I will start by building exercises and code-samples for EC2 and VPC, since I am most familiar with those services.
+The following table shows which AWS services are in scope for this project and what level exercises have been created for each service. Expect this table change frequently as new exercises are added.
 
-**Last update: 6/18/18**
+**Last updated: 6/22/18**
 
 .. list-table::
    :widths: 20, 20, 20, 20, 20
@@ -54,7 +54,7 @@ At this point, I feel like the following AWS services are in-scope for this proj
      - **Service**
      - **Basic level**
      - **Intermediate level**
-     - **Advanced**
+     - **Advanced level**
    * - Compute
      - EC2, ECS, Lambda
      - EC2
