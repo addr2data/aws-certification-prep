@@ -47,7 +47,7 @@ The following table shows two things:
 	- Which AWS services are currently in scope for the project.
 	- At what level, a particular service has been incorporated into the exercises. 
 
-Expect this table to change frequently as new exercises are added.
+Expect this table to change frequently, as new exercises are added.
 
 **Last updated: 6/23/18**
 
@@ -67,29 +67,29 @@ Expect this table to change frequently as new exercises are added.
      - 
    * - Storage
      - S3, EFS, Glacier
-     - *To be added*
-     - *To be added*
-     - *To be added*
+     - 
+     - 
+     - 
    * - Database
      - RDS, DynamoDB
-     - *To be added*
-     - *To be added*
-     - *To be added*
+     - 
+     - 
+     - 
    * - Networking & Content Delivery
      - VPC, Route 53, CloudFront
      - VPC
      - VPC
-     - *To be added*
+     - 
    * - Management Tools
      - CloudWatch, AWS Auto Scaling, CloudFormation, CloudTrail, Systems Manager
      - CloudFormation, Systems Manager
-     - *To be added*
-     - *To be added*
+     - 
+     - 
    * - Security, Identity & Compliance
      - IAM
      - IAM
-     - *To be added*
-     - *To be added*
+     - 
+     - 
 
 Tools
 -----
