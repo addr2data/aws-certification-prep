@@ -10,7 +10,7 @@ Project Status
    * - Project Start
      - Jun 4, 2018
    * - Latest Update
-     - Jun 22, 2018
+     - Jun 23, 2018
 
 `Change Log <https://github.com/addr2data/aws-certification-prep/blob/master/changelog.rst>`_
 
@@ -26,7 +26,7 @@ I have created this public GitHub project to force myself to be more organized w
 
 Certifications
 --------------
-At this point, my intention is to pursue the following certifications. I choose the **Solution Architect** certifications, because I felt, they would provide the most bang for my buck, from a career perspective. I added the **Advanced Networking** certification, because I have a strong interesting in networking. It is possible these choices with change over time, but for now that is the plan.  
+At this point, my intention is to pursue the following certifications. I choose the **Solution Architect** certifications, because I felt, they would provide the most bang for my buck, from a career perspective. I added the **Advanced Networking** certification, because I have a strong interest in networking. It is possible these choices will change over time, but for now, this is the plan.  
 
 -  AWS Certified Solutions Architect – Associate
 -  AWS Certified Advanced Networking – Specialty
@@ -42,9 +42,14 @@ Here are the links for each of the exam guides/blueprints.
 
 AWS Services
 ------------
-The following table shows which AWS services are in scope for this project and what level exercises have been created for each service. Expect this table change frequently as new exercises are added.
+The following table shows two things:
 
-**Last updated: 6/22/18**
+	- Which AWS services are currently in scope for this project.
+	- At what level, a particular service has been incorporated into the exercises. 
+
+Expect this table to change frequently as new exercises are added.
+
+**Last updated: 6/23/18**
 
 .. list-table::
    :widths: 20, 20, 20, 20, 20
@@ -52,9 +57,9 @@ The following table shows which AWS services are in scope for this project and w
 
    * - **Category**
      - **Service**
-     - **Basic level**
-     - **Intermediate level**
-     - **Advanced level**
+     - **Basic**
+     - **Intermediate**
+     - **Advanced**
    * - Compute
      - EC2, ECS, Lambda
      - EC2
@@ -76,8 +81,8 @@ The following table shows which AWS services are in scope for this project and w
      - VPC
      - *To be added*
    * - Management Tools
-     - CloudWatch, AWS Auto Scaling, CloudFormation, CloudTrail
-     - CloudFormation
+     - CloudWatch, AWS Auto Scaling, CloudFormation, CloudTrail, Systems Manager
+     - CloudFormation, Systems Manager
      - *To be added*
      - *To be added*
    * - Security, Identity & Compliance
