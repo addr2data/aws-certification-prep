@@ -453,7 +453,7 @@ Summary
 
 Next steps
 ----------
-In ex-006, we will use this **Stack** as a starting configuration, then add some new VPC components.
+In `ex-004 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-005_ExpandingVpcConfig.rst>`_, starting with a Template similar to one used in this exercise, we will expand our VPC configuration to incorporate new components. 
 
 
 
