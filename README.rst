@@ -44,7 +44,7 @@ AWS Services
 ------------
 The following table shows two things:
 
-	- Which AWS services are currently in scope for this project.
+	- Which AWS services are currently in scope for the project.
 	- At what level, a particular service has been incorporated into the exercises. 
 
 Expect this table to change frequently as new exercises are added.
@@ -63,8 +63,8 @@ Expect this table to change frequently as new exercises are added.
    * - Compute
      - EC2, ECS, Lambda
      - EC2
-     - *To be added*
-     - *To be added*
+     - 
+     - 
    * - Storage
      - S3, EFS, Glacier
      - *To be added*
