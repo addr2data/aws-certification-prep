@@ -449,7 +449,7 @@ Notice that the state is pending, but will become available shortly.
 
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
-Once again, lets set an environment variable. The InternetGatewayId is in the results above, under the key **'SubnetId'**..
+Yep, another environment variable. In the output above, find the **'SubnetId'** key..
 
 .. code-block::
 
