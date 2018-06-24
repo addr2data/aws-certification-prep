@@ -3,7 +3,7 @@ ex-001: Getting started
 
 Status
 ------
-Version 1.2 (6/20/18)
+Version 1.3 (6/24/18)
 
 Dependencies
 ------------
@@ -39,7 +39,7 @@ The activities in this exercise are NOT expected to result in charges to your AW
      - **Notes**
    * - Key Pairs
      - None
-     - There are no 
+     - 
 
 Limits
 ------

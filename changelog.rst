@@ -11,4 +11,4 @@ CHANGE LOG
 
 - 06-22-18 (addr2data):  Added 'Intermediate level exercises' to AWS services table on README.rst 
 
-- 06-24-18 (addr2data):  Moved 'Create Key Pair' from ex-003 to ex-001 to limit tangled pre-reqs. 
+- 06-24-18 (addr2data):  Moved 'Create Key Pair' from ex-003 to ex-001 to limit tangled pre-reqs, changed versions to 1.3 (ex-001) and 1.1 (ex-003)
