@@ -37,7 +37,9 @@ The activities in this exercise are NOT expected to result in any charges to you
         + Route Tables
         + IntenetGateways
      - None
-     - AWS does NOT charge for the basic VPC building blocks used in this exercise. AWS does charge for other VPC components, you will use these components in future exercises.   
+     - 
+        + AWS does NOT charge for the basic VPC building blocks used in this exercise.
+        + AWS does charge for other VPC components, you will use these components in future exercises.   
     
 Limits
 ------
