@@ -494,8 +494,6 @@ Verify the Subnets
 ------------------
 Use the following awscli command to ensure that the State of both Subnets is **'available'**.
 
-If you wish to control where your Subnets are created, you would use the **'--availability-zone <value>'** option with the **'create-subnet'** command.
-
 .. code-block::
 
     aws ec2 describe-subnets --filter Name=vpc-id,Values=$EX002_VPC
@@ -533,7 +531,7 @@ Output:
         ]
     }
 
-We can see that both Subnets were created in Availability Zone **'us-east-1c'**.
+We can see that both Subnets were created in Availability Zone **'us-east-1c'**. If you wish to control where your Subnets are created, you would use the **'--availability-zone <value>'** option with the **'create-subnet'** command.
 
 Create a Tag
 ------------
