@@ -42,7 +42,7 @@ Here are the links for each of the exam guides/blueprints.
 
 AWS Services
 ------------
-The following table shows two things:
+The following table is provided to show two things:
 
 	- Which AWS services are currently in scope for the project.
 	- At what level, a particular service has been incorporated into the exercises. 
