@@ -32,19 +32,20 @@ The activities in this exercise are NOT expected to result in any charges to you
    * - **Component**
      - **Applicable Costs**
      - **Notes**
-   * - VPC (including subnets, Route Tables and IntenetGateways).
+   * - VPC
+        + Subnets
+        + Route Tables
+        + IntenetGateways
      - None
-     - AWS does not charge for the basic VPC building blocks used in this exercise.
+     - AWS does NOT charge for the basic VPC building blocks used in this exercise. AWS does charge for other VPC components, you will use these components in future exercises.   
     
 Limits
 ------
 The following table shows the default limits for the components utilized in this exercise.
 
-``NOTE: You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.``
-
 .. list-table::
    :widths: 25, 25
-   :header-rows: 1
+   :header-rows: 0
 
    * - **Component**
      - **Limit**
