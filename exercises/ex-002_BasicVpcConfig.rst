@@ -194,7 +194,7 @@ We won't be modifying the main Route Table. We will use it to provide routing fo
 
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
-We'll create another environment variable for our Route Table ID, the Route Table ID comes from the results above, under the key **'RouteTableId'**.
+We'll create another environment variable for our Route Table ID, In the output above, find the **'RouteTableId'** key.
 
 .. code-block::
 
