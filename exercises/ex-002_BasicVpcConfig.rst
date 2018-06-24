@@ -3,7 +3,7 @@ ex-002: Basic VPC configuration
 
 Status
 ------
-Version 1.1 (6/20/18)
+Version 1.2 (6/24/18)
 
 Dependencies
 ------------
