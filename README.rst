@@ -18,9 +18,9 @@ Introduction
 ------------
 Recently, I decided to pursue AWS certification. Mostly for career reasons, but also because the ability to spin up infrastructure with a series of API calls fascinates me. I've been playing with AWS EC2, off and on, since 2012, but have never used it in any meaningful way. Considering how much the AWS ecosystem has grown over the years, it seems I have my work cut out for me.
 
-In addition to certification, my goal is to become a skilled user of AWS services. I am willing to spend a few bucks each month, so I should be able to get a decent amount of hands-on experience. I plan to leverage the AWS CLI extensively, but I also want to get comfortable writing scripts that leverage the API directly, so I plan to work with Python and Boto3.  
+In addition to certification, I want to become a skilled user of AWS services. I am willing to spend a few bucks each month, so I should be able to get a decent amount of hands-on experience. I intend to leverage the AWS CLI extensively, but I also want to get comfortable writing Python scripts that leverage the API directly, so Boto3 will a necessity.  
 
-I have created this public GitHub project to force myself to be more organized with my notes and code. I am going to approach this project, as if I am building a training resource for others. I know this approach will help me on my journey, but I sincerely hope others find value in it.
+I have created this public GitHub project to force myself to be more organized with my notes and code. I am going to approach this project, as if I am building a training resource for others. I know this approach will help me on my journey, but I sincerely hope others will find value in it.
 
 **I expect this project to be a work-in-progress for at least 12 months.**
 
