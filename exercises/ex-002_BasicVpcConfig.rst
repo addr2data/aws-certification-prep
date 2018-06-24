@@ -243,7 +243,7 @@ In the above output, we can see the same single entry under **Routes**. This wil
 
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
-Just like above, we'll create another environment variable for our Route Table ID, the Route Table ID comes from the results above, under the key **'RouteTableId'**.
+Just like above, we'll create another environment variable for our Route Table ID. In the output above, find the **'RouteTableId'** key.
 
 .. code-block::
 
