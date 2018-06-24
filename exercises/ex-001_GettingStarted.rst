@@ -30,6 +30,32 @@ Expected Costs
 --------------
 The activities in this exercise are NOT expected to result in charges to your AWS account.
 
+.. list-table::
+   :widths: 20, 40, 50
+   :header-rows: 0
+
+   * - **Component**
+     - **Applicable Costs**
+     - **Notes**
+   * - Key Pairs
+     - None
+     - There are no 
+
+Limits
+------
+The following table shows the default limits for the components utilized in this exercise.
+
+NOTE: You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.
+
+.. list-table::
+   :widths: 25, 25
+   :header-rows: 0
+
+   * - **Component**
+     - **Limit**
+   * - Key Pairs
+     - 5000 per region
+
 Initial
 -------
 Install **git** and **virtualenv**, if you don't already have them installed.
