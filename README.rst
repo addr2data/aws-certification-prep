@@ -136,7 +136,7 @@ You should familiarize yourself with the following whitepapers before you start.
 
 Exercises
 ---------
-I hope you enjoy following these exercises as much as I enjoyed building them.
+I hope you enjoy following these exercises, as much as I enjoyed building them.
 
 1. `Getting started <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
 

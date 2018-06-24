@@ -10,3 +10,5 @@ CHANGE LOG
 - 06-20-18 (addr2data):  Added a section to **ex-001** for adding budgets. Changed version 1.2.
 
 - 06-22-18 (addr2data):  Added 'Intermediate level exercises' to AWS services table on README.rst 
+
+- 06-24-18 (addr2data):  Moved 'Create Key Pair' from ex-003 to ex-001 to limit tangled pre-reqs. 

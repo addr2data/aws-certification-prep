@@ -20,9 +20,11 @@ Objectives
 ----------
 
 - Get your local environment ready.
-- Create an AWS IAM user that will allow programmatic access to the EC2 API.
+- Create an AWS IAM user that will have programmatic access to the EC2 API.
 - Use **awscli** to briefly explore EC2.
-- Familiarize yourself with a couple **awscli** commandline options.
+- Familiarize yourself with some **awscli** command-line options.
+- Create a AWS Key Pair for use in subsequent exercises.
+- Create a budget, in AWS Billing, to alert you when your spend reaches a specific threshold.  
 
 Expected Costs
 --------------
@@ -415,6 +417,24 @@ Create a bash script using the following commands and see the results for yourse
         AZS=$(aws ec2 describe-availability-zones --region $reg | jq -r '.AvailabilityZones | map(.ZoneName) | join (", ")')
         echo REGION:$reg%AZs:$AZS | column -s % -t
         done
+
+Create a Key Pair
+-----------------
+Use the following awscli command to create a new **Key Pair** and save the resulting **'.pem'** file.
+
+**Note: I have only verified that directly redirecting the 'KeyMaterial' to a file produces a valid '.pem' on macOS. Other OSs may have subtle differences.**
+
+.. code-block::
+    
+    aws ec2 create-key-pair --key-name acpkey1 --query 'KeyMaterial' --output text > acpkey1.pem
+
+Modify permissions
+------------------
+Use the following command to modify the permissions on the '.pem'.
+
+.. code-block::
+    
+    chmod 400 acpkey1.pem
 
 Create a budget
 ---------------
