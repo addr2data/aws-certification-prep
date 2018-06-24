@@ -106,11 +106,11 @@ Output:
 
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
-To simplify our commands and reduce the liklihood of typos, we'll set and environment variable to hold the VPC ID. The VPC ID comes from the **'VpcId'** value in the output above without quotes.
+To simplify our commands and reduce the likelihood of typos, we'll use an environment variable for the VPC ID. In the output above, find the **'VpcId'** key.
 
 .. code-block::
 
-    export EX002_VPC=<VpcId>
+    export EX002_VPC=<VpcId>  <-- no quotes
 
 Verify the VPC
 --------------
@@ -308,7 +308,7 @@ Output:
         }
     }
 
-We will leverage this component to provide connectivity to/from the Internet for the **'public'** Subnet we create later.
+We will leverage this component to provide connectivity to/from the Internet for the **'public'** Subnet we will create later.
 
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
