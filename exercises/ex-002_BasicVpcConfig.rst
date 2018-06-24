@@ -617,7 +617,7 @@ See it in the AWS Console
 -------------------------
 
 - Login to your AWS Account.
-- Select Services | Network & Content Delivery | VPC.
+- Select Services --> Network & Content Delivery --> VPC.
 - In the navigation pane, click on 'Your VPCs' to see a list of your VPCs.
 - In the navigation pane, click on 'Subnets' to see a list of your Subnets.
 - In the navigation pane, click on 'Route Tables' to see a list of your Route Tables.
