@@ -54,7 +54,7 @@ The following table shows the default limits for the components utilized in this
    * - Key Pairs
      - 5000 per region
 
-**NOTE: You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.**
+**Note: You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.**
 
 Initial
 -------

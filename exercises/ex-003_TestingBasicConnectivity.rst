@@ -3,7 +3,7 @@ ex-003: Testing basic connectivity
 
 Status
 ------
-Version 1.0 (6/18/18)
+Version 1.1 (6/24/18)
 
 Dependencies
 ------------
@@ -33,9 +33,6 @@ The activities in this exercise may result in charges to your AWS account.
    * - Component
      - Applicable Costs
      - Notes
-   * - Key Pairs
-     - None
-     - 
    * - Security Groups
      - None
      -
@@ -60,16 +57,12 @@ Limits
 ------
 The following table shows the default limits for the components utilized in this exercise.
 
-``NOTE: You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.``
-
 .. list-table::
    :widths: 25, 25
    :header-rows: 1
 
    * - **Component**
      - **Limit**
-   * - Key Pairs
-     - 5000 per region
    * - Security Groups
      - 500 per VPC
    * - Security Groups per Elastic Network Interface
@@ -88,24 +81,6 @@ During this exercise, we will be creating environment variables to simplify the 
 Once you are comfortable with the expected output of a command and wish filter the output, then you might want to try the **'--query'** and **'--output'** options available in the awscli command.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
-
-Create a Key Pair
------------------
-Use the following awscli command to create a new **Key Pair** and save the resulting **'.pem'** file.
-
-**Note: I have only verified that directly redirecting the 'KeyMaterial' to a file produces a valid '.pem' on macOS. Other OSs may have subtle differences.**
-
-.. code-block::
-    
-    aws ec2 create-key-pair --key-name acpkey1 --query 'KeyMaterial' --output text > acpkey1.pem
-
-Modify permissions
-------------------
-Use the following command to modify the permissions on the '.pem'.
-
-.. code-block::
-    
-    chmod 400 acpkey1.pem
 
 Create a Security Group
 -----------------------
