@@ -613,13 +613,17 @@ Output:
 
 We can now see an entry under **Associations**.
 
-See it on the Management Console
---------------------------------
+See it in the AWS Console
+-------------------------
 
-- Logon to your AWS Management Console.
+- Login to your AWS Account.
 - Select Services | Network & Content Delivery | VPC.
-- Click Your VPCs on the left-side menu to see a list of your VPS.
-- Select Subnets and Route Tables to confirm your subnets, the data should look familiar.
+- In the navigation pane, click on 'Your VPCs' to see a list of your VPCs.
+- In the navigation pane, click on 'Subnets' to see a list of your Subnets.
+- In the navigation pane, click on 'Route Tables' to see a list of your Route Tables.
+- Select a Route Table, then in the bottom panel select 'Routes' to see the Routes. 
+- In the navigation pane, click on 'Internet Gateways' to see a list of your Internet Gateways.
+
 
 Summary
 -------
