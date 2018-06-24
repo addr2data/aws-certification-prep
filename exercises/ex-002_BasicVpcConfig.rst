@@ -617,12 +617,12 @@ See it in the AWS Console
 -------------------------
 
 - Login to your AWS Account.
-- Select Services --> Network & Content Delivery --> VPC.
-- In the navigation pane, click on 'Your VPCs' to see a list of your VPCs.
-- In the navigation pane, click on 'Subnets' to see a list of your Subnets.
-- In the navigation pane, click on 'Route Tables' to see a list of your Route Tables.
-- Select a Route Table, then in the bottom panel select 'Routes' to see the Routes. 
-- In the navigation pane, click on 'Internet Gateways' to see a list of your Internet Gateways.
+- Select **Services** --> **Network & Content Delivery** --> **VPC**.
+- In the navigation pane, click on **Your VPCs** to see a list of your VPCs.
+- In the navigation pane, click on **Subnets** to see a list of your Subnets.
+- In the navigation pane, click on **Route Tables** to see a list of your Route Tables.
+- Select a Route Table, then in the bottom pane select **Routes** to see the Routes. 
+- In the navigation pane, click on **Internet Gateways** to see a list of your Internet Gateways.
 
 
 Summary
