@@ -147,7 +147,7 @@ Output:
     }
 
 
-Examine the Main Route Table
+Examine the main Route Table
 -------------------------------
 Use the following awscli command to view Main Route Table.
 
@@ -188,9 +188,9 @@ Output:
     }
 
 
-The above Route Table is created automatically when a VPC is created. You can see a single entry under **Routes**. This entry will allow for the routing of local traffic for all Subnets associated with the main/default Route Table. If you don't explicitly associate a subnet with another Route Table, it is implicitly associated with the main/default Route Table.
+The above Route Table is created automatically when a VPC is created. You can see a single entry under **Routes**. This entry will allow for the routing of local traffic for all Subnets associated with the main Route Table. If you don't explicitly associate a subnet with another Route Table, it is implicitly associated with the main Route Table.
 
-We won't be modifying this Route Table. We will use it to provide routing for the **'private'** Subnet we will create later. Since newly created Subnets are implicitly associated with the main/default Route Table, it would seem to be a good practice to provide reachability to/from the Internet via a separate Route Table. 
+We won't be modifying the main Route Table. We will use it to provide routing for the **'private'** Subnet we will create later. Since newly created Subnets are implicitly associated with the main Route Table, it would seem to be a good practice to provide reachability to/from the Internet via a separate Route Table. 
 
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
