@@ -312,7 +312,7 @@ We will leverage this component to provide connectivity to/from the Internet for
 
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
-Yep, make later commands easier by adding another environment variable. The InternetGatewayId is in the results above, under the key **'InternetGatewayId'**.
+Yep, another environment variable. In the output above, find the **'InternetGatewayId'** key.
 
 .. code-block::
 
