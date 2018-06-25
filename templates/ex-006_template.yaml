@@ -77,11 +77,9 @@ Resources:
   NatGateway:
     Type: "AWS::EC2::NatGateway"
     Properties: 
-      AllocationId:
-        Fn::GetAtt:
-          - FloatingIpAddressNatGateway
-          - AllocationId
+      AllocationId: !GetAtt FloatingIpAddressNatGateway.AllocationId        
       SubnetId: !Ref SubnetPublic
+    DependsOn: DefaultRoutePublic
 
   Ec2Endpoint:
     Type: "AWS::EC2::VPCEndpoint"
@@ -196,18 +194,16 @@ Resources:
       Tags: 
         - Key: Name
           Value: i_pub_ex005
-      UserData:
-        "Fn::Base64":
-            "Fn::Join": [
-                "\n",
-                [
-                    "#!/bin/bash",
-                    "sudo apt-get update",
-                    "sudo apt-get dist-upgrade -y",
-                    "sudo apt-get install python3-pip -y",
-                    "pip3 install awscli"
-                ]
-            ]
+      UserData: !Base64
+        "Fn::Join":
+          - "\n"
+          -
+            - "#!/bin/bash"
+            - "sudo apt-get update"
+            - "sudo apt-get dist-upgrade -y"
+            - "sudo apt-get install python3-pip -y"
+            - "pip3 install awscli"
+    DependsOn: DefaultRoutePublic
 
   PrivateInstance:
     Type: AWS::EC2::Instance
@@ -221,17 +217,14 @@ Resources:
       Tags: 
         - Key: Name
           Value: i_pri_ex005
-      UserData:
-        "Fn::Base64":
-            "Fn::Join": [
-                "\n",
-                [
-                    "#!/bin/bash",
-                    "sudo apt-get update",
-                    "sudo apt-get dist-upgrade -y",
-                    "sudo apt-get install python3-pip -y",
-                    "pip3 install awscli"
-                ]
-            ]
-
+      UserData: !Base64
+        "Fn::Join":
+          - "\n"
+          -
+            - "#!/bin/bash"
+            - "sudo apt-get update"
+            - "sudo apt-get dist-upgrade -y"
+            - "sudo apt-get install python3-pip -y"
+            - "pip3 install awscli"
+    DependsOn: NatGateway
 ...

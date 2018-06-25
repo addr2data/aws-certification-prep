@@ -84,11 +84,15 @@ Setting environment variables may be different on different OSs. Please refer to
 
 Create a Security Group
 -----------------------
+We will be adding the Instances that we create later in the exercise to this Security Group.
+
+**Note: We'll be reusing the environment variables created in the previous exercise**
+
 Use the following awscli command to create a new Security Group.
 
 .. code-block::
 
-    aws ec2 create-security-group --group-name Int2Public --description "Security Group used to connect to instances on public subnet from Internet" --vpc-id $EX003_VPC
+    aws ec2 create-security-group --group-name Int2Public --description "Security Group used to connect to instances on public subnet from Internet" --vpc-id $EX002_VPC
 
 Output:
 
@@ -98,6 +102,21 @@ Output:
         "GroupId": "sg-xxxxxxxxxxxxxxxxx"
     }
 
+Troubleshooting:
+~~~~~~~~~~~~~~~~
+If you get an error that reads **'aws: error: argument --vpc-id: expected one argument'**, it probably means that your EX002_VPC environment variable is not set. You can retreive the VPC ID value by running the following command:
+
+.. code-block::
+
+    aws ec2 describe-vpcs
+
+Then set the environment variable again:
+
+.. code-block::
+
+    export EX002_VPC=<VpcId>
+
+
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block::
@@ -106,6 +125,10 @@ Environment variable
 
 Add a rule to the Security Group
 --------------------------------
+We'll need to add an ingress rule to our security group. This rule will allow inbound traffic to SSH (tcp port 22) from anywhere (0.0.0.0/0). By default, Security Groups allows all outbound traffic.
+
+We will cover Security Groups in more detail in a later exercise.
+
 Use the following awscli command to add a rule to the above security group.
 
 .. code-block::
@@ -213,6 +236,8 @@ Use the following table to identify the 'imageId' for your region.
      - sa-east-1
      - ami-67fca30b
 
+Create an environment variable using your ImageId.
+
 .. code-block::
 
     export EX003_IMAGE_ID=<ImageId>
@@ -220,9 +245,9 @@ Use the following table to identify the 'imageId' for your region.
 
 Launch an Instance
 -------------------
-Use the following awscli command to launch an Instance and attach to the **'public'** Subnet.
+Use the following awscli command to launch an Instance and attach to the **'public'** Subnet. From here onwards, we will refer to this Instance as the 'public' Instance.
 
-``Reminder: The only thing that makes it a 'public' Subnet is the fact that it is associated with a Route Table that has a Route to the Internet Gateway.``
+**Note: The only thing that makes it a 'public' Subnet is the fact that it is associated with a Route Table that has a default Route to the Internet Gateway.``
 
 We have used the **'--client-token'** to option ensure this operation is  Idempotent.
 
@@ -231,6 +256,16 @@ We have used the **'--client-token'** to option ensure this operation is  Idempo
 .. code-block::
 
     aws ec2 run-instances --image-id $EX003_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PUB --security-group-ids $EX003_SG --client-token awscertprep-ex-003-001
+
+Note on the above parameters:
+
+- What AMI to use: **'--image-id $EX003_IMAGE_ID'**
+- What Instance type to use: **'--instance-type t2.micro'**
+- What Access Key to use: **'--key-name acpkey1'**
+- What Subnet to attach it to: **'--subnet-id $EX003_SUBNET_PUB'**
+- What Security Group to apply: **'--security-group-ids $EX003_SG'**
+- Ensure idempotency by adding a token: **'--client-token awscertprep-ex-003-001'**
+
 
 Output:
 
