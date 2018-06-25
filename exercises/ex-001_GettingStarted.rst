@@ -3,7 +3,7 @@ ex-001: Getting started
 
 Status
 ------
-Version 1.4 (6/24/18)
+Version 1.4 (6/25/18)
 
 Dependencies
 ------------
@@ -43,8 +43,8 @@ The activities in this exercise are NOT expected to result in charges to your AW
    * - Budgets
      - 
         + $0.00 for your first two budgets.
-        + $0.02 per budget per day, afterwards.
-     - If you examine your 'Bill Details' (under Billing) and expand the 'Budgets' section, you will see "$0.00 for 62 Budget-days per month (free tier)". That represents your two free budgets per month.
+        + $0.02 per budget per day afterwards.
+     - If you examine your 'Bill Details' (under Billing) and expand the 'Budgets' section, you will see **"$0.00 for 62 Budget-days per month (free tier)"**. That represents your two free budgets per month.
 
 Limits
 ------
