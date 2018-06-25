@@ -31,7 +31,7 @@ Expected Costs
 The activities in this exercise are NOT expected to result in charges to your AWS account.
 
 .. list-table::
-   :widths: 20, 40, 50
+   :widths: 33, 33, 33
    :header-rows: 0
 
    * - **Component**
