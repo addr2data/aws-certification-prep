@@ -267,22 +267,16 @@ Note on the above parameters:
      - **Description**
    * - '--image-id $EX003_IMAGE_ID'
      - What AMI to use
-
-- **'--image-id $EX003_IMAGE_ID'**: What AMI to use.
-- **'--instance-type t2.micro'**: The Instance type defines the number of vCPUs, the amount of Memory, the size and type Storage, Network performance, etc... 
-- **'--key-name acpkey1'**: What Key Pair to use.
-- **'--subnet-id $EX003_SUBNET_PUB'**
-- **'--security-group-ids $EX003_SG'**
-- **'--client-token awscertprep-ex-003-001'**
-
-
-vCPUs 
- (GiB)
-Instance Storage (GB) 
-EBS-Optimized Available 
-Network Performance 
-IPv6 Support 
-
+   * - '--instance-type t2.micro'
+     - The Instance type defines the number of vCPUs, the amount of Memory, the size and type Storage, Network performance, etc...
+   * - '--key-name acpkey1'
+     - What Key Pair to use.
+   * - '--subnet-id $EX003_SUBNET_PUB'
+     - 
+   * - '--security-group-ids $EX003_SG'
+     - 
+   * - '--client-token awscertprep-ex-003-001'
+     - 
 
 Output:
 
