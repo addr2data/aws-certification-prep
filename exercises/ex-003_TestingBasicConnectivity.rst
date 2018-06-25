@@ -257,10 +257,10 @@ We have used the **'--client-token'** to option ensure this operation is  Idempo
 
     aws ec2 run-instances --image-id $EX003_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PUB --security-group-ids $EX003_SG --client-token awscertprep-ex-003-001
 
-Note on the above parameters:
+Additional information on the above parameters:
 
 .. list-table::
-   :widths: 25, 25
+   :widths: 50, 50
    :header-rows: 0
 
    * - **Parameter**
