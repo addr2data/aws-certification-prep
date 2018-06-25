@@ -41,14 +41,14 @@ Resources:
       EnableDnsHostnames: true
       Tags:
         - Key: Name
-          Value: vpc_ex005
+          Value: vpc_ex006
 
   InternetGateway:
     Type: AWS::EC2::InternetGateway
     Properties: 
       Tags:
         - Key: Name
-          Value: ig_ex005
+          Value: ig_ex006
 
   AttachInternetGateway:
     Type: AWS::EC2::VPCGatewayAttachment
@@ -56,42 +56,38 @@ Resources:
       InternetGatewayId: !Ref InternetGateway
       VpcId: !Ref VPC
   
-  SubnetPublic:
+  SubnetWeb1:
     Type: AWS::EC2::Subnet
     Properties:
-      CidrBlock: 10.0.0.0/23
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: !Select 
+        - 0
+        - Fn::GetAZs: !Ref 'AWS::Region'
       Tags:
         - Key: Name
-          Value: sub_pub_ex005
+          Value: subnet_web1_ex006
+      VpcId: !Ref VPC
+
+  SubnetWeb2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: !Select 
+        - 1
+        - Fn::GetAZs: !Ref 'AWS::Region'
+      Tags:
+        - Key: Name
+          Value: subnet_web2_ex006
       VpcId: !Ref VPC
   
-  SubnetPrivate:
+  SubnetJumpbox:
     Type: AWS::EC2::Subnet
     Properties:
-      CidrBlock: 10.0.2.0/23
+      CidrBlock: 10.0.100.0/24
       Tags:
         - Key: Name
-          Value: sub_pri_ex005
+          Value: subnet_jumpbox_ex006
       VpcId: !Ref VPC
-
-  NatGateway:
-    Type: "AWS::EC2::NatGateway"
-    Properties: 
-      AllocationId: !GetAtt FloatingIpAddressNatGateway.AllocationId        
-      SubnetId: !Ref SubnetPublic
-    DependsOn: DefaultRoutePublic
-
-  Ec2Endpoint:
-    Type: "AWS::EC2::VPCEndpoint"
-    Properties: 
-      VpcId: !Ref VPC
-      ServiceName: com.amazonaws.us-east-1.ec2
-      VpcEndpointType: Interface
-      PrivateDnsEnabled: true
-      SubnetIds: 
-        - !Ref SubnetPrivate
-      SecurityGroupIds: 
-        - !Ref SecurityGroupEndpoint
 
   RouteTablePublic:
     Type: AWS::EC2::RouteTable
@@ -99,15 +95,7 @@ Resources:
       VpcId: !Ref VPC
       Tags:
         - Key: Name
-          Value: rtb_pub_ex005
-  
-  RouteTablePrivate:
-    Type: AWS::EC2::RouteTable
-    Properties: 
-      VpcId: !Ref VPC
-      Tags:
-        - Key: Name
-          Value: rtb_pri_ex005
+          Value: rtb_public_ex006
 
   DefaultRoutePublic:
     Type: AWS::EC2::Route
@@ -115,41 +103,40 @@ Resources:
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref InternetGateway
       RouteTableId: !Ref RouteTablePublic
-  
-  DefaultRoutePrivate:
-    Type: AWS::EC2::Route
-    Properties: 
-      DestinationCidrBlock: 0.0.0.0/0
-      NatGatewayId: !Ref NatGateway
-      RouteTableId: !Ref RouteTablePrivate
 
-  AssociateSubnetRouteTablePublic:
+  AssociateSubnetWeb1RouteTablePublic:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties: 
       RouteTableId: !Ref RouteTablePublic
-      SubnetId: !Ref SubnetPublic
-
-  AssociateSubnetRouteTablePrivate:
+      SubnetId: !Ref SubnetWeb1
+  
+  AssociateSubnetWeb2RouteTablePublic:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties: 
-      RouteTableId: !Ref RouteTablePrivate
-      SubnetId: !Ref SubnetPrivate
-  
+      RouteTableId: !Ref RouteTablePublic
+      SubnetId: !Ref SubnetWeb2
+
+  AssociateSubnetJumpboxRouteTablePublic:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: 
+      RouteTableId: !Ref RouteTablePublic
+      SubnetId: !Ref SubnetJumpbox
+
   FloatingIpAddressInstance:
     Type: "AWS::EC2::EIP"
     Properties:
-      InstanceId: !Ref PublicInstance
+      InstanceId: !Ref JumpboxInstance
       Domain: vpc
 
-  FloatingIpAddressNatGateway:
+  FloatingIpAddressLoadBalancer:
     Type: "AWS::EC2::EIP"
     Properties:
       Domain: vpc
 
-  SecurityGroupInstances:
+  SecurityGroupJumpbox:
     Type: AWS::EC2::SecurityGroup
     Properties: 
-      GroupName: sg_instances_ex005
+      GroupName: sg_jumpbox_ex006
       GroupDescription: "Security Group for Instances in ex-005"
       SecurityGroupIngress:
         - 
@@ -157,43 +144,43 @@ Resources:
           IpProtocol: tcp
           FromPort: 22
           ToPort: 22
-        - 
-          CidrIp: 0.0.0.0/0
-          IpProtocol: icmp
-          FromPort: -1
-          ToPort: -1
       VpcId: !Ref VPC
 
-  SecurityGroupEndpoint:
+  SecurityGroupWebInstances:
     Type: AWS::EC2::SecurityGroup
     Properties: 
-      GroupName: sg_endpoint_ex005
-      GroupDescription: "Security Group for EC2 Endpoint in ex-005"
+      GroupName: sg_web-instances_ex006
+      GroupDescription: "Security Group for Instances in ex-005"
       SecurityGroupIngress:
         - 
-          CidrIp: 0.0.0.0/0
+          CidrIp: 10.0.0.0/16
+          IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+        - 
+          CidrIp: 10.0.0.0/16
           IpProtocol: tcp
           FromPort: 80
           ToPort: 80
         - 
-          CidrIp: 0.0.0.0/0
+          CidrIp: 10.0.0.0/16
           IpProtocol: tcp
           FromPort: 443
           ToPort: 443
       VpcId: !Ref VPC
 
-  PublicInstance:
+  JumpboxInstance:
     Type: AWS::EC2::Instance
     Properties: 
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
       InstanceType: t2.micro
       KeyName: acpkey1
       SecurityGroupIds: 
-        - !Ref SecurityGroupInstances
-      SubnetId: !Ref SubnetPublic
+        - !Ref SecurityGroupJumpbox
+      SubnetId: !Ref SubnetJumpbox
       Tags: 
         - Key: Name
-          Value: i_pub_ex005
+          Value: i_jumpbox_ex006
       UserData: !Base64
         "Fn::Join":
           - "\n"
@@ -205,18 +192,18 @@ Resources:
             - "pip3 install awscli"
     DependsOn: DefaultRoutePublic
 
-  PrivateInstance:
+  WebInstance1:
     Type: AWS::EC2::Instance
     Properties: 
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
       InstanceType: t2.micro
       KeyName: acpkey1
       SecurityGroupIds: 
-        - !Ref SecurityGroupInstances
-      SubnetId: !Ref SubnetPrivate
+        - !Ref SecurityGroupWebInstances
+      SubnetId: !Ref SubnetWeb1
       Tags: 
         - Key: Name
-          Value: i_pri_ex005
+          Value: i_web1_ex006
       UserData: !Base64
         "Fn::Join":
           - "\n"
@@ -225,6 +212,27 @@ Resources:
             - "sudo apt-get update"
             - "sudo apt-get dist-upgrade -y"
             - "sudo apt-get install python3-pip -y"
-            - "pip3 install awscli"
-    DependsOn: NatGateway
+            - "python3 -m http.server 80"
+
+  WebInstance2:
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+      InstanceType: t2.micro
+      KeyName: acpkey1
+      SecurityGroupIds: 
+        - !Ref SecurityGroupWebInstances
+      SubnetId: !Ref SubnetWeb2
+      Tags: 
+        - Key: Name
+          Value: i_web2_ex006
+      UserData: !Base64
+        "Fn::Join":
+          - "\n"
+          -
+            - "#!/bin/bash"
+            - "sudo apt-get update"
+            - "sudo apt-get dist-upgrade -y"
+            - "sudo apt-get install python3-pip -y"
+            - "python3 -m http.server 80"
 ...
