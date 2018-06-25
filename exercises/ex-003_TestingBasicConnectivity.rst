@@ -259,6 +259,15 @@ We have used the **'--client-token'** to option ensure this operation is  Idempo
 
 Note on the above parameters:
 
+.. list-table::
+   :widths: 25, 25
+   :header-rows: 0
+
+   * - **Parameter**
+     - **Description**
+   * - '--image-id $EX003_IMAGE_ID'
+     - What AMI to use
+
 - **'--image-id $EX003_IMAGE_ID'**: What AMI to use.
 - **'--instance-type t2.micro'**: The Instance type defines the number of vCPUs, the amount of Memory, the size and type Storage, Network performance, etc... 
 - **'--key-name acpkey1'**: What Key Pair to use.
