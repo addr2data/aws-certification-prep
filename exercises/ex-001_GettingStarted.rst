@@ -44,7 +44,7 @@ The activities in this exercise are NOT expected to result in charges to your AW
      - 
         + $0.00 for your first two budgets.
         + $0.02 per budget per day afterwards.
-     - If you examine your 'Bill Details' (under Billing) and expand the 'Budgets' section, you will see **"$0.00 for 62 Budget-days per month (free tier)"**. That represents your two free budgets per month.
+     - If you examine your 'Bill Details' (under Billing) and expand the 'Budgets' section, you will see; **"$0.00 for 62 Budget-days per month (free tier)"**. That represents your two free budgets per month.
 
 Limits
 ------
