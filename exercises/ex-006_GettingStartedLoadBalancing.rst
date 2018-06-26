@@ -43,24 +43,30 @@ The activities in this exercise may result in charges to your AWS account.
      - 
         + $0.0116 per hour per Instance (t2.micro)
      - 
-        + During this exercise, we will us three (3) Instances. The AMI that will be used is **'Ubuntu Server 16.04 LTS'**, which combined with the **'t2.micro'** Instance Type, is 'Free tier eligible'.
+        + During this exercise, we will us three (3) Instances. The AMI that will be used is **'Ubuntu Server 16.04 LTS'**, which combined with the **'t2.micro'** Instance Type, is **'Free tier eligible'**.
         + These Instances will be launched as part of a CloudFormation Stack. 
         + It is not expected that these Instances will need to be running for more than one hour. 
    * - Elastic IPs
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
         + $0.005 per hour per EIP that is NOT associated to a running Instance
-     - During this exercise, we will use one (1) EIP. This EIP is allocated and mapped to an Instance as part of the CloudFormation Stack. 
+     - 
+        + During this exercise, we will use one (1) EIP. This EIP will be mapped to an Instance. 
+        + This EIP is allocated and mapped as part of a CloudFormation Stack. 
    * - Application Load Balancing
      - 
         + Between $0.0225 and $0.034 per Application Load Balancer-hour (or partial hour), depending on your region.
         + Between $0.008 and $0.011 per LCU-hour (or partial hour), depending on your region.
      - 
+        + It is not expected that this Load balancer will need to be running for more than one hour.
    * - Network Load Balancing
      - 
         + Between $0.0225 and $0.034 per Network Load Balancer-hour (or partial hour), depending on your region.
         + Between $0.006 and $0.0083 per LCU-hour (or partial hour), depending on your region.
      - 
+        + During this exercise, we will be creating an Application Load Balancer.
+        + It is not expected that this Load balancer will need to be running for more than one hour. 
+
    * - Data Transfer
      -
         + $0.00 per GB - Data Transfer IN to Amazon EC2 from Internet
