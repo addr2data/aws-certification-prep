@@ -40,7 +40,10 @@ The activities in this exercise may result in charges to your AWS account.
    * - On-demand Instances
      - 
         + $0.0116 per hour per Instance (t2.micro)
-     - During this exercise, we will us three (3) Instances. The AMI used is Ubuntu Server 16.04 LTS image, which combined with the t2.micro Instance Type, is 'Free tier eligible'. The Instances will be launched as part of the CloudFormation Stack. It is not expected that these Instances will need to be running for more than one hour. 
+     - 
+        + During this exercise, we will us three (3) Instances. The AMI used is the **Ubuntu Server 16.04 LTS** image, which combined with the **t2.micro** Instance Type, is 'Free tier eligible'.
+        + The Instances will be launched as part of the CloudFormation Stack. 
+        + It is not expected that these Instances will need to be running for more than one hour. 
    * - Elastic IPs
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
