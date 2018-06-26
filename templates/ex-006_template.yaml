@@ -128,16 +128,11 @@ Resources:
       InstanceId: !Ref JumpboxInstance
       Domain: vpc
 
-  FloatingIpAddressLoadBalancer:
-    Type: "AWS::EC2::EIP"
-    Properties:
-      Domain: vpc
-
   SecurityGroupJumpbox:
     Type: AWS::EC2::SecurityGroup
     Properties: 
       GroupName: sg_jumpbox_ex006
-      GroupDescription: "Security Group for Instances in ex-005"
+      GroupDescription: "Security Group for Jumpbox Instance in ex-006"
       SecurityGroupIngress:
         - 
           CidrIp: 0.0.0.0/0
@@ -150,10 +145,10 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties: 
       GroupName: sg_web-instances_ex006
-      GroupDescription: "Security Group for Instances in ex-005"
+      GroupDescription: "Security Group for Web Instances in ex-006"
       SecurityGroupIngress:
         - 
-          CidrIp: 10.0.0.0/16
+          CidrIp: 10.0.100.0/24
           IpProtocol: tcp
           FromPort: 22
           ToPort: 22
@@ -164,6 +159,24 @@ Resources:
           ToPort: 80
         - 
           CidrIp: 10.0.0.0/16
+          IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+      VpcId: !Ref VPC
+
+  SecurityGroupLoadBalancer:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupName: sg_load-balancer_ex006
+      GroupDescription: "Security Group for Load balancer in ex-006"
+      SecurityGroupIngress:
+        - 
+          CidrIp: 0.0.0.0/0
+          IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+        - 
+          CidrIp: 0.0.0.0/0
           IpProtocol: tcp
           FromPort: 443
           ToPort: 443
@@ -211,8 +224,9 @@ Resources:
             - "#!/bin/bash"
             - "sudo apt-get update"
             - "sudo apt-get dist-upgrade -y"
-            - "sudo apt-get install python3-pip -y"
-            - "python3 -m http.server 80"
+            - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
+            - "sudo python3 -m http.server 80"
+    DependsOn: DefaultRoutePublic
 
   WebInstance2:
     Type: AWS::EC2::Instance
@@ -233,6 +247,7 @@ Resources:
             - "#!/bin/bash"
             - "sudo apt-get update"
             - "sudo apt-get dist-upgrade -y"
-            - "sudo apt-get install python3-pip -y"
-            - "python3 -m http.server 80"
+            - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
+            - "sudo python3 -m http.server 80"
+    DependsOn: DefaultRoutePublic
 ...

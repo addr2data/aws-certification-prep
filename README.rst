@@ -10,7 +10,7 @@ Project Status
    * - Project Start
      - Jun 4, 2018
    * - Latest Update
-     - Jun 25, 2018
+     - Jun 26, 2018
 
 `Change Log <https://github.com/addr2data/aws-certification-prep/blob/master/changelog.rst>`_
 
@@ -148,7 +148,9 @@ I hope you enjoy following these exercises, as much as I enjoyed building them.
 
 5. `Expanding the VPC configuration <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-005_ExpandingVpcConfig.rst>`_
 
-6. To be added
+6. `Getting started with Load Balancing <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-006_GettingStartedLoadBalancing.rst>`_
+
+7. To be added
 
 Additional Resources
 --------------------
