@@ -267,7 +267,7 @@ In order to create a simple web server, the following commands are run at Instan
             - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
             - "sudo python3 -m http.server 80"
 
-In order to illustrate the **'DependsOn'** resource attribute, we have specified that launching of 'WebInstance1' and 'WebInstance2' must come after the creation of 'DefaultRoutePublic'. This will ensure that a path to the Internet is available before the Instances are launched. 
+In order to illustrate the **'DependsOn'** resource attribute, we have specified that launching of 'WebInstance1' and 'WebInstance2' must come after the creation of 'DefaultRoutePublic'. In theory, ensuring that a path to the Internet is available before the Instances are launched. 
 
 .. code-block::
 
