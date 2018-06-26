@@ -35,17 +35,19 @@ The activities in this exercise may result in charges to your AWS account.
      - **Applicable costs**
      - **Notes**
    * - VPC (including Subnets, Route Tables and IntenetGateways).
-     - None
-     - AWS does not charge for the basic VPC building blocks used in this exercise.
+     - None (AWS does not charge for these basic VPC building blocks)
+     - These basic VPC components will be created as part of the CloudFormation Stack. 
    * - On-demand Instances
      - 
         + $0.0116 per hour per Instance (t2.micro)
-     - During this exercise we will be launching three (3) Instances, using Ubuntu Server 16.04 LTS image, which is 'Free tier eligible'. It is not expected that these Instances will need to be running for more than one hour. 
+     - During this exercise, we will us three (3) Instances. The AMI used is Ubuntu Server 16.04 LTS image, which combined with the t2.micro Instance Type, is 'Free tier eligible'. The Instances will be launched as part of the CloudFormation Stack. 
+
+     It is not expected that these Instances will need to be running for more than one hour. 
    * - Elastic IPs
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
         + $0.005 per hour per EIP that is NOT associated to a running Instance
-     - During this exercise, we will use one (1) EIP. This EIP is mapped to an Instance as part of the CloudFormation Stack creation. 
+     - During this exercise, we will use one (1) EIP. This EIP is allocated and mapped to an Instance as part of the CloudFormation Stack. 
    * - Application Load Balancing
      - 
         + Between $0.0225 and $0.034 per Application Load Balancer-hour (or partial hour), depending on your region.
