@@ -267,6 +267,33 @@ The following section only shows the resources that differ from previous Templat
         DependsOn: DefaultRoutePublic
     ...
 
+Notable items in the Template
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When creating an Application Load Balancer, it is required that at least two Subnets from different Availability Zones be specified. The following built-in functions are used to:
+
+    - Get a list of all the Availability Zones (AZ) in the Region that the Stack is being deployed in.
+    - Select the 1st (0) AZ and create **'SubnetWeb1'** there.
+    - Select the 2nd (1) AZ and create **'SubnetWeb2'** there.
+
+
+
+.. code-block::
+
+    SubnetWeb1:
+      Properties:
+        AvailabilityZone: !Select 
+          - 0
+          - Fn::GetAZs: !Ref 'AWS::Region'
+
+    SubnetWeb2:
+      Properties:
+        AvailabilityZone: !Select 
+          - 1
+          - Fn::GetAZs: !Ref 'AWS::Region'
+
+
+
 Create Stack
 ------------
 Use the following awscli command to create a new **'Stack'** based on the template.
