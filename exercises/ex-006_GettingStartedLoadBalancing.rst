@@ -88,68 +88,14 @@ Setting environment variables may be different on different OSs. Please refer to
 
 Template
 --------
-In order to build our starting configuration, we will use a CloudFormation Template.
+In order to build our starting configuration, we will create a CloudFormation Stack from Template **'ex-006_template.yaml'** in the **'templates'** directory.
+
+The following section only shows the resources that differ from previous Templates.
 
 .. code-block::
 
     ---
-    Mappings: 
-      RegionMap: 
-        us-east-1: 
-          "64": "ami-a4dc46db"
-        us-east-2: 
-          "64": "ami-6a003c0f"
-        us-west-1:
-          "64": "ami-8d948ced"
-        us-west-2:
-          "64": "ami-db710fa3"
-        ca-central-1:
-          "64": "ami-7e21a11a"
-        eu-west-1:
-          "64": "ami-58d7e821"
-        eu-west-2:
-          "64": "ami-5daa463a"
-        eu-west-3:
-          "64": "ami-1960d164"
-        eu-central-1:
-          "64": "ami-c7e0c82c"
-        ap-northeast-1:
-          "64": "ami-48a45937"
-        ap-northeast-2:
-          "64": "ami-f030989e"
-        ap-southeast-1:
-          "64": "ami-81cefcfd"
-        ap-southeast-2:
-          "64": "ami-963cecf4"
-        ap-south-1:
-          "64": "ami-41e9c52e"
-        sa-east-1:
-          "64": "ami-67fca30b"
-
-    Resources:
-      VPC:
-        Type: AWS::EC2::VPC
-        Properties: 
-          CidrBlock: 10.0.0.0/16
-          EnableDnsSupport: true
-          EnableDnsHostnames: true
-          Tags:
-            - Key: Name
-              Value: vpc_ex006
-
-      InternetGateway:
-        Type: AWS::EC2::InternetGateway
-        Properties: 
-          Tags:
-            - Key: Name
-              Value: ig_ex006
-
-      AttachInternetGateway:
-        Type: AWS::EC2::VPCGatewayAttachment
-        Properties: 
-          InternetGatewayId: !Ref InternetGateway
-          VpcId: !Ref VPC
-      
+    Resources:      
       SubnetWeb1:
         Type: AWS::EC2::Subnet
         Properties:
@@ -190,31 +136,6 @@ In order to build our starting configuration, we will use a CloudFormation Templ
           Tags:
             - Key: Name
               Value: rtb_public_ex006
-
-      DefaultRoutePublic:
-        Type: AWS::EC2::Route
-        Properties: 
-          DestinationCidrBlock: 0.0.0.0/0
-          GatewayId: !Ref InternetGateway
-          RouteTableId: !Ref RouteTablePublic
-
-      AssociateSubnetWeb1RouteTablePublic:
-        Type: AWS::EC2::SubnetRouteTableAssociation
-        Properties: 
-          RouteTableId: !Ref RouteTablePublic
-          SubnetId: !Ref SubnetWeb1
-      
-      AssociateSubnetWeb2RouteTablePublic:
-        Type: AWS::EC2::SubnetRouteTableAssociation
-        Properties: 
-          RouteTableId: !Ref RouteTablePublic
-          SubnetId: !Ref SubnetWeb2
-
-      AssociateSubnetJumpboxRouteTablePublic:
-        Type: AWS::EC2::SubnetRouteTableAssociation
-        Properties: 
-          RouteTableId: !Ref RouteTablePublic
-          SubnetId: !Ref SubnetJumpbox
 
       FloatingIpAddressInstance:
         Type: "AWS::EC2::EIP"
