@@ -45,7 +45,7 @@ The activities in this exercise may result in charges to your AWS account.
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
         + $0.005 per hour per EIP that is NOT associated to a running Instance
-     - This exercise uses one (1) EIP, which is mapped to an Instance in the CloudFormation Template. 
+     - During this exercise, we will use one (1) EIP. This EIP is mapped to an Instance as part of the CloudFormation Stack creation. 
    * - Application Load Balancing
      - 
         + Between $0.0225 and $0.034 per Application Load Balancer-hour (or partial hour), depending on your region.
