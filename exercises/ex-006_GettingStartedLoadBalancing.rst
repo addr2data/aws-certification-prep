@@ -40,29 +40,27 @@ The activities in this exercise may result in charges to your AWS account.
    * - On-demand Instances
      - 
         + $0.0116 per hour per Instance (t2.micro)
-     - During this exercise we will be launching two Instances, using Ubuntu Server 16.04 LTS image, which is 'Free tier eligible'. It is not expected that these Instances will need to be running for more than one hour. 
+     - During this exercise we will be launching three (3) Instances, using Ubuntu Server 16.04 LTS image, which is 'Free tier eligible'. It is not expected that these Instances will need to be running for more than one hour. 
    * - Elastic IPs
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
-        + $0.05 per hour per EIP that is NOT associated to a running Instance
-     - Unlike ex-004, there will not be periods of time where an EIP is not associated with an running Instance.
+        + $0.005 per hour per EIP that is NOT associated to a running Instance
+     -
    * - Elastic IPs
      - 
         + $0.00 per EIP address remap for the first 100 remaps per month.
-        + $0.10 per EIP address remap for additional remaps over 100 per month
-     - Unlike ex-004, we will not be re-mapping EIPs.
-   * - NAT Gateway
-     - Between $0.045 and $0.093 per hour, depending on Region.
-     - During this exercise, we will creating a NAT Gateway. It should not need to run for more than hour or so.
-   * - NAT Gateway
-     - Between $0.045 and $0.093 per GB of data processed, depending on Region.
-     - During this exercise, we will creating a NAT Gateway. A small amount of data will be processed.
-   * - VPC Endpoint
-     - Between $0.01 and $0.021 per hour, depending on Region.
-     - During this exercise, we will creating a VPC Endpoint. It should not need to run for more than hour or so.
-   * - VPC Endpoint
-     - $0.01 per GB of data processed.
-     - During this exercise, we will creating a NAT Gateway. A small amount of data will be processed.
+        + $0.10 per EIP address remap for additional remaps over 100 per month.
+     -
+   * - Application Load Balancing
+     - 
+        + Between $0.0225 and $0.034 per Application Load Balancer-hour (or partial hour), depending on your region.
+        + Between $0.008 and $0.011 per LCU-hour (or partial hour), depending on your region.
+     - 
+   * - Network Load Balancing
+     - 
+        + Between $0.0225 and $0.034 per Network Load Balancer-hour (or partial hour), depending on your region.
+        + Between $0.006 and $0.0083 per LCU-hour (or partial hour), depending on your region.
+     - 
    * - Data Transfer
      -
         + $0.00 per GB - Data Transfer IN to Amazon EC2 from Internet
