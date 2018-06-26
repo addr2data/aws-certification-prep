@@ -3,7 +3,7 @@ ex-006: Getting started with Load Balancing
 
 Status
 ------
-Version (Draft)
+Version (Initial Draft)
 
 Dependencies
 ------------
@@ -119,29 +119,6 @@ The following section only shows the resources that differ from previous Templat
             - Key: Name
               Value: subnet_web2_ex006
           VpcId: !Ref VPC
-      
-      SubnetJumpbox:
-        Type: AWS::EC2::Subnet
-        Properties:
-          CidrBlock: 10.0.100.0/24
-          Tags:
-            - Key: Name
-              Value: subnet_jumpbox_ex006
-          VpcId: !Ref VPC
-
-      RouteTablePublic:
-        Type: AWS::EC2::RouteTable
-        Properties: 
-          VpcId: !Ref VPC
-          Tags:
-            - Key: Name
-              Value: rtb_public_ex006
-
-      FloatingIpAddressInstance:
-        Type: "AWS::EC2::EIP"
-        Properties:
-          InstanceId: !Ref JumpboxInstance
-          Domain: vpc
 
       SecurityGroupJumpbox:
         Type: AWS::EC2::SecurityGroup
@@ -197,29 +174,6 @@ The following section only shows the resources that differ from previous Templat
               ToPort: 443
           VpcId: !Ref VPC
 
-      JumpboxInstance:
-        Type: AWS::EC2::Instance
-        Properties: 
-          ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
-          InstanceType: t2.micro
-          KeyName: acpkey1
-          SecurityGroupIds: 
-            - !Ref SecurityGroupJumpbox
-          SubnetId: !Ref SubnetJumpbox
-          Tags: 
-            - Key: Name
-              Value: i_jumpbox_ex006
-          UserData: !Base64
-            "Fn::Join":
-              - "\n"
-              -
-                - "#!/bin/bash"
-                - "sudo apt-get update"
-                - "sudo apt-get dist-upgrade -y"
-                - "sudo apt-get install python3-pip -y"
-                - "pip3 install awscli"
-        DependsOn: DefaultRoutePublic
-
       WebInstance1:
         Type: AWS::EC2::Instance
         Properties: 
@@ -270,13 +224,11 @@ The following section only shows the resources that differ from previous Templat
 Notable items in the Template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When creating an Application Load Balancer, it is required that at least two Subnets from different Availability Zones be specified. The following built-in functions are used to:
+When creating an Application Load Balancer, it is required that at least two Subnets, from different Availability Zones, be specified. The following built-in functions are used to:
 
     - Get a list of all the Availability Zones (AZ) in the Region that the Stack is being deployed in.
     - Select the 1st (0) AZ and create **'SubnetWeb1'** there.
     - Select the 2nd (1) AZ and create **'SubnetWeb2'** there.
-
-
 
 .. code-block::
 
@@ -292,7 +244,38 @@ When creating an Application Load Balancer, it is required that at least two Sub
           - 1
           - Fn::GetAZs: !Ref 'AWS::Region'
 
+In order to create a simple web server, the following commands are run at Instance startup. An 'index.html' file is created that contains the 'hostname' of the Instance and a simple http server is started.
 
+    - The built-in function 'Join', joins each command with a newline character.
+    - The built-in function 'Base64', encodes the data.
+
+.. code-block::
+    
+    WebInstance1:
+      UserData: !Base64
+        "Fn::Join":
+          - "\n"
+          -
+            - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
+            - "sudo python3 -m http.server 80"
+
+    WebInstance2:
+      UserData: !Base64
+        "Fn::Join":
+          - "\n"
+          -
+            - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
+            - "sudo python3 -m http.server 80"
+
+In order to illustrate the **'DependsOn'** resource attribute, we have specified that launching of 'WebInstance1' and 'WebInstance2' must come after the creation of 'DefaultRoutePublic'. This will ensure that a path to the Internet is available before the Instances are launched. 
+
+.. code-block::
+
+    WebInstance1:
+      DependsOn: DefaultRoutePublic
+
+    WebInstance2:
+      DependsOn: DefaultRoutePublic
 
 Create Stack
 ------------
