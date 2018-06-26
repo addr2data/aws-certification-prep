@@ -76,8 +76,6 @@ The activities in this exercise may result in charges to your AWS account.
 
 Limits
 ------
-The following table shows the default limits for the components utilized in this exercise.
-
 You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.
 
 Environment variables
@@ -90,10 +88,263 @@ Setting environment variables may be different on different OSs. Please refer to
 
 Template
 --------
-In order to build our starting configuration, we will use a CloudFormation Template. This template is based on the one that we used in **'ex-004'**, but with the following modifications:
+In order to build our starting configuration, we will use a CloudFormation Template.
 
 .. code-block::
 
+    ---
+    Mappings: 
+      RegionMap: 
+        us-east-1: 
+          "64": "ami-a4dc46db"
+        us-east-2: 
+          "64": "ami-6a003c0f"
+        us-west-1:
+          "64": "ami-8d948ced"
+        us-west-2:
+          "64": "ami-db710fa3"
+        ca-central-1:
+          "64": "ami-7e21a11a"
+        eu-west-1:
+          "64": "ami-58d7e821"
+        eu-west-2:
+          "64": "ami-5daa463a"
+        eu-west-3:
+          "64": "ami-1960d164"
+        eu-central-1:
+          "64": "ami-c7e0c82c"
+        ap-northeast-1:
+          "64": "ami-48a45937"
+        ap-northeast-2:
+          "64": "ami-f030989e"
+        ap-southeast-1:
+          "64": "ami-81cefcfd"
+        ap-southeast-2:
+          "64": "ami-963cecf4"
+        ap-south-1:
+          "64": "ami-41e9c52e"
+        sa-east-1:
+          "64": "ami-67fca30b"
+
+    Resources:
+      VPC:
+        Type: AWS::EC2::VPC
+        Properties: 
+          CidrBlock: 10.0.0.0/16
+          EnableDnsSupport: true
+          EnableDnsHostnames: true
+          Tags:
+            - Key: Name
+              Value: vpc_ex006
+
+      InternetGateway:
+        Type: AWS::EC2::InternetGateway
+        Properties: 
+          Tags:
+            - Key: Name
+              Value: ig_ex006
+
+      AttachInternetGateway:
+        Type: AWS::EC2::VPCGatewayAttachment
+        Properties: 
+          InternetGatewayId: !Ref InternetGateway
+          VpcId: !Ref VPC
+      
+      SubnetWeb1:
+        Type: AWS::EC2::Subnet
+        Properties:
+          CidrBlock: 10.0.0.0/24
+          AvailabilityZone: !Select 
+            - 0
+            - Fn::GetAZs: !Ref 'AWS::Region'
+          Tags:
+            - Key: Name
+              Value: subnet_web1_ex006
+          VpcId: !Ref VPC
+
+      SubnetWeb2:
+        Type: AWS::EC2::Subnet
+        Properties:
+          CidrBlock: 10.0.1.0/24
+          AvailabilityZone: !Select 
+            - 1
+            - Fn::GetAZs: !Ref 'AWS::Region'
+          Tags:
+            - Key: Name
+              Value: subnet_web2_ex006
+          VpcId: !Ref VPC
+      
+      SubnetJumpbox:
+        Type: AWS::EC2::Subnet
+        Properties:
+          CidrBlock: 10.0.100.0/24
+          Tags:
+            - Key: Name
+              Value: subnet_jumpbox_ex006
+          VpcId: !Ref VPC
+
+      RouteTablePublic:
+        Type: AWS::EC2::RouteTable
+        Properties: 
+          VpcId: !Ref VPC
+          Tags:
+            - Key: Name
+              Value: rtb_public_ex006
+
+      DefaultRoutePublic:
+        Type: AWS::EC2::Route
+        Properties: 
+          DestinationCidrBlock: 0.0.0.0/0
+          GatewayId: !Ref InternetGateway
+          RouteTableId: !Ref RouteTablePublic
+
+      AssociateSubnetWeb1RouteTablePublic:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties: 
+          RouteTableId: !Ref RouteTablePublic
+          SubnetId: !Ref SubnetWeb1
+      
+      AssociateSubnetWeb2RouteTablePublic:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties: 
+          RouteTableId: !Ref RouteTablePublic
+          SubnetId: !Ref SubnetWeb2
+
+      AssociateSubnetJumpboxRouteTablePublic:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties: 
+          RouteTableId: !Ref RouteTablePublic
+          SubnetId: !Ref SubnetJumpbox
+
+      FloatingIpAddressInstance:
+        Type: "AWS::EC2::EIP"
+        Properties:
+          InstanceId: !Ref JumpboxInstance
+          Domain: vpc
+
+      SecurityGroupJumpbox:
+        Type: AWS::EC2::SecurityGroup
+        Properties: 
+          GroupName: sg_jumpbox_ex006
+          GroupDescription: "Security Group for Jumpbox Instance in ex-006"
+          SecurityGroupIngress:
+            - 
+              CidrIp: 0.0.0.0/0
+              IpProtocol: tcp
+              FromPort: 22
+              ToPort: 22
+          VpcId: !Ref VPC
+
+      SecurityGroupWebInstances:
+        Type: AWS::EC2::SecurityGroup
+        Properties: 
+          GroupName: sg_web-instances_ex006
+          GroupDescription: "Security Group for Web Instances in ex-006"
+          SecurityGroupIngress:
+            - 
+              CidrIp: 10.0.100.0/24
+              IpProtocol: tcp
+              FromPort: 22
+              ToPort: 22
+            - 
+              CidrIp: 10.0.0.0/16
+              IpProtocol: tcp
+              FromPort: 80
+              ToPort: 80
+            - 
+              CidrIp: 10.0.0.0/16
+              IpProtocol: tcp
+              FromPort: 443
+              ToPort: 443
+          VpcId: !Ref VPC
+
+      SecurityGroupLoadBalancer:
+        Type: AWS::EC2::SecurityGroup
+        Properties: 
+          GroupName: sg_load-balancer_ex006
+          GroupDescription: "Security Group for Load balancer in ex-006"
+          SecurityGroupIngress:
+            - 
+              CidrIp: 0.0.0.0/0
+              IpProtocol: tcp
+              FromPort: 80
+              ToPort: 80
+            - 
+              CidrIp: 0.0.0.0/0
+              IpProtocol: tcp
+              FromPort: 443
+              ToPort: 443
+          VpcId: !Ref VPC
+
+      JumpboxInstance:
+        Type: AWS::EC2::Instance
+        Properties: 
+          ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+          InstanceType: t2.micro
+          KeyName: acpkey1
+          SecurityGroupIds: 
+            - !Ref SecurityGroupJumpbox
+          SubnetId: !Ref SubnetJumpbox
+          Tags: 
+            - Key: Name
+              Value: i_jumpbox_ex006
+          UserData: !Base64
+            "Fn::Join":
+              - "\n"
+              -
+                - "#!/bin/bash"
+                - "sudo apt-get update"
+                - "sudo apt-get dist-upgrade -y"
+                - "sudo apt-get install python3-pip -y"
+                - "pip3 install awscli"
+        DependsOn: DefaultRoutePublic
+
+      WebInstance1:
+        Type: AWS::EC2::Instance
+        Properties: 
+          ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+          InstanceType: t2.micro
+          KeyName: acpkey1
+          SecurityGroupIds: 
+            - !Ref SecurityGroupWebInstances
+          SubnetId: !Ref SubnetWeb1
+          Tags: 
+            - Key: Name
+              Value: i_web1_ex006
+          UserData: !Base64
+            "Fn::Join":
+              - "\n"
+              -
+                - "#!/bin/bash"
+                - "sudo apt-get update"
+                - "sudo apt-get dist-upgrade -y"
+                - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
+                - "sudo python3 -m http.server 80"
+        DependsOn: DefaultRoutePublic
+
+      WebInstance2:
+        Type: AWS::EC2::Instance
+        Properties: 
+          ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+          InstanceType: t2.micro
+          KeyName: acpkey1
+          SecurityGroupIds: 
+            - !Ref SecurityGroupWebInstances
+          SubnetId: !Ref SubnetWeb2
+          Tags: 
+            - Key: Name
+              Value: i_web2_ex006
+          UserData: !Base64
+            "Fn::Join":
+              - "\n"
+              -
+                - "#!/bin/bash"
+                - "sudo apt-get update"
+                - "sudo apt-get dist-upgrade -y"
+                - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
+                - "sudo python3 -m http.server 80"
+        DependsOn: DefaultRoutePublic
+    ...
 
 Create Stack
 ------------
