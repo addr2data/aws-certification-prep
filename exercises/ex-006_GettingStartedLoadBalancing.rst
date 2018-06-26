@@ -45,12 +45,7 @@ The activities in this exercise may result in charges to your AWS account.
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
         + $0.005 per hour per EIP that is NOT associated to a running Instance
-     -
-   * - Elastic IPs
-     - 
-        + $0.00 per EIP address remap for the first 100 remaps per month.
-        + $0.10 per EIP address remap for additional remaps over 100 per month.
-     -
+     - This exercise uses one (1) EIP, which is mapped to an Instance in the CloudFormation Template. 
    * - Application Load Balancing
      - 
         + Between $0.0225 and $0.034 per Application Load Balancer-hour (or partial hour), depending on your region.
@@ -66,7 +61,7 @@ The activities in this exercise may result in charges to your AWS account.
         + $0.00 per GB - Data Transfer IN to Amazon EC2 from Internet
         + $0.00 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(up to 1 GB)**
         + $0.09 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(next 9.999 TB)**
-     - We also need to consider Data Transfer charges when using a NAT Gateway.
+     - We also need to consider Data Transfer charges when using either the Network or Application Load balancers.
 
 Limits
 ------
