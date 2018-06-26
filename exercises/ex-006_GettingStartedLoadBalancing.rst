@@ -35,14 +35,16 @@ The activities in this exercise may result in charges to your AWS account.
      - **Applicable costs**
      - **Notes**
    * - VPC (including Subnets, Route Tables and IntenetGateways).
-     - None (AWS does not charge for these basic VPC building blocks)
-     - These basic VPC components will be created as part of the CloudFormation Stack. 
+     - 
+        + None (AWS does not charge for these basic VPC building blocks)
+     - 
+        + These basic VPC components will be created as part of the CloudFormation Stack. 
    * - On-demand Instances
      - 
         + $0.0116 per hour per Instance (t2.micro)
      - 
-        + During this exercise, we will us three (3) Instances. The AMI used is the **Ubuntu Server 16.04 LTS** image, which combined with the **t2.micro** Instance Type, is 'Free tier eligible'.
-        + The Instances will be launched as part of the CloudFormation Stack. 
+        + During this exercise, we will us three (3) Instances. The AMI that will be used is **'Ubuntu Server 16.04 LTS'**, which combined with the **'t2.micro'** Instance Type, is 'Free tier eligible'.
+        + These Instances will be launched as part of a CloudFormation Stack. 
         + It is not expected that these Instances will need to be running for more than one hour. 
    * - Elastic IPs
      - 
