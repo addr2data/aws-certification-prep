@@ -554,9 +554,9 @@ Use the following command to test oubound connectivity from the Instance in the 
 
     Type 'cntrl-c' to kill 'apt'
 
-    Type 'exit' twice to disconnect from both Instances.
+Type 'exit' twice to close the ssh session for both Instances.
 
-The private subnet has no inbound or outbound path to the Internet. In a later exercise we will create a **NAT Gateway** to allow for outbound connectivity for priavte Subnets to the Internet.
+The private subnet has no inbound or outbound path to the Internet. In a later exercise, we will create a **NAT Gateway** to allow for outbound connectivity for private Subnet to the Internet.
 
 Add a rule to the Security Group
 --------------------------------
