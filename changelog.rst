@@ -21,5 +21,5 @@ CHANGE LOG
 
 - 06-27-18 (addr2data):  Minor improvements to **'ex-002'**. Changed version to 1.3
 
-- 06-27-18 (addr2data):  Minor improvements to **'ex-003'**. Changed version to 1.2
+- 06-27-18 (addr2data):  Improved **'ex-003'** based on feedback from (BrianRagazzi), changed version to 1.2.
 
