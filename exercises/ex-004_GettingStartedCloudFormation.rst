@@ -341,7 +341,7 @@ Output:
 .. code-block::
 
 	{
-    	"Parameters": []
+		"Parameters": []
 	}
 
 Template summary
@@ -371,8 +371,8 @@ Output:
         	"AWS::EC2::Instance",
         	"AWS::EC2::Instance",
         	"AWS::EC2::EIP"
-    	],
-    	"Version": "2010-09-09"
+        ],
+        "Version": "2010-09-09"
 	}
 
 Estimated costs 
