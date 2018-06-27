@@ -156,7 +156,7 @@ Output:
     {
         "SecurityGroups": [
             {
-                "Description": "Security Group used to connect to instances on public subnet from Internet",
+                "Description": "Security Group for Instances",
                 "GroupName": "Int2Public",
                 "IpPermissions": [
                     {
