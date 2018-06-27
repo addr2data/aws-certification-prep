@@ -312,7 +312,13 @@ Create load-balancer
 
 .. code-block::
 
-    aws elbv2 create-load-balancer --name ex-006-app-lb --scheme internet-facing --type application --ip-address-type ipv4 --subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2 --security-groups $EX006_SG_LB
+    aws elbv2 create-load-balancer \
+        --name ex-006-app-lb \
+        --scheme internet-facing \
+        --type application \
+        --ip-address-type ipv4 \
+        --subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2 \
+        --security-groups $EX006_SG_LB
 
 Output:
 
