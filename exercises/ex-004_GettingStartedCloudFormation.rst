@@ -391,13 +391,20 @@ Output:
 		"Url": "http://calculator.s3.amazonaws.com/calc5.html?key=cloudformation/4fd01c4d-7530-4462-a0c3-608cb6df057d"
 	}
 
+Copy the URL and paste it into your browser to see the estimated costs for this template. By default, the calculation is based on the EC2 instances will run 24 hours a day forever.
+
 Create Stack
 ------------
-Use the following awscli command to create a new **'Stack'** based on the template.
+Use the following awscli command to create a new **Stack** based on the template. If your Key Pair is not named **'acpkey1'**, set the **ParameterValue** to the correct name of your existing Key Pair.
+
+Note: If you are using the **'acpkey1'** Key Pair, you can leave off the **'--parameters'** option all together.
 
 .. code-block::
 
-	aws cloudformation create-stack --stack-name ex-004 --template-body file://./templates/ex-004_template.yaml
+	aws cloudformation create-stack \
+		--stack-name ex-004 \
+		--template-body file://templates/ex-004_template.yaml \
+		--parameters ParameterName=KeyPairName,ParameterValue=acpkey1
 
 	{
     	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-004/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
