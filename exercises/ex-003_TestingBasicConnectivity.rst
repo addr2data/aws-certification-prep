@@ -256,7 +256,7 @@ Create an environment variable using your ImageId.
 
 Launch an Instance
 -------------------
-Use the following awscli command to launch an Instance and attach it to the **'public'** Subnet. From here onwards, we will refer to this Instance as the 'public' Instance.
+Use the following awscli command to launch an Instance and attach it to the **public** Subnet. From here onwards, we will refer to this Instance as the **public** Instance.
 
 **Note: The only thing that makes it a 'public' Subnet is the fact that it is associated with a Route Table that has a default Route to the Internet Gateway.**
 
