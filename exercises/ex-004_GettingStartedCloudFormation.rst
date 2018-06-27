@@ -12,15 +12,14 @@ Dependencies
    :header-rows: 0
 
    * - Depends on exercise(s)
-     - ex-001, ex-003
+     - ex-001
    * - Prerequisite for exercise(s)
      - tbd
 
 Objectives
 ----------
-
-    - Learn how CloudFormation Templates are constructed using YAML.
-    - Create a Stack in CloudFormation from a Template that mimics the configuration from ex-002 and ex-003.
+- Learn how CloudFormation Templates are constructed using YAML.
+- Create a Stack in CloudFormation from a Template that mimics the configuration from ex-002 and ex-003.
 
 |
 

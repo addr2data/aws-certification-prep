@@ -18,8 +18,7 @@ Dependencies
 
 Objectives
 ----------
-
-    - Become familiar with basic VPC configuration (we'll be leaving this configuration in place to support ex-003)
+- Become familiar with basic VPC configuration (we'll be leaving this configuration in place to support ex-003)
 
 Expected Costs
 --------------

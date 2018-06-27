@@ -18,7 +18,6 @@ Dependencies
 
 Objectives
 ----------
-
 - Get your local environment ready.
 - Create an AWS IAM user that will have programmatic access to the EC2 API.
 - Use **awscli** to briefly explore EC2.
