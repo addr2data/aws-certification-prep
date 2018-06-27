@@ -372,7 +372,7 @@ Allocate an Elastic IP
 ----------------------
 Now we need to allocate an Elastic IP (public IPv4 address). In the next step, we will associate it with the **public** Instance, so we can connect to it.
 
-Note: This step and the next could have been handled as part of the **run-instances** command by using the **'--associate-public-ip-address'** option.
+Note: This step and the next could have been handled as part of the **run-instances** command, by using the **'--associate-public-ip-address'** option.
 
 Use the following awscli command to allocate an Elastic IP.
 
@@ -392,6 +392,8 @@ Output:
 
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
+Set a couple of environment variables using the output above.
+
 .. code-block::
 
     export EX003_EIP=<AllocationId>
@@ -399,7 +401,7 @@ Environment variable
 
 Associate the Elastic IP
 ------------------------
-Use the following awscli command to associate the Elastic IP with the Instance we launched in the public Subnet.
+Use the following awscli command to associate the Elastic IP with the **public** Instance we launched previously.
 
 .. code-block::
 
@@ -412,6 +414,33 @@ Output:
     {
         "AssociationId": "eipassoc-xxxxxxxxxxxxxxxxx"
     }
+
+Confirm Association
+-------------------
+Run the following awscli command to verify that the Public IP address has been associated with an instance.
+
+.. code-block::
+
+    aws ec2 describe-addresses
+
+Output:
+
+.. code-block::
+
+    {
+        "Addresses": [
+            {
+                "Domain": "vpc",
+                "InstanceId": "i-xxxxxxxxxxxxxxxxxx",
+                "NetworkInterfaceId": "eni-xxxxxxxx",
+                "AssociationId": "eipassoc-xxxxxxxx",
+                "NetworkInterfaceOwnerId": "xxxxxxxxxxxx",
+                "PublicIp": "xxx.xxx.xxx.xxx",
+                "AllocationId": "eipalloc-xxxxxxxx",
+                "PrivateIpAddress": "xxx.xxx.xxx.xxx"
+        }
+    ]
+}
 
 Test inbound connectivity
 -------------------------
