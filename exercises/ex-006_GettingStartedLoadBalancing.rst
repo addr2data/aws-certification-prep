@@ -91,27 +91,14 @@ Template
 In order to build our starting configuration, we will create a CloudFormation **Stack** from Template **'ex-006_template.yaml'** in the **'templates'** directory.
 
 Highlights
-~~~~~~~~~~
 
-General
-    
     - Two Instances that will act as Web Servers.
-    - One Instance that will act a Jumpbox.
+    - One Instance that will act a Jumpbox (with public IP)
     - A Subnet for each Web Server (10.0.0.0/24 and 10.0.1.0/24), each in a different Availability Zone 
     - A Subnet for the Jumpbox (10.0.100.0/24)
-    - A Security Group for the jumpbox that allows **SSH** from anywhere (0.0.0.0/0).
-
-Specific to Application Load-balancer
-
+    - A Security Group for the Jumpbox that allows **SSH** from anywhere (0.0.0.0/0).
     - A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet and **HTTP** from anywhere in the VPC (10.0.0.0/16)
-
-    - A Security Group for the load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
-
-Specific to Network Load-balancer
-
-    - A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet and **HTTP** from anywhere (0.0.0.0/0)
-
- 
+    - A Security Group for the Load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
 
 The following section only shows the resources and resources parameters that have significant differences from previous Templates.
 
