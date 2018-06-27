@@ -401,7 +401,7 @@ Set a couple of environment variables using the output above.
 
 Associate the Elastic IP
 ------------------------
-Use the following awscli command to associate the Elastic IP with the **public** Instance we launched previously.
+Use the following awscli command to associate the Elastic IP with the **public** Instance.
 
 .. code-block::
 
@@ -417,7 +417,7 @@ Output:
 
 Confirm Association
 -------------------
-Run the following awscli command to verify that the Public IP address has been associated with an instance.
+Run the following awscli command to verify that the Elastic IP has been associated with an instance.
 
 .. code-block::
 
@@ -465,11 +465,11 @@ Use the following command to test 'outbound' connectivity from the **public** In
 
     sudo apt update
 
-    Type 'exit' to disconnect from the Instance.
+Type 'exit' to close the ssh session to this instance
 
 Re-associate the Elastic IP
 ---------------------------
-Use the following awscli command to re-associate the Elastic IP with the Instance we launched in the private Subnet.
+Use the following awscli command to re-associate the Elastic IP with the **private** Instance.
 
 .. code-block::
 
