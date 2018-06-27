@@ -370,6 +370,10 @@ Using the **'--query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIp
 
 Allocate an Elastic IP
 ----------------------
+Now we need to allocation an Elastic IP (public IP address). Later we will associate it with the **public** Instance, so we can connect to it.
+
+Note: This could have done as part of the **run-instances** command by using the **'--associate-public-ip-address'** option.
+
 Use the following awscli command to allocate a public IPv4 address
 
 .. code-block::
