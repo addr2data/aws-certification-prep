@@ -1,4 +1,10 @@
 ---
+Parameters:
+  KeyPairName:
+    Type: String
+    Default: acpkey1
+    Description: Name of existing KeyPair
+
 Mappings: 
   RegionMap: 
     us-east-1: 
