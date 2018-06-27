@@ -453,7 +453,11 @@ Create a listener
 
 .. code-block::
 
-    aws elbv2 create-listener --load-balancer-arn $EX006_LB --protocol HTTP --port 80 --default-actions Type=forward,TargetGroupArn=$EX006_TG
+    aws elbv2 create-listener 
+        --load-balancer-arn $EX006_LB \
+        --protocol HTTP \
+        --port 80 \
+        --default-actions Type=forward,TargetGroupArn=$EX006_TG
 
 Output:
 
