@@ -364,6 +364,49 @@ Create the following environment variable.
 
     export EX006_LB=<LoadBalancerArn>
 
+Check Load Balancer status
+--------------------------
+
+.. code-block::
+
+    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_LB
+
+Output:
+
+.. code-block::
+
+    {
+        "LoadBalancers": [
+            {
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/app/ex-006-app-lb/941a8812e1bd5260",
+                "DNSName": "ex-006-app-lb-1050428493.us-east-1.elb.amazonaws.com",
+                "CanonicalHostedZoneId": "Z35SXDOTRQ7X7K",
+                "CreatedTime": "2018-06-27T19:08:51.150Z",
+                "LoadBalancerName": "ex-006-app-lb",
+                "Scheme": "internet-facing",
+                "VpcId": "vpc-0c1ae5bad2afe3a59",
+                "State": {
+                    "Code": "active"
+                },
+                "Type": "application",
+                "AvailabilityZones": [
+                    {
+                        "ZoneName": "us-east-1a",
+                        "SubnetId": "subnet-08d9de6ee83088a2a"
+                    },
+                    {
+                        "ZoneName": "us-east-1b",
+                        "SubnetId": "subnet-092b9a5c7a88ac880"
+                    }
+                ],
+                "SecurityGroups": [
+                    "sg-05eae1e9e187061ee"
+                ],
+                "IpAddressType": "ipv4"
+            }
+        ]
+    }
+
 Create Target Group
 -------------------
 
