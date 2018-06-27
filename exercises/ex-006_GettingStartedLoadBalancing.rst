@@ -185,7 +185,7 @@ In order to illustrate the **'DependsOn'** resource attribute, we have specified
 .. code-block::
 
     JumpboxInstance:
-        DependsOn: DefaultRoutePublic
+      DependsOn: DefaultRoutePublic
 
     WebInstance1:
       DependsOn: DefaultRoutePublic
@@ -195,11 +195,14 @@ In order to illustrate the **'DependsOn'** resource attribute, we have specified
 
 Create Stack
 ------------
-Use the following awscli command to create a new **'Stack'** based on the template.
+Use the following awscli command to create a new CloudFormation **'Stack'** based on the template.
 
 .. code-block::
 
-    aws cloudformation create-stack --stack-name ex-006 --template-body file://templates/ex-006_template.yaml
+    aws cloudformation create-stack \
+        --stack-name ex-006 \
+        --template-body file://templates/ex-006_template.yaml \
+        --parameters ParameterKey=KeyPairName,ParameterValue=acpkey1
 
 Output:
 
@@ -301,12 +304,7 @@ Sanity check
 
 .. code-block::
     
-    echo $EX006_SUBNET_WEB1
-    echo $EX006_SUBNET_WEB2
-    echo $EX006_SG_LB
-    echo $EX006_VPC
-    echo $EX006_INST_WEB1
-    echo $EX006_INST_WEB2
+    echo $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2 $EX006_SG_LB $EX006_VPC $EX006_INST_WEB1 $EX006_INST_WEB2
 
 
 Create load-balancer

@@ -404,7 +404,7 @@ Note: If you are using the **'acpkey1'** Key Pair, you can leave off the **'--pa
 	aws cloudformation create-stack \
 		--stack-name ex-004 \
 		--template-body file://templates/ex-004_template.yaml \
-		--parameters ParameterName=KeyPairName,ParameterValue=acpkey1
+		--parameters ParameterKey=KeyPairName,ParameterValue=acpkey1
 
 Output:
 
