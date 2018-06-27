@@ -405,7 +405,9 @@ Register Targets
 
 .. code-block::
 
-    aws elbv2 register-targets --target-group-arn $EX006_TG --targets Id=$EX006_INST_WEB1 Id=$EX006_INST_WEB2
+    aws elbv2 register-targets \
+        --target-group-arn $EX006_TG \
+        --targets Id=$EX006_INST_WEB1 Id=$EX006_INST_WEB2
 
 
 Describe Target Group
