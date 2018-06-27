@@ -1,4 +1,11 @@
 ---
+Parameters:
+  KeyPairName:
+    Type: String
+    Default: acpkey1
+    Description: Name of existing KeyPair
+
+
 Mappings: 
   RegionMap: 
     us-east-1: 
@@ -187,7 +194,7 @@ Resources:
     Properties: 
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
       InstanceType: t2.micro
-      KeyName: acpkey1
+      KeyName:  !Ref KeyPairName
       SecurityGroupIds: 
         - !Ref SecurityGroupJumpbox
       SubnetId: !Ref SubnetJumpbox
@@ -210,7 +217,7 @@ Resources:
     Properties: 
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
       InstanceType: t2.micro
-      KeyName: acpkey1
+      KeyName: !Ref KeyPairName
       SecurityGroupIds: 
         - !Ref SecurityGroupWebInstances
       SubnetId: !Ref SubnetWeb1
@@ -233,7 +240,7 @@ Resources:
     Properties: 
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
       InstanceType: t2.micro
-      KeyName: acpkey1
+      KeyName: !Ref KeyPairName
       SecurityGroupIds: 
         - !Ref SecurityGroupWebInstances
       SubnetId: !Ref SubnetWeb2

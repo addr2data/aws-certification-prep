@@ -3,7 +3,7 @@ ex-001: Getting started
 
 Status
 ------
-Version 1.4 (6/25/18)
+Version 1.5 (6/27/18)
 
 Dependencies
 ------------
@@ -38,13 +38,15 @@ The activities in this exercise are NOT expected to result in charges to your AW
      - **Applicable Costs**
      - **Notes**
    * - Key Pairs
-     - None
+     - 
+        + None
      - 
    * - Budgets
      - 
         + $0.00 for your first two budgets.
         + $0.02 per budget per day afterwards.
-     - If you examine your 'Bill Details' (under Billing) and expand the 'Budgets' section, you will see; **"$0.00 for 62 Budget-days per month (free tier)"**. That represents your two free budgets per month.
+     - 
+        + If you examine your 'Bill Details' (under Billing) and expand the 'Budgets' section, you will see; **"$0.00 for 62 Budget-days per month (free tier)"**. This represents your two free budgets each month.
 
 Limits
 ------
@@ -59,7 +61,7 @@ The following table shows the default limits for the components utilized in this
    * - Key Pairs
      - 5000 per region
 
-**Note: You can view all your EC2 limits and request increases by clicking on 'Limits' in the navigation pane of the EC2 console.**
+You can view all your EC2 limits and request increases by clicking on **Limits** in the navigation pane of the EC2 console.
 
 Initial
 -------
@@ -401,7 +403,7 @@ Output:
 
 Custom scripts
 --------------
-Run the following script to see all the **Regions** and **Availability Zones** together.
+Run the following scripts to see all the **Regions** and **Availability Zones** together.
 
 Python
 ~~~~~~
@@ -453,11 +455,15 @@ Create a Key Pair
 -----------------
 Use the following awscli command to create a new **Key Pair** and save the resulting **'.pem'** file.
 
-**Note: I have only verified that directly redirecting the 'KeyMaterial' to a file produces a valid '.pem' on macOS. Other OSs may have subtle differences.**
+**If you have an existing Key Pair that you would like to use, skip this step. In later exercises, when a Key Pair is specified, you will need to replace 'acpkey1' with the name of your Key Pair.**
+
+
 
 .. code-block::
     
     aws ec2 create-key-pair --key-name acpkey1 --query 'KeyMaterial' --output text > acpkey1.pem
+
+*Note: I have only verified that directly redirecting the 'KeyMaterial' to a file produces a valid '.pem' on macOS. Other OSs may have subtle differences.*
 
 Modify permissions
 ------------------
@@ -494,14 +500,15 @@ Section 3
 
 Summary
 -------
-- You have set up your local environment.
-- You have created a IAM user **apiuser01** and gave it programmatic access only.
-- You have assigned **apiuser01** full access to the EC2 API.
-- You used **awscli** to verify that **apiuser01** has access to the EC2 API.
-- You used **awscli** to verify that **apiuser01** does NOT have access to the IAM API.
-- You used **awscli** to explore AWS **regions** and **Availability Zones**.
-- You experimented with a couple of **awscli** commandline options.
-- You created a **Budget**.
+- We have set up your local environment.
+- We have created a IAM user **apiuser01** and gave it programmatic access only.
+- We have assigned **apiuser01** full access to the EC2 API.
+- We used **awscli** to verify that **apiuser01** has access to the EC2 API.
+- We used **awscli** to verify that **apiuser01** does NOT have access to the IAM API.
+- We used **awscli** to explore AWS **regions** and **Availability Zones**.
+- We experimented with a couple of **awscli** commandline options.
+- We created a Key Pair.
+- We created a **Budget**.
 
 Next steps
 ----------

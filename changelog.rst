@@ -16,3 +16,6 @@ CHANGE LOG
 - 06-24-18 (addr2data):  Cleaned up **'ex-002'**, changed version to 1.2.
 
 - 06-25-18 (addr2data):  Added billing information for **Budgets** to **ex-001**. Changed version to 1.4
+
+- 06-27-18 (addr2data):  Minor improvements to **'ex-001'**. Changed version to 1.5
+
