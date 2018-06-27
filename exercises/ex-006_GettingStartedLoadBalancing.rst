@@ -1,4 +1,4 @@
-ex-006: Getting started with Load Balancing
+ex-006: Getting started with Load-balancing
 ===========================================
 
 Status
@@ -19,8 +19,8 @@ Dependencies
 Objectives
 ----------
 
-    - Explore AWS Application Load Balancer    
-    - Explore AWS Network Load Balancer 
+    - Explore AWS Application Load-balancer    
+    - Explore AWS Network Load-balancer 
    
 
 Expected Costs
@@ -100,6 +100,8 @@ General
 - A Subnet for each Web Server, each in a different Availability Zone.
 - A Subnet for the Jumpbox.
 - A Security Group for the jumpbox that allows **SSH** from anywhere (0.0.0.0/0).
+
+Specific to Application Load-balancer
 
 
 - A Security Group for the Web Servers, when    

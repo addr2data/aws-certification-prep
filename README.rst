@@ -148,7 +148,7 @@ I hope you enjoy following these exercises, as much as I enjoyed building them.
 
 5. `Expanding the VPC configuration <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-005_ExpandingVpcConfig.rst>`_
 
-6. `Getting started with Load Balancing <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-006_GettingStartedLoadBalancing.rst>`_
+6. `Getting started with Load-balancing <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-006_GettingStartedLoadBalancing.rst>`_
 
 7. To be added
 
