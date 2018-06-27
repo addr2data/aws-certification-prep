@@ -139,7 +139,11 @@ Use the following awscli command to add a rule to the above security group.
 
 .. code-block::
 
-    aws ec2 authorize-security-group-ingress --group-id $EX003_SG --protocol tcp --port 22 --cidr 0.0.0.0/0
+    aws ec2 authorize-security-group-ingress \
+        --group-id $EX003_SG \
+        --protocol tcp \
+        --port 22 \
+        --cidr 0.0.0.0/0
 
 Examine the Security Group
 --------------------------
