@@ -80,9 +80,9 @@ You can view all your EC2 limits and request increases by clicking on 'Limits' i
 
 Environment variables
 ---------------------
-In this exercise, we will deviate from our previous position on creating environment variables.
+During these exercises, we will be using the output of some commands to creatie environment variables. This will help simplify the syntax subsequent commands.
 
-At one point, we will need to close to a dozen environment variable, so we will do this by using the **'--query'** and **'--output'** options available in the awscli command.
+In some places, we will do this manually, because we want to show the the full output of the command. In other places, we will use the **'--query'** and **'--output'** options available in the awscli command to filter the output directly into a variable.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 

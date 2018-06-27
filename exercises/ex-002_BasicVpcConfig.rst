@@ -32,11 +32,10 @@ The activities in this exercise are NOT expected to result in any charges to you
    * - **Component**
      - **Applicable Costs**
      - **Notes**
-   * - VPC
-        + Subnets
-        + Route Tables
-        + IntenetGateways
-     - None
+   * - 
+        + VPC (including Subnets, Route Tables and IntenetGateways)
+     - 
+        + None
      - 
         + AWS does NOT charge for the basic VPC building blocks used in this exercise.
         + AWS does charge for other VPC components, you will use these components in future exercises.   
@@ -62,9 +61,9 @@ The following table shows the default limits for the components utilized in this
 
 Environment variables
 ---------------------
-During this exercise, we will be creating environment variables to simplify the syntax of commands run later in the exercise. I have decided to do this manually, because I want to show the the full output from each command and not redirect a filtered output directly into a variable.
+During these exercises, we will be using the output of some commands to creatie environment variables. This will help simplify the syntax subsequent commands.
 
-Once you are comfortable with the expected output of a command and wish filter the output, then you might want to try the **'--query'** and **'--output'** options available in the awscli command.
+In some places, we will do this manually, because we want to show the the full output of the command. In other places, we will use the **'--query'** and **'--output'** options available in the awscli command to filter the output directly into a variable.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 

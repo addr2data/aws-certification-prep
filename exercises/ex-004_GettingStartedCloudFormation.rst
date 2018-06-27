@@ -79,6 +79,14 @@ The following table shows the CloudFormation template limits that are relevant t
    * - Max length of Resource name 
      - 255 characters
 
+Environment variables
+---------------------
+During these exercises, we will be using the output of some commands to creatie environment variables. This will help simplify the syntax subsequent commands.
+
+In some places, we will do this manually, because we want to show the the full output of the command. In other places, we will use the **'--query'** and **'--output'** options available in the awscli command to filter the output directly into a variable.
+
+Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
+
 Add CloudFormation API access to user 'apiuser01' 
 -------------------------------------------------
 - Login to your AWS account.
