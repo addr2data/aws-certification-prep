@@ -672,13 +672,15 @@ This will delete the VPC itself, plus the Subnets, Route Tables and Internet Gat
 
 Summary
 -------
-- We created a Key Pair.
 - We created a Security Group.
 - We added rules to the Security Group.
 - We create two Instances.
 - We allocated a Elastic IP.
 - We map/re-mapped that Elastic IP to Instances.
 - We tested connectivity to/from both the 'public' and 'private' Instances.
+- We terminated both Instance, released the Elastic IP, deleted the Security Group and the VPC (and associated components).
+
+**Note: we did NOT delete the Key Pair, keep the '.pem' file safe** 
 
 Next steps
 ----------
