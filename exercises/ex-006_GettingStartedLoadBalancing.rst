@@ -93,13 +93,12 @@ In order to build our starting configuration, we will create a CloudFormation **
 Highlights
 ~~~~~~~~~~
 
-General
-
-- Two Instances that will act as Web Servers.
-- One Instance that will act a Jumpbox.
-- A Subnet for each Web Server, each in a different Availability Zone (10.0.0.0/24 and 10.0.1.0/24)
-- A Subnet for the Jumpbox (10.0.100.0/24)
-- A Security Group for the jumpbox that allows **SSH** from anywhere (0.0.0.0/0).
+    General
+    - Two Instances that will act as Web Servers.
+    - One Instance that will act a Jumpbox.
+    - A Subnet for each Web Server, each in a different Availability Zone (10.0.0.0/24 and 10.0.1.0/24)
+    - A Subnet for the Jumpbox (10.0.100.0/24)
+    - A Security Group for the jumpbox that allows **SSH** from anywhere (0.0.0.0/0).
 
 Specific to Application Load-balancer
 
