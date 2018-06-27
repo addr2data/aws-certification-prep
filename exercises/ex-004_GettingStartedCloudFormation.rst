@@ -84,6 +84,9 @@ Setting environment variables may be different on different OSs. Please refer to
 
 Add CloudFormation API access to user 'apiuser01' 
 -------------------------------------------------
+
+Currently, the **apiuser01** user only has permissions for **ec2**. We need to add access to CloudFormation. This is a two-step process. First, we'll create a **Policy** that contains the necessary permissions, then we'll attach that policy to the **apiuser01** user.
+
 - Login to your AWS account.
 - Under services select **IAM**.
 
