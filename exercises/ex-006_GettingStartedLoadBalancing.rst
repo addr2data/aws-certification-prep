@@ -101,15 +101,15 @@ Highlights
     - A Subnet for the Jumpbox (10.0.100.0/24)
     - A Security Group for the jumpbox that allows **SSH** from anywhere (0.0.0.0/0).
 
-Specific to Application Load-balancer
+    Specific to Application Load-balancer
 
-- A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet and **HTTP** from anywhere in the VPC (10.0.0.0/16)
+    - A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet and **HTTP** from anywhere in the VPC (10.0.0.0/16)
 
-- A Security Group for the load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
+    - A Security Group for the load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
 
-Specific to Network Load-balancer
+    Specific to Network Load-balancer
 
-- A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet and **HTTP** from anywhere (0.0.0.0/0)
+    - A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet and **HTTP** from anywhere (0.0.0.0/0)
 
  
 
