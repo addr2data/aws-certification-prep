@@ -485,9 +485,9 @@ Output:
 
 Test inbound connectivity
 -------------------------
-Use the following commands to test connectivity to the Instance in the private Subnet via the Elastic IP.
+Use the following commands to test connectivity to the **private** Instance.
 
-``Expected results: both 'ping' and 'ssh' should be fail.``
+**Expected results:** Both 'ping' and 'ssh' should be fail.
 
 .. code-block::
 
@@ -496,7 +496,7 @@ Use the following commands to test connectivity to the Instance in the private S
 
 Re-associate the Elastic IP
 ---------------------------
-Use the following awscli command to re-associate the Elastic IP with the Instance we launched in the public Subnet.
+Use the following awscli command to re-associate the Elastic IP with the **public** Instance.
 
 .. code-block::
 
@@ -512,7 +512,10 @@ Output:
 
 Reconnect
 -------
-Use the following command to reconnect to the Instance in the public Subnet.
+Use the following commands to:
+
+    - Copy the '.pem' file to **public** Instance. We will need this to connect from the **public** Instance to the **private** Instance. 
+    - Reconnect to the **public** Instance.
 
 
 .. code-block::
