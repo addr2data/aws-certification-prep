@@ -517,6 +517,8 @@ Use the following commands to:
     - Copy the '.pem' file to **public** Instance. We will need this to connect from the **public** Instance to the **private** Instance. 
     - Reconnect to the **public** Instance.
 
+**If you are using a different Key Pair, then replace 'acpkey1.pem' with your '<your-pem-file>'**.
+
 
 .. code-block::
 
