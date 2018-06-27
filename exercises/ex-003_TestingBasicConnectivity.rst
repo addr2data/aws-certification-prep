@@ -3,7 +3,7 @@ ex-003: Testing basic connectivity
 
 Status
 ------
-Version 1.1 (6/24/18)
+Version 1.2 (6/27/18)
 
 Dependencies
 ------------
@@ -34,18 +34,19 @@ The activities in this exercise may result in charges to your AWS account.
      - Applicable Costs
      - Notes
    * - Security Groups
-     - None
+     - 
+        + None
      -
    * - On-demand Instances
      - 
         + $0.0116 per hour per Instance (t2.micro)
      - 
-        + During this exercise we will be launching two Instances, using the Ubuntu Server 16.04 LTS AMI, which is 'Free tier eligible'.
-        + It is not expected that these Instances will need to be running for more than one hour. 
+        + During this exercise, we will use two (2) Instances. The AMI that will be used is **'Ubuntu Server 16.04 LTS'**, which combined with the **'t2.micro'** Instance Type, is **'Free tier eligible'**.
+        + It is not expected that these Instances will need to be running for more than one hour.
    * - Elastic IPs
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
-        + $0.05 per hour per EIP that is NOT associated to a running Instance
+        + $0.005 per hour per EIP that is NOT associated to a running Instance
      - During this exercise there will be short periods of time where an EIP is not associated with an running Instance, so you might incur a very small charge.
    * - Elastic IPs
      - 
@@ -76,9 +77,9 @@ The following table shows the default limits for the components utilized in this
 
 Environment variables
 ---------------------
-During this exercise, we will be creating environment variables to simplify the syntax of commands run later in the exercise. I have decided to do this manually, because I want to show the the full output from each command and not redirect a filtered output directly into a variable.
+During these exercises, we will be using the output of some commands to creatie environment variables. This will help simplify the syntax subsequent commands.
 
-Once you are comfortable with the expected output of a command and wish filter the output, then you might want to try the **'--query'** and **'--output'** options available in the awscli command.
+In some places, we will do this manually, because we want to show the the full output of the command. In other places, we will use the **'--query'** and **'--output'** options available in the awscli command to filter the output directly into a variable.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
