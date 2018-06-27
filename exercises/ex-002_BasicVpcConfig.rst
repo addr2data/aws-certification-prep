@@ -360,7 +360,10 @@ Use the following awscli command to add a **Default Route** that targets the Int
 
 .. code-block::
 
-    aws ec2 create-route --destination-cidr-block 0.0.0.0/0 --gateway-id $EX002_IG --route-table-id $EX002_RTB_PUB
+    aws ec2 create-route \
+        --destination-cidr-block 0.0.0.0/0 \
+        --gateway-id $EX002_IG \
+        --route-table-id $EX002_RTB_PUB
 
 Output:
 
