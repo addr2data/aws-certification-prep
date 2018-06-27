@@ -330,7 +330,7 @@ Validate template
 -----------------
 Use the following awscli command to validate the structure of the template file.
 
-NOTE: the template-body paramater expects a URL, so the **'file://'** prefix is necessary
+Note: the template-body paramater expects a URL, so the **'file://'** prefix is necessary
 
 .. code-block::
 
@@ -381,7 +381,11 @@ Use the following awscli command to get an estimated monthly cost for the compon
 
 .. code-block::
 	
-	aws cloudformation estimate-template-cost --template-body file://./templates/ex-004_template.yaml
+	aws cloudformation estimate-template-cost --template-body file://templates/ex-004_template.yaml
+
+Output:
+
+.. code-block:
 
 	{
     	"Url": "http://calculator.s3.amazonaws.com/calc5.html?key=cloudformation/4fd01c4d-7530-4462-a0c3-608cb6df057d"
