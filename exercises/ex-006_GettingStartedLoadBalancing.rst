@@ -90,136 +90,49 @@ Template
 --------
 In order to build our starting configuration, we will create a CloudFormation Stack from Template **'ex-006_template.yaml'** in the **'templates'** directory.
 
-The following section only shows the resources that differ from previous Templates.
+The following section only shows the resources and resources parameters that have significant differences from previous Templates.
 
 .. code-block::
 
     ---
-    Resources:      
+    Resources:
       SubnetWeb1:
-        Type: AWS::EC2::Subnet
         Properties:
-          CidrBlock: 10.0.0.0/24
           AvailabilityZone: !Select 
             - 0
             - Fn::GetAZs: !Ref 'AWS::Region'
-          Tags:
-            - Key: Name
-              Value: subnet_web1_ex006
-          VpcId: !Ref VPC
 
       SubnetWeb2:
-        Type: AWS::EC2::Subnet
         Properties:
-          CidrBlock: 10.0.1.0/24
           AvailabilityZone: !Select 
             - 1
             - Fn::GetAZs: !Ref 'AWS::Region'
-          Tags:
-            - Key: Name
-              Value: subnet_web2_ex006
-          VpcId: !Ref VPC
 
-      SecurityGroupJumpbox:
-        Type: AWS::EC2::SecurityGroup
-        Properties: 
-          GroupName: sg_jumpbox_ex006
-          GroupDescription: "Security Group for Jumpbox Instance in ex-006"
-          SecurityGroupIngress:
-            - 
-              CidrIp: 0.0.0.0/0
-              IpProtocol: tcp
-              FromPort: 22
-              ToPort: 22
-          VpcId: !Ref VPC
-
-      SecurityGroupWebInstances:
-        Type: AWS::EC2::SecurityGroup
-        Properties: 
-          GroupName: sg_web-instances_ex006
-          GroupDescription: "Security Group for Web Instances in ex-006"
-          SecurityGroupIngress:
-            - 
-              CidrIp: 10.0.100.0/24
-              IpProtocol: tcp
-              FromPort: 22
-              ToPort: 22
-            - 
-              CidrIp: 10.0.0.0/16
-              IpProtocol: tcp
-              FromPort: 80
-              ToPort: 80
-            - 
-              CidrIp: 10.0.0.0/16
-              IpProtocol: tcp
-              FromPort: 443
-              ToPort: 443
-          VpcId: !Ref VPC
-
-      SecurityGroupLoadBalancer:
-        Type: AWS::EC2::SecurityGroup
-        Properties: 
-          GroupName: sg_load-balancer_ex006
-          GroupDescription: "Security Group for Load balancer in ex-006"
-          SecurityGroupIngress:
-            - 
-              CidrIp: 0.0.0.0/0
-              IpProtocol: tcp
-              FromPort: 80
-              ToPort: 80
-            - 
-              CidrIp: 0.0.0.0/0
-              IpProtocol: tcp
-              FromPort: 443
-              ToPort: 443
-          VpcId: !Ref VPC
+      JumpboxInstance:
+        DependsOn: DefaultRoutePublic
 
       WebInstance1:
-        Type: AWS::EC2::Instance
-        Properties: 
-          ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
-          InstanceType: t2.micro
-          KeyName: acpkey1
-          SecurityGroupIds: 
-            - !Ref SecurityGroupWebInstances
-          SubnetId: !Ref SubnetWeb1
-          Tags: 
-            - Key: Name
-              Value: i_web1_ex006
+        Properties:
           UserData: !Base64
             "Fn::Join":
               - "\n"
               -
-                - "#!/bin/bash"
-                - "sudo apt-get update"
-                - "sudo apt-get dist-upgrade -y"
                 - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
                 - "sudo python3 -m http.server 80"
         DependsOn: DefaultRoutePublic
 
       WebInstance2:
-        Type: AWS::EC2::Instance
-        Properties: 
-          ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
-          InstanceType: t2.micro
-          KeyName: acpkey1
-          SecurityGroupIds: 
-            - !Ref SecurityGroupWebInstances
-          SubnetId: !Ref SubnetWeb2
-          Tags: 
-            - Key: Name
-              Value: i_web2_ex006
+        Properties:
           UserData: !Base64
             "Fn::Join":
               - "\n"
               -
-                - "#!/bin/bash"
-                - "sudo apt-get update"
-                - "sudo apt-get dist-upgrade -y"
                 - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
                 - "sudo python3 -m http.server 80"
         DependsOn: DefaultRoutePublic
+
     ...
+
 
 Notable items in the Template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -270,6 +183,9 @@ In order to create a simple web server, the following commands are run at Instan
 In order to illustrate the **'DependsOn'** resource attribute, we have specified that launching of 'WebInstance1' and 'WebInstance2' must come after the creation of 'DefaultRoutePublic'. In theory, ensuring that a path to the Internet is available before the Instances are launched. 
 
 .. code-block::
+
+    JumpboxInstance:
+        DependsOn: DefaultRoutePublic
 
     WebInstance1:
       DependsOn: DefaultRoutePublic
