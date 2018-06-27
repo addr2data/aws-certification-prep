@@ -88,7 +88,21 @@ Setting environment variables may be different on different OSs. Please refer to
 
 Template
 --------
-In order to build our starting configuration, we will create a CloudFormation Stack from Template **'ex-006_template.yaml'** in the **'templates'** directory.
+In order to build our starting configuration, we will create a CloudFormation **Stack** from Template **'ex-006_template.yaml'** in the **'templates'** directory.
+
+Highlights
+~~~~~~~~~~
+
+General
+
+- Two Instances that will act as Web Servers.
+- One Instance that will act a Jumpbox.
+- A Subnet for each Web Server, each in a different Availability Zone.
+- A Subnet for the Jumpbox.
+- A Security Group for the jumpbox that allows **SSH** from anywhere (0.0.0.0/0).
+
+
+- A Security Group for the Web Servers, when    
 
 The following section only shows the resources and resources parameters that have significant differences from previous Templates.
 
@@ -594,6 +608,155 @@ Delete the Load Balancer
 .. code-block::
     
     aws elbv2 delete-load-balancer --load-balancer-arn $EX006_LB
+
+Create a Network Load-balancer
+------------------------------
+
+.. code-block::
+
+    aws elbv2 create-load-balancer \
+        --name ex-006-net-lb \
+        --scheme internet-facing \
+        --type network \
+        --ip-address-type ipv4 \
+        --subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2
+
+Output:
+
+.. code-block::
+
+    {
+        "LoadBalancers": [
+            {
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/net/ex-006-net-lb/725ca5e4b63a3aff",
+                "DNSName": "ex-006-net-lb-725ca5e4b63a3aff.elb.us-east-1.amazonaws.com",
+                "CanonicalHostedZoneId": "Z26RNL4JYFTOTI",
+                "CreatedTime": "2018-06-27T19:22:14.593Z",
+                "LoadBalancerName": "ex-006-net-lb",
+                "Scheme": "internet-facing",
+                "VpcId": "vpc-0c1ae5bad2afe3a59",
+                "State": {
+                    "Code": "provisioning"
+                },
+                "Type": "network",
+                "AvailabilityZones": [
+                    {
+                        "ZoneName": "us-east-1b",
+                        "SubnetId": "subnet-092b9a5c7a88ac880"
+                    },
+                    {
+                        "ZoneName": "us-east-1a",
+                        "SubnetId": "subnet-08d9de6ee83088a2a"
+                    }
+                ],
+                "IpAddressType": "ipv4"
+            }
+        ]
+    }
+
+Environment variables
+~~~~~~~~~~~~~~~~~~~~~
+Create the following environment variable.
+
+.. code-block::
+
+    export EX006_LB=<LoadBalancerArn>
+
+
+Check Load Balancer status
+--------------------------
+
+.. code-block::
+
+    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_LB
+
+Output:
+
+.. code-block::
+
+{
+    "LoadBalancers": [
+        {
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/net/ex-006-net-lb/725ca5e4b63a3aff",
+            "DNSName": "ex-006-net-lb-725ca5e4b63a3aff.elb.us-east-1.amazonaws.com",
+            "CanonicalHostedZoneId": "Z26RNL4JYFTOTI",
+            "CreatedTime": "2018-06-27T19:22:14.593Z",
+            "LoadBalancerName": "ex-006-net-lb",
+            "Scheme": "internet-facing",
+            "VpcId": "vpc-0c1ae5bad2afe3a59",
+            "State": {
+                "Code": "active"
+            },
+            "Type": "network",
+            "AvailabilityZones": [
+                {
+                    "ZoneName": "us-east-1a",
+                    "SubnetId": "subnet-08d9de6ee83088a2a",
+                    "LoadBalancerAddresses": [
+                        {}
+                    ]
+                },
+                {
+                    "ZoneName": "us-east-1b",
+                    "SubnetId": "subnet-092b9a5c7a88ac880",
+                    "LoadBalancerAddresses": [
+                        {}
+                    ]
+                }
+            ],
+            "IpAddressType": "ipv4"
+        }
+    ]
+}
+
+aws elbv2 create-target-group --name ex-006-webservers --protocol TCP --port 80 --vpc-id $EX006_VPC
+
+
+
+aws elbv2 create-listener \
+    --load-balancer-arn $EX006_LB \
+    --protocol TCP \
+    --port 80 \
+    --default-actions Type=forward,TargetGroupArn=$EX006_TG
+
+    {
+    "Listeners": [
+        {
+            "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:listener/net/ex-006-net-lb/725ca5e4b63a3aff/c95db1e6af803816",
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/net/ex-006-net-lb/725ca5e4b63a3aff",
+            "Port": 80,
+            "Protocol": "TCP",
+            "DefaultActions": [
+                {
+                    "Type": "forward",
+                    "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-webservers/28d9c50cc0dc819b"
+                }
+            ]
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Delete the Target Group
 -----------------------
