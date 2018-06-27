@@ -380,16 +380,16 @@ Estimated costs
 Use the following awscli command to get an estimated monthly cost for the components in the template.
 
 .. code-block::
-	
+
 	aws cloudformation estimate-template-cost --template-body file://templates/ex-004_template.yaml
 
 Output:
 
-.. code-block:
+.. code-block::
 
 	{
     	"Url": "http://calculator.s3.amazonaws.com/calc5.html?key=cloudformation/4fd01c4d-7530-4462-a0c3-608cb6df057d"
-	}
+    }
 
 Create Stack
 ------------
