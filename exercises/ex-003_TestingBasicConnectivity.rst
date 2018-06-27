@@ -642,7 +642,11 @@ Output:
 
 Release the Elastic IP
 ----------------------
-Use the following awscli command to release the public IPv4 address
+Use the following awscli command to release the Elastic IP.
+
+Recall that leaving it allocated, but unassigned will incur a charge.
+
+NOTE: The associated instance will have to complete its termination in order for the Elastic IP to not be **"In use"** and available for release
 
 .. code-block::
 
