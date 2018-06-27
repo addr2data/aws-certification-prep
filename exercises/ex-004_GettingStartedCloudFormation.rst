@@ -452,6 +452,10 @@ Use the following awscli command to explore the **StackEvents**.
 
 	aws cloudformation describe-stack-events --stack-name ex-004
 
+Output:
+
+.. code-block::
+
 	... not included do to size ...
 
 Delete the Stack
@@ -461,6 +465,10 @@ Use the following awscli command to delete the Stack.
 .. code-block::
 
 	aws cloudformation delete-stack --stack-name ex-004
+
+Output:
+
+.. code-block::
 
 	... not included do to size ...
 
