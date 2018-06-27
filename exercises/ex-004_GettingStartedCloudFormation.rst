@@ -122,6 +122,10 @@ Use the following awscli command to verify access to CloudFormation API.
 
 	aws cloudformation describe-stacks
 
+Output:
+
+.. code-block::
+
 	{
 		"Stacks": []
 	}
@@ -137,6 +141,10 @@ For more information on CloudFormation account limits:
 .. code-block::
 
 	aws cloudformation describe-account-limits
+
+Output:
+
+.. code-block::
 	
 	{
 		"AccountLimits": [
