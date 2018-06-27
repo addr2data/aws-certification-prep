@@ -53,13 +53,13 @@ The activities in this exercise may result in charges to your AWS account.
      - 
         + During this exercise, we will use one (1) EIP. This EIP will be mapped to an Instance. 
         + This EIP is allocated and mapped as part of a CloudFormation Stack. 
-   * - Application Load Balancing
+   * - Application Load-balancing
      - 
         + Between $0.0225 and $0.034 per Application Load Balancer-hour (or partial hour), depending on your region.
         + Between $0.008 and $0.011 per LCU-hour (or partial hour), depending on your region.
      - 
         + It is not expected that this Load balancer will need to be running for more than one hour.
-   * - Network Load Balancing
+   * - Network Load-balancing
      - 
         + Between $0.0225 and $0.034 per Network Load Balancer-hour (or partial hour), depending on your region.
         + Between $0.006 and $0.0083 per LCU-hour (or partial hour), depending on your region.
@@ -97,14 +97,21 @@ General
 
 - Two Instances that will act as Web Servers.
 - One Instance that will act a Jumpbox.
-- A Subnet for each Web Server, each in a different Availability Zone.
-- A Subnet for the Jumpbox.
+- A Subnet for each Web Server, each in a different Availability Zone (10.0.0.0/24 and 10.0.1.0/24)
+- A Subnet for the Jumpbox (10.0.100.0/24)
 - A Security Group for the jumpbox that allows **SSH** from anywhere (0.0.0.0/0).
 
 Specific to Application Load-balancer
 
+- A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet and **HTTP** from anywhere in the VPC (10.0.0.0/16)
 
-- A Security Group for the Web Servers, when    
+- A Security Group for the load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
+
+Specific to Network Load-balancer
+
+- A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet and **HTTP** from anywhere (0.0.0.0/0)
+
+ 
 
 The following section only shows the resources and resources parameters that have significant differences from previous Templates.
 
