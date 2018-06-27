@@ -47,12 +47,14 @@ The activities in this exercise may result in charges to your AWS account.
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
         + $0.005 per hour per EIP that is NOT associated to a running Instance
-     - During this exercise there will be short periods of time where an EIP is not associated with an running Instance, so you might incur a very small charge.
+     - 
+        + During this exercise there will be short periods of time where an EIP is not associated with a running Instance, so you might incur a very small charge.
    * - Elastic IPs
      - 
         + $0.00 per EIP address remap for the first 100 remaps per month.
         + $0.10 per EIP address remap for additional remaps over 100 per month
-     - During this exercise we will remap an EIP a couple of times.  
+     - 
+        + During this exercise we will remap an EIP a couple of times.  
 
 Limits
 ------
