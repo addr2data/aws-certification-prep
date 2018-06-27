@@ -585,29 +585,29 @@ You are now connected to the **public** Instance.
 
 Test local connectivity
 -----------------------
-You should still be connected to the 'public' Instance.
+You should still be connected to the **public** Instance.
 
-Use the following command to test connectivity to the 'private' Instance. 
+Use the following command to test connectivity to the **private** Instance. 
 
-``Expected results: 'ping' should now be successful.``
+**Expected results:** 'ping' should now succeed.
 
 .. code-block::
 
     ping <ip-addr-private-instance>
 
-    Type 'exit' to disconnect from the public Instances.
+Type 'exit' to disconnect to close the ssh session.
 
 Terminate Instances
 -------------------
 Use the following awscli command to terminate both instances.
 
-Examine the current state. Both should show a **'currentState'** of **'shutting-down'**.
-
-This operation is idempotent. Rerun the command until you see a **'currentState'** of **'terminated'**.
-
 .. code-block::
 
     aws ec2  terminate-instances --instance-ids $EX003_INST_PUB $EX003_INST_PRIV
+
+Examine the current state. Both should show a **'currentState'** of **'shutting-down'**.
+
+This operation is idempotent. Rerun the command until you see a **'currentState'** of **'terminated'**.
 
 Output:
 
