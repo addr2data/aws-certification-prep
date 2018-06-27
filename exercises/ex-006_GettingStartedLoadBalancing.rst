@@ -260,7 +260,10 @@ Notice the format of this portion of the query string **'{"Logical Resource Id":
 
 .. code-block::
 
-    aws cloudformation describe-stack-resources --stack-name ex-006 --output table --query 'StackResources[*].{"Logical Resource Id": LogicalResourceId,"Physical Resource Id": PhysicalResourceId}'
+    aws cloudformation describe-stack-resources \
+        --stack-name ex-006 \
+        --output table \
+        --query 'StackResources[*].{"Logical Resource Id": LogicalResourceId,"Physical Resource Id": PhysicalResourceId}'
 
 Output:
 

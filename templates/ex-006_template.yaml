@@ -109,6 +109,7 @@ Resources:
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref InternetGateway
       RouteTableId: !Ref RouteTablePublic
+    DependsOn: AttachInternetGateway
 
   AssociateSubnetWeb1RouteTablePublic:
     Type: AWS::EC2::SubnetRouteTableAssociation
