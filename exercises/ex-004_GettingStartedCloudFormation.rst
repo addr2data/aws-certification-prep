@@ -163,9 +163,9 @@ Review the template
 -------------------
 Below is the contents of the **ex-004_template.yaml** file from the **templates** directory.
 
-Notice how **Parameters** allow us create a parameter call **KeyPairName**, which has a 'default' value of 'acpkey1'. This will allow us the flexibity to either, use the 'default' value or overide it from the command-line with the **--parameters** option.
+Notice how the **Parameters:** blocks, allow us create a parameter called **KeyPairName**, which has a default value of **acpkey1**. This will allow us the flexibity to either; use the default value or overide it from the command-line with the **'--parameters'** option.
 
-Notice how **Mappings** allow us to create a 'lookup' table for **ImageIds** per region.
+Notice how the **Mappings:** block allows us to create a 'lookup' table for **ImageIds** per region.
 
 Notice how under **PublicInstance** and **Private Instance**, we use **!FindInMap** to have CloudFormation lookup the correct ImageId, based on the AWS Region we are deploying to. This gives the template flexibility for use in any region.
 
