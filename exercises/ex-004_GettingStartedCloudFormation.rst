@@ -330,7 +330,7 @@ Validate template
 -----------------
 Use the following awscli command to validate the structure of the template file.
 
-NOTE: the template-body paramater expects a URL, so the 'file://' prefix is necessary
+NOTE: the template-body paramater expects a URL, so the **'file://'** prefix is necessary
 
 .. code-block::
 
