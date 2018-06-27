@@ -264,7 +264,7 @@ We have used the **'--client-token'** option to demonstrate how some commands, t
 
 - `More information on Idempotency <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html>`_
 
-**If you are using a different Key Pair, then replace **'acpkey1'** with your **'<key-pair-name>'**.
+**If you are using a different Key Pair, then replace 'acpkey1' with your '<key-pair-name>'**.
 
 .. code-block::
 
