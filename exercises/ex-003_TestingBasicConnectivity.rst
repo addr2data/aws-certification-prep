@@ -317,9 +317,7 @@ Launch a second Instance
 ------------------------
 Use the following awscli command to launch an Instance and attach to the **'private'** Subnet.
 
-Note: The **private** Subnet is implicitly associated with the main Route Table, which does NOT have a Route to the Internet Gateway.
-
-Note: Notice that we're adding both instances to the same security group
+Note: The **private** Subnet is implicitly associated with the main Route Table, which does NOT have a Route to the Internet Gateway. Also, notice that we're adding both instances to the same security group
 
 **If you are using a different Key Pair, then replace 'acpkey1' with your '<key-pair-name>'**.
 
