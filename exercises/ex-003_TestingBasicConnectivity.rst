@@ -18,7 +18,6 @@ Dependencies
 
 Objectives
 ----------
-
 - Become familiar with launching and connecting to on-demand Instances.
 - Test connectivity for the VPC configuration we created in ex-002.
 
