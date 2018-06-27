@@ -430,8 +430,8 @@ Output:
 
 	{
 		"Stacks": [
-        	{
-            	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-004/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+			{
+				"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-004/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             	"StackName": "ex-004",
             	"CreationTime": "2018-06-17T21:47:13.883Z",
             	"RollbackConfiguration": {},
@@ -440,7 +440,7 @@ Output:
             	"NotificationARNs": [],
             	"Tags": [],
             	"EnableTerminationProtection": false
-            }
+        	}
 		]
 	}
 
