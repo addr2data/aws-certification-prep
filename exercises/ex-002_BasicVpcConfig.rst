@@ -31,8 +31,7 @@ The activities in this exercise are NOT expected to result in any charges to you
    * - **Component**
      - **Applicable Costs**
      - **Notes**
-   * - 
-        + VPC (including Subnets, Route Tables and IntenetGateways)
+   * - VPC (including Subnets, Route Tables and IntenetGateways)
      - 
         + None
      - 

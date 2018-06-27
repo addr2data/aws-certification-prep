@@ -3,7 +3,7 @@ ex-004: Getting Started with CloudFormation
 
 Status
 ------
-Version 0.9 (6/19/18) - additional review required.
+Version 1.0 (6/27/18)
 
 Dependencies
 ------------
@@ -35,31 +35,34 @@ The activities in this exercise may result in charges to your AWS account.
      - Applicable Costs
      - Notes
    * - CloudFormation
-     - None
-     - There is no charge for CloudFormation itself, only for the resources that you deploy with it.
-   * - VPC (including Subnets, Route Tables and Internet Gateways)
-     - None
      - 
-   * - Key Pairs
-     - None
+     	+ None
+     - 
+     	+ There is no charge for CloudFormation itself, only for the resources that you deploy with it.
+   * - VPC (including Subnets, Route Tables and Internet Gateways)
+     - 
+     	+ None
      - 
    * - Security Groups
-     - None
+     - 
+     	+ None
      -
    * - On-demand Instances
      - 
         + $0.0116 per hour per Instance (t2.micro)
-     - During this exercise we will be launching two Instances, using ami-a4dc46db (Ubuntu Server 16.04 LTS), which is 'Free tier eligible'. It is not expected that these Instances will need to be running for more than one hour. 
+     - 
+     	+ During this exercise, we will use two (2) Instances. The AMI that will be used is **'Ubuntu Server 16.04 LTS'**, which combined with the **'t2.micro'** Instance Type, is **'Free tier eligible'**.
+        + It is not expected that these Instances will need to be running for more than one hour.
    * - Elastic IPs
      - 
         + $0.00 per hour per EIP that is associated to a running Instance
-        + $0.05 per hour per EIP that is NOT associated to a running Instance
-     - Unlike ex-004, there will not be periods of time where an EIP is not associated with an running Instance.
+        + $0.005 per hour per EIP that is NOT associated to a running Instance
+     - 
    * - Elastic IPs
      - 
         + $0.00 per EIP address remap for the first 100 remaps per month.
         + $0.10 per EIP address remap for additional remaps over 100 per month
-     - Unlike ex-004, we will not be re-mapping EIPs.
+     - 
 
 Limits
 ------
