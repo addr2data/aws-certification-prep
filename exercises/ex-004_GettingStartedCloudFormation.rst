@@ -330,9 +330,15 @@ Validate template
 -----------------
 Use the following awscli command to validate the structure of the template file.
 
+NOTE: the template-body paramater expects a URL, so the 'file://' prefix is necessary
+
 .. code-block::
 
-	aws cloudformation validate-template --template-body file://./templates/ex-004_template.yaml
+	aws cloudformation validate-template --template-body file://templates/ex-004_template.yaml
+
+Output:
+
+.. code-block::
 
 	{
     	"Parameters": []
@@ -344,7 +350,11 @@ Use the following awscli command to get a summary of the template.
 
 .. code-block::
 
-	aws cloudformation get-template-summary --template-body file://./templates/ex-004_template.yaml
+	aws cloudformation get-template-summary --template-body file://templates/ex-004_template.yaml
+
+Output:
+
+.. code-block::
 
 	{
     	"Parameters": [],
