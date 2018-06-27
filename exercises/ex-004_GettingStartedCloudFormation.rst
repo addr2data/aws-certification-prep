@@ -388,8 +388,8 @@ Output:
 .. code-block::
 
 	{
-    	"Url": "http://calculator.s3.amazonaws.com/calc5.html?key=cloudformation/4fd01c4d-7530-4462-a0c3-608cb6df057d"
-    }
+		"Url": "http://calculator.s3.amazonaws.com/calc5.html?key=cloudformation/4fd01c4d-7530-4462-a0c3-608cb6df057d"
+	}
 
 Create Stack
 ------------
