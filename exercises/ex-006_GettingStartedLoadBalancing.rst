@@ -147,7 +147,7 @@ The following section only shows the resources and resources parameters that hav
 Notable items in the Template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When creating an Application Load Balancer, it is required that at least two Subnets, from different Availability Zones, be specified. The following built-in functions are used to:
+When creating an Application Load-balancer, it is required that at least two Subnets, from different Availability Zones, be specified. The following built-in functions are used to:
 
     - Get a list of all the Availability Zones (AZ) in the Region that the Stack is being deployed in.
     - Select the 1st (0) AZ and create **'SubnetWeb1'** there.
@@ -190,7 +190,7 @@ In order to create a simple web server, the following commands are run at Instan
             - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
             - "sudo python3 -m http.server 80"
 
-In order to illustrate the **'DependsOn'** resource attribute, we have specified that launching of 'WebInstance1' and 'WebInstance2' must come after the creation of 'DefaultRoutePublic'. In theory, ensuring that a path to the Internet is available before the Instances are launched. 
+In order to illustrate the **'DependsOn'** resource attribute, we have specified that launching of all three Instances must come after the creation of 'DefaultRoutePublic'. In theory, ensuring that a path to the Internet is available before the Instances are launched. 
 
 .. code-block::
 
