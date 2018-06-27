@@ -351,7 +351,7 @@ Private IP address
 ------------------
 Use the following awscli command to collect the IP address of the Instance on the **'private'** Subnet.
 
-``Note: you will type this address in a ssh session, so jot it down.``
+Note: you will type this address in a ssh session, so jot it down.
 
 .. code-block::
     
@@ -365,6 +365,8 @@ Output:
 .. code-block::
     
     xxx.xxx.xxx.xxx
+
+Using the **'--query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress'** parameter, dictates that only the value of **'PrivateIpAddress'** should be returned. Using the **'--output text'** parameter, dictates that result should be text and not the default json. 
 
 Allocate an Elastic IP
 ----------------------
