@@ -444,9 +444,9 @@ Output:
 
 Test inbound connectivity
 -------------------------
-Use the following commands to test connectivity to the Instance in the public Subnet (via the Elastic IP).
+Use the following commands to test 'inbound' connectivity to the **public** Instance.
 
-**Expected results:** 'ping' should fail and 'ssh' should be successful.``
+**Expected results:** 'ping' should fail and 'ssh' should succeed.
 
 .. code-block::
 
@@ -457,9 +457,9 @@ Note: If you are prompted with **"Are you sure you want to continue connecting (
 
 Test outbound connectivity
 --------------------------
-Use the following command to test connectivity from the Instance in the public Subnet.
+Use the following command to test 'outbound' connectivity from the **public** Instance.
 
-``Expected results: 'apt update' should be successful.``
+**Expected results:** 'apt update' should succeed.
 
 .. code-block::
 
