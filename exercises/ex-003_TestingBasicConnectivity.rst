@@ -95,7 +95,10 @@ Use the following awscli command to create a new Security Group.
 
 .. code-block::
 
-    aws ec2 create-security-group --group-name Int2Public --description "Security Group used to connect to instances on public subnet from Internet" --vpc-id $EX002_VPC
+    aws ec2 create-security-group \
+        --group-name Int2Public \
+        --description "Security Group for Instances" \
+        --vpc-id $EX002_VPC
 
 Output:
 
