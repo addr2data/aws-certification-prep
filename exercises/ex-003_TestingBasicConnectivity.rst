@@ -529,18 +529,18 @@ Use the following commands to:
 
 Test local connectivity
 -----------------------
-You should still be connected to the Instance in the public Subnet.
+You should still be connected to the **public** Instance.
 
-Use the following commands to test connectivity to the Instance in the private Subnet.
+Use the following commands to test connectivity to the **private** Instance.
 
-``Expected results: 'ping' should fail and 'ssh' should be successful.``
+**Expected results:** 'ping' should fail and 'ssh' should succeed.
 
 .. code-block::
 
     ping <ip-addr-private-instance>
     ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@<ip-addr-private-instance>
 
-You are now connected to the Instance on the private subnet.
+You are now connected to the **private** Instance, through the **public** instance.
 
 Test outbound connectivity
 --------------------------
