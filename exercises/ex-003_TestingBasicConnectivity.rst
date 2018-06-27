@@ -264,7 +264,13 @@ We have used the **'--client-token'** option to demonstrate how some commands, t
 
 .. code-block::
 
-    aws ec2 run-instances --image-id $EX003_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PUB --security-group-ids $EX003_SG --client-token awscertprep-ex-003-001
+    aws ec2 run-instances \
+        --image-id $EX003_IMAGE_ID \
+        --instance-type t2.micro \
+        --key-name acpkey1 \
+        --subnet-id $EX003_SUBNET_PUB \
+        --security-group-ids $EX003_SG \
+        --client-token awscertprep-ex-003-001
 
 Additional information on the above parameters:
 
@@ -311,7 +317,13 @@ Use the following awscli command to launch an Instance and attach to the **'priv
 
 .. code-block::
 
-    aws ec2 run-instances --image-id $EX003_IMAGE_ID --instance-type t2.micro --key-name acpkey1 --subnet-id $EX003_SUBNET_PRIV --security-group-ids $EX003_SG --client-token awscertprep-ex-003-005
+    aws ec2 run-instances \
+        --image-id $EX003_IMAGE_ID \
+        --instance-type t2.micro \
+        --key-name acpkey1 \
+        --subnet-id $EX003_SUBNET_PRIV \
+        --security-group-ids $EX003_SG \
+        --client-token awscertprep-ex-003-005
 
 Output:
 
@@ -335,7 +347,10 @@ Use the following awscli command to collect the IP address of the Instance on th
 
 .. code-block::
     
-    aws ec2 describe-instances --instance-ids $EX003_INST_PRIV --output text --query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress
+    aws ec2 describe-instances \
+        --instance-ids $EX003_INST_PRIV \
+        --output text \
+        --query Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddress
 
 Output:
 
