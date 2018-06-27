@@ -560,7 +560,11 @@ The private subnet has no inbound or outbound path to the Internet. In a later e
 
 Add a rule to the Security Group
 --------------------------------
-Use the following awscli command to create a new rule to the above security group.
+Use the following awscli command to create a new rule to the above security group. This rule enables the icmp protocol from anywhere.
+
+Note: the command requires the 'port' parameter - AWS document has this to say:
+
+    For ICMP: A single integer or a range (type-code ) representing the ICMP type number and the ICMP code number respectively. A value of -1 indicates all ICMP codes for all ICMP types. A value of -1 just for type indicates all ICMP codes for the specified ICMP type.
 
 .. code-block::
 
