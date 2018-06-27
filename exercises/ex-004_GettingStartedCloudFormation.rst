@@ -424,8 +424,12 @@ Rerun this command until **'StackStatus'** is **'CREATE_COMPLETE'**.
 
 	aws cloudformation describe-stacks --stack-name ex-004
 
+Output:
+
+.. code-block::
+
 	{
-    	"Stacks": [
+		"Stacks": [
         	{
             	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-004/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             	"StackName": "ex-004",
@@ -436,8 +440,8 @@ Rerun this command until **'StackStatus'** is **'CREATE_COMPLETE'**.
             	"NotificationARNs": [],
             	"Tags": [],
             	"EnableTerminationProtection": false
-        	}
-    	]
+            }
+		]
 	}
 
 Review the events
