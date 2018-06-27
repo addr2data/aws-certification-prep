@@ -258,7 +258,7 @@ Launch an Instance
 -------------------
 Use the following awscli command to launch an Instance and attach it to the **public** Subnet. From here onwards, we will refer to this Instance as the **public** Instance.
 
-**Note: The only thing that makes it a 'public' Subnet is the fact that it is associated with a Route Table that has a default Route to the Internet Gateway.**
+Note: The only thing that makes it a **public** Subnet is the fact that it is associated with a Route Table that has a default Route to the Internet Gateway.
 
 We have used the **'--client-token'** option to demonstrate how some commands, that are not naturally idempotent, are made to be so.
 
@@ -307,6 +307,8 @@ Output:
 
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
+In the output of the run-instances command, you'll find the **'InstanceId'**.
+
 .. code-block::
 
     export EX003_INST_PUB=<InstanceId>
@@ -315,9 +317,11 @@ Launch a second Instance
 ------------------------
 Use the following awscli command to launch an Instance and attach to the **'private'** Subnet.
 
-**Note: The 'private' Subnet is implicitly associated with the main Route Table, which does NOT have a Route to the Internet Gateway.**
+Note: The **private** Subnet is implicitly associated with the main Route Table, which does NOT have a Route to the Internet Gateway.
 
-**If you are using a different Key Pair, then replace **'acpkey1'** with your **'<key-pair-name>'**.
+Note: Notice that we're adding both instances to the same security group
+
+**If you are using a different Key Pair, then replace 'acpkey1' with your '<key-pair-name>'**.
 
 .. code-block::
 
