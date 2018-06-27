@@ -341,6 +341,8 @@ Output:
 
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
+In the output of the run-instances command, you'll find the **'InstanceId'**.
+
 .. code-block::
 
     export EX003_INST_PRIV=<InstanceId>
