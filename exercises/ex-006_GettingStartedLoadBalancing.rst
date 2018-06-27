@@ -453,7 +453,7 @@ Create a listener
 
 .. code-block::
 
-    aws elbv2 create-listener 
+    aws elbv2 create-listener \
         --load-balancer-arn $EX006_LB \
         --protocol HTTP \
         --port 80 \
