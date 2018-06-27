@@ -482,6 +482,10 @@ Rerun this until you get the following error: "An error occurred (ValidationErro
 
 	aws cloudformation describe-stacks --stack-name ex-004
 
+Output:
+
+.. code-block::
+
 	{
     	"Stacks": [
         	{
