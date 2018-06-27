@@ -406,6 +406,10 @@ Note: If you are using the **'acpkey1'** Key Pair, you can leave off the **'--pa
 		--template-body file://templates/ex-004_template.yaml \
 		--parameters ParameterName=KeyPairName,ParameterValue=acpkey1
 
+Output:
+
+.. code-block::
+
 	{
     	"StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-004/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 	}
