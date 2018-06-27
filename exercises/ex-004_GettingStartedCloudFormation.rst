@@ -174,6 +174,12 @@ Notice how **!Ref** is used to reference other resources by name where needed.**
 .. code-block::
 
 	---
+	Parameters:
+	  KeyPairName:
+	    Type: String
+	    Default: acpkey1
+	    Description: Name of existing KeyPair
+
 	Mappings: 
 	  RegionMap: 
 	    us-east-1: 
@@ -271,7 +277,7 @@ Notice how **!Ref** is used to reference other resources by name where needed.**
 	  SecurityGroup:
 	    Type: AWS::EC2::SecurityGroup
 	    Properties: 
-	      GroupName: sg_ex004
+	      GroupName: sg_ex005
 	      GroupDescription: "Security Group for ex-004"
 	      SecurityGroupIngress:
 	        - 
@@ -291,7 +297,7 @@ Notice how **!Ref** is used to reference other resources by name where needed.**
 	    Properties: 
 	      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
 	      InstanceType: t2.micro
-	      KeyName: acpkey1
+	      KeyName: !Ref KeyPairName
 	      SecurityGroupIds: 
 	        - !Ref SecurityGroup
 	      SubnetId: !Ref SubnetPublic
@@ -304,7 +310,7 @@ Notice how **!Ref** is used to reference other resources by name where needed.**
 	    Properties: 
 	      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
 	      InstanceType: t2.micro
-	      KeyName: acpkey1
+	      KeyName: !Ref KeyPairName
 	      SecurityGroupIds: 
 	        - !Ref SecurityGroup
 	      SubnetId: !Ref SubnetPrivate

@@ -122,7 +122,7 @@ Resources:
     Properties: 
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
       InstanceType: t2.micro
-      KeyName: acpkey1
+      KeyName: !Ref KeyPairName
       SecurityGroupIds: 
         - !Ref SecurityGroup
       SubnetId: !Ref SubnetPublic
@@ -135,7 +135,7 @@ Resources:
     Properties: 
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
       InstanceType: t2.micro
-      KeyName: acpkey1
+      KeyName: !Ref KeyPairName
       SecurityGroupIds: 
         - !Ref SecurityGroup
       SubnetId: !Ref SubnetPrivate
