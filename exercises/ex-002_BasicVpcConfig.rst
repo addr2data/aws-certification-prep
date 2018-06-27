@@ -61,11 +61,13 @@ The following table shows the default limits for the components utilized in this
 
 Environment variables
 ---------------------
-During these exercises, we will be using the output of some commands to creatie environment variables. This will help simplify the syntax subsequent commands.
+During these exercises, we will be using the output of some commands to create environment variables. This will help simplify the syntax subsequent commands.
 
 In some places, we will do this manually, because we want to show the the full output of the command. In other places, we will use the **'--query'** and **'--output'** options available in the awscli command to filter the output directly into a variable.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
+
+**Note: We'll be reusing some of the environment variables created in this exercise, in the next exercise**
 
 Create a VPC
 ------------

@@ -74,22 +74,22 @@ The following table shows the default limits for the components utilized in this
      - 50
    * - On-demand Instances
      - 20 per region
-   * - Elastic IP adresses
+   * - Elastic IP addresses
      - 5 per region
 
 Environment variables
 ---------------------
-During these exercises, we will be using the output of some commands to creatie environment variables. This will help simplify the syntax subsequent commands.
+During these exercises, we will be using the output of some commands to create environment variables. This will help simplify the syntax subsequent commands.
 
 In some places, we will do this manually, because we want to show the the full output of the command. In other places, we will use the **'--query'** and **'--output'** options available in the awscli command to filter the output directly into a variable.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
+**Note: We'll be reusing some of the environment variables created in the previous exercise, in this exercise.**
+
 Create a Security Group
 -----------------------
-We will be adding the Instances that we create later in the exercise to this Security Group.
-
-**Note: We'll be reusing the environment variables created in the previous exercise**
+This Security Group will be applied to the Instances created later in this exercise.
 
 Use the following awscli command to create a new Security Group.
 
@@ -107,7 +107,7 @@ Output:
 
 Troubleshooting:
 ~~~~~~~~~~~~~~~~
-If you get an error that reads **'aws: error: argument --vpc-id: expected one argument'**, it probably means that your EX002_VPC environment variable is not set. You can retreive the VPC ID value by running the following command:
+If you get an error that reads **'aws: error: argument --vpc-id: expected one argument'**, it probably means that your **'EX002_VPC'** environment variable is not set. You can retrieve the VPC ID value by running the following command:
 
 .. code-block::
 
@@ -128,7 +128,7 @@ Environment variable
 
 Add a rule to the Security Group
 --------------------------------
-We'll need to add an ingress rule to our security group. This rule will allow inbound traffic to SSH (tcp port 22) from anywhere (0.0.0.0/0). By default, Security Groups allows all outbound traffic.
+We'll need to add an ingress rule to our security group. This rule will allow inbound traffic to SSH (tcp port 22) from anywhere (0.0.0.0/0). By default, Security Groups allow all outbound traffic.
 
 We will cover Security Groups in more detail in a later exercise.
 
@@ -192,11 +192,11 @@ Output:
 
 Amazon Machine Image (AMI)
 --------------------------
-We are going to use the following AMI, but the 'imageIds' are different for each region:
+We are going to use the following AMI, but the **'imageIds'**, for that AMI, are different for each region:
 
 ``Ubuntu Server 16.04 LTS (HVM), SSD Volume Type``
 
-Use the following table to identify the 'imageId' for your region.
+Use the following table to identify the **'imageId'** for your region.
 
 .. list-table::
    :widths: 25, 25, 25, 25, 25, 25
@@ -239,22 +239,25 @@ Use the following table to identify the 'imageId' for your region.
      - sa-east-1
      - ami-67fca30b
 
+Environment Variable
+~~~~~~~~~~~~~~~~~~~~
 Create an environment variable using your ImageId.
 
 .. code-block::
 
     export EX003_IMAGE_ID=<ImageId>
 
-
 Launch an Instance
 -------------------
-Use the following awscli command to launch an Instance and attach to the **'public'** Subnet. From here onwards, we will refer to this Instance as the 'public' Instance.
+Use the following awscli command to launch an Instance and attach it to the **'public'** Subnet. From here onwards, we will refer to this Instance as the 'public' Instance.
 
-**Note: The only thing that makes it a 'public' Subnet is the fact that it is associated with a Route Table that has a default Route to the Internet Gateway.``
+**Note: The only thing that makes it a 'public' Subnet is the fact that it is associated with a Route Table that has a default Route to the Internet Gateway.**
 
-We have used the **'--client-token'** to option ensure this operation is  Idempotent.
+We have used the **'--client-token'** option to demonstrate how some commands, that are not naturally idempotent, are made to be so.
 
 - `More information on Idempotency <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html>`_
+
+**If you are using a different Key Pair, then replace **'acpkey1'** with your **'<key-pair-name>'**.
 
 .. code-block::
 
@@ -273,7 +276,7 @@ Additional information on the above parameters:
    * - '--instance-type t2.micro'
      - The Instance type defines the number of vCPUs, the amount of Memory, the size and type Storage, Network performance, etc...
    * - '--key-name acpkey1'
-     - What Key Pair to use.
+     - What Key Pair to use.   
    * - '--subnet-id $EX003_SUBNET_PUB'
      - 
    * - '--security-group-ids $EX003_SG'
@@ -299,7 +302,9 @@ Launch a second Instance
 ------------------------
 Use the following awscli command to launch an Instance and attach to the **'private'** Subnet.
 
-``Reminder: The private Subnet is implicitly associated with the Default/Main Route Table, which does NOT have a Route to the Internet Gateway.``
+**Note: The 'private' Subnet is implicitly associated with the main Route Table, which does NOT have a Route to the Internet Gateway.**
+
+**If you are using a different Key Pair, then replace **'acpkey1'** with your **'<key-pair-name>'**.
 
 .. code-block::
 
