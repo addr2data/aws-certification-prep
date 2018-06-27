@@ -276,7 +276,7 @@ We have used the **'--client-token'** option to demonstrate how some commands, t
         --security-group-ids $EX003_SG \
         --client-token awscertprep-ex-003-001
 
-Additional information on the above parameters:
+Additional information for the above parameters:
 
 .. list-table::
    :widths: 50, 50
@@ -285,17 +285,17 @@ Additional information on the above parameters:
    * - **Parameter**
      - **Description**
    * - '--image-id $EX003_IMAGE_ID'
-     - What AMI to use
+     - Specifies what **AMI** to use
    * - '--instance-type t2.micro'
-     - The Instance type defines the number of vCPUs, the amount of Memory, the size and type Storage, Network performance, etc...
+     - Specifies the **Instance-type**, which in turn defines the number of vCPUs, the amount of memory, the size and type of storage, network performance, etc...
    * - '--key-name acpkey1'
-     - What Key Pair to use.   
+     - Specifies which **Key Pair** to use for remote access to the Instance.   
    * - '--subnet-id $EX003_SUBNET_PUB'
-     - 
+     - Specifies which **subnet** to connect the Instance to. 
    * - '--security-group-ids $EX003_SG'
-     - 
+     - Specifies which **Security Group** to use for controlling access to the Instance.
    * - '--client-token awscertprep-ex-003-001'
-     - 
+     - Specifies an arbitrary **Token**, to be used to make this an idempotent operation.  
 
 Output:
 
