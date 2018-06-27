@@ -572,16 +572,16 @@ Note: the command requires the 'port' parameter - AWS document has this to say:
 
 Test connectivity
 -----------------
-Use the following commands to test connectivity to the Instance in the public Subnet.
+Use the following commands to test connectivity to the **public** Instance.
 
-`Expected results: 'ping' and 'ssh' should now be successful.
+**Expected results:** 'ping' and 'ssh' should now succeed.
 
 .. code-block::
 
     ping $EX003_PUB_IP
     ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX003_PUB_IP
 
-You are now connected to the Instance on the public subnet.
+You are now connected to the **public** Instance.
 
 Test local connectivity
 -----------------------
