@@ -446,12 +446,14 @@ Test inbound connectivity
 -------------------------
 Use the following commands to test connectivity to the Instance in the public Subnet (via the Elastic IP).
 
-``Expected results: 'ping' should fail and 'ssh' should be successful.``
+**Expected results:** 'ping' should fail and 'ssh' should be successful.``
 
 .. code-block::
 
     ping $EX003_PUB_IP
     ssh -i acpkey1.pem -o ConnectTimeout=5 ubuntu@$EX003_PUB_IP
+
+Note: If you are prompted with **"Are you sure you want to continue connecting (yes/no)?"**, that's a good thing! Enter 'y' and you'll be connected.
 
 Test outbound connectivity
 --------------------------
