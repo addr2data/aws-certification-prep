@@ -27,11 +27,11 @@ The activities in this exercise may result in charges to your AWS account.
 
 .. list-table::
    :widths: 20, 40, 50
-   :header-rows: 1
+   :header-rows: 0
 
-   * - Component
-     - Applicable Costs
-     - Notes
+   * - **Component**
+     - **Applicable Costs**
+     - **Notes**
    * - Security Groups
      - 
         + None
@@ -61,7 +61,7 @@ The following table shows the default limits for the components utilized in this
 
 .. list-table::
    :widths: 25, 25
-   :header-rows: 1
+   :header-rows: 0
 
    * - **Component**
      - **Limit**

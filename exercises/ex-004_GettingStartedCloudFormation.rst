@@ -29,11 +29,11 @@ The activities in this exercise may result in charges to your AWS account.
 
 .. list-table::
    :widths: 20, 40, 50
-   :header-rows: 1
+   :header-rows: 0
 
-   * - Component
-     - Applicable Costs
-     - Notes
+   * - **Component**
+     - **Applicable Costs**
+     - **Notes**
    * - CloudFormation
      - 
      	+ None
@@ -65,7 +65,7 @@ The following table shows the CloudFormation template limits that are relevant t
 
 .. list-table::
    :widths: 25, 25
-   :header-rows: 1
+   :header-rows: 0
 
    * - **Component**
      - **Limit**
