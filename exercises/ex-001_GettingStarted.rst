@@ -463,7 +463,7 @@ Use the following awscli command to create a new **Key Pair** and save the resul
     
     aws ec2 create-key-pair --key-name acpkey1 --query 'KeyMaterial' --output text > acpkey1.pem
 
-*Note: I have only verified that directly redirecting the 'KeyMaterial' to a file produces a valid '.pem' on macOS. Other OSs may have subtle differences.*
+*Note: We have only verified that directly redirecting the 'KeyMaterial' to a file produces a valid '.pem' on macOS. Other OSs may have subtle differences.*
 
 Modify permissions
 ------------------
