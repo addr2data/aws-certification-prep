@@ -383,9 +383,9 @@ Output:
     {
         "LoadBalancers": [
             {
-                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/app/ex-006-app-lb/941a8812e1bd5260",
-                "DNSName": "ex-006-app-lb-1050428493.us-east-1.elb.amazonaws.com",
-                "CanonicalHostedZoneId": "Z35SXDOTRQ7X7K",
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxxx:loadbalancer/app/ex-006-app-lb/xxxxxxxxxxxxxxxx",
+                "DNSName": "ex-006-app-lb-xxxxxxxxxx.us-east-1.elb.amazonaws.com",
+                "CanonicalHostedZoneId": "XXXXXXXXXXXXXX",
                 "CreatedTime": "2018-06-27T19:08:51.150Z",
                 "LoadBalancerName": "ex-006-app-lb",
                 "Scheme": "internet-facing",
@@ -434,11 +434,11 @@ Output:
     {
         "TargetGroups": [
             {
-                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-webservers/2f5bbf3fbd91d3b6",
+                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:targetgroup/ex-006-webservers/xxxxxxxxxxxxxxx",
                 "TargetGroupName": "ex-006-webservers",
                 "Protocol": "HTTP",
                 "Port": 80,
-                "VpcId": "vpc-0df15a2ef5e094e61",
+                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
                 "HealthCheckProtocol": "HTTP",
                 "HealthCheckPort": "traffic-port",
                 "HealthCheckIntervalSeconds": 30,
@@ -460,7 +460,8 @@ Create the following environment variable.
 
 .. code-block::
 
-    export EX006_TG=<TargetGroupArn>
+    export EX006_TG=$(aws elbv2 describe-target-groups --names ex-006-webservers --output text --query TargetGroups[*].TargetGroupArn)
+
 
 Register Targets
 ----------------
