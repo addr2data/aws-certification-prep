@@ -306,6 +306,8 @@ Run the following commands to capture the 'PhysicalResourceId' for the applicabl
 
     export EX006_SG_LB=$(aws cloudformation describe-stack-resources --stack-name ex-006 --output text --query 'StackResources[?LogicalResourceId==`SecurityGroupLoadBalancer`].PhysicalResourceId')
 
+    export EX006_SG_WEB=$(aws cloudformation describe-stack-resources --stack-name ex-006 --output text --query 'StackResources[?LogicalResourceId==`SecurityGroupWebInstances`].PhysicalResourceId')
+
     export EX006_VPC=$(aws cloudformation describe-stack-resources --stack-name ex-006 --output text --query 'StackResources[?LogicalResourceId==`VPC`].PhysicalResourceId')
 
     export EX006_INST_WEB1=$(aws cloudformation describe-stack-resources --stack-name ex-006 --output text --query 'StackResources[?LogicalResourceId==`WebInstance1`].PhysicalResourceId')
@@ -317,7 +319,7 @@ Sanity check
 
 .. code-block::
     
-    echo $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2 $EX006_SG_LB $EX006_VPC $EX006_INST_WEB1 $EX006_INST_WEB2
+    echo $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2 $EX006_SG_LB $EX006_VPC $EX006_INST_WEB1 $EX006_INST_WEB2 $EX006_SG_WEB
 
 
 Create Application load-balancer
@@ -488,7 +490,7 @@ Output:
         "TargetHealthDescriptions": [
             {
                 "Target": {
-                    "Id": "i-03789ca2ca19ffec9",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "TargetHealth": {
@@ -499,7 +501,7 @@ Output:
             },
             {
                 "Target": {
-                    "Id": "i-0ff622c3cf8af230c",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "TargetHealth": {
@@ -529,14 +531,14 @@ Output:
     {
         "Listeners": [
             {
-                "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:listener/app/ex-006-app-lb/932c682273bd2b8c/d8e6b15fe1631f71",
-                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/app/ex-006-app-lb/932c682273bd2b8c",
+                "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxxx:listener/app/ex-006-app-lb/xxxxxxxxxxxxxxx/xxxxxxxxxxxxxx",
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/app/ex-006-app-lb/xxxxxxxxxxxxxx",
                 "Port": 80,
                 "Protocol": "HTTP",
                 "DefaultActions": [
                     {
                         "Type": "forward",
-                        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-webservers/2f5bbf3fbd91d3b6"
+                        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:targetgroup/ex-006-webservers/xxxxxxxxxxxx"
                     }
                 ]
             }
@@ -559,7 +561,7 @@ Output:
         "TargetHealthDescriptions": [
             {
                 "Target": {
-                    "Id": "i-03789ca2ca19ffec9",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "HealthCheckPort": "80",
@@ -569,7 +571,7 @@ Output:
             },
             {
                 "Target": {
-                    "Id": "i-0ff622c3cf8af230c",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "HealthCheckPort": "80",
@@ -591,7 +593,7 @@ Output:
 
 .. code-block::
 
-    ex-006-app-lb-338618850.us-east-1.elb.amazonaws.com
+    ex-006-app-lb-xxxxxxxxx.us-east-1.elb.amazonaws.com
 
 Test connectivity
 -----------------
@@ -599,8 +601,7 @@ Using 'curl' or your browser test connectivity. Rerun/refresh a few time to make
 
 .. code-block::
 
-curl http://ex-006-app-lb-338618850.us-east-1.elb.amazonaws.com
-
+curl http://<dns-name-load-balancer>
 
 Delete the Load Balancer
 ------------------------
@@ -628,13 +629,13 @@ Output:
     {
         "LoadBalancers": [
             {
-                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/net/ex-006-net-lb/725ca5e4b63a3aff",
-                "DNSName": "ex-006-net-lb-725ca5e4b63a3aff.elb.us-east-1.amazonaws.com",
-                "CanonicalHostedZoneId": "Z26RNL4JYFTOTI",
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:loadbalancer/net/ex-006-net-lb/xxxxxxxxxxxxxxxx",
+                "DNSName": "ex-006-net-lb-xxxxxxxxxxxxxxxx.elb.us-east-1.amazonaws.com",
+                "CanonicalHostedZoneId": "XXXXXXXXXXXXXX",
                 "CreatedTime": "2018-06-27T19:22:14.593Z",
                 "LoadBalancerName": "ex-006-net-lb",
                 "Scheme": "internet-facing",
-                "VpcId": "vpc-0c1ae5bad2afe3a59",
+                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
                 "State": {
                     "Code": "provisioning"
                 },
@@ -642,11 +643,11 @@ Output:
                 "AvailabilityZones": [
                     {
                         "ZoneName": "us-east-1b",
-                        "SubnetId": "subnet-092b9a5c7a88ac880"
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
                     },
                     {
                         "ZoneName": "us-east-1a",
-                        "SubnetId": "subnet-08d9de6ee83088a2a"
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
                     }
                 ],
                 "IpAddressType": "ipv4"
@@ -654,62 +655,107 @@ Output:
         ]
     }
 
-Environment variables
-~~~~~~~~~~~~~~~~~~~~~
-Create the following environment variable.
-
-.. code-block::
-
-    export EX006_LB=<LoadBalancerArn>
-
-
-Check Load Balancer status
+Check Load-balancer status
 --------------------------
 
 .. code-block::
 
-    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_LB
+    aws elbv2 describe-load-balancers --names ex-006-net-lb
 
 Output:
 
 .. code-block::
 
-{
-    "LoadBalancers": [
-        {
-            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/net/ex-006-net-lb/725ca5e4b63a3aff",
-            "DNSName": "ex-006-net-lb-725ca5e4b63a3aff.elb.us-east-1.amazonaws.com",
-            "CanonicalHostedZoneId": "Z26RNL4JYFTOTI",
-            "CreatedTime": "2018-06-27T19:22:14.593Z",
-            "LoadBalancerName": "ex-006-net-lb",
-            "Scheme": "internet-facing",
-            "VpcId": "vpc-0c1ae5bad2afe3a59",
-            "State": {
-                "Code": "active"
-            },
-            "Type": "network",
-            "AvailabilityZones": [
-                {
-                    "ZoneName": "us-east-1a",
-                    "SubnetId": "subnet-08d9de6ee83088a2a",
-                    "LoadBalancerAddresses": [
-                        {}
-                    ]
+    {
+        "LoadBalancers": [
+            {
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxxx:loadbalancer/net/ex-006-net-lb/xxxxxxxxxxxxxxxx",
+                "DNSName": "ex-006-net-lb-xxxxxxxxxx.us-east-1.elb.amazonaws.com",
+                "CanonicalHostedZoneId": "XXXXXXXXXXXXXX",
+                "CreatedTime": "2018-06-27T19:08:51.150Z",
+                "LoadBalancerName": "ex-006-net-lb",
+                "Scheme": "internet-facing",
+                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
+                "State": {
+                    "Code": "active"
                 },
-                {
-                    "ZoneName": "us-east-1b",
-                    "SubnetId": "subnet-092b9a5c7a88ac880",
-                    "LoadBalancerAddresses": [
-                        {}
-                    ]
-                }
-            ],
-            "IpAddressType": "ipv4"
-        }
-    ]
-}
+                "Type": "network",
+                "AvailabilityZones": [
+                    {
+                        "ZoneName": "us-east-1a",
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
+                    },
+                    {
+                        "ZoneName": "us-east-1b",
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
+                    }
+                ],
+                "SecurityGroups": [
+                    "sg-xxxxxxxxxxxxxxxxx"
+                ],
+                "IpAddressType": "ipv4"
+            }
+        ]
+    }
 
-aws elbv2 create-target-group --name ex-006-webservers --protocol TCP --port 80 --vpc-id $EX006_VPC
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+Create the following environment variable.
+
+.. code-block::
+
+    export EX006_LB=$(aws elbv2 describe-load-balancers --names ex-006-net-lb --output text --query LoadBalancers[*].LoadBalancerArn)
+
+
+The Target Group with registered targets already exists
+
+Create Listener
+---------------
+
+aws elbv2 create-listener \
+    --load-balancer-arn $EX006_LB \
+    --protocol TCP \
+    --port 80 \
+    --default-actions Type=forward,TargetGroupArn=$EX006_TG
+
+
+Load Balancer DNS Name
+----------------------
+
+.. code-block::
+
+    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_LB --output text --query LoadBalancers[*].DNSName
+
+Output:
+
+.. code-block::
+
+    ex-006-app-lb-xxxxxxxxx.us-east-1.elb.amazonaws.com
+
+Test connectivity
+-----------------
+Using 'curl' or your browser test connectivity. Rerun/refresh a few time to make sure you see the IP address of both Web Servers. 
+
+.. code-block::
+
+curl http://<dns-name-load-balancer>
+
+Kill.
+
+.. code-block::
+
+    aws ec2 authorize-security-group-ingress \
+        --group-id $EX006_SG_WEB \
+        --protocol tcp \
+        --port 80 \
+        --cidr 0.0.0.0/0
+
+
+aws ec2 revoke-security-group-ingress --group-id $EX006_SG_WEB --protocol tcp --port 80 --cidr 10.0.0.0/16
+
+---------------------------------------------------------
+
+
 
 
 
@@ -739,7 +785,18 @@ aws elbv2 create-listener \
 
 
 
-
+ revoke-security-group-ingress
+[--group-id <value>]
+[--group-name <value>]
+[--ip-permissions <value>]
+[--dry-run | --no-dry-run]
+[--protocol <value>]
+[--port <value>]
+[--cidr <value>]
+[--source-group <value>]
+[--group-owner <value>]
+[--cli-input-json <value>]
+[--generate-cli-skeleton <value>]
 
 
 
