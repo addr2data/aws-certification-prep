@@ -285,9 +285,14 @@ Create Stack
 ------------
 Use the following awscli command to create a new **'Stack'** based on the template.
 
+Note: If you are using the **'acpkey1'** Key Pair, you can leave off the **'--parameters'** option all together.
+
 .. code-block::
 
-    aws cloudformation create-stack --stack-name ex-005 --template-body file://./templates/ex-005_template.yaml
+    aws cloudformation create-stack \
+      --stack-name ex-005 \
+      --template-body file://./templates/ex-005_template.yaml \
+      --parameters ParameterKey=KeyPairName,ParameterValue=acpkey1
 
 Output:
 

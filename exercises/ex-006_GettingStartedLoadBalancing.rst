@@ -180,6 +180,8 @@ Create Stack
 ------------
 Use the following awscli command to create a new CloudFormation **'Stack'** based on the template.
 
+Note: If you are using the **'acpkey1'** Key Pair, you can leave off the **'--parameters'** option all together.
+
 .. code-block::
 
     aws cloudformation create-stack \

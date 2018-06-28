@@ -137,7 +137,6 @@ Use the following awscli command to view your account limits for CloudFormation.
 For more information on CloudFormation account limits:
 `CloudFormation limits <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html>`_
 
-
 .. code-block::
 
 	aws cloudformation describe-account-limits
