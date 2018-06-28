@@ -1090,3 +1090,20 @@ Output:
 .. code-block::
 
     An error occurred (ValidationError) when calling the DescribeStacks operation: Stack with id ex-005 does not exist
+
+Summary
+-------
+- We created an Application Load-balancer.
+- We created a Network Load-balancer.
+- We created a Target Group for the Application Load-balancer.
+- We created a Target Group for the Network Load-balancer.
+- We registered the Web Servers with both Target Groups.
+- We created a Listener for the Application Load-balancer.
+- We created a Listener for the Network Load-balancer.
+- We tested connectivity through the Application Load-balancer.
+- We tested connectivity through the Network Load-balancer.
+- We resolved an issue with connectivity through the Network Load-balancer.
+
+Next steps
+----------
+tbd 
