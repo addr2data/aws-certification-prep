@@ -331,10 +331,14 @@ Additional information for the above parameters:
         + **'network'**: Operates at Layer 4.
    * - '--ip-address-type ipv4'
      - 
+        + ipv4
+        + ipv6
    * - '--subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2'
      - 
    * - '--security-groups $EX006_SG_LB'
      - 
+        + One or more Security Groups to control access to an Application Load-balancer.
+        + Security Groups are not applicable to Network Load-balancers.
 
 Output:
 
