@@ -154,7 +154,7 @@ I hope you enjoy using these exercises, as much as I enjoyed building them.
 
   7. `Working with EBS <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-007_WorkingEbs.rst>`_
 
-  8. `Getting started with Snapshots <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-007_GettingStartedSnapshots.rst>`_
+  8. `Getting started with Snapshots <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-008_GettingStartedSnapshots.rst>`_
 
   9. Getting started with S3
 
