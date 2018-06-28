@@ -33,10 +33,10 @@ The activities in this exercise may result in charges to your AWS account.
      - **Notes**
    * - EBS (storage)
      - 
-        + gp2: $0.10 per GB-month of provisioned storage
-        + io1: $0.125 per GB-month of provisioned storage
-        + st1: $0.045 per GB-month of provisioned storage
-        + sc1: $0.025 per GB-month of provisioned storage
+        + gp2: Between $0.10 and $0.19 per GB-month of provisioned storage, depending on your region.
+        + io1: Between $0.125 and $0.238 per GB-month of provisioned storage, depending on your region.
+        + st1: Between $0.045 and $0.086 per GB-month of provisioned storage, depending on your region.
+        + sc1: Between $0.025 and $0.048 per GB-month of provisioned storage, depending on your region.
      -
         + Amazon EBS General Purpose SSD (gp2) volumes
         + Amazon EBS Provisioned IOPS SSD (io1) volumes
@@ -44,7 +44,7 @@ The activities in this exercise may result in charges to your AWS account.
         + Amazon EBS Cold HDD (sc1) volumes
    * - EBS (iops)
      - 
-        + io1: $0.065 per provisioned IOPS-month
+        + io1: Between $0.065 and $0.091 per provisioned IOPS-month
      -
         + Amazon EBS Provisioned IOPS SSD (io1) volumes
 
