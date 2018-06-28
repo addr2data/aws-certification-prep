@@ -90,7 +90,7 @@ Template
 --------
 In order to build our starting configuration, we will create a CloudFormation **Stack** from Template **'ex-006_template.yaml'** in the **'templates'** directory.
 
-Highlights
+**Highlights**
 
     - Two Instances that will act as Web Servers.
     - One Instance that will act a Jumpbox (with public IP)
@@ -100,52 +100,7 @@ Highlights
     - A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet and **HTTP** from anywhere in the VPC (10.0.0.0/16)
     - A Security Group for the Load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
 
-The following section only shows the resources and resources parameters that have significant differences from previous Templates.
-
-.. code-block::
-
-    ---
-    Resources:
-      SubnetWeb1:
-        Properties:
-          AvailabilityZone: !Select 
-            - 0
-            - Fn::GetAZs: !Ref 'AWS::Region'
-
-      SubnetWeb2:
-        Properties:
-          AvailabilityZone: !Select 
-            - 1
-            - Fn::GetAZs: !Ref 'AWS::Region'
-
-      JumpboxInstance:
-        DependsOn: DefaultRoutePublic
-
-      WebInstance1:
-        Properties:
-          UserData: !Base64
-            "Fn::Join":
-              - "\n"
-              -
-                - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
-                - "sudo python3 -m http.server 80"
-        DependsOn: DefaultRoutePublic
-
-      WebInstance2:
-        Properties:
-          UserData: !Base64
-            "Fn::Join":
-              - "\n"
-              -
-                - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
-                - "sudo python3 -m http.server 80"
-        DependsOn: DefaultRoutePublic
-
-    ...
-
-
-Notable items in the Template
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Notable items**
 
 When creating an Application Load-balancer, it is required that at least two Subnets, from different Availability Zones, be specified. The following built-in functions are used to:
 
