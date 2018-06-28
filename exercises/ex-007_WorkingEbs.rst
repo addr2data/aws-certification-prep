@@ -12,9 +12,9 @@ Dependencies
    :header-rows: 0
 
    * - Depends on exercise(s)
-     - to be added or none
+     - ex-001
    * - Prerequisite for exercise(s)
-     - to be added or none
+     - none
 
 Objectives
 ----------
@@ -31,11 +31,22 @@ The activities in this exercise may result in charges to your AWS account.
    * - **Component**
      - **Applicable Costs**
      - **Notes**
-   * - To be added
+   * - EBS (storage)
      - 
-        + To be added
+        + gp2: $0.10 per GB-month of provisioned storage
+        + io1: $0.125 per GB-month of provisioned storage
+        + st1: $0.045 per GB-month of provisioned storage
+        + sc1: $0.025 per GB-month of provisioned storage
      -
-        + To be added
+        + Amazon EBS General Purpose SSD (gp2) volumes
+        + Amazon EBS Provisioned IOPS SSD (io1) volumes
+        + Amazon EBS Throughput Optimized HDD (st1) volumes
+        + Amazon EBS Cold HDD (sc1) volumes
+   * - EBS (iops)
+     - 
+        + io1: $0.065 per provisioned IOPS-month
+     -
+        + Amazon EBS Provisioned IOPS SSD (io1) volumes
 
 Limits
 ------
@@ -57,6 +68,29 @@ During these exercises, we will be using the output of some commands to create e
 In some places, we will do this manually, because we want to show the the full output of the command. In other places, we will use the **'--query'** and **'--output'** options available in the awscli command to filter the output directly into a variable.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
+
+Create Stack
+------------
+Use the following awscli command to create a new CloudFormation **'Stack'** based on the template.
+
+Note: If you are using the **'acpkey1'** Key Pair, you can leave off the **'--parameters'** option all together.
+
+.. code-block::
+
+    aws cloudformation create-stack \
+        --stack-name ex-007 \
+        --template-body file://templates/ex-007_template.yaml \
+        --parameters ParameterKey=KeyPairName,ParameterValue=acpkey1
+
+Output:
+
+.. code-block::
+
+    {
+        "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-006/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+
+
 
 
 Summary
