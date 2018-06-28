@@ -90,6 +90,138 @@ Output:
         "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-006/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
 
+Check the status
+----------------
+Use the following awscli command to check the **'StackStatus'**.
+
+Rerun this command until **'StackStatus'** is **'CREATE_COMPLETE'**.
+
+.. code-block::
+
+    aws cloudformation describe-stacks --stack-name ex-007
+
+Output:
+
+.. code-block::
+
+    {
+        "Stacks": [
+            {
+                "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-007/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "StackName": "ex-007",
+                "CreationTime": "2018-06-19T19:56:35.434Z",
+                "RollbackConfiguration": {},
+                "StackStatus": "CREATE_IN_PROGRESS",
+                "DisableRollback": false,
+                "NotificationARNs": [],
+                "Tags": [],
+                "EnableTerminationProtection": false
+            }
+        ]
+    }
+
+Review the Stack details
+------------------------
+Use the following awscli command to display the **'LogicalResourceId'** and **'PhysicalResourceId'** for all the components in the **Stack**
+
+Notice the format of this portion of the query string **'{"Logical Resource Id": LogicalResourceId,"Physical Resource Id": PhysicalResourceId}'**, it adds a header to each column.** 
+
+.. code-block::
+
+    aws cloudformation describe-stack-resources \
+        --stack-name ex-007 \
+        --output table \
+        --query 'StackResources[*].{"Logical Resource Id": LogicalResourceId,"Physical Resource Id": PhysicalResourceId}'
+
+Output:
+
+.. code-block::
+
+    -------------------------------------------------------------------
+    |                     DescribeStackResources                      |
+    +----------------------------------+------------------------------+
+    |        Logical Resource Id       |    Physical Resource Id      |
+    +----------------------------------+------------------------------+
+    |  AssociateSubnetRouteTablePublic |  rtbassoc-09c998a93d864f70c  |
+    |  AttachInternetGateway           |  ex-00-Attac-WDLTSAHTMD9V    |
+    |  DefaultRoutePublic              |  ex-00-Defau-1TCX8KG49DZBJ   |
+    |  Instance1                       |  i-0f28de878eb1331c3         |
+    |  Instance2                       |  i-094a150583aa25923         |
+    |  InternetGateway                 |  igw-0491690a9c3213a37       |
+    |  RouteTablePublic                |  rtb-0e2d9f380384e7de4       |
+    |  SecurityGroup                   |  sg-0e0f80489c622a2a6        |
+    |  Subnet                          |  subnet-05a45c4d675b278cb    |
+    |  VPC                             |  vpc-00e3fc9ac6986954e       |
+    +----------------------------------+------------------------------+
+
+Environment variables
+~~~~~~~~~~~~~~~~~~~~~
+Run the following commands to capture the 'PhysicalResourceId' for the applicable components, as environment variables.
+
+.. code-block::
+
+    export EX007_INST_01=$(aws cloudformation describe-stack-resources --stack-name ex-007 --output text --query 'StackResources[?LogicalResourceId==`Instance1`].PhysicalResourceId')
+
+    export EX007_INST_02=$(aws cloudformation describe-stack-resources --stack-name ex-007 --output text --query 'StackResources[?LogicalResourceId==`Instance2`].PhysicalResourceId')
+
+Sanity check
+~~~~~~~~~~~~
+
+.. code-block::
+    
+    echo -e '\n'$EX007_INST_01'\n'$EX007_INST_02
+
+Display block storage information
+---------------------------------
+Use the following awscli command to display the block storage information for 
+
+.. code-block::
+
+    aws ec2 describe-instances \
+        --instance-ids $EX007_INST_01 $EX007_INST_02 \
+        --query 'Reservations[*].Instances[*].{BlockDeviceMappings: BlockDeviceMappings,RootDeviceName: RootDeviceName,RootDeviceType: RootDeviceType}'
+
+Output:
+
+.. code-block::
+
+    [
+        [
+            {
+                "BlockDeviceMappings": [
+                    {
+                        "DeviceName": "/dev/sda1",
+                        "Ebs": {
+                            "AttachTime": "2018-06-28T16:52:12.000Z",
+                            "DeleteOnTermination": true,
+                            "Status": "attached",
+                            "VolumeId": "vol-087b5e30b2918119a"
+                        }
+                    }
+                ],
+                "RootDeviceName": "/dev/sda1",
+                "RootDeviceType": "ebs"
+            }
+        ],
+    
+        [
+            {
+                "BlockDeviceMappings": [
+                    {
+                        "DeviceName": "/dev/sda1",
+                        "Ebs": {
+                            "AttachTime": "2018-06-28T16:52:12.000Z",
+                            "DeleteOnTermination": true,
+                            "Status": "attached",
+                            "VolumeId": "vol-0878fcd959666083b"
+                        }
+                    }
+                ],
+                "RootDeviceName": "/dev/sda1",
+                "RootDeviceType": "ebs"
+            }
+        ]
+    ]
 
 
 
