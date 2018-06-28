@@ -320,9 +320,11 @@ Additional information for the above parameters:
    * - **Parameter**
      - **Description**
    * - '--name ex-006-app-lb'
-     - 
+     - Specifies a name for the Load-balancer.
    * - '--scheme internet-facing'
-     - 
+     - There are two options here:
+        + internal
+        + internet-facing 
    * - '--type application'
      - 
    * - '--ip-address-type ipv4'
