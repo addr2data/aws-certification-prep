@@ -536,33 +536,21 @@ Create the following environment variable.
     export EX006_NET_LB=$(aws elbv2 describe-load-balancers --names ex-006-net-lb --output text --query LoadBalancers[*].LoadBalancerArn)
 
 Sanity check
-~~~~~~~~~~~~
+------------
 
 .. code-block::
     
     echo -e '\n'$EX006_APP_LB'\n'$EX006_NET_LB
 
+Create Target Group for Application Load-balancer
+-------------------------------------------------
+The first Target Group we are going to create will be used with the Application load-balancer.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Create Target Group
--------------------
+Here we will set the protocol to HTTP, since the Application Load-balancer is operating at Layer 7. 
 
 .. code-block::
 
-    aws elbv2 create-target-group --name ex-006-webservers --protocol HTTP --port 80 --vpc-id $EX006_VPC
+    aws elbv2 create-target-group --name ex-006-tg-app-lb --protocol HTTP --port 80 --vpc-id $EX006_VPC
 
 Output:
 
@@ -571,11 +559,11 @@ Output:
     {
         "TargetGroups": [
             {
-                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:targetgroup/ex-006-webservers/xxxxxxxxxxxxxxx",
-                "TargetGroupName": "ex-006-webservers",
+                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-tg-app-lb/0b032c5c32662419",
+                "TargetGroupName": "ex-006-tg-app-lb",
                 "Protocol": "HTTP",
                 "Port": 80,
-                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
+                "VpcId": "vpc-04cced054b30f4f5e",
                 "HealthCheckProtocol": "HTTP",
                 "HealthCheckPort": "traffic-port",
                 "HealthCheckIntervalSeconds": 30,
@@ -591,31 +579,97 @@ Output:
         ]
     }
 
-Environment variables
-~~~~~~~~~~~~~~~~~~~~~
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
 Create the following environment variable.
 
 .. code-block::
 
-    export EX006_TG=$(aws elbv2 describe-target-groups --names ex-006-webservers --output text --query TargetGroups[*].TargetGroupArn)
+    export EX006_APP_TG=$(aws elbv2 describe-target-groups --names ex-006-tg-app-lb --output text --query TargetGroups[*].TargetGroupArn)
 
+Create Target Group for Network Load-balancer
+-------------------------------------------------
+The second Target Group we are going to create will be used with the Network load-balancer.
+
+Here we will set the protocol to TCP, since the Network Load-balancer is operating at Layer 4. 
+
+.. code-block::
+
+    aws elbv2 create-target-group --name ex-006-tg-net-lb --protocol TCP --port 80 --vpc-id $EX006_VPC
+
+Output:
+
+.. code-block::
+
+    {
+        "TargetGroups": [
+            {
+                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-tg-net-lb/3976e7342f0b8919",
+                "TargetGroupName": "ex-006-tg-net-lb",
+                "Protocol": "TCP",
+                "Port": 80,
+                "VpcId": "vpc-04cced054b30f4f5e",
+                "HealthCheckProtocol": "TCP",
+                "HealthCheckPort": "traffic-port",
+                "HealthCheckIntervalSeconds": 30,
+                "HealthCheckTimeoutSeconds": 10,
+                "HealthyThresholdCount": 3,
+                "UnhealthyThresholdCount": 3,
+                "TargetType": "instance"
+            }
+        ]
+    }
+
+
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+Create the following environment variable.
+
+.. code-block::
+
+    export EX006_NET_TG=$(aws elbv2 describe-target-groups --names ex-006-tg-net-lb --output text --query TargetGroups[*].TargetGroupArn)
+
+
+Sanity check
+------------
+
+.. code-block::
+    
+    echo -e '\n'$EX006_APP_TG'\n'$EX006_NET_TG
 
 Register Targets
 ----------------
+Targets can be registered to multiple Target Groups.
+
+Application Load-balancer
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
 
     aws elbv2 register-targets \
-        --target-group-arn $EX006_TG \
+        --target-group-arn $EX006_APP_TG \
         --targets Id=$EX006_INST_WEB1 Id=$EX006_INST_WEB2
 
-
-Describe Target Group
----------------------
+Network Load-balancer
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
 
-    aws elbv2 describe-target-health --target-group-arn $EX006_TG
+    aws elbv2 register-targets \
+        --target-group-arn $EX006_NET_TG \
+        --targets Id=$EX006_INST_WEB1 Id=$EX006_INST_WEB2
+
+Describe Target Group health
+----------------------------
+Let's take a look at the health of both Target Groups.
+
+
+Application Load-balancer
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    aws elbv2 describe-target-health --target-group-arn $EX006_APP_TG
 
 Output:
 
@@ -625,7 +679,7 @@ Output:
         "TargetHealthDescriptions": [
             {
                 "Target": {
-                    "Id": "i-xxxxxxxxxxxxxxxxx",
+                    "Id": "i-001be98c6bfeed002",
                     "Port": 80
                 },
                 "TargetHealth": {
@@ -636,7 +690,45 @@ Output:
             },
             {
                 "Target": {
-                    "Id": "i-xxxxxxxxxxxxxxxxx",
+                    "Id": "i-095ee1021fe24e629",
+                    "Port": 80
+                },
+                "TargetHealth": {
+                    "State": "unused",
+                    "Reason": "Target.NotInUse",
+                    "Description": "Target group is not configured to receive traffic from the load balancer"
+                }
+            }
+        ]
+    }
+
+Network Load-balancer
+~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    aws elbv2 describe-target-health --target-group-arn $EX006_NET_TG
+
+Output:
+
+.. code-block::
+
+    {
+        "TargetHealthDescriptions": [
+            {
+                "Target": {
+                    "Id": "i-001be98c6bfeed002",
+                    "Port": 80
+                },
+                "TargetHealth": {
+                    "State": "unused",
+                    "Reason": "Target.NotInUse",
+                    "Description": "Target group is not configured to receive traffic from the load balancer"
+                }
+            },
+            {
+                "Target": {
+                    "Id": "i-095ee1021fe24e629",
                     "Port": 80
                 },
                 "TargetHealth": {
