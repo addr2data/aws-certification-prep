@@ -293,8 +293,7 @@ Sanity check
 
 .. code-block::
     
-    echo $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2 $EX006_SG_LB $EX006_VPC \
-        $EX006_INST_WEB1 $EX006_INST_WEB2 $EX006_SG_WEB
+    echo -e '\n'$EX006_SUBNET_WEB1'\n'$EX006_SUBNET_WEB2'\n'$EX006_SG_LB'\n'$EX006_VPC'\n'$EX006_INST_WEB1'\n'$EX006_INST_WEB2'\n'$EX006_SG_WEB
 
 
 Create Application Load-balancer
@@ -430,7 +429,7 @@ Create the following environment variable.
 
 .. code-block::
 
-    export EX006_LB=$(aws elbv2 describe-load-balancers --names ex-006-app-lb --output text --query LoadBalancers[*].LoadBalancerArn)
+    export EX006_APP_LB=$(aws elbv2 describe-load-balancers --names ex-006-app-lb --output text --query LoadBalancers[*].LoadBalancerArn)
 
 
 Create Network Load-balancer
@@ -449,6 +448,110 @@ Use the following awscli command to create a Network Load-balancer.
 Output:
 
 .. code-block::
+
+    {
+        "LoadBalancers": [
+            {
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:loadbalancer/net/ex-006-net-lb/xxxxxxxxxxxxxxxx",
+                "DNSName": "ex-006-net-lb-xxxxxxxxxxxxxxxx.elb.us-east-1.amazonaws.com",
+                "CanonicalHostedZoneId": "XXXXXXXXXXXXXX",
+                "CreatedTime": "2018-06-28T14:02:10.158Z",
+                "LoadBalancerName": "ex-006-net-lb",
+                "Scheme": "internet-facing",
+                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
+                "State": {
+                    "Code": "provisioning"
+                },
+                "Type": "network",
+                "AvailabilityZones": [
+                    {
+                        "ZoneName": "us-east-1b",
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
+                    },
+                    {
+                        "ZoneName": "us-east-1a",
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
+                    }
+                ],
+                "IpAddressType": "ipv4"
+            }
+        ]
+    }
+
+Check Load-balancer status
+--------------------------
+Use the following awscli command to check the **'State:Code'** of the Load-balancer.
+
+Rerun this command until **'State:Code'** is **'active'**.
+
+.. code-block::
+
+    aws elbv2 describe-load-balancers --names ex-006-net-lb
+
+Output:
+
+.. code-block::
+
+    {
+        "LoadBalancers": [
+            {
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:loadbalancer/net/ex-006-net-lb/xxxxxxxxxxxxxxxx",
+                "DNSName": "ex-006-net-lb-xxxxxxxxxxxxxxxx.elb.us-east-1.amazonaws.com",
+                "CanonicalHostedZoneId": "XXXXXXXXXXXXXX",
+                "CreatedTime": "2018-06-28T14:02:10.158Z",
+                "LoadBalancerName": "ex-006-net-lb",
+                "Scheme": "internet-facing",
+                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
+                "State": {
+                    "Code": "active"
+                },
+                "Type": "network",
+                "AvailabilityZones": [
+                    {
+                        "ZoneName": "us-east-1a",
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx",
+                        "LoadBalancerAddresses": [
+                            {}
+                        ]
+                    },
+                    {
+                        "ZoneName": "us-east-1b",
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx",
+                        "LoadBalancerAddresses": [
+                            {}
+                        ]
+                    }
+                ],
+                "IpAddressType": "ipv4"
+            }
+        ]
+    }
+
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+Create the following environment variable.
+
+.. code-block::
+
+    export EX006_NET_LB=$(aws elbv2 describe-load-balancers --names ex-006-net-lb --output text --query LoadBalancers[*].LoadBalancerArn)
+
+Sanity check
+~~~~~~~~~~~~
+
+.. code-block::
+    
+    echo -e '\n'$EX006_APP_LB'\n'$EX006_NET_LB
+
+
+
+
+
+
+
+
+
+
+
 
 
 
