@@ -80,7 +80,7 @@ You can view all your EC2 limits and request increases by clicking on 'Limits' i
 
 Environment variables
 ---------------------
-During these exercises, we will be using the output of some commands to creatie environment variables. This will help simplify the syntax subsequent commands.
+During these exercises, we will be using the output of some commands to create environment variables. This will help simplify the syntax subsequent commands.
 
 In some places, we will do this manually, because we want to show the the full output of the command. In other places, we will use the **'--query'** and **'--output'** options available in the awscli command to filter the output directly into a variable.
 
@@ -104,7 +104,7 @@ In order to build our starting configuration, we will create a CloudFormation **
 
 When creating an Application Load-balancer, you must specify at least two Subnets, from different Availability Zones. In order to achieve this in the Template, a couple of functions built into CloudFormation Templates are used.
 
-Note: The Network Load-balanceer does not have this same requirement.
+Note: The Network Load-balancer does not have this requirement.
 
 .. code-block::
 
@@ -132,47 +132,50 @@ Note: The Network Load-balanceer does not have this same requirement.
               Value: subnet_web2_ex006
           VpcId: !Ref VPC
 
-Explaination:
+Explanation:
 
   - **Fn::GetAZs** returns us a list of Availability Zones (AZ) for a Region. **!Ref 'AWS::Region'** says to use the Region that the Stack is being deployed to.
   - **!Select** lets us select the 1st (0) item in the list, for **SubnetWeb1** and the 2nd (1) for **SubnetWeb2**, ensuring that the two Subnets are on different AZs.
   - Every Region has at least two AZs, so this is Template is portable between Regions.
 
-In order to create a simple web server, the following commands are run at Instance startup. An 'index.html' file is created that contains the 'hostname' of the Instance and a simple http server is started.
+**Notable item**
 
-    - The built-in function 'Join', joins each command with a newline character.
-    - The built-in function 'Base64', encodes the data.
+We need a way to verify the Load-balancer is functioning properly. To accomplish this, we will create a simplistic web server. Python provides a simple HTTP server that can be started, without any configuration, in any directory. Redirecting the contents of '/etc/hostname' to 'index.html' allows us to tell the Web Servers apart. 
 
 .. code-block::
     
-    WebInstance1:
-      UserData: !Base64
-        "Fn::Join":
-          - "\n"
-          -
-            - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
-            - "sudo python3 -m http.server 80"
+      WebInstance1:
+        Type: AWS::EC2::Instance
+        Properties: 
+          ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+          InstanceType: t2.micro
+          KeyName: !Ref KeyPairName
+          SecurityGroupIds: 
+            - !Ref SecurityGroupWebInstances
+          SubnetId: !Ref SubnetWeb1
+          Tags: 
+            - Key: Name
+              Value: i_web1_ex006
+          UserData: !Base64
+            "Fn::Join":
+              - "\n"
+              -
+                - "#!/bin/bash"
+                - "sudo apt-get update"
+                - "sudo apt-get dist-upgrade -y"
+                - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
+                - "sudo python3 -m http.server 80"
+        DependsOn: DefaultRoutePublic
 
-    WebInstance2:
-      UserData: !Base64
-        "Fn::Join":
-          - "\n"
-          -
-            - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
-            - "sudo python3 -m http.server 80"
+      WebInstance2:
 
-In order to illustrate the **'DependsOn'** resource attribute, we have specified that launching of all three Instances must come after the creation of 'DefaultRoutePublic'. In theory, ensuring that a path to the Internet is available before the Instances are launched. 
+        ... excluded for brevity ...
 
-.. code-block::
+Explanation:
 
-    JumpboxInstance:
-      DependsOn: DefaultRoutePublic
-
-    WebInstance1:
-      DependsOn: DefaultRoutePublic
-
-    WebInstance2:
-      DependsOn: DefaultRoutePublic
+    - The **UserData** property allows us to specify commands to run at Instance startup.
+    - **Fn::Join** allows us to join each command with newline character.
+    - **!Base64** encodes the data for transfer to the Instance.
 
 Create Stack
 ------------
