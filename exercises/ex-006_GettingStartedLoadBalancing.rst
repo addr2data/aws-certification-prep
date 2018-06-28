@@ -320,8 +320,8 @@ Sanity check
     echo $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2 $EX006_SG_LB $EX006_VPC $EX006_INST_WEB1 $EX006_INST_WEB2
 
 
-Create load-balancer
---------------------
+Create Application load-balancer
+--------------------------------
 
 .. code-block::
 
@@ -340,13 +340,13 @@ Output:
     {
         "LoadBalancers": [
             {
-                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/app/ex-006-app-lb/932c682273bd2b8c",
-                "DNSName": "ex-006-app-lb-338618850.us-east-1.elb.amazonaws.com",
-                "CanonicalHostedZoneId": "Z35SXDOTRQ7X7K",
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:loadbalancer/app/ex-006-app-lb/xxxxxxxxxxxxxxxx",
+                "DNSName": "ex-006-app-lb-xxxxxxxxx.us-east-1.elb.amazonaws.com",
+                "CanonicalHostedZoneId": "XXXXXXXXXXXXXX",
                 "CreatedTime": "2018-06-26T14:49:01.260Z",
                 "LoadBalancerName": "ex-006-app-lb",
                 "Scheme": "internet-facing",
-                "VpcId": "vpc-0df15a2ef5e094e61",
+                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
                 "State": {
                     "Code": "provisioning"
                 },
@@ -354,35 +354,27 @@ Output:
                 "AvailabilityZones": [
                     {
                         "ZoneName": "us-east-1b",
-                        "SubnetId": "subnet-0aa1a04c1a9147efe"
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
                     },
                     {
                         "ZoneName": "us-east-1a",
-                        "SubnetId": "subnet-0fa9c08f6a27f2a5c"
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
                     }
                 ],
                 "SecurityGroups": [
-                    "sg-0835a8e19a39d2d72"
+                    "sg-xxxxxxxxxxxxxxxxx"
                 ],
                 "IpAddressType": "ipv4"
             }
         ]
     }
 
-Environment variables
-~~~~~~~~~~~~~~~~~~~~~
-Create the following environment variable.
-
-.. code-block::
-
-    export EX006_LB=<LoadBalancerArn>
-
-Check Load Balancer status
+Check Load-balancer status
 --------------------------
 
 .. code-block::
 
-    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_LB
+    aws elbv2 describe-load-balancers --names ex-006-app-lb
 
 Output:
 
@@ -397,7 +389,7 @@ Output:
                 "CreatedTime": "2018-06-27T19:08:51.150Z",
                 "LoadBalancerName": "ex-006-app-lb",
                 "Scheme": "internet-facing",
-                "VpcId": "vpc-0c1ae5bad2afe3a59",
+                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
                 "State": {
                     "Code": "active"
                 },
@@ -405,20 +397,28 @@ Output:
                 "AvailabilityZones": [
                     {
                         "ZoneName": "us-east-1a",
-                        "SubnetId": "subnet-08d9de6ee83088a2a"
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
                     },
                     {
                         "ZoneName": "us-east-1b",
-                        "SubnetId": "subnet-092b9a5c7a88ac880"
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
                     }
                 ],
                 "SecurityGroups": [
-                    "sg-05eae1e9e187061ee"
+                    "sg-xxxxxxxxxxxxxxxxx"
                 ],
                 "IpAddressType": "ipv4"
             }
         ]
     }
+
+Environment variable
+~~~~~~~~~~~~~~~~~~~~
+Create the following environment variable.
+
+.. code-block::
+
+    export EX006_LB=$(aws elbv2 describe-load-balancers --names ex-006-app-lb --output text --query LoadBalancers[*].LoadBalancerArn)
 
 Create Target Group
 -------------------
