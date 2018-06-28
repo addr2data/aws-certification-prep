@@ -380,6 +380,9 @@ Output:
 
 Check Load-balancer status
 --------------------------
+Use the following awscli command to check the **'State:Code'** of the Load-balancer.
+
+Rerun this command until **'State:Code'** is **'active'**.
 
 .. code-block::
 
