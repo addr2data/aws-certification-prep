@@ -138,7 +138,7 @@ Exercises
 ---------
 I hope you enjoy using these exercises, as much as I enjoyed building them.
 
-**Foundational**
+**Foundation Exercises**
 
   1. `Getting started <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
 
@@ -159,6 +159,10 @@ I hope you enjoy using these exercises, as much as I enjoyed building them.
   9. Getting started with S3
 
   10. Getting started with RDS
+
+**Project 1 (tbd)**
+
+  11. tbd
 
 Additional Resources
 --------------------
