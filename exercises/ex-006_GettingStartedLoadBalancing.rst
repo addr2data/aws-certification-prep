@@ -3,7 +3,7 @@ ex-006: Getting started with Load-balancing
 
 Status
 ------
-Version (Initial Draft)
+Version 0.9 (06/28/18)
 
 Dependencies
 ------------
@@ -19,9 +19,8 @@ Dependencies
 Objectives
 ----------
 
-    - Explore AWS Application Load-balancer    
-    - Explore AWS Network Load-balancer 
-   
+    - Explore AWS Application Load-balancers    
+    - Explore AWS Network Load-balancers
 
 Expected Costs
 --------------
