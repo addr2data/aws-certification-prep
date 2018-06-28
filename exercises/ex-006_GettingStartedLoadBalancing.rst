@@ -588,7 +588,7 @@ Create the following environment variable.
     export EX006_APP_TG=$(aws elbv2 describe-target-groups --names ex-006-tg-app-lb --output text --query TargetGroups[*].TargetGroupArn)
 
 Create Target Group for Network Load-balancer
--------------------------------------------------
+---------------------------------------------
 The second Target Group we are going to create will be used with the Network load-balancer.
 
 Here we will set the protocol to TCP, since the Network Load-balancer is operating at Layer 4. 
@@ -740,16 +740,23 @@ Output:
         ]
     }
 
-Create a listener
------------------
+You can see that **'State'** is **'unused'**. We need to create a **Listener**, before the Targets can be used.
+
+
+Create Listener for each Load-balancer
+--------------------------------------
+
+Application Load-balancer 
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Here we set the protocol to HTTP.
 
 .. code-block::
 
     aws elbv2 create-listener \
-        --load-balancer-arn $EX006_LB \
+        --load-balancer-arn $EX006_APP_LB \
         --protocol HTTP \
         --port 80 \
-        --default-actions Type=forward,TargetGroupArn=$EX006_TG
+        --default-actions Type=forward,TargetGroupArn=$EX006_APP_TG
 
 Output:
 
@@ -758,27 +765,65 @@ Output:
     {
         "Listeners": [
             {
-                "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxxx:listener/app/ex-006-app-lb/xxxxxxxxxxxxxxx/xxxxxxxxxxxxxx",
-                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/app/ex-006-app-lb/xxxxxxxxxxxxxx",
+                "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:listener/app/ex-006-app-lb/ae217e08b276e26c/07d100a1682aade2",
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/app/ex-006-app-lb/ae217e08b276e26c",
                 "Port": 80,
                 "Protocol": "HTTP",
                 "DefaultActions": [
                     {
                         "Type": "forward",
-                        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:targetgroup/ex-006-webservers/xxxxxxxxxxxx"
+                        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-tg-app-lb/0b032c5c32662419"
                     }
                 ]
             }
         ]
     }
 
-Describe Target Group
----------------------
-Let's look at the Target Group again
+
+Network Load-balancer 
+~~~~~~~~~~~~~~~~~~~~~
+Here we set the protocol to TCP.
 
 .. code-block::
 
-    aws elbv2 describe-target-health --target-group-arn $EX006_TG
+    aws elbv2 create-listener \
+        --load-balancer-arn $EX006_NET_LB \
+        --protocol TCP \
+        --port 80 \
+        --default-actions Type=forward,TargetGroupArn=$EX006_NET_TG
+
+Output:
+
+.. code-block::
+
+    {
+        "Listeners": [
+            {
+                "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:listener/net/ex-006-net-lb/f214eee525fe8130/cfb4c68d5823aa36",
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/net/ex-006-net-lb/f214eee525fe8130",
+                "Port": 80,
+                "Protocol": "TCP",
+                "DefaultActions": [
+                    {
+                        "Type": "forward",
+                        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-tg-net-lb/3976e7342f0b8919"
+                    }
+                ]
+            }
+        ]
+    }
+
+Describe Target Group health
+----------------------------
+Let's take another look at the health of both Target Groups.
+
+
+Application Load-balancer
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    aws elbv2 describe-target-health --target-group-arn $EX006_APP_TG
 
 Output:
 
@@ -788,7 +833,7 @@ Output:
         "TargetHealthDescriptions": [
             {
                 "Target": {
-                    "Id": "i-xxxxxxxxxxxxxxxxx",
+                    "Id": "i-001be98c6bfeed002",
                     "Port": 80
                 },
                 "HealthCheckPort": "80",
@@ -798,7 +843,7 @@ Output:
             },
             {
                 "Target": {
-                    "Id": "i-xxxxxxxxxxxxxxxxx",
+                    "Id": "i-095ee1021fe24e629",
                     "Port": 80
                 },
                 "HealthCheckPort": "80",
@@ -809,26 +854,150 @@ Output:
         ]
     }
 
-Load Balancer DNS Name
-----------------------
+Network Load-balancer
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
 
-    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_LB --output text --query LoadBalancers[*].DNSName
+    aws elbv2 describe-target-health --target-group-arn $EX006_NET_TG
 
 Output:
 
 .. code-block::
 
-    ex-006-app-lb-xxxxxxxxx.us-east-1.elb.amazonaws.com
+    {
+        "TargetHealthDescriptions": [
+            {
+                "Target": {
+                    "Id": "i-001be98c6bfeed002",
+                    "Port": 80
+                },
+                "HealthCheckPort": "80",
+                "TargetHealth": {
+                    "State": "healthy"
+                }
+            },
+            {
+                "Target": {
+                    "Id": "i-095ee1021fe24e629",
+                    "Port": 80
+                },
+                "HealthCheckPort": "80",
+                "TargetHealth": {
+                    "State": "healthy"
+                }
+            }
+        ]
+    }
 
-Test connectivity
------------------
-Using 'curl' or your browser test connectivity. Rerun/refresh a few time to make sure you see the IP address of both Web Servers. 
+You can see that **'State'** is **'healthy'**.
+
+Verify Application Load-balancer
+--------------------------------
+
+DNS Name
+~~~~~~~~
+.. code-block::
+
+    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_APP_LB --output text --query LoadBalancers[*].DNSName
+
+Output:
 
 .. code-block::
 
-curl http://<dns-name-load-balancer>
+    ex-006-app-lb-1779492699.us-east-1.elb.amazonaws.com
+
+Test connectivity
+~~~~~~~~~~~~~~~~~
+Using 'curl' or your browser test connectivity. Rerun/refresh a few times to make sure you see the host name of both Web Servers.
+
+**Expected result:** Success
+
+.. code-block::
+
+    curl http://<dns-name-load-balancer>
+    curl http://ex-006-app-lb-1779492699.us-east-1.elb.amazonaws.com
+
+
+Verify Network Load-balancer
+----------------------------
+
+DNS Name
+~~~~~~~~
+.. code-block::
+
+    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_NET_LB --output text --query LoadBalancers[*].DNSName
+
+Output:
+
+.. code-block::
+
+    ex-006-net-lb-f214eee525fe8130.elb.us-east-1.amazonaws.com
+
+Test connectivity
+~~~~~~~~~~~~~~~~~
+Using 'curl' or your browser test connectivity. Rerun/refresh a few times to make sure you see the host name of both Web Servers.
+
+**Expected result:** Fail
+
+.. code-block::
+
+    curl http://<dns-name-load-balancer>
+    curl http://ex-006-net-lb-f214eee525fe8130.elb.us-east-1.amazonaws.com
+
+    Cntrl-c to kill
+
+Explanation of results
+----------------------
+The Security Group that is applied to Application Load-balancer allows HTTP (tcp port 80) from anywhere (0.0.0.0/0) and the Network Load-balancer does use Security Groups, so no issue there. 
+
+.. code-block::
+
+    SecurityGroupLoadBalancer:
+      Type: AWS::EC2::SecurityGroup
+      Properties: 
+        GroupName: sg_load-balancer_ex006
+        GroupDescription: "Security Group for Load balancer in ex-006"
+        SecurityGroupIngress:
+          - 
+            CidrIp: 0.0.0.0/0
+            IpProtocol: tcp
+            FromPort: 80
+            ToPort: 80
+        VpcId: !Ref VPC
+
+The Security Group that is applied to Web Server only allows HTTP (tcp port 80) from inside the VPC (10.0.0.0/16).
+
+    The Application Load-balancer changes the source IP of packets it receives to it's private IP address, so those packets are not blocked by the Security Group rule.
+
+    The Network Load-balancer does NOT change the source IP of packets it receives, so those packets are blocked by the Security Group rule.
+
+
+
+.. code-block::
+
+    SecurityGroupWebInstances:
+      Type: AWS::EC2::SecurityGroup
+      Properties: 
+        GroupName: sg_web-instances_ex006
+        GroupDescription: "Security Group for Web Instances in ex-006"
+        SecurityGroupIngress:
+          - 
+            CidrIp: 10.0.100.0/24
+            IpProtocol: tcp
+            FromPort: 22
+            ToPort: 22
+          - 
+            CidrIp: 10.0.0.0/16
+            IpProtocol: tcp
+            FromPort: 80
+            ToPort: 80
+        VpcId: !Ref VPC
+
+
+
+
+
 
 Delete the Load Balancer
 ------------------------
