@@ -329,7 +329,6 @@ Additional information for the above parameters:
      - 
         + **'application'**: Operates at Layer 7. Defaults to application, so we could have left this parameter off.
         + **'network'**: Operates at Layer 4.
-     - 
    * - '--ip-address-type ipv4'
      - 
    * - '--subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2'
