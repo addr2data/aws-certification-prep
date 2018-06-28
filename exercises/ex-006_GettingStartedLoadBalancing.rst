@@ -297,7 +297,7 @@ Sanity check
         $EX006_INST_WEB1 $EX006_INST_WEB2 $EX006_SG_WEB
 
 
-Create Application load-balancer
+Create Application Load-balancer
 --------------------------------
 Use the following awscli command to create an Application Load-balancer.
 
@@ -431,6 +431,28 @@ Create the following environment variable.
 .. code-block::
 
     export EX006_LB=$(aws elbv2 describe-load-balancers --names ex-006-app-lb --output text --query LoadBalancers[*].LoadBalancerArn)
+
+
+Create Network Load-balancer
+--------------------------------
+Use the following awscli command to create a Network Load-balancer.
+
+.. code-block::
+
+    aws elbv2 create-load-balancer \
+        --name ex-006-net-lb \
+        --scheme internet-facing \
+        --type network \
+        --ip-address-type ipv4 \
+        --subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2
+
+Output:
+
+.. code-block::
+
+
+
+
 
 Create Target Group
 -------------------
