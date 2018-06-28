@@ -340,7 +340,7 @@ Additional information for the above parameters:
    * - '--security-groups $EX006_SG_LB'
      - 
         + One or more Security Groups to control access to an Application Load-balancer.
-        + Security Groups are not applicable to Network Load-balancers.
+        + Security Groups are NOT applicable to Network Load-balancers.
 
 Output:
 
