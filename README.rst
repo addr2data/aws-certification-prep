@@ -160,9 +160,11 @@ I hope you enjoy using these exercises, as much as I enjoyed building them.
 
   10. Getting started with RDS
 
-**Project 1 (tbd)**
-
   11. tbd
+
+**Level 100 (maybe a project here?)**
+
+  101. tbd
 
 Additional Resources
 --------------------
