@@ -138,13 +138,13 @@ Exercises
 ---------
 I hope you enjoy using these exercises, as much as I enjoyed building them.
 
-Foundation
+**Foundational**
 
   1. `Getting started <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
 
   2. `Basic VPC configuration <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfig.rst>`_
 
-  3. `Testing basic connectivity <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_TestingBasicConnectivity.rst>`_
+  3. `Testing basic VPC connectivity <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_TestingBasicConnectivity.rst>`_
 
   4. `Getting started with CloudFormation <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_GettingStartedCloudFormation.rst>`_
 
@@ -152,13 +152,13 @@ Foundation
 
   6. `Getting started with Load-balancing <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-006_GettingStartedLoadBalancing.rst>`_
 
-  7. Working with Elastic Block storage (EBS)
+  7. Working with EBS
 
-  8. Working with Snapshots
+  8. Getting started with Snapshots
 
-  9. tbd
+  9. Getting started with S3
 
-  10. tbd
+  10. Getting started with RDS
 
 Additional Resources
 --------------------
