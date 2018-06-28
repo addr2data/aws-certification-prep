@@ -995,228 +995,58 @@ The Security Group that is applied to Web Server only allows HTTP (tcp port 80) 
         VpcId: !Ref VPC
 
 
+Resolve the issue
+-----------------
+
+Add a rule
+~~~~~~~~~~
+
+.. code-block::
+
+ aws ec2 authorize-security-group-ingress --group-id $EX006_SG_WEB --protocol tcp --port 80 --cidr 0.0.0.0/0
+
+DNS Name
+~~~~~~~~
+.. code-block::
+
+    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_NET_LB --output text --query LoadBalancers[*].DNSName
+
+Output:
+
+.. code-block::
+
+    ex-006-net-lb-f214eee525fe8130.elb.us-east-1.amazonaws.com
+
+Test connectivity
+~~~~~~~~~~~~~~~~~
+Using 'curl' or your browser test connectivity. Rerun/refresh a few times to make sure you see the host name of both Web Servers.
+
+**Expected result:** Fail
+
+.. code-block::
+
+    curl http://<dns-name-load-balancer>
+    curl http://ex-006-net-lb-f214eee525fe8130.elb.us-east-1.amazonaws.com
 
 
+Clean up
+--------
 
-
-Delete the Load Balancer
-------------------------
+Delete the Application Load-balancer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deleting a Load-balancer with also delete the associated Target Group.
 
 .. code-block::
     
-    aws elbv2 delete-load-balancer --load-balancer-arn $EX006_LB
+    aws elbv2 delete-load-balancer --load-balancer-arn $EX006_APP_LB
 
-Create a Network Load-balancer
-------------------------------
-
-.. code-block::
-
-    aws elbv2 create-load-balancer \
-        --name ex-006-net-lb \
-        --scheme internet-facing \
-        --type network \
-        --ip-address-type ipv4 \
-        --subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2
-
-Output:
+Delete the Network Load-balancer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deleting a Load-balancer with also delete the associated Target Group.
 
 .. code-block::
-
-    {
-        "LoadBalancers": [
-            {
-                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:loadbalancer/net/ex-006-net-lb/xxxxxxxxxxxxxxxx",
-                "DNSName": "ex-006-net-lb-xxxxxxxxxxxxxxxx.elb.us-east-1.amazonaws.com",
-                "CanonicalHostedZoneId": "XXXXXXXXXXXXXX",
-                "CreatedTime": "2018-06-27T19:22:14.593Z",
-                "LoadBalancerName": "ex-006-net-lb",
-                "Scheme": "internet-facing",
-                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
-                "State": {
-                    "Code": "provisioning"
-                },
-                "Type": "network",
-                "AvailabilityZones": [
-                    {
-                        "ZoneName": "us-east-1b",
-                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
-                    },
-                    {
-                        "ZoneName": "us-east-1a",
-                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
-                    }
-                ],
-                "IpAddressType": "ipv4"
-            }
-        ]
-    }
-
-Check Load-balancer status
---------------------------
-
-.. code-block::
-
-    aws elbv2 describe-load-balancers --names ex-006-net-lb
-
-Output:
-
-.. code-block::
-
-    {
-        "LoadBalancers": [
-            {
-                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxxx:loadbalancer/net/ex-006-net-lb/xxxxxxxxxxxxxxxx",
-                "DNSName": "ex-006-net-lb-xxxxxxxxxx.us-east-1.elb.amazonaws.com",
-                "CanonicalHostedZoneId": "XXXXXXXXXXXXXX",
-                "CreatedTime": "2018-06-27T19:08:51.150Z",
-                "LoadBalancerName": "ex-006-net-lb",
-                "Scheme": "internet-facing",
-                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
-                "State": {
-                    "Code": "active"
-                },
-                "Type": "network",
-                "AvailabilityZones": [
-                    {
-                        "ZoneName": "us-east-1a",
-                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
-                    },
-                    {
-                        "ZoneName": "us-east-1b",
-                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
-                    }
-                ],
-                "SecurityGroups": [
-                    "sg-xxxxxxxxxxxxxxxxx"
-                ],
-                "IpAddressType": "ipv4"
-            }
-        ]
-    }
-
-Environment variable
-~~~~~~~~~~~~~~~~~~~~
-Create the following environment variable.
-
-.. code-block::
-
-    export EX006_LB=$(aws elbv2 describe-load-balancers --names ex-006-net-lb --output text --query LoadBalancers[*].LoadBalancerArn)
-
-
-The Target Group with registered targets already exists
-
-Create Listener
----------------
-
-aws elbv2 create-listener \
-    --load-balancer-arn $EX006_LB \
-    --protocol TCP \
-    --port 80 \
-    --default-actions Type=forward,TargetGroupArn=$EX006_TG
-
-
-Load Balancer DNS Name
-----------------------
-
-.. code-block::
-
-    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_LB --output text --query LoadBalancers[*].DNSName
-
-Output:
-
-.. code-block::
-
-    ex-006-app-lb-xxxxxxxxx.us-east-1.elb.amazonaws.com
-
-Test connectivity
------------------
-Using 'curl' or your browser test connectivity. Rerun/refresh a few time to make sure you see the IP address of both Web Servers. 
-
-.. code-block::
-
-curl http://<dns-name-load-balancer>
-
-Kill.
-
-.. code-block::
-
-    aws ec2 authorize-security-group-ingress \
-        --group-id $EX006_SG_WEB \
-        --protocol tcp \
-        --port 80 \
-        --cidr 0.0.0.0/0
-
-
-aws ec2 revoke-security-group-ingress --group-id $EX006_SG_WEB --protocol tcp --port 80 --cidr 10.0.0.0/16
-
----------------------------------------------------------
-
-
-
-
-
-aws elbv2 create-listener \
-    --load-balancer-arn $EX006_LB \
-    --protocol TCP \
-    --port 80 \
-    --default-actions Type=forward,TargetGroupArn=$EX006_TG
-
-    {
-    "Listeners": [
-        {
-            "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:listener/net/ex-006-net-lb/725ca5e4b63a3aff/c95db1e6af803816",
-            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/net/ex-006-net-lb/725ca5e4b63a3aff",
-            "Port": 80,
-            "Protocol": "TCP",
-            "DefaultActions": [
-                {
-                    "Type": "forward",
-                    "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-webservers/28d9c50cc0dc819b"
-                }
-            ]
-        }
-    ]
-}
-
-
-
-
- revoke-security-group-ingress
-[--group-id <value>]
-[--group-name <value>]
-[--ip-permissions <value>]
-[--dry-run | --no-dry-run]
-[--protocol <value>]
-[--port <value>]
-[--cidr <value>]
-[--source-group <value>]
-[--group-owner <value>]
-[--cli-input-json <value>]
-[--generate-cli-skeleton <value>]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Delete the Target Group
------------------------
-
-.. code-block::
-
-    aws elbv2 delete-target-group --target-group-arn $EX006_TG
+    
+    aws elbv2 delete-load-balancer --load-balancer-arn $EX006__NET_LB
 
 Delete the Stack
 ----------------
@@ -1225,6 +1055,8 @@ Delete the Stack
 
     aws cloudformation delete-stack --stack-name ex-006
 
+Check the status
+----------------
 
 .. code-block::
 
@@ -1250,6 +1082,8 @@ Output:
             }
         ]
     }
+
+Rerun this command until you get the following response.
 
 Output:
 
