@@ -326,6 +326,8 @@ Additional information for the above parameters:
         + **'internet-facing'**: Load-balancer nodes have public IP addresses and the DNS name is publicly resolvable. You can access the Load-balancer from anywhere.
         + **'internal'**: Load-balancer nodes have private IP addresses, but the DNS name is still publicly resolvable. You can only access the Load-balancer from the VPC.
    * - '--type application'
+        + **'application'**: Operates at Layer 7. Defaults to application, so we could have left this parameter off.
+        + **'network'**: Operates at Layer 4.
      - 
    * - '--ip-address-type ipv4'
      - 
