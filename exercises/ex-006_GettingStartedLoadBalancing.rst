@@ -299,6 +299,7 @@ Sanity check
 
 Create Application load-balancer
 --------------------------------
+Use the following awscli command to create an Application Load-balancer.
 
 .. code-block::
 
@@ -309,6 +310,27 @@ Create Application load-balancer
         --ip-address-type ipv4 \
         --subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2 \
         --security-groups $EX006_SG_LB
+
+Additional information for the above parameters:
+
+.. list-table::
+   :widths: 50, 50
+   :header-rows: 0
+
+   * - **Parameter**
+     - **Description**
+   * - '--name ex-006-app-lb'
+     - 
+   * - '--scheme internet-facing'
+     - 
+   * - '--type application'
+     - 
+   * - '--ip-address-type ipv4'
+     - 
+   * - '--subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2'
+     - 
+   * - '--security-groups $EX006_SG_LB'
+     - 
 
 Output:
 
