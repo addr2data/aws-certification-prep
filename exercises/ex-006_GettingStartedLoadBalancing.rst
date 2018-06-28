@@ -88,7 +88,7 @@ Setting environment variables may be different on different OSs. Please refer to
 
 Template
 --------
-In order to build our starting configuration, we will create a CloudFormation **Stack** from Template **'ex-006_template.yaml'** in the **'templates'** directory.
+In order to build our starting configuration, we will create a CloudFormation **Stack** from a Template. Please review **'ex-006_template.yaml'** in the **'templates'** directory.
 
 **Highlights**
 
@@ -230,7 +230,7 @@ Review the Stack details
 ------------------------
 Use the following awscli command to display the **'LogicalResourceId'** and **'PhysicalResourceId'** for all the components in the **Stack**
 
-Notice the format of this portion of the query string **'{"Logical Resource Id": LogicalResourceId,"Physical Resource Id": PhysicalResourceId}'**, it adds a header for each column.** 
+Notice the format of this portion of the query string **'{"Logical Resource Id": LogicalResourceId,"Physical Resource Id": PhysicalResourceId}'**, it adds a header to each column.** 
 
 .. code-block::
 
@@ -270,7 +270,7 @@ Output:
 
 Environment variables
 ~~~~~~~~~~~~~~~~~~~~~
-Run the following commands to capture the 'PhysicalResourceId' for the applicable components.
+Run the following commands to capture the 'PhysicalResourceId' for the applicable components, as environment variables.
 
 .. code-block::
 
@@ -293,7 +293,7 @@ Sanity check
 
 .. code-block::
     
-    echo $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2 $EX006_SG_LB $EX006_VPC $EX006_INST_WEB1 $EX006_INST_WEB2 $EX006_SG_WEB
+    echo $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2 $EX006_SG_LB $EX006_VPC \ $EX006_INST_WEB1 $EX006_INST_WEB2 $EX006_SG_WEB
 
 
 Create Application load-balancer
