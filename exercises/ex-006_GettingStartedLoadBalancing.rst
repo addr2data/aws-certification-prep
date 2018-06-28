@@ -323,8 +323,8 @@ Additional information for the above parameters:
      - Specifies a name for the Load-balancer.
    * - '--scheme internet-facing'
      - 
-        + internal
-        + internet-facing 
+        + **'internet-facing'**: Load-balancer nodes have public IP addresses. DNS name is publicly resolvable,
+        + **'internal'**: Load-balancer nodes have public IP addresses. DNS name is publicly resolvable,
    * - '--type application'
      - 
    * - '--ip-address-type ipv4'
