@@ -333,6 +333,10 @@ Additional information for the above parameters:
      - Support both ipv4 and ipv6
    * - '--subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2'
      - 
+        + You can only select one Subnet per AZ.
+        + Application Load-balancers require two or more Subnets.
+        + network Load-balancers require one or more Subnets.
+        + Instead of **'--Subnets'**, you can use **'--subnet-mappings'**, which are outside the scope of this exercise.   
    * - '--security-groups $EX006_SG_LB'
      - 
         + One or more Security Groups to control access to an Application Load-balancer.
