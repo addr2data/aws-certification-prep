@@ -322,7 +322,7 @@ Additional information for the above parameters:
    * - '--name ex-006-app-lb'
      - Specifies a name for the Load-balancer.
    * - '--scheme internet-facing'
-     - There are two options here:
+     - 
         + internal
         + internet-facing 
    * - '--type application'
