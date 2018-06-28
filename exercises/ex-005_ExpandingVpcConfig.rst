@@ -1102,5 +1102,5 @@ Summary
 
 Next steps
 ----------
-To be added
+In `ex-006 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-006_GettingStartedLoadBalancing.rst>`_, we will spin up a base configuration with CloudFormation, then add Load-balancing. 
 
