@@ -327,12 +327,10 @@ Additional information for the above parameters:
         + **'internal'**: Load-balancer nodes have private IP addresses, but the DNS name is still publicly resolvable. You can only access the Load-balancer from the VPC.
    * - '--type application'
      - 
-        + **'application'**: Operates at Layer 7. Defaults to application, so we could have left this parameter off.
+        + **'application'**: Operates at Layer 7 (defaults to application, so we could have left this parameter off).
         + **'network'**: Operates at Layer 4.
    * - '--ip-address-type ipv4'
-     - 
-        + ipv4
-        + ipv6
+     - Support both ipv4 and ipv6
    * - '--subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2'
      - 
    * - '--security-groups $EX006_SG_LB'
