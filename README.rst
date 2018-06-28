@@ -152,9 +152,9 @@ I hope you enjoy using these exercises, as much as I enjoyed building them.
 
   6. `Getting started with Load-balancing <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-006_GettingStartedLoadBalancing.rst>`_
 
-  7. Working with EBS
+  7. `Working with EBS <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-007_WorkingEbs.rst>`_
 
-  8. Getting started with Snapshots
+  8. ` Getting started with Snapshots <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-007_GettingStartedSnapshots.rst>`_
 
   9. Getting started with S3
 
