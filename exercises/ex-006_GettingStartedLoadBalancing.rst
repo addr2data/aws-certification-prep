@@ -100,7 +100,7 @@ In order to build our starting configuration, we will create a CloudFormation **
     - A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet and **HTTP** from anywhere in the VPC (10.0.0.0/16)
     - A Security Group for the Load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
 
-**Notable items**
+**Notable item**
 
 When creating an Application Load-balancer, you must specify at least two Subnets, from different Availability Zones. In order to achieve this in the Template, a couple of functions built into CloudFormation Templates are used.
 
@@ -108,17 +108,29 @@ Note: The Network Load-balanceer does not have this same requirement.
 
 .. code-block::
 
-    SubnetWeb1:
-      Properties:
-        AvailabilityZone: !Select 
-          - 0
-          - Fn::GetAZs: !Ref 'AWS::Region'
+      SubnetWeb1:
+        Type: AWS::EC2::Subnet
+        Properties:
+          CidrBlock: 10.0.0.0/24
+          AvailabilityZone: !Select 
+            - 0
+            - Fn::GetAZs: !Ref 'AWS::Region'
+          Tags:
+            - Key: Name
+              Value: subnet_web1_ex006
+          VpcId: !Ref VPC
 
-    SubnetWeb2:
-      Properties:
-        AvailabilityZone: !Select 
-          - 1
-          - Fn::GetAZs: !Ref 'AWS::Region'
+      SubnetWeb2:
+        Type: AWS::EC2::Subnet
+        Properties:
+          CidrBlock: 10.0.1.0/24
+          AvailabilityZone: !Select 
+            - 1
+            - Fn::GetAZs: !Ref 'AWS::Region'
+          Tags:
+            - Key: Name
+              Value: subnet_web2_ex006
+          VpcId: !Ref VPC
 
 Explaination:
 
