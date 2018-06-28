@@ -102,7 +102,9 @@ In order to build our starting configuration, we will create a CloudFormation **
 
 **Notable items**
 
-When creating an Application Load-balancer, you must specify at least two Subnets, from different Availability Zones. In order to achieve this in the Template, a couple functions built-in to CloudFormation Templates are used.
+When creating an Application Load-balancer, you must specify at least two Subnets, from different Availability Zones. In order to achieve this in the Template, a couple of functions built into CloudFormation Templates are used.
+
+Note: The Network Load-balanceer does not have this same requirement.
 
 .. code-block::
 
@@ -118,9 +120,11 @@ When creating an Application Load-balancer, you must specify at least two Subnet
           - 1
           - Fn::GetAZs: !Ref 'AWS::Region'
 
-- Get a list of all the Availability Zones (AZ) in the Region that the Stack is being deployed in.
-- Select the 1st (0) AZ and create **'SubnetWeb1'** there.
-- Select the 2nd (1) AZ and create **'SubnetWeb2'** there.
+Explaination:
+
+  - **Fn::GetAZs** returns us a list of Availability Zones (AZ) for a Region. **!Ref 'AWS::Region'** says to use the Region that the Stack is being deployed to.
+  - **!Select** lets us select the 1st (0) AZ for **SubnetWeb1** and the 2nd (1) AZ for **SubnetWeb2**, ensuring that the two Subnets are on different AZs.
+  - Every Region has at least two AZs, so this is Template is portable between Regions.
 
 In order to create a simple web server, the following commands are run at Instance startup. An 'index.html' file is created that contains the 'hostname' of the Instance and a simple http server is started.
 
