@@ -146,7 +146,7 @@ I hope you enjoy using these exercises, as much as I enjoyed building them.
 
    * - ex-002
      - Basic VPC configuration
-     - 
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfig.rst>`_
      - 
 
 
