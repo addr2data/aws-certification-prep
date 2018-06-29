@@ -151,7 +151,7 @@ Some of the exercises listed in the table below have two formats:
 
    * - ex-001
      - Getting started
-     - 
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
      - 
    * - ex-002
      - Basic VPC configuration
@@ -159,7 +159,7 @@ Some of the exercises listed in the table below have two formats:
      - `GUI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfigGui.rst>`_
    * - ex-003
      - Testing basic VPC connectivity
-     - 
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_TestingBasicConnectivity.rst>`_
      - 
    * - ex-004
      - Getting started with CloudFormation
