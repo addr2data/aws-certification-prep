@@ -63,13 +63,15 @@ Logon to the AWS Management console using your AWS account
 
 Create a VPC
 ------------
-1. From the left-side *Virtual Private Cloud* menu, select 'Your VPCs'
-2. Click 'Create VPC'
-3. On the 'Create VPC' Step, enter the following values, then click 'Yes, Create':
-    - Name tag: EX002_VPC
-    - IPv4 CIDR Block: 10.0.0.0/16
-    - IPv6 CIDR Block: 'No IPv6 CIDR Block'
-    - Tenancy: Default
+
+- From the left-side *Virtual Private Cloud* menu, select 'Your VPCs'
+- Click 'Create VPC'
+- On the 'Create VPC' Step, enter the following values, then click 'Yes, Create':
+    
+    + Name tag: EX002_VPC
+    + IPv4 CIDR Block: 10.0.0.0/16
+    + IPv6 CIDR Block: 'No IPv6 CIDR Block'
+    + Tenancy: Default
 
 Create and attach an Internet Gateway
 --------------------------
