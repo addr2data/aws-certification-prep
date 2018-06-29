@@ -64,7 +64,7 @@ Logon to the AWS Management console using your AWS account
 Create a VPC
 ------------
 1. From **Services**, select **VPC**.
-2. From the left navigation pane, under **Virtual Private Cloud** menu, select **Your VPCs**
+2. From the navigation pane, under **Virtual Private Cloud** menu, select **Your VPCs**
 3. Click **Create VPC**
 4. In the **Create VPC** step, enter the following values:
 
@@ -77,7 +77,7 @@ Create a VPC
 
 Create and attach an Internet Gateway
 -------------------------------------
-1. From the left navigation pane, under **Virtual Private Cloud**, select **Internet Gateways**.
+1. From the navigation pane, under **Virtual Private Cloud**, select **Internet Gateways**.
 2. Click **Create internet gateway**.
 3. Enter 'InternetGateway' for the **Name tag**.
 4. Click **Create**, then click **Close**.
@@ -91,8 +91,10 @@ At this point, we've created the Internet Gateway, but no traffic is routed to i
 
 Examine and tag the main Route Table
 -------------------------------
-1. From the left-side *Virtual Private Cloud* menu, select 'Route Tables'
-2. Select the route table entry where the VPC value is "EX002_VPC", it was created automatically for the VPC
+1. From the navigation pane, **Virtual Private Cloud**, select **Route Tables**.
+2. Select the Route Table where the VPC value is "EX002_VPC".
+
+    This Route Table was created automatically for the VPC. It is refered to as the 'main' Route Table.
 3. In the bottom portion of the page, select the 'Routes' tab, you can see a single entry. This entry allows for the routing of local traffic for all Subnets associated with the main Route Table. If you don't explicitly associate a subnet with another Route Table, it is implicitly associated with the main Route Table.
 4. Select the 'Tags' tab.  You'll notice there's already a "Name" key with an empty value. Click 'Edit'
 5. On the row where the Key is "Name", enter *private* as the Value and click 'Save'
