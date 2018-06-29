@@ -3,7 +3,7 @@ ex-002: Basic VPC configuration from the AWS Management Console
 
 Status
 ------
-Version 1.0 (6/28/18)
+Version 1.1 (6/29/18)
 
 Dependencies
 ------------

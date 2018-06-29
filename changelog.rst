@@ -28,3 +28,14 @@ CHANGE LOG
 - 06-28-18 (addr2data):  Added Initial Draft of **'ex-007'**.
 
 - 06-28-18 (addr2data):  Added Initial Draft of **'ex-008'**.
+
+- 06-29-18 (addr2data):  Modified the 'exercises' section of README.rst to accommodate new formats for exercises 'CLI' and 'GUI'.
+
+- 06-29-18 (BrianRagazzi):  Created new GUI version of ex-002. Changed version to 1.1.
+
+
+
+
+- 06-29-18 (addr2data):  Improved formatting of **'ex-002 (GUI)'**.
+
+
