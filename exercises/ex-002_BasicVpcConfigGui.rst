@@ -64,7 +64,7 @@ Logon to your AWS accound and navigate to the AWS Management console.
 Create a VPC
 ------------
 1. From **Services**, select **VPC**.
-2. From the navigation pane, under **Virtual Private Cloud** menu, select **Your VPCs**
+2. From the navigation pane, under **'Virtual Private Cloud'**, select **'Your VPCs'**
 3. Click **Create VPC**
 4. In the **Create VPC** window, enter the following values:
 
