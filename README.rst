@@ -148,6 +148,13 @@ I hope you enjoy using these exercises, as much as I enjoyed building them.
      - Basic VPC configuration
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfig.rst>`_
      - `GUI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfigGui.rst>`_
+   * - 
+     -
+     -
+     -
+
+
+
 
 
   1. `Getting started <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
