@@ -131,28 +131,35 @@ Create Subnets
 ---------------
 In AWS Subnets, the first address is the network address, the last address is the broadcast address and the second through fourth addresses are reserved by AWS
 
-1. From the left-side *Virtual Private Cloud* menu, select 'Subnets'
+1. From the navigation pane, **Virtual Private Cloud**, select **Subnets**.
 2. Click **Create subnet**
-3. In the 'Create Subnet' step, set the following values, click **Create**, then click **Close**
+3. In the 'Create Subnet' step, set the following values:
+
     - Name tag: public
     - VPC: Select EX002_VPC
     - Availability Zone: No Preference
     - IPv4 CIDR Block: 10.0.0.0/23
-4. Click **Create subnet** again
-5. In the 'Create Subnet' step, set the following values, click **Create**, then click **Close**
+4. Click **Create**, then click **Close**.
+5. Click **Create subnet** again
+6. In the 'Create Subnet' step, set the following values:
+
     - Name tag: private
     - VPC: Select EX002_VPC
     - Availability Zone: No Preference
     - IPv4 CIDR Block: 10.0.2.0/23
-6. Notice that both subnets use the 'private' route table.  This is because we simply tagged the main route table as 'private' and it encompasses all subnets in the VPC
+7. Click **Create**, then click **Close**.
+
+    Notice that both subnets use the 'private' route table.  This is because we simply tagged the main route table as 'private' and it encompasses all subnets in the VPC.
 
 Associate a Subnet with the Route Table
 ---------------------------------------
 1. While still in the Subnets dashboard, select the 'public' subnet.  That is, the subnet with the Name of 'public'.
-2. In the bottom part of the page, select the 'Route Table' tab
-3. Click **Edit route table association**
-4. On the 'Edit route table association' step, select the route table ID of the 'public' route table, click **save**, then **Close**. Unfortunatly, the Name does not apear on the dropdownlist for selection.  But you'll know you have the right one because there will be a route that uses the internet gateway.
-5. Now, you'll see that the 'private' subnet remains associated with the 'private' route table and the 'public' subnet is associated with the 'public' route table.
+2. In the bottom part of the page, select the **Route Table** tab.
+3. Click **Edit route table association**.
+4. In the 'Edit route table association' step, select the route table ID of the 'public' route table.
+5. Click **save**, then **Close**. Unfortunately, the Name does not appear on the drop down list for selection.  But you'll know you have the right one because there will be a route that uses the Internet Gateway.
+
+    Now, you'll see that the 'private' subnet remains associated with the 'private' route table and the 'public' subnet is associated with the 'public' route table.
 
 Summary
 -------
