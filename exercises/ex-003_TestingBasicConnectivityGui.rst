@@ -94,12 +94,12 @@ We'll create a Security Group that will be applied to the Instances created late
       * VPC: Select the EX002_VPC.
 5. Under **Security Group Rules**, select the **Inbound** tab.
 6. Click **Add Rule**.
-6. In the Rule definition row, set the following values:
+7. In the Rule definition row, set the following values:
 
       * Type: SSH (this sets protocol to TCP and port to 22)
       * Source: Anywhere (or My IP)
       * Description: Allow SSH inbound
-7. Click **Create**.
+8. Click **Create**.
    
 Launch an Instance
 -------------------
