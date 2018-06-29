@@ -174,7 +174,7 @@ Some of the exercises listed in the table below have two formats:
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-006_GettingStartedLoadBalancing.rst>`_
      - 
    * - ex-007
-     - `Working with EBS 
+     - Working with EBS 
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-007_WorkingEbs.rst>`_
      - 
    * - ex-008
