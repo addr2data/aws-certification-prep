@@ -136,12 +136,12 @@ You should familiarize yourself with the following whitepapers before you start.
 
 Exercises
 ---------
-I hope you enjoy using these exercises, as much as I enjoyed building them.
+I hope you enjoy using these exercises, as much as we enjoyed building them.
 
-Some of the exercises listed in the table below have two formats:
+Some of the exercises listed in the table below have two formats. The end of these exercises is exactly the same:
 
   - CLI - Primarily uses the **awscli** for configuration.
-  - GUI - Primarily used the **AWS Management Console** for configuration.   
+  - GUI - Primarily used the **AWS Management Console** for configuration.
 
 **Foundation Exercises**
 
