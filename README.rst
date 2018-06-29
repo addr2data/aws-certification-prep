@@ -145,36 +145,12 @@ I hope you enjoy using these exercises, as much as I enjoyed building them.
    :header-rows: 0
 
    * - 
-     -
-     -
-     -
+     - Basic VPC configuration
+     - 
+     - 
 
 
 
-
-
-
-  1. `Getting started <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
-
-  2. Basic VPC configuration `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfig.rst>`_ `GUI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfigGui.rst>`_
-
-  3. `Testing basic VPC connectivity <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_TestingBasicConnectivity.rst>`_
-
-  4. `Getting started with CloudFormation <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_GettingStartedCloudFormation.rst>`_
-
-  5. `Expanding the VPC configuration <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-005_ExpandingVpcConfig.rst>`_
-
-  6. `Getting started with Load-balancing <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-006_GettingStartedLoadBalancing.rst>`_
-
-  7. `Working with EBS <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-007_WorkingEbs.rst>`_
-
-  8. `Getting started with Snapshots <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-008_GettingStartedSnapshots.rst>`_
-
-  9. Getting started with S3
-
-  10. Getting started with RDS
-
-  11. tbd
 
 **Level 100 (maybe a project here?)**
 
