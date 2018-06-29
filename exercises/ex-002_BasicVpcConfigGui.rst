@@ -95,12 +95,15 @@ Examine and tag the main Route Table
 2. Select the Route Table where the VPC value is "EX002_VPC".
 
     This Route Table was created automatically for the VPC. It is refered to as the 'main' Route Table.
-3. In the bottom portion of the page, select the 'Routes' tab, you can see a single entry. This entry allows for the routing of local traffic for all Subnets associated with the main Route Table. If you don't explicitly associate a subnet with another Route Table, it is implicitly associated with the main Route Table.
-4. Select the 'Tags' tab.  You'll notice there's already a "Name" key with an empty value. Click 'Edit'
-5. On the row where the Key is "Name", enter *private* as the Value and click 'Save'
+3. At the bottom of the page, select the **Routes** tab.
 
-We won't be modifying the main Route Table, just applying a tag to help identify it. We will use it to provide routing for the **'private'** Subnet we will create later. 
-Since all subnets are implicitly associated with the main Route Table, it is a good practice to provide reachability to/from the Internet via a separate Route Table. 
+    You can see a single entry. This entry allows for the routing of local traffic for all Subnets associated with the main Route Table. If you don't explicitly associate a subnet with another Route Table, it is implicitly associated with the main Route Table.
+4. Select the **Tags** tab.  You'll notice there's already a "Name" key with an empty value. Click **Edit**.
+5. On the row where the Key is "Name", enter 'private' as the Value and click **Save**.
+
+    We won't be modifying the main Route Table, just applying a tag to help identify it. We will use it to provide routing for the **'private'** Subnet we will create later. 
+
+    Since all subnets are implicitly associated with the main Route Table, it is a good practice to provide reachability to/from the Internet via a separate Route Table. 
 
 Create Public Route Table
 ---------------------------
