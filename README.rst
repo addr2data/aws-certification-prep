@@ -192,7 +192,14 @@ Some of the exercises listed in the table below have two formats. The end of the
 
 **Level 100 (maybe a project here?)**
 
-  101. tbd
+.. list-table::
+   :widths: 25, 25, 25, 25
+   :header-rows: 0
+
+   * - ex-101
+     - 
+     - 
+     - 
 
 Additional Resources
 --------------------
