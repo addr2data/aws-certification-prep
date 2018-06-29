@@ -175,9 +175,9 @@ In order to connect to our instance, we'll need a public IPv4 address (a.k.a Ela
 3. Select the new Elastic IP from the list and choose **Associate Address** from the 'Actions' menu
 4. On the 'Associate Address; step, set the following, click **Associate** and then **Close**.
 
-      * Resource type: Instance
-      * Instance: 'public'
-      * Private IP: <private IP> (10.0.0.x)
+      - Resource type: Instance
+      - Instance: 'public'
+      - Private IP: <private IP> (10.0.0.x)
 5. Notice now that the Elastic IP has additional information regarding the instance and Private IP address
 6. Make a note of the Elastic IP address
 
