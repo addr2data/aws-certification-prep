@@ -189,8 +189,9 @@ Use the following commands to test 'inbound' connectivity to the **public** Inst
 **Expected results:** 'ping' should fail and 'ssh' should succeed.
 
 On your local workstation, open a terminal session or command prompt to run these connectivity tests:
-*  If you are using a different Key Pair, then replace 'acpkey1.pem' with your '<your-pem-file>'
-*  Replace '<Elastic IP address>' with the actual public IP for the Elastic IP address
+
+- If you are using a different Key Pair, then replace 'acpkey1.pem' with your '<your-pem-file>'
+- Replace '<Elastic IP address>' with the actual public IP for the Elastic IP address
 
 .. code-block::
 
@@ -200,6 +201,7 @@ On your local workstation, open a terminal session or command prompt to run thes
 Note: If you are prompted with **"Are you sure you want to continue connecting (yes/no)?"**, that's a good thing! Enter 'y' and you'll be connected.
 
 *So, why did ssh work but ping did not?*
+
 Earlier, we created the Int2Public security group and assigned it to both instances.  This security group included one inbound rule that allowed SSH connections.  Everything else is blocked.  In addition, the public instance is attached to the 'public' subnet, which is associated with the 'public' route table.  The 'public' route table includes a default route that sends all non-local traffic to the Internet Gateway
 
 
