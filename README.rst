@@ -138,10 +138,12 @@ Exercises
 ---------
 I hope you enjoy using these exercises, as much as I enjoyed building them.
 
-Note: Some of the exercises listed in the table below have two formats:
+Lab format
+~~~~~~~~~~
+Some of the exercises listed in the table below have two formats:
 
-    CLI - Primarily uses the **awscli** for configuration.
-    GUI - Primarily used the **AWS Management Console** for configuration.   
+  - CLI - Primarily uses the **awscli** for configuration.
+  - GUI - Primarily used the **AWS Management Console** for configuration.   
 
 **Foundation Exercises**
 
