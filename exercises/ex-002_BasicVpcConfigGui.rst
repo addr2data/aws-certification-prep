@@ -82,7 +82,7 @@ Create and attach an Internet Gateway
 3. Enter 'InternetGateway' for the **Name tag**.
 4. Click **Create**, then click **Close**.
 
-  Notice that the Internet Gateway has been created, but its state is **detached**.
+    Notice that the Internet Gateway has been created, but its state is **detached**.
 5. Select the Internet Gateway that you just created.
 6. From the **Actions** menu, select **Attach to VPC**
 7. In the **Attach to VPC** step, select the VPC named **EX002_VPC**, then click **Attach**.
