@@ -141,7 +141,7 @@ I hope you enjoy using these exercises, as much as I enjoyed building them.
 **Foundation Exercises**
 
 .. list-table::
-   :widths: 25, 25
+   :widths: 25, 25, 25, 25
    :header-rows: 0
 
    * - ex-002
