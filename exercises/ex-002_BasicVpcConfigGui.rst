@@ -107,17 +107,25 @@ Examine and tag the main Route Table
 
 Create Public Route Table
 ---------------------------
-1. While still in the Route Tables section of the VPC management console, click **Create Route Table**
+1. While still in the Route Tables section of the VPC management console, click **Create Route Table**.
 
-2. On the 'Create Route Table' windows, enter the following, then click **Yes Create**:
+2. On the 'Create Route Table' windows, enter the following:
+    
     - Name tag: public
     - VPC: Select the EX002_VPC VPC
-3. Now, you should see at least two route tables associated with the EX002_VPC, one with a Name of 'private' and one with the Name of 'public'.  Select the 'public' route table
-4. In the bottom part of the page, select the 'Routes' tab, click **Edit**
-5. Click **Add another route**, in the new row, enter the following, then click **Save**:
+3. Click **Yes Create**.
+
+    Now, you should see at least two route tables associated with the EX002_VPC, one with a Name of 'private' and one with the Name of 'public'.
+
+4. Select the 'public' route table.
+5. In the bottom part of the page, select the **Routes** tab, click **Edit**.
+6. Click **Add another route**, in the new row, enter the following:
+
     - Destination: 0.0.0.0/0
     - Target: select 'InternetGateway'
-6. Now, you should have two routes in the public route table, make a note of the route table ID of the 'public' route table
+7. Click **Save**.
+
+    Now, you should have two routes in the public route table, make a note of the route table ID of the 'public' route table
 
 Create Subnets
 ---------------
