@@ -226,7 +226,7 @@ Let's move the Elastic IP to the 'private' instance and see the diferences
 1. Under the **Services** menu, select **EC2** under *Compute*
 2. On the left-side menu, select **Elastic IPs** under NETWORK & SECURITY
 3. Select the Elastic IP from the list and choose **Disassociate Address** from the 'Actions' menu, then click the **Disassociate address** button on the window that appears.
-3. Select the Elastic IP from the list and choose **Associate Address** from the 'Actions' menu
+4. Select the Elastic IP from the list and choose **Associate Address** from the 'Actions' menu
 5. On the 'Associate Address; step, set the following, click **Associate** and then **Close**
 
       - Resource type: Instance
