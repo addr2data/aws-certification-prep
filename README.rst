@@ -138,8 +138,6 @@ Exercises
 ---------
 I hope you enjoy using these exercises, as much as I enjoyed building them.
 
-Lab format
-~~~~~~~~~~
 Some of the exercises listed in the table below have two formats:
 
   - CLI - Primarily uses the **awscli** for configuration.
@@ -151,13 +149,46 @@ Some of the exercises listed in the table below have two formats:
    :widths: 25, 25, 25, 25
    :header-rows: 0
 
+   * - ex-001
+     - Getting started
+     - 
+     - 
    * - ex-002
      - Basic VPC configuration
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfig.rst>`_
      - `GUI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfigGui.rst>`_
-
-
-
+   * - ex-003
+     - Testing basic VPC connectivity
+     - 
+     - 
+   * - ex-004
+     - Getting started with CloudFormation
+     - 
+     - 
+   * - ex-005
+     - Expanding the VPC configuration
+     - 
+     - 
+   * - ex-006
+     - Getting started with Load-balancing
+     - 
+     - 
+   * - ex-007
+     - `Working with EBS 
+     - 
+     - 
+   * - ex-008
+     - Getting started with Snapshots 
+     - 
+     - 
+   * - ex-009
+     - Getting started with S3
+     - 
+     - 
+   * - ex-010
+     - Getting started with RDS
+     - 
+     - 
 
 **Level 100 (maybe a project here?)**
 
