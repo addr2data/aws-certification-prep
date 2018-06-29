@@ -228,9 +228,10 @@ Let's move the Elastic IP to the 'private' instance and see the diferences
 3. Select the Elastic IP from the list and choose **Disassociate Address** from the 'Actions' menu, then click the **Disassociate address** button on the window that appears.
 3. Select the Elastic IP from the list and choose **Associate Address** from the 'Actions' menu
 5. On the 'Associate Address; step, set the following, click **Associate** and then **Close**
-      * Resource type: Instance
-      * Instance: 'private'
-      * Private IP: <private IP> (10.0.2.x)
+
+      - Resource type: Instance
+      - Instance: 'private'
+      - Private IP: <private IP> (10.0.2.x)
 6. Notice now that the Elastic IP shows the 10.0.2.x Private IP address
 7. Make a note of the Elastic IP address - it should be the same as before since we did not release it
 
@@ -262,9 +263,10 @@ Use the following awscli command to re-associate the Elastic IP with the **publi
 3. Select the Elastic IP from the list and choose **Disassociate Address** from the 'Actions' menu, then click the **Disassociate address** button on the window that appears.
 3. Select the Elastic IP from the list and choose **Associate Address** from the 'Actions' menu
 5. On the 'Associate Address; step, set the following, click **Associate** and then **Close**
-      * Resource type: Instance
-      * Instance: 'public'
-      * Private IP: <private IP> (10.0.0.x)
+
+      - Resource type: Instance
+      - Instance: 'public'
+      - Private IP: <private IP> (10.0.0.x)
 6. Notice now that the Elastic IP shows the 10.0.0.x Private IP address
 7. Make a note of the Elastic IP address - it should be the same as before since we did not release it
 
@@ -275,8 +277,9 @@ Reconnect via SSH
 Next, we need to reconnect to the public instance, but we also want to reach the private instance.  To reach the private instance, we'll 'hop' from the public instance - that is, we'll ssh from our local workstation to the public instance, then from the public instance to the private instance.  Just like you have to have the key pair on your local workstation in order to connect ssh to the public instance, the same key pair must be present on the public instance in order for it to connect to the private instance.
 
 On your local workstation, open a terminal session or command prompt to run these connectivity tests:
-*  If you are using a different Key Pair, then replace 'acpkey1.pem' with your '<your-pem-file>'
-*  Replace '<Elastic IP address>' with the actual public IP for the Elastic IP address
+
+    - If you are using a different Key Pair, then replace 'acpkey1.pem' with your '<your-pem-file>'
+    - Replace '<Elastic IP address>' with the actual public IP for the Elastic IP address
 
 .. code-block::
 
@@ -331,9 +334,10 @@ Use the following awscli command to create a new rule to the Int2Public security
 5. On the 'inbound' tab, click the **Edit** button
 6. On the 'Edit inbound rules', click **Add Rule**
 7. In the new row, set the following:
-      * Type: 'All ICMP - IPv4'  - this sets the protocol to ICP and the port range to 0-65535
-      * Source: 'Anywhere'
-      * Description: Allow ICMP
+
+      - Type: 'All ICMP - IPv4'  - this sets the protocol to ICP and the port range to 0-65535
+      - Source: 'Anywhere'
+      - Description: Allow ICMP
 8. Click **Save**
 
 
