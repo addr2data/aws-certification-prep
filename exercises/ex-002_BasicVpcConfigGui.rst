@@ -65,14 +65,16 @@ Create a VPC
 ------------
 
 1. From **Services**, select **VPC**.
-2. From left navigation pane, under **Virtual Private Cloud** menu, select **Your VPCs**
+2. From the left navigation pane, under **Virtual Private Cloud** menu, select **Your VPCs**
 3. Click **Create VPC**
-4. On the **Create VPC** step, enter the following values, then click **Yes, Create**:
-    
+4. On the **Create VPC** step, enter the following values:
+
     - Name tag: EX002_VPC
     - IPv4 CIDR Block: 10.0.0.0/16
     - IPv6 CIDR Block: 'No IPv6 CIDR Block'
     - Tenancy: Default
+5. Click **Yes, Create**:
+    
 
 Create and attach an Internet Gateway
 --------------------------
