@@ -163,31 +163,31 @@ Some of the exercises listed in the table below have two formats:
      - 
    * - ex-004
      - Getting started with CloudFormation
-     - 
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_GettingStartedCloudFormation.rst>`_
      - 
    * - ex-005
      - Expanding the VPC configuration
-     - 
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-005_ExpandingVpcConfig.rst>`_
      - 
    * - ex-006
      - Getting started with Load-balancing
-     - 
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-006_GettingStartedLoadBalancing.rst>`_
      - 
    * - ex-007
      - `Working with EBS 
-     - 
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-007_WorkingEbs.rst>`_
      - 
    * - ex-008
      - Getting started with Snapshots 
-     - 
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-008_GettingStartedSnapshots.rst>`_
      - 
    * - ex-009
      - Getting started with S3
-     - 
+     - TBA
      - 
    * - ex-010
      - Getting started with RDS
-     - 
+     - TBA
      - 
 
 **Level 100 (maybe a project here?)**
