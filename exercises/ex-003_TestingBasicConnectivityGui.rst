@@ -170,21 +170,22 @@ Allocate and associate an Elastic IP
 ----------------------
 In order to connect to our instance, we'll need a public IPv4 address (a.k.a Elastic IP).  First, we'll allocate an IP for our account, then we'll associate it with our 'public' instance.
 
-1. Under the **Services** menu, select **EC2** under *Compute*
-2. On the left-side menu, select **Elastic IPs** under NETWORK & SECURITY
-3. Click **Allocate new address**, then **Allocate**, then **Close**
-4. Select the new Elastic IP from the list and choose **Associate Address** from the 'Actions' menu
-5. On the 'Associate Address; step, set the following, click **Associate** and then **Close**
+1. From the navigation pane, under **NETWORK & SECURITY**, select **Elastic IP**.
+2. Click **Allocate new address**, then **Allocate**, then **Close**
+3. Select the new Elastic IP from the list and choose **Associate Address** from the 'Actions' menu
+4. On the 'Associate Address; step, set the following, click **Associate** and then **Close**.
+
       * Resource type: Instance
       * Instance: 'public'
       * Private IP: <private IP> (10.0.0.x)
-6. Notice now that the Elastic IP has additional information regarding the instance and Private IP address
-7. Make a note of the Elastic IP address
+5. Notice now that the Elastic IP has additional information regarding the instance and Private IP address
+6. Make a note of the Elastic IP address
 
 
 Test inbound connectivity
 -------------------------
 Use the following commands to test 'inbound' connectivity to the **public** Instance.
+
 **Expected results:** 'ping' should fail and 'ssh' should succeed.
 
 On your local workstation, open a terminal session or command prompt to run these connectivity tests:
