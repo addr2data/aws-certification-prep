@@ -160,7 +160,7 @@ Some of the exercises listed in the table below have two formats. The end of the
    * - ex-003
      - Testing basic VPC connectivity
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_TestingBasicConnectivity.rst>`_
-     - 
+     - `GUI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_TestingBasicConnectivityGui.rst>`_
    * - ex-004
      - Getting started with CloudFormation
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-004_GettingStartedCloudFormation.rst>`_
