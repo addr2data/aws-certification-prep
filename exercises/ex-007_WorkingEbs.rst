@@ -173,7 +173,7 @@ Sanity check
 
 Display block storage information
 ---------------------------------
-Use the following awscli command to display the block storage information for 
+Use the following awscli command to display the block storage information for both Instances.
 
 .. code-block::
 
@@ -222,6 +222,150 @@ Output:
             }
         ]
     ]
+
+Display volume information
+--------------------------
+Use the following awscli command to display the volume information for both Instances.
+
+.. code-block::
+
+    aws ec2 describe-instances \
+        --instance-ids $EX007_INST_01 $EX007_INST_02 \
+        --output text \
+        --query Reservations[*].Instances[*].BlockDeviceMappings[*].Ebs.VolumeId |
+        while read line;
+        do aws ec2 describe-volumes --volume-ids $line;
+        done
+
+Output:
+
+.. code-block::
+
+    {
+        "Volumes": [
+            {
+                "Attachments": [
+                    {
+                        "AttachTime": "2018-06-28T16:52:12.000Z",
+                        "Device": "/dev/sda1",
+                        "InstanceId": "i-094a150583aa25923",
+                        "State": "attached",
+                        "VolumeId": "vol-087b5e30b2918119a",
+                        "DeleteOnTermination": true
+                    }
+                ],
+                "AvailabilityZone": "us-east-1e",
+                "CreateTime": "2018-06-28T16:52:12.066Z",
+                "Encrypted": false,
+                "Size": 8,
+                "SnapshotId": "snap-0eea1ed47e203f3b8",
+                "State": "in-use",
+                "VolumeId": "vol-087b5e30b2918119a",
+                "Iops": 100,
+                "VolumeType": "gp2"
+            }
+        ]
+    }
+    {
+        "Volumes": [
+            {
+                "Attachments": [
+                    {
+                        "AttachTime": "2018-06-28T16:52:12.000Z",
+                        "Device": "/dev/sda1",
+                        "InstanceId": "i-0f28de878eb1331c3",
+                        "State": "attached",
+                        "VolumeId": "vol-0878fcd959666083b",
+                        "DeleteOnTermination": true
+                    }
+                ],
+                "AvailabilityZone": "us-east-1e",
+                "CreateTime": "2018-06-28T16:52:12.003Z",
+                "Encrypted": false,
+                "Size": 8,
+                "SnapshotId": "snap-0eea1ed47e203f3b8",
+                "State": "in-use",
+                "VolumeId": "vol-0878fcd959666083b",
+                "Iops": 100,
+                "VolumeType": "gp2"
+            }
+        ]
+    }
+
+
+Environment variables
+~~~~~~~~~~~~~~~~~~~~~
+Run the following commands to capture the 'VolumeId' for each Instance.
+
+.. code-block::
+
+    export EX007_INST_01_VOL=$(aws ec2 describe-instances --instance-ids $EX007_INST_01 --output text --query Reservations[*].Instances[*].BlockDeviceMappings[*].Ebs.VolumeId)
+
+    export EX007_INST_02_VOL=$(aws ec2 describe-instances --instance-ids $EX007_INST_02 --output text --query Reservations[*].Instances[*].BlockDeviceMappings[*].Ebs.VolumeId)
+
+Sanity check
+~~~~~~~~~~~~
+
+.. code-block::
+    
+    echo -e '\n'$EX007_INST_01_VOL'\n'$EX007_INST_02_VOL
+
+
+
+
+
+Modify the size of a volume
+---------------------------
+
+.. code-block::
+
+    aws ec2 modify-volume --volume-id $EX007_INST_01_VOL --size 10
+
+Output:
+
+.. code-block::
+
+    {
+        "VolumeModification": {
+            "VolumeId": "vol-0878fcd959666083b",
+            "ModificationState": "modifying",
+            "TargetSize": 10,
+            "TargetIops": 100,
+            "TargetVolumeType": "gp2",
+            "OriginalSize": 8,
+            "OriginalIops": 100,
+            "OriginalVolumeType": "gp2",
+            "Progress": 0,
+            "StartTime": "2018-06-28T21:09:35.000Z"
+        }
+    }
+
+Notice that the **'ModificationState'** is **'modifying'**
+
+.. code-block::
+
+    aws ec2 describe-volumes-modifications --volume-ids $EX007_INST_01_VOL
+
+Output:
+
+.. code-block::
+
+    {
+        "VolumesModifications": [
+            {
+                "VolumeId": "vol-0878fcd959666083b",
+                "ModificationState": "optimizing",
+                "TargetSize": 10,
+                "TargetIops": 100,
+                "TargetVolumeType": "gp2",
+                "OriginalSize": 8,
+                "OriginalIops": 100,
+                "OriginalVolumeType": "gp2",
+                "Progress": 1,
+                "StartTime": "2018-06-28T21:09:35.000Z"
+            }
+        ]
+    }
 
 
 

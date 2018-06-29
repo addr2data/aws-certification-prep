@@ -10,7 +10,7 @@ Project Status
    * - Project Start
      - Jun 4, 2018
    * - Latest Update
-     - Jun 28, 2018
+     - Jun 29, 2018
 
 `Change Log <https://github.com/addr2data/aws-certification-prep/blob/master/changelog.rst>`_
 
@@ -142,7 +142,7 @@ I hope you enjoy using these exercises, as much as I enjoyed building them.
 
   1. `Getting started <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-001_GettingStarted.rst>`_
 
-  2. `Basic VPC configuration <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfig.rst>`_
+  2. Basic VPC configuration `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfig.rst>`_ `GUI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-002_BasicVpcConfigGui.rst>`_
 
   3. `Testing basic VPC connectivity <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-003_TestingBasicConnectivity.rst>`_
 
