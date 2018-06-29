@@ -144,7 +144,7 @@ I hope you enjoy using these exercises, as much as I enjoyed building them.
    :widths: 25, 25, 25, 25
    :header-rows: 0
 
-   * - 
+   * - ex-002
      - Basic VPC configuration
      - 
      - 
