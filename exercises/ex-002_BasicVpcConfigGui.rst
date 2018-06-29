@@ -63,11 +63,10 @@ Logon to the AWS Management console using your AWS account
 
 Create a VPC
 ------------
-
 1. From **Services**, select **VPC**.
 2. From the left navigation pane, under **Virtual Private Cloud** menu, select **Your VPCs**
 3. Click **Create VPC**
-4. On the **Create VPC** step, enter the following values:
+4. In the **Create VPC** step, enter the following values:
 
     - Name tag: EX002_VPC
     - IPv4 CIDR Block: 10.0.0.0/16
@@ -77,13 +76,16 @@ Create a VPC
     
 
 Create and attach an Internet Gateway
---------------------------
-1. From the left-side *Virtual Private Cloud* menu, select 'Internet Gateways'
-2. Click **Create internet gateway**
-3. Enter 'InternetGateway' for the Name tag and click **Create**, then click **Close**
-4. Notice that the Internet Gateway has been created, but its state is **detached**.  Select 'InternetGateway".
-5. From the 'Actions' menu, select 'Attach to VPC'
-6. In the 'Attach to VPC' Step, select the EX002_VPC and click **Attach**
+-------------------------------------
+1. From the left navigation pane, under **Virtual Private Cloud**, select **Internet Gateways**.
+2. Click **Create internet gateway**.
+3. Enter 'InternetGateway' for the **Name tag**.
+4. Click **Create**, then click **Close**.
+
+  Notice that the Internet Gateway has been created, but its state is **detached**.
+5. Select the Internet Gateway that you just created.
+6. From the **Actions** menu, select **Attach to VPC**
+7. In the **Attach to VPC** step, select the VPC named **EX002_VPC**, then click **Attach**.
 
 At this point, we've created the Internet Gateway, but no traffic is routed to it.
 
