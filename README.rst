@@ -197,8 +197,8 @@ Some of the exercises listed in the table below have two formats. The end of the
    :header-rows: 0
 
    * - ex-101
-     - 
-     - 
+     - Future exercises
+     - TBD
      - 
 
 Additional Resources
