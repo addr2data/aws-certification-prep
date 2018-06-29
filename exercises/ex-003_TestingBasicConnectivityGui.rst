@@ -3,7 +3,7 @@ ex-003: Testing basic connectivity from the AWS Management Console
 
 Status
 ------
-Version 1.0 (6/28/18)
+Version 1.1 (6/29/18)
 
 Dependencies
 ------------
@@ -78,65 +78,90 @@ The following table shows the default limits for the components utilized in this
 
 Preparation
 -----------
-Logon to your AWS accound and navigate to the AWS Management console
+Login to your AWS account and navigate to the AWS Management console.
 
 Create a Security Group
 -----------------------
-We'll create a Security Group will be applied to the Instances created later in this exercise.
+We'll create a Security Group that will be applied to the Instances created later in this exercise.
 
-1. Under the **Services** menu, select **EC2** under *Compute*
-2. On the left-side menu, select **Security Groups** under NETWORK & SECURITY
-3. Click 'Create Security Group'
-4. In the 'Create Security Group' window, set the following values:
-      * Security Group Name: Int2Public
-      * Description: Security Group for Instances
-      * VPC: Select the EX002_VPC
-5. Under Security Group Rules, select the 'Inbound' tab and click 'Add Rule'  
-6. In the Rule definition row, set the following values: 
+1. Under the **Services** menu, select **EC2**, under *Compute*.
+2. From the navigation pane, under **NETWORK & SECURITY**, select **Security Groups**.
+3. Click **Create Security Group**.
+4. In the 'Create Security Group' window, enter the following values:
+
+      * Security Group Name: Int2Public.
+      * Description: Security Group for Instances.
+      * VPC: Select the EX002_VPC.
+5. Under **Security Group Rules**, select the **Inbound** tab.
+6. Click **Add Rule**.
+6. In the Rule definition row, set the following values:
+
       * Type: SSH (this sets protocol to TCP and port to 22)
       * Source: Anywhere (or My IP)
       * Description: Allow SSH inbound
-7. Click **Create**
+7. Click **Create**.
    
 Launch an Instance
 -------------------
-1. On the left-side menu, select **Instances**
-2. Click **Launch Instance**
-3. At the 'Choose an Amazon Machine Image (AMI)' step, check the **Free tier only** check box on the left and select the 'Quick Start' tab.
-4. Click **select** beside ``Ubuntu Server 16.04 LTS (HVM), SSD Volume Type``
-5. At the 'Choose and Instance Type step, select **t2.micro** and click **Next: Configure Instance Details**
-6. At the 'Configure Instance Details step, set the following values and click **Next: Add Storage**:
+1. From the navigation pane, under **INSTANCES**, select **Instances**.
+2. Click **Launch Instance**.
+3. Under **Step 1: Choose an Amazon Machine Image (AMI)**, in the left pane, check the **Free tier only** and select the **Quick Start** tab.
+4. Next to **Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type**, click **select**.
+5. Under **Step 2: Choose an Instance**, select **t2.micro**.
+6. Click **Next: Configure Instance Details**.
+7. Under **Step 3: Configure Instance Details**, set the following values:
+
       * Network: EX002_VPC
       * Subnet: public
       * Everything else: default
-7. At the 'Add Storage' step, make no changes and click **Next: Add Tags**
-8. At the 'Add Tags' step, click **Add Tag**, enter the following, then click **Next: Configure Security Group**
+8. Click **Next: Add Storage**
+9. Under **Step 4: Add Storage**, At the 'Add Storage' step, make no changes.
+10. Click **Next: Add Tags**.
+11. Under **Step 5: Add Tags**, click **Add Tag** and enter the following:
+
       * Key: Name
       * Value: public
-9. At the Configure Security Group step, choose **Select and existing Security Group** the select the Int2Public security group.  Its inbound rules, allowing SSH are displayed
-10. Click **Review and Launch**, then **Launch**
-11. At the 'Select and existing key pair or create a new key pair' window, select your keypair, check the 'I acknowledge..." box and click **Launch Instances**
-12.  Click **View Instances** to watch the creation status.
+12. Click **Next: Configure Security Group**.
+13. Under **Step 6: Configure Security Group**, 
+14. At the Configure Security Group step, select **Select and existing Security Group**, then select the **Int2Public** security group.
+
+    Its inbound rules, allowing SSH are displayed.
+15. Click **Review and Launch**.
+16. Under **Step 7: Review Instance Launch**, click **Launch**.
+17. At the **Select and existing key pair or create a new key pair** window, select your **Key Pair** and check the **'I acknowledge...'**' box.
+18. Click **Launch Instances**.
+19. Click **View Instances** to watch the creation status.
       
 Launch another Instance
 -------------------
 1. While stil in the Instances console
-2. Click **Launch Instance**
-3. At the 'Choose an Amazon Machine Image (AMI)' step, check the **Free tier only** check box on the left and select the 'Quick Start' tab.
-4. Click **select** beside ``Ubuntu Server 16.04 LTS (HVM), SSD Volume Type``
-5. At the 'Choose and Instance Type step, select **t2.micro** and click **Next: Configure Instance Details**
-6. At the 'Configure Instance Details step, set the following values and click **Next: Add Storage**:
+2. Click **Launch Instance**.
+3. Under **Step 1: Choose an Amazon Machine Image (AMI)**, in the left pane, check the **Free tier only** and select the **Quick Start** tab.
+4. Next to **Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type**, click **select**.
+5. Under **Step 2: Choose an Instance**, select **t2.micro**.
+6. Click **Next: Configure Instance Details**.
+7. Under **Step 3: Configure Instance Details**, set the following values:
+
       * Network: EX002_VPC
       * Subnet: private
       * Everything else: default
-7. At the 'Add Storage' step, make no changes and click **Next: Add Tags**
-8. At the 'Add Tags' step, click **Add Tag**, enter the following, then click **Next: Configure Security Group**
+8. Click **Next: Add Storage**
+9. Under **Step 4: Add Storage**, At the 'Add Storage' step, make no changes.
+10. Click **Next: Add Tags**.
+11. Under **Step 5: Add Tags**, click **Add Tag** and enter the following:
+
       * Key: Name
       * Value: private
-9. At the Configure Security Group step, choose **Select and existing Security Group** the select the Int2Public security group.  Its inbound rules, allowing SSH are displayed
-10. Click **Review and Launch**, then **Launch**
-11. At the 'Select and existing key pair or create a new key pair' window, select your keypair, check the 'I acknowledge..." box and click **Launch Instances**
-12. Click **View Instances** to watch the creation status.
+12. Click **Next: Configure Security Group**.
+13. Under **Step 6: Configure Security Group**, 
+14. At the Configure Security Group step, select **Select and existing Security Group**, then select the **Int2Public** security group.
+
+    Its inbound rules, allowing SSH are displayed.
+15. Click **Review and Launch**.
+16. Under **Step 7: Review Instance Launch**, click **Launch**.
+17. At the **Select and existing key pair or create a new key pair** window, select your **Key Pair** and check the **'I acknowledge...'**' box.
+18. Click **Launch Instances**.
+19. Click **View Instances** to watch the creation status.
 
 Once both instances are in the 'running' state, proceed to the next steps
 

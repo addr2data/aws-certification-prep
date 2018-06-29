@@ -59,14 +59,14 @@ The following table shows the default limits for the components utilized in this
 
 Preparation
 -----------
-Logon to the AWS Management console using your AWS account
+Logon to your AWS accound and navigate to the AWS Management console.
 
 Create a VPC
 ------------
 1. From **Services**, select **VPC**.
 2. From the navigation pane, under **Virtual Private Cloud** menu, select **Your VPCs**
 3. Click **Create VPC**
-4. In the **Create VPC** step, enter the following values:
+4. In the **Create VPC** window, enter the following values:
 
     - Name tag: EX002_VPC
     - IPv4 CIDR Block: 10.0.0.0/16
@@ -85,7 +85,7 @@ Create and attach an Internet Gateway
     Notice that the Internet Gateway has been created, but its state is **detached**.
 5. Select the Internet Gateway that you just created.
 6. From the **Actions** menu, select **Attach to VPC**
-7. In the **Attach to VPC** step, select the VPC named **EX002_VPC**, then click **Attach**.
+7. In the **Attach to VPC** window, select the VPC named **EX002_VPC**, then click **Attach**.
 
 At this point, we've created the Internet Gateway, but no traffic is routed to it.
 
@@ -133,7 +133,7 @@ In AWS Subnets, the first address is the network address, the last address is th
 
 1. From the navigation pane, **Virtual Private Cloud**, select **Subnets**.
 2. Click **Create subnet**
-3. In the 'Create Subnet' step, set the following values:
+3. In the **Create Subnet** window, set the following values:
 
     - Name tag: public
     - VPC: Select EX002_VPC
@@ -141,7 +141,7 @@ In AWS Subnets, the first address is the network address, the last address is th
     - IPv4 CIDR Block: 10.0.0.0/23
 4. Click **Create**, then click **Close**.
 5. Click **Create subnet** again
-6. In the 'Create Subnet' step, set the following values:
+6. In the 'Create Subnet' window, set the following values:
 
     - Name tag: private
     - VPC: Select EX002_VPC
@@ -156,7 +156,7 @@ Associate a Subnet with the Route Table
 1. While still in the Subnets dashboard, select the 'public' subnet.  That is, the subnet with the Name of 'public'.
 2. In the bottom part of the page, select the **Route Table** tab.
 3. Click **Edit route table association**.
-4. In the 'Edit route table association' step, select the route table ID of the 'public' route table.
+4. In the 'Edit route table association' window, select the route table ID of the 'public' route table.
 5. Click **save**, then **Close**. Unfortunately, the Name does not appear on the drop down list for selection.  But you'll know you have the right one because there will be a route that uses the Internet Gateway.
 
     Now, you'll see that the 'private' subnet remains associated with the 'private' route table and the 'public' subnet is associated with the 'public' route table.
