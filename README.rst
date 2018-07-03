@@ -140,7 +140,7 @@ First, I would like to thank
 `Brian Ragazzi <https://github.com/BrianRagazzi>`_ 
 for assisting with the exercises in this project.
 
-I will be creating exercises that are primarily use the CLI. Brian will be creating exercises that are primarily use the the Management Console. In addition, he will re-create some my exercises to use the Management Console.
+I will be creating exercises that primarily use the CLI. Brian will be creating exercises that primarily use the the Management Console. In addition, Brian will re-create some my exercises to use the Management Console.
 
 We hope you enjoy using these exercises, as much as we enjoyed building them.
 
