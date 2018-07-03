@@ -144,16 +144,16 @@ for assisting with the exercises in this project.
   - Brian will be creating exercises that primarily use the Management Console.
   - Brian will also be re-creating some of my exercises using the Management Console.
 
-The tables below list the exercises that have been created (or planned) and their format(s). For exercises with two versions, the end result of each version is the same.  
+The tables below list the exercises that have been created (or planned) and their format(s). For exercises with both formats, the end result of each is the same.  
 
-  - CLI - Primarily uses the **awscli** for configuration.
-  - GUI - Primarily used the **AWS Management Console** for configuration.
+  - **CLI** - Primarily uses the **awscli** for configuration.
+  - **GUI** - Primarily used the **AWS Management Console** for configuration.
 
-In addition, exercises will divided into two categories:
+In addition, exercises are divided into two categories:
 
-  - Foundational: The goal of these exercises is to build a foundational understanding of a service. They will focus on the configuration one or more components of a single service. Other services may be introduced and/or utilized during these exercises, but will not be the focus.
+  - **Foundational**: The goal of these exercises is to build a foundational understanding of a service. They will focus on the configuration one or more components of a single service. Other services may be introduced and/or utilized during these exercises, but will not be the focus.
 
-  - Functional: The goal of these exercises is to build functional understanding of multiple services working together. They will focus on the configuration of two or more services to achieve a higher level of functionality.
+  - **Functional**: The goal of these exercises is to build functional understanding of multiple services working together. They will focus on the configuration of two or more services to achieve a higher level of functionality.
 
 
 **We hope you enjoy using these exercises, as much as we enjoyed building them.**
