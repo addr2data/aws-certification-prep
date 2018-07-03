@@ -95,7 +95,7 @@ Tools
 -----
 Initially, I will be working with the following 'tools'. I will update this list as I start to work with others.
 
-- AWS Console (I hope to use this sparingly)
+- AWS Console (I will use this where appropriate)
 - AWS CLI
 - Python3
 - Boto3
@@ -136,9 +136,15 @@ You should familiarize yourself with the following whitepapers before you start.
 
 Exercises
 ---------
-I hope you enjoy using these exercises, as much as we enjoyed building them.
+First, I would like to thank 
+`Brian Ragazzi <https://github.com/BrianRagazzi>`_ 
+for assisting with the exercises in this project.
 
-Some of the exercises listed in the table below have two formats. The end of these exercises is exactly the same:
+I will be creating exercises that are primarily use the CLI. Brian will be creating exercises that are primarily use the the Management Console. In addition, he will re-create some my exercises to use the Management Console.
+
+We hope you enjoy using these exercises, as much as we enjoyed building them.
+
+Some of the exercises listed in the table below have two formats. The end result of these exercises is exactly the same:
 
   - CLI - Primarily uses the **awscli** for configuration.
   - GUI - Primarily used the **AWS Management Console** for configuration.
