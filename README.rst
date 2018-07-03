@@ -213,9 +213,9 @@ Functional
    :widths: 25, 25, 25, 25
    :header-rows: 0
 
-   * - ex-101
-     - Future exercises
-     - TBD
+   * - ex-51
+     - A basic Web Server in AWS ecosystem.
+     - TBA
      - 
 
 Additional Resources
