@@ -158,7 +158,8 @@ In addition, exercises are divided into two categories:
 
 **We hope you enjoy using these exercises, as much as we enjoyed building them.**
 
-**Foundation Exercises**
+Foundational
+~~~~~~~~~~~~
 
 .. list-table::
    :widths: 25, 25, 25, 25
@@ -205,7 +206,8 @@ In addition, exercises are divided into two categories:
      - TBA
      - 
 
-**Level 100 (maybe a project here?)**
+Functional
+~~~~~~~~~~
 
 .. list-table::
    :widths: 25, 25, 25, 25
