@@ -209,27 +209,29 @@ Foundational
 Functional
 ~~~~~~~~~~
 
+**Basic Web Server in AWS ecosystem**
+
 .. list-table::
    :widths: 25, 25, 25, 25
    :header-rows: 0
 
-   * - ex-51
+   * - ex-051
      - Basic Web Server in AWS ecosystem (part 1).
      - TBA
      - 
-   * - ex-52
+   * - ex-052
      - Basic Web Server in AWS ecosystem (part 2).
      - TBA
      - 
-   * - ex-53
+   * - ex-053
      - Basic Web Server in AWS ecosystem (part 3).
      - TBA
      - 
-   * - ex-54
+   * - ex-054
      - Basic Web Server in AWS ecosystem (part 4).
      - TBA
      - 
-   * - ex-55
+   * - ex-055
      - Basic Web Server in AWS ecosystem (part 4).
      - TBA
      - 
