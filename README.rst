@@ -10,7 +10,7 @@ Project Status
    * - Project Start
      - Jun 4, 2018
    * - Latest Update
-     - Jun 29, 2018
+     - Jul 3, 2018
 
 `Change Log <https://github.com/addr2data/aws-certification-prep/blob/master/changelog.rst>`_
 
@@ -18,9 +18,9 @@ Introduction
 ------------
 Recently, I decided to pursue AWS certification. Mostly for career reasons, but also because the ability to spin up infrastructure with a series of API calls fascinates me. I've been playing with AWS EC2, off and on, since 2012, but have never used it in a meaningful way. Considering how much the AWS ecosystem has grown over the years, it seems, I have my work cut out for me.
 
-In addition to certification, I want to become a skilled AWS user. I have a small, but reasonable budget for AWS spend each month. Combine that with the 'free tier eligibility' of the new account I created for this project and I should be able to get a decent amount of hands-on experience. My goal is to work primarily with the AWS CLI, but I also want to get comfortable writing Python scripts that leverage the API directly, so Boto3 (the AWS Python SDK) will be a necessity.  
+In addition to certification, I want to become a highly skilled user of AWS services. I have a small, but reasonable budget for AWS spend each month. Combine that with the 'free tier eligibility' of the new account I created for this project and I should be able to get a decent amount of hands-on experience. My goal is to work primarily with the AWS CLI, but I also want to get comfortable writing Python scripts that leverage the API directly, so Boto3 (the AWS Python SDK) will be a necessity.
 
-I have created this public GitHub project to force myself to be more organized and systematic in my approach. I am approaching this project, as if I am building a training resource for others. I know this approach will help me greatly, but I sincerely hope others will find value in it.
+I have created this public GitHub project to force myself to be more organized and methodical in my approach. I am building out this project, as a training resource for others. I know this approach will help me greatly, but I sincerely hope others will find value in it.
 
 **I expect this project to be a work-in-progress for at least 12 months.**
 

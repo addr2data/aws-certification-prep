@@ -89,16 +89,16 @@ We'll create a Security Group that will be applied to the Instances created late
 3. Click **Create Security Group**.
 4. In the 'Create Security Group' window, enter the following values:
 
-      * Security Group Name: Int2Public.
-      * Description: Security Group for Instances.
-      * VPC: Select the EX002_VPC.
+      - Security Group Name: Int2Public.
+      - Description: Security Group for Instances.
+      - VPC: Select the EX002_VPC.
 5. Under **Security Group Rules**, select the **Inbound** tab.
 6. Click **Add Rule**.
 7. In the Rule definition row, set the following values:
 
-      * Type: SSH (this sets protocol to TCP and port to 22)
-      * Source: Anywhere (or My IP)
-      * Description: Allow SSH inbound
+      - Type: SSH (this sets protocol to TCP and port to 22)
+      - Source: Anywhere (or My IP)
+      - Description: Allow SSH inbound
 8. Click **Create**.
    
 Launch an Instance
@@ -111,16 +111,16 @@ Launch an Instance
 6. Click **Next: Configure Instance Details**.
 7. Under **Step 3: Configure Instance Details**, set the following values:
 
-      * Network: EX002_VPC
-      * Subnet: public
-      * Everything else: default
+      - Network: EX002_VPC
+      - Subnet: public
+      - Everything else: default
 8. Click **Next: Add Storage**
 9. Under **Step 4: Add Storage**, At the 'Add Storage' step, make no changes.
 10. Click **Next: Add Tags**.
 11. Under **Step 5: Add Tags**, click **Add Tag** and enter the following:
 
-      * Key: Name
-      * Value: public
+      - Key: Name
+      - Value: public
 12. Click **Next: Configure Security Group**.
 13. Under **Step 6: Configure Security Group**, 
 14. At the Configure Security Group step, select **Select and existing Security Group**, then select the **Int2Public** security group.
@@ -142,16 +142,16 @@ Launch another Instance
 6. Click **Next: Configure Instance Details**.
 7. Under **Step 3: Configure Instance Details**, set the following values:
 
-      * Network: EX002_VPC
-      * Subnet: private
-      * Everything else: default
+      - Network: EX002_VPC
+      - Subnet: private
+      - Everything else: default
 8. Click **Next: Add Storage**
 9. Under **Step 4: Add Storage**, At the 'Add Storage' step, make no changes.
 10. Click **Next: Add Tags**.
 11. Under **Step 5: Add Tags**, click **Add Tag** and enter the following:
 
-      * Key: Name
-      * Value: private
+      - Key: Name
+      - Value: private
 12. Click **Next: Configure Security Group**.
 13. Under **Step 6: Configure Security Group**, 
 14. At the Configure Security Group step, select **Select and existing Security Group**, then select the **Int2Public** security group.
