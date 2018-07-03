@@ -140,14 +140,16 @@ First, I would like to thank
 `Brian Ragazzi <https://github.com/BrianRagazzi>`_ 
 for assisting with the exercises in this project.
 
-I will be creating exercises that primarily use the CLI. Brian will be creating exercises that primarily use the Management Console. In addition, Brian will re-create some of my exercises to use the Management Console.
+  - I will be creating exercises that primarily use the CLI.
+  - Brian will be creating exercises that primarily use the Management Console.
+  - In addition, Brian will re-create some of my exercises using the Management Console.
 
-We hope you enjoy using these exercises, as much as we enjoyed building them.
-
-The tables below list the exercises we have created and their format(s). For exercises with both formats, the end result of both versions is the same.  
+The tables below list the exercises that have been created (or planned) and their format(s). For exercises with two versions, the end result of each version is the same.  
 
   - CLI - Primarily uses the **awscli** for configuration.
   - GUI - Primarily used the **AWS Management Console** for configuration.
+
+**We hope you enjoy using these exercises, as much as we enjoyed building them.**
 
 **Foundation Exercises**
 
