@@ -214,9 +214,26 @@ Functional
    :header-rows: 0
 
    * - ex-51
-     - A basic Web Server in AWS ecosystem.
+     - Basic Web Server in AWS ecosystem (part 1).
      - TBA
      - 
+   * - ex-52
+     - Basic Web Server in AWS ecosystem (part 2).
+     - TBA
+     - 
+   * - ex-53
+     - Basic Web Server in AWS ecosystem (part 3).
+     - TBA
+     - 
+   * - ex-54
+     - Basic Web Server in AWS ecosystem (part 4).
+     - TBA
+     - 
+   * - ex-55
+     - Basic Web Server in AWS ecosystem (part 4).
+     - TBA
+     - 
+
 
 Additional Resources
 --------------------
