@@ -199,11 +199,11 @@ Foundational
      - 
    * - ex-009
      - Getting started with S3
-     - TBA
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-009_GettingStartedS3.rst>`_
      - 
    * - ex-010
      - Getting started with RDS
-     - TBA
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-010_GettingStartedRds.rst>`_
      - 
 
 Functional
