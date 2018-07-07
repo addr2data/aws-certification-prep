@@ -136,7 +136,7 @@ for assisting with the exercises in this project.
 
 The approach taken in these exercises is to limit manual configuration of components (via CLI or GUI) to only once. Starting in exercise **ex-004**, components that were manually configured previously, become definitions in **CloudFormation** templates and deployed as a **CloudFormation** stack.     
 
-The tables below list the exercises that have been created (or planned) and their format(s). For exercises with both formats, the end result of each is the same.  
+The tables below list the exercises that have been created (or planned) and their format(s). For exercises that have both formats, the end result of using either format is the same.  
 
   - **CLI** - Primarily uses the **awscli** for configuration.
   - **GUI** - Primarily used the **AWS Management Console** for configuration.
