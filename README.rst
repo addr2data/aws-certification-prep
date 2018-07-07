@@ -20,7 +20,7 @@ Recently, I decided to pursue AWS certification. Mostly for career reasons, but 
 
 In addition to certification, I want to become a highly skilled user of AWS services. I have a small, but reasonable budget for AWS spend each month. Combine that with the 'free tier eligibility' of the new account I created for this project and I should be able to get a decent amount of hands-on experience. My goal is to work primarily with the AWS CLI, but I also want to get comfortable writing Python scripts that leverage the API directly, so Boto3 (the AWS Python SDK) will be a necessity.
 
-I have created this public GitHub project to force myself to be more organized and methodical in my approach. I am building out this project, as a training resource for others. I know this approach will help me greatly, but I sincerely hope others will find value in it.
+I have created this public GitHub project to force myself to be more organized and methodical in my approach. I am building out this project as a training resource for others. I know this approach will help me greatly, but I sincerely hope others will find value in it.
 
 **I expect this project to be a work-in-progress for at least 12 months.**
 
