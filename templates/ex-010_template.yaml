@@ -1,0 +1,171 @@
+---
+Parameters:
+  KeyPairName:
+    Type: String
+    Default: acpkey1
+    Description: Name of existing KeyPair
+
+Mappings: 
+  RegionMap: 
+    us-east-1: 
+      "64": "ami-a4dc46db"
+    us-east-2: 
+      "64": "ami-6a003c0f"
+    us-west-1:
+      "64": "ami-8d948ced"
+    us-west-2:
+      "64": "ami-db710fa3"
+    ca-central-1:
+      "64": "ami-7e21a11a"
+    eu-west-1:
+      "64": "ami-58d7e821"
+    eu-west-2:
+      "64": "ami-5daa463a"
+    eu-west-3:
+      "64": "ami-1960d164"
+    eu-central-1:
+      "64": "ami-c7e0c82c"
+    ap-northeast-1:
+      "64": "ami-48a45937"
+    ap-northeast-2:
+      "64": "ami-f030989e"
+    ap-southeast-1:
+      "64": "ami-81cefcfd"
+    ap-southeast-2:
+      "64": "ami-963cecf4"
+    ap-south-1:
+      "64": "ami-41e9c52e"
+    sa-east-1:
+      "64": "ami-67fca30b"
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties: 
+      CidrBlock: 10.0.0.0/16
+      Tags:
+        - Key: Name
+          Value: vpc_ex010
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties: 
+      Tags:
+        - Key: Name
+          Value: ig_ex010
+
+  AttachInternetGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties: 
+      InternetGatewayId: !Ref InternetGateway
+      VpcId: !Ref VPC
+
+  RouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties: 
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: rtb_pub_ex010
+
+  DefaultRoute:
+    Type: AWS::EC2::Route
+    Properties: 
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+      RouteTableId: !Ref RouteTable
+    DependsOn: AttachInternetGateway
+
+  SubnetPublic:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.0.0/20
+      Tags:
+        - Key: Name
+          Value: subnet_pub_ex010
+      VpcId: !Ref VPC
+  
+  SubnetPrivate1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.16.0/20
+      AvailabilityZone: !Select 
+        - 0
+        - Fn::GetAZs: !Ref 'AWS::Region'
+      Tags:
+        - Key: Name
+          Value: subnet_pri_1_ex010
+      VpcId: !Ref VPC
+  
+  SubnetPrivate2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.32.0/20
+      AvailabilityZone: !Select 
+        - 1
+        - Fn::GetAZs: !Ref 'AWS::Region'
+      Tags:
+        - Key: Name
+          Value: subnet_pri_2_ex010
+      VpcId: !Ref VPC
+
+  AssociateSubnetRouteTable:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: 
+      RouteTableId: !Ref RouteTable
+      SubnetId: !Ref SubnetPublic
+
+  SecurityGroupInstance:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupName: sg_i_ex010
+      GroupDescription: "Security Group for ex-010"
+      SecurityGroupIngress:
+        - 
+          CidrIp: 0.0.0.0/0
+          IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+      VpcId: !Ref VPC
+
+  SecurityGroupRds:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupName: sg_rds_ex010
+      GroupDescription: "Security Group for ex-010"
+      SecurityGroupIngress:
+        - 
+          CidrIp: 10.0.0.0/16
+          IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+      VpcId: !Ref VPC
+
+  PublicInstance:
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+      InstanceType: t2.micro
+      KeyName:  !Ref KeyPairName
+      NetworkInterfaces: 
+        - AssociatePublicIpAddress: "true"
+          DeviceIndex: "0"
+          SubnetId: !Ref SubnetPublic
+          GroupSet:
+            - !Ref SecurityGroupInstance
+      Tags: 
+        - Key: Name
+          Value: i_ex010
+      UserData: !Base64
+        "Fn::Join":
+          - "\n"
+          -
+            - "#!/bin/bash"
+            - "sudo apt-get update"
+            - "sudo apt-get dist-upgrade -y"
+            - "sudo apt-get install python3-pip -y"
+            - "pip3 install awscli"
+            - "sudo apt-get install mysql-client -y" 
+    DependsOn: DefaultRoute
+
+...
