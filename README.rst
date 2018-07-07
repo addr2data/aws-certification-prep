@@ -16,7 +16,7 @@ Project Status
 
 Introduction
 ------------
-Recently, I decided to pursue AWS certification. Mostly for career reasons, but also because the concept of *Infrastructure as Code* fascinates me. I've been playing with AWS EC2, off and on, since 2012, but have never used it in a meaningful way. Considering how much the AWS ecosystem has grown over the years, it seems, I have my work cut out for me.
+Recently, I decided to pursue AWS certification. Mostly for career reasons, but also because the concept of **Infrastructure as Code** fascinates me. I've been playing with AWS EC2, off and on, since 2012, but have never used it in a meaningful way. Considering how much the AWS ecosystem has grown over the years, it seems, I have my work cut out for me.
 
 In addition to certification, I want to become a highly skilled user of AWS services. I have a small, but reasonable budget for AWS spend each month. Combine that with the 'free tier eligibility' of the new account I created for this project and I should be able to get a decent amount of hands-on experience. My goal is to work primarily with the AWS CLI, but I also want to get comfortable writing Python scripts that leverage the API directly, so Boto3 (the AWS Python SDK) will be a necessity.
 
@@ -26,7 +26,7 @@ I have created this public GitHub project to force myself to be more organized a
 
 Certifications
 --------------
-My intention is to pursue the following certifications. I choose the **Solution Architect** certifications, because I felt they would provide, from a career perspective, the most bang for my buck, . I added the **Advanced Networking** certification, because I have a strong interest in networking. It is possible these choices will change over time, but for now, this is the plan.  
+My intention is to pursue the following certifications. I chose the two levels **Solution Architect** certification, because I felt that provides, from a career perspective, the most bang for my buck, . I added the **Advanced Networking** certification, because I have a strong interest in networking. It is possible these choices will change over time, but for now, this is the plan.  
 
 -  AWS Certified Solutions Architect – Associate
 -  AWS Certified Advanced Networking – Specialty
