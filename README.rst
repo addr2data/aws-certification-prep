@@ -100,21 +100,9 @@ Initially, I will be working with the following 'tools'. I will update this list
 - Python3
 - Boto3
 
-Approach
---------
-As I develop my knowledge and prepare for the exams listed above, I will be using the following process (for multiple services in parallel).
 
-1. Learn the basics of a service.
-2. Get comfortable with the basic configuration and use of that service.
-3. Build some basic exercises that others could follow and in the process solidify my own understanding.
-4. Dig deeper into that service. Get comfortable with advanced configuration, use and design considerations.
-5. Build some advanced exercises that others could follow and in the process solidify my own understanding.
-6. Understand how that service fits into an overall architecture.
-7. Be able to discuss that service with others, in a sales/services context.
-8. Rinse and repeat.
-
-Regarding the exercises in this project
----------------------------------------
+AWS Costs
+---------
 Following the exercises in this project will generate costs to your AWS account. These should be relatively small, especially if you are new to AWS (increased eligibility for free-tier). An explanation of the expected costs will be provided at the beginning of each exercise.
 
 Account Setup
