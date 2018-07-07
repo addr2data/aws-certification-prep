@@ -181,26 +181,26 @@ Foundational
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-006_GettingStartedLoadBalancing.rst>`_
      - 
    * - ex-007
-     - Working with EBS 
+     - Working with EBS (draft)
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-007_WorkingEbs.rst>`_
      - 
    * - ex-008
-     - Getting started with Snapshots 
+     - Getting started with Snapshots (draft) 
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-008_GettingStartedSnapshots.rst>`_
      - 
    * - ex-009
-     - Getting started with S3
+     - Getting started with S3 (draft)
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-009_GettingStartedS3.rst>`_
      - 
    * - ex-010
-     - Getting started with RDS
+     - Getting started with RDS (draft)
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-010_GettingStartedRds.rst>`_
      - 
 
 Functional
 ~~~~~~~~~~
 
-**Basic Web Server in AWS ecosystem**
+**Build a basic Web Server in AWS ecosystem**
 
 .. list-table::
    :widths: 25, 25, 25, 25
