@@ -200,33 +200,32 @@ Foundational
 Functional
 ~~~~~~~~~~
 
-**Build a basic Web Server in AWS ecosystem**
+**Build a basic Web Site in the AWS ecosystem**
 
 .. list-table::
    :widths: 25, 25, 25, 25
    :header-rows: 0
 
    * - ex-051
-     - Basic Web Server in AWS ecosystem (part 1).
+     - Built a basic Web Site in the AWS ecosystem (part 1).
      - TBA
      - 
    * - ex-052
-     - Basic Web Server in AWS ecosystem (part 2).
+     - Built a basic Web Site in the AWS ecosystem (part 2).
      - TBA
      - 
    * - ex-053
-     - Basic Web Server in AWS ecosystem (part 3).
+     - Built a basic Web Site in the AWS ecosystem (part 3).
      - TBA
      - 
    * - ex-054
-     - Basic Web Server in AWS ecosystem (part 4).
+     - Built a basic Web Site in the AWS ecosystem (part 4).
      - TBA
      - 
    * - ex-055
-     - Basic Web Server in AWS ecosystem (part 4).
+     - Built a basic Web Site in the AWS ecosystem (part 5).
      - TBA
      - 
-
 
 Additional Resources
 --------------------
