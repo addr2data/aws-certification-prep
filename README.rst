@@ -45,7 +45,7 @@ AWS Services
 The following table is provided to show two things:
 
 	- Which AWS services are currently in scope for the project.
-	- At what level, a particular AWS service, has been incorporated into the exercises I provide below.
+	- At what level, a particular AWS service, has been incorporated into the exercises provided below.
 
 Expect this table to change frequently, as new exercises are added.
 
