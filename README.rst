@@ -134,7 +134,7 @@ for assisting with the exercises in this project.
   - Brian will be creating exercises that primarily use the Management Console.
   - Brian will also be re-creating some of my exercises using the Management Console.
 
-The approach taken in these exercises is to limit manual configuration of components (via CLI or GUI) to only once. Starting in exercise **ex-004**, components manually configured previously are moved into templates and deployed with **CloudFormation**.     
+The approach taken in these exercises is to limit manual configuration of components (via CLI or GUI) to only once. Starting in exercise **ex-004**, components that were manually configured previously, become definitions in **CloudFormation** templates and deployed using **CloudFormation**.     
 
 
 The tables below list the exercises that have been created (or planned) and their format(s). For exercises with both formats, the end result of each is the same.  
