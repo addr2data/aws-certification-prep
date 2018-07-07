@@ -105,6 +105,8 @@ AWS Costs
 ---------
 Following the exercises in this project will generate costs to your AWS account. These should be relatively small, especially if you are new to AWS (increased eligibility for free-tier). An explanation of the expected costs will be provided at the beginning of each exercise.
 
+As a point of reference, my bill for Jun 2018 was $2.03 USD. 
+
 Account Setup
 -------------
 If you follow along with this project. You will need to set up some accounts. Here are the links.
