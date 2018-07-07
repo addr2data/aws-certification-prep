@@ -143,10 +143,9 @@ The tables below list the exercises that have been created (or planned) and thei
 
 In addition, exercises are divided into two categories:
 
-  - **Foundational**: The goal of these exercises is to build a foundational understanding of a service. They will focus on the configuration one or more components of a single service. Other services may be introduced and/or utilized during these exercises, but will not be the focus.
+  - **Foundational**: The goal of these exercises is to build a foundational understanding of a single AWS service. They will focus on the configuration of one or more components of that service. Other services may be introduced and/or utilized during these exercises, but are not the focus.
 
-  - **Functional**: The goal of these exercises is to build functional understanding of multiple services working together. They will focus on the configuration of two or more services to achieve a higher level of functionality.
-
+  - **Functional**: The goal of these exercises is to build a functional understanding of multiple AWS services working together. They will focus on the configuration of two or more services to achieve a higher level of functionality.
 
 **We hope you enjoy using these exercises, as much as we enjoyed building them.**
 
