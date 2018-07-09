@@ -954,7 +954,7 @@ Using 'curl' or your browser test connectivity. Rerun/refresh a few times to mak
 
 Explanation of results
 ----------------------
-The Security Group that is applied to Application Load-balancer allows HTTP (tcp port 80) from anywhere (0.0.0.0/0) and the Network Load-balancer does use Security Groups, so no issue there. 
+The Security Group that is applied to the Application Load-balancer allows HTTP (tcp port 80) from anywhere (0.0.0.0/0) and the Network Load-balancer does use Security Groups, so no issue there. 
 
 .. code-block::
 
@@ -971,13 +971,11 @@ The Security Group that is applied to Application Load-balancer allows HTTP (tcp
             ToPort: 80
         VpcId: !Ref VPC
 
-The Security Group that is applied to Web Server only allows HTTP (tcp port 80) from inside the VPC (10.0.0.0/16).
+The Security Group that is applied to the Web Servers only allows HTTP (tcp port 80) from inside the VPC (10.0.0.0/16).
 
     The Application Load-balancer changes the source IP of packets it receives to it's private IP address, so those packets are not blocked by the Security Group rule.
 
     The Network Load-balancer does NOT change the source IP of packets it receives, so those packets are blocked by the Security Group rule.
-
-
 
 .. code-block::
 
