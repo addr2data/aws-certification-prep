@@ -375,5 +375,5 @@ Summary
 
 Next steps
 ----------
-In `ex-008 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-008_GettingStartedS3.rst>`_, we will get started with S3.
+In `ex-008 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-008_GettingStartedSnapshots.rst>`_, we will get started with Snapshots.
 
