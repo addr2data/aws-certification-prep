@@ -330,7 +330,7 @@ Additional information for the above parameters:
         + **'application'**: Operates at Layer 7 (defaults to application, so we could have left this parameter off).
         + **'network'**: Operates at Layer 4.
    * - '--ip-address-type ipv4'
-     - Support both ipv4 and ipv6
+     - Application Load-balancer can support both ipv4 and ipv6
    * - '--subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2'
      - 
         + You can only select one Subnet per AZ.
@@ -560,11 +560,11 @@ Output:
     {
         "TargetGroups": [
             {
-                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-tg-app-lb/0b032c5c32662419",
+                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:targetgroup/ex-006-tg-app-lb/xxxxxxxxxxxxxxxx",
                 "TargetGroupName": "ex-006-tg-app-lb",
                 "Protocol": "HTTP",
                 "Port": 80,
-                "VpcId": "vpc-04cced054b30f4f5e",
+                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
                 "HealthCheckProtocol": "HTTP",
                 "HealthCheckPort": "traffic-port",
                 "HealthCheckIntervalSeconds": 30,
@@ -605,11 +605,11 @@ Output:
     {
         "TargetGroups": [
             {
-                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-tg-net-lb/3976e7342f0b8919",
+                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:targetgroup/ex-006-tg-net-lb/xxxxxxxxxxxxxxxx",
                 "TargetGroupName": "ex-006-tg-net-lb",
                 "Protocol": "TCP",
                 "Port": 80,
-                "VpcId": "vpc-04cced054b30f4f5e",
+                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
                 "HealthCheckProtocol": "TCP",
                 "HealthCheckPort": "traffic-port",
                 "HealthCheckIntervalSeconds": 30,
@@ -680,7 +680,7 @@ Output:
         "TargetHealthDescriptions": [
             {
                 "Target": {
-                    "Id": "i-001be98c6bfeed002",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "TargetHealth": {
@@ -691,7 +691,7 @@ Output:
             },
             {
                 "Target": {
-                    "Id": "i-095ee1021fe24e629",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "TargetHealth": {
@@ -718,7 +718,7 @@ Output:
         "TargetHealthDescriptions": [
             {
                 "Target": {
-                    "Id": "i-001be98c6bfeed002",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "TargetHealth": {
@@ -729,7 +729,7 @@ Output:
             },
             {
                 "Target": {
-                    "Id": "i-095ee1021fe24e629",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "TargetHealth": {
@@ -741,7 +741,7 @@ Output:
         ]
     }
 
-You can see that **'State'** is **'unused'**. We need to create a **Listener**, before the Targets can be used.
+You can see that **'State'** is **'unused'**. We need to create a **Listener** before the Targets can be used.
 
 
 Create Listener for each Load-balancer
@@ -766,14 +766,14 @@ Output:
     {
         "Listeners": [
             {
-                "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:listener/app/ex-006-app-lb/ae217e08b276e26c/07d100a1682aade2",
-                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/app/ex-006-app-lb/ae217e08b276e26c",
+                "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:listener/app/ex-006-app-lb/xxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxx",
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:loadbalancer/app/ex-006-app-lb/xxxxxxxxxxxxxxxx",
                 "Port": 80,
                 "Protocol": "HTTP",
                 "DefaultActions": [
                     {
                         "Type": "forward",
-                        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-tg-app-lb/0b032c5c32662419"
+                        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-tg-app-lb/xxxxxxxxxxxxxxxx"
                     }
                 ]
             }
@@ -800,14 +800,14 @@ Output:
     {
         "Listeners": [
             {
-                "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:listener/net/ex-006-net-lb/f214eee525fe8130/cfb4c68d5823aa36",
-                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/net/ex-006-net-lb/f214eee525fe8130",
+                "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:listener/net/ex-006-net-lb/xxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxx",
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:loadbalancer/net/ex-006-net-lb/xxxxxxxxxxxxxxxx",
                 "Port": 80,
                 "Protocol": "TCP",
                 "DefaultActions": [
                     {
                         "Type": "forward",
-                        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-006-tg-net-lb/3976e7342f0b8919"
+                        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:targetgroup/ex-006-tg-net-lb/xxxxxxxxxxxxxxxx"
                     }
                 ]
             }
