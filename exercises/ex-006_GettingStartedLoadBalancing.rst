@@ -1007,7 +1007,11 @@ Let's add a rule to security group for the Web Servers that allows HTTP (TCP por
 
 .. code-block::
 
- aws ec2 authorize-security-group-ingress --group-id $EX006_SG_WEB --protocol tcp --port 80 --cidr 0.0.0.0/0
+ aws ec2 authorize-security-group-ingress \
+    --group-id $EX006_SG_WEB \
+    --protocol tcp \
+    --port 80 \
+    --cidr 0.0.0.0/0
 
 Test connectivity
 ~~~~~~~~~~~~~~~~~
@@ -1018,7 +1022,6 @@ Using 'curl' or your browser test connectivity. Rerun/refresh a few times to mak
 .. code-block::
 
     curl http://ex-006-net-lb-xxxxxxxxxxxxxxxx.elb.us-east-1.amazonaws.com
-
 
 Clean up
 --------
