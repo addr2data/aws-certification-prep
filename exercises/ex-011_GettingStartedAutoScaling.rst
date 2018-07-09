@@ -65,6 +65,5 @@ Summary
 
 Next steps
 ----------
-To be added, in 
-`ex-xxx <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/<name-of-file>>`_
+To be added.
 
