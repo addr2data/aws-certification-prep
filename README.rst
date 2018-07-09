@@ -10,7 +10,7 @@ Project Status
    * - Project Start
      - Jun 4, 2018
    * - Latest Update
-     - Jul 7, 2018
+     - Jul 9, 2018
 
 `Change Log <https://github.com/addr2data/aws-certification-prep/blob/master/changelog.rst>`_
 
@@ -196,6 +196,11 @@ Foundational
      - Getting started with RDS (draft)
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-010_GettingStartedRds.rst>`_
      - 
+   * - ex-011
+     - Getting started with Auto Scaling (draft)
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-011_GettingStartedAutoScaling.rst>`_
+     - 
+
 
 Functional
 ~~~~~~~~~~
