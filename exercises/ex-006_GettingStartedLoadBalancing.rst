@@ -919,7 +919,6 @@ Using 'curl' or your browser test connectivity. Rerun/refresh a few times to mak
 
 .. code-block::
 
-    curl http://<dns-name-load-balancer>
     curl http://ex-006-app-lb-xxxxxxxxxx.us-east-1.elb.amazonaws.com
 
 
@@ -930,13 +929,16 @@ DNS Name
 ~~~~~~~~
 .. code-block::
 
-    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_NET_LB --output text --query LoadBalancers[*].DNSName
+    aws elbv2 describe-load-balancers \
+      --load-balancer-arns $EX006_NET_LB \
+      --output text \
+      --query LoadBalancers[*].DNSName
 
 Output:
 
 .. code-block::
 
-    ex-006-net-lb-f214eee525fe8130.elb.us-east-1.amazonaws.com
+    ex-006-net-lb-xxxxxxxxxxxxxxxx.elb.us-east-1.amazonaws.com
 
 Test connectivity
 ~~~~~~~~~~~~~~~~~
@@ -946,8 +948,7 @@ Using 'curl' or your browser test connectivity. Rerun/refresh a few times to mak
 
 .. code-block::
 
-    curl http://<dns-name-load-balancer>
-    curl http://ex-006-net-lb-f214eee525fe8130.elb.us-east-1.amazonaws.com
+    curl http://ex-006-net-lb-xxxxxxxxxxxxxxxx.elb.us-east-1.amazonaws.com
 
     Cntrl-c to kill
 
