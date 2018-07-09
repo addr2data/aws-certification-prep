@@ -375,6 +375,5 @@ Summary
 
 Next steps
 ----------
-To be added, in 
-`ex-xxx <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/<name-of-file>>`_
+In `ex-008 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-008_GettingStartedS3.rst>`_, we will get started with S3.
 
