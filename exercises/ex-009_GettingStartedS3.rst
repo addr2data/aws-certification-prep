@@ -65,6 +65,4 @@ Summary
 
 Next steps
 ----------
-To be added, in 
-`ex-xxx <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/<name-of-file>>`_
-
+In `ex-010 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-010_GettingStartedRds.rst>`_, we will get started with RDS.
