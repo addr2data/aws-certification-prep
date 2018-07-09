@@ -954,7 +954,7 @@ Using 'curl' or your browser test connectivity. Rerun/refresh a few times to mak
 
 Explanation of results
 ----------------------
-The Security Group that is applied to the Application Load-balancer allows HTTP (tcp port 80) from anywhere (0.0.0.0/0) and the Network Load-balancer does use Security Groups, so no issue there. 
+The Security Group that is applied to the Application Load-balancer allows HTTP (TCP port 80) from anywhere (0.0.0.0/0) and the Network Load-balancer does use Security Groups, so no issue there. 
 
 .. code-block::
 
@@ -971,7 +971,7 @@ The Security Group that is applied to the Application Load-balancer allows HTTP 
             ToPort: 80
         VpcId: !Ref VPC
 
-The Security Group that is applied to the Web Servers only allows HTTP (tcp port 80) from inside the VPC (10.0.0.0/16).
+The Security Group that is applied to the Web Servers only allows HTTP (TCP port 80) from inside the VPC (10.0.0.0/16).
 
     The Application Load-balancer changes the source IP of packets it receives to it's private IP address, so those packets are not blocked by the Security Group rule.
 
@@ -1003,33 +1003,21 @@ Resolve the issue
 
 Add a rule
 ~~~~~~~~~~
+Let's add a rule to security group for the Web Servers that allows HTTP (TCP port 80) from anywhere (0.0.0.0/0)
 
 .. code-block::
 
  aws ec2 authorize-security-group-ingress --group-id $EX006_SG_WEB --protocol tcp --port 80 --cidr 0.0.0.0/0
 
-DNS Name
-~~~~~~~~
-.. code-block::
-
-    aws elbv2 describe-load-balancers --load-balancer-arns $EX006_NET_LB --output text --query LoadBalancers[*].DNSName
-
-Output:
-
-.. code-block::
-
-    ex-006-net-lb-f214eee525fe8130.elb.us-east-1.amazonaws.com
-
 Test connectivity
 ~~~~~~~~~~~~~~~~~
 Using 'curl' or your browser test connectivity. Rerun/refresh a few times to make sure you see the host name of both Web Servers.
 
-**Expected result:** Fail
+**Expected result:** Success
 
 .. code-block::
 
-    curl http://<dns-name-load-balancer>
-    curl http://ex-006-net-lb-f214eee525fe8130.elb.us-east-1.amazonaws.com
+    curl http://ex-006-net-lb-xxxxxxxxxxxxxxxx.elb.us-east-1.amazonaws.com
 
 
 Clean up
