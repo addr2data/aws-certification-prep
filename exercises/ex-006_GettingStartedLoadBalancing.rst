@@ -101,7 +101,7 @@ For our starting configuration, we will create a CloudFormation **Stack** from a
 
 **Notable item**
 
-When creating an Application Load-balancer, you must specify at least two Subnets, from different Availability Zones. In order to achieve this in the Template, a couple of CloudFormation built-in functions will used.
+When creating an Application Load-balancer, you must specify at least two Subnets, from different Availability Zones. In order to achieve this, a couple of CloudFormation built-in functions will be used in the Template
 
 Note: The Network Load-balancer does not have this requirement.
 
@@ -174,7 +174,7 @@ Explanation:
 
     - The **UserData** property allows us to specify commands to run at Instance startup.
     - **Fn::Join** allows us to join each command with newline character.
-    - **!Base64** encodes the data for transfer to the Instance.
+    - **!Base64** encodes the data for transmission to the Instance.
 
 Create Stack
 ------------
