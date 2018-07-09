@@ -101,7 +101,7 @@ For our starting configuration, we will create a CloudFormation **Stack** from a
 
 **Notable item**
 
-When creating an Application Load-balancer, you must specify at least two Subnets, from different Availability Zones. In order to achieve this in the Template, a couple of functions built into CloudFormation Templates are used.
+When creating an Application Load-balancer, you must specify at least two Subnets, from different Availability Zones. In order to achieve this in the Template, a couple of CloudFormation built-in functions will used.
 
 Note: The Network Load-balancer does not have this requirement.
 
