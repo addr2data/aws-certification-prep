@@ -1100,4 +1100,4 @@ Summary
 
 Next steps
 ----------
-tbd 
+In `ex-007 <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-006_WorkingEbs.rst>`_, we will become familiar with managing EBS volumes. 
