@@ -87,7 +87,7 @@ Setting environment variables may be different on different OSs. Please refer to
 
 Template
 --------
-In order to build our starting configuration, we will create a CloudFormation **Stack** from a Template. Please review **'ex-006_template.yaml'** in the **'templates'** directory.
+For our starting configuration, we will create a CloudFormation **Stack** from a Template. Please review **'ex-006_template.yaml'** in the **'templates'** directory.
 
 **Highlights**
 
@@ -96,7 +96,7 @@ In order to build our starting configuration, we will create a CloudFormation **
     - A Subnet for each Web Server (10.0.0.0/24 and 10.0.1.0/24), each in a different Availability Zone 
     - A Subnet for the Jumpbox (10.0.100.0/24)
     - A Security Group for the Jumpbox that allows **SSH** from anywhere (0.0.0.0/0).
-    - A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet and **HTTP** from anywhere in the VPC (10.0.0.0/16)
+    - A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet (10.0.100.0/24) and **HTTP** from anywhere in the VPC (10.0.0.0/16)
     - A Security Group for the Load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
 
 **Notable item**
