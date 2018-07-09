@@ -834,7 +834,7 @@ Output:
         "TargetHealthDescriptions": [
             {
                 "Target": {
-                    "Id": "i-001be98c6bfeed002",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "HealthCheckPort": "80",
@@ -844,7 +844,7 @@ Output:
             },
             {
                 "Target": {
-                    "Id": "i-095ee1021fe24e629",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "HealthCheckPort": "80",
@@ -870,7 +870,7 @@ Output:
         "TargetHealthDescriptions": [
             {
                 "Target": {
-                    "Id": "i-001be98c6bfeed002",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "HealthCheckPort": "80",
@@ -880,7 +880,7 @@ Output:
             },
             {
                 "Target": {
-                    "Id": "i-095ee1021fe24e629",
+                    "Id": "i-xxxxxxxxxxxxxxxxx",
                     "Port": 80
                 },
                 "HealthCheckPort": "80",
