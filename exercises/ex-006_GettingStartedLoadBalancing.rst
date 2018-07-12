@@ -50,8 +50,10 @@ The activities in this exercise may result in charges to your AWS account.
         + Between $0.045 and $0.093 per hour, depending on Region.
         + Between $0.045 and $0.093 per GB of data processed, depending on Region.
      - 
-        + The NAT Gateway created during this exercise should not need to run for more than a hour or so.
-        + A small amount of data will be processed through the NAT Gateway.
+        + We will create a NAT Gateway during this exercise.
+        + It will be created as part of a CloudFormation Stack. 
+        + It should not need to run for more than a hour or so.
+        + A small amount of data will be processed through it.
    * - Application Load-balancing
      - 
         + Between $0.0225 and $0.034 per Application Load Balancer-hour (or partial hour), depending on your region.
