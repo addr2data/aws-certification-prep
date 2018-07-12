@@ -37,21 +37,22 @@ The activities in this exercise may result in charges to your AWS account.
      - 
         + None (AWS does not charge for these basic VPC building blocks)
      - 
-        + These basic VPC components will be created as part of the CloudFormation Stack. 
+        + During this exercise, we will deploy basic VPC components.
+        + They will be deployed as part of the CloudFormation Stack. 
    * - On-demand Instances
      - 
         + $0.0116 per hour per Instance (t2.micro)
      - 
-        + During this exercise, we will us three (3) Instances. The AMI that will be used is **'Ubuntu Server 16.04 LTS'**, which combined with the **'t2.micro'** Instance Type, is **'Free tier eligible'**.
-        + These Instances will be launched as part of a CloudFormation Stack. 
-        + It is not expected that these Instances will need to be running for more than one hour. 
+        + During this exercise, we will deploy two (2) Instances. The AMI that will be used is **'Ubuntu Server 16.04 LTS'**, which combined with the **'t2.micro'** Instance Type, is **'Free tier eligible'**.
+        + They will be deployed as part of a CloudFormation Stack. 
+        + They should not need to run for more than a hour or so.
    * - NAT Gateway
      - 
         + Between $0.045 and $0.093 per hour, depending on Region.
         + Between $0.045 and $0.093 per GB of data processed, depending on Region.
      - 
-        + We will create a NAT Gateway during this exercise.
-        + It will be created as part of a CloudFormation Stack. 
+        + During this exercise, we will deploy a NAT Gateway.
+        + It will be deployed as part of a CloudFormation Stack. 
         + It should not need to run for more than a hour or so.
         + A small amount of data will be processed through it.
    * - Application Load-balancing
@@ -59,21 +60,25 @@ The activities in this exercise may result in charges to your AWS account.
         + Between $0.0225 and $0.034 per Application Load Balancer-hour (or partial hour), depending on your region.
         + Between $0.008 and $0.011 per LCU-hour (or partial hour), depending on your region.
      - 
-        + It is not expected that this Load balancer will need to be running for more than one hour.
+        + During this exercise, we will deploy an Application Load balancer.
+        + It will be deployed manually using the awscli.
+        + It should not need to run for more than a hour or so.
    * - Network Load-balancing
      - 
         + Between $0.0225 and $0.034 per Network Load Balancer-hour (or partial hour), depending on your region.
         + Between $0.006 and $0.0083 per LCU-hour (or partial hour), depending on your region.
      - 
-        + During this exercise, we will be creating an Application Load Balancer.
-        + It is not expected that this Load balancer will need to be running for more than one hour. 
+        + During this exercise, we will deploy an Application Load balancer.
+        + It will be deployed manually using the awscli.
+        + It should not need to run for more than a hour or so.
 
    * - Data Transfer
      -
         + $0.00 per GB - Data Transfer IN to Amazon EC2 from Internet
         + $0.00 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(up to 1 GB)**
         + $0.09 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(next 9.999 TB)**
-     - We also need to consider Data Transfer charges when using either the Network or Application Load balancers.
+     - 
+        + We also need to consider Data Transfer charges when using either the Network or Application Load balancers.
 
 Limits
 ------
