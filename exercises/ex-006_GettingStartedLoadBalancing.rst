@@ -288,30 +288,31 @@ Output:
 
 .. code-block::
 
-    --------------------------------------------------------------------------
-    |                         DescribeStackResources                         |
-    +-----------------------------------------+------------------------------+
-    |           Logical Resource Id           |    Physical Resource Id      |
-    +-----------------------------------------+------------------------------+
-    |  AssociateSubnetJumpboxRouteTablePublic |  rtbassoc-096e54d60e95fc651  |
-    |  AssociateSubnetWeb1RouteTablePublic    |  rtbassoc-06972ab97b655c296  |
-    |  AssociateSubnetWeb2RouteTablePublic    |  rtbassoc-0dbe61a08c47c36d9  |
-    |  AttachInternetGateway                  |  ex-00-Attac-1UCSPHVOPXXF2   |
-    |  DefaultRoutePublic                     |  ex-00-Defau-YMTP8R2B08JM    |
-    |  FloatingIpAddressInstance              |  52.73.187.16                |
-    |  InternetGateway                        |  igw-0464ded68dd7ea0f9       |
-    |  JumpboxInstance                        |  i-0fca677b00c3a1031         |
-    |  RouteTablePublic                       |  rtb-0d35eaed91bf21e8a       |
-    |  SecurityGroupJumpbox                   |  sg-007b8cf9d92fb0388        |
-    |  SecurityGroupLoadBalancer              |  sg-0835a8e19a39d2d72        |
-    |  SecurityGroupWebInstances              |  sg-04ea8555fcc3a99a5        |
-    |  SubnetJumpbox                          |  subnet-02ba11ac104e63757    |
-    |  SubnetWeb1                             |  subnet-0fa9c08f6a27f2a5c    |
-    |  SubnetWeb2                             |  subnet-0aa1a04c1a9147efe    |
-    |  VPC                                    |  vpc-0df15a2ef5e094e61       |
-    |  WebInstance1                           |  i-03789ca2ca19ffec9         |
-    |  WebInstance2                           |  i-0ff622c3cf8af230c         |
-    +-----------------------------------------+------------------------------+
+    +----------------------------------------+------------------------------+
+    |           Logical Resource Id          |    Physical Resource Id      |
+    +----------------------------------------+------------------------------+
+    |  AssociateSubnetWeb1RouteTablePrivate1 |  rtbassoc-0872af453f3315b9d  |
+    |  AssociateSubnetWeb1RouteTablePrivate2 |  rtbassoc-079717afe6522faf4  |
+    |  AssociateSubnetWeb1RouteTablePublic1  |  rtbassoc-055d7bb6f300f4003  |
+    |  AssociateSubnetWeb1RouteTablePublic2  |  rtbassoc-055d7bb6f300f4003  |
+    |  AttachInternetGateway                 |  ex-00-Attac-1VP4UKY50BNHM   |
+    |  DefaultRoutePrivate                   |  ex-00-Defau-EQ8DW1UI5H99    |
+    |  DefaultRoutePublic                    |  ex-00-Defau-67YXN4YXAOIQ    |
+    |  FloatingIpAddressNatGateway           |  34.232.248.244              |
+    |  InternetGateway                       |  igw-0b3e22d5a90599e2a       |
+    |  NatGateway                            |  nat-0caa14f953947cb7a       |
+    |  PrivateSubnet1                        |  subnet-095fb10aa03a4f3fc    |
+    |  PrivateSubnet2                        |  subnet-0f5869e56678e2fa1    |
+    |  PublicSubnet1                         |  subnet-0c82b7299cf144945    |
+    |  PublicSubnet2                         |  subnet-0bdbd933dbb7b1002    |
+    |  RouteTablePrivate                     |  rtb-0be0e182a3004746e       |
+    |  RouteTablePublic                      |  rtb-03dc45b1bb226cce3       |
+    |  SecurityGroupLoadBalancer             |  sg-02420a833cdf257b7        |
+    |  SecurityGroupWebInstances             |  sg-0c38edb89494f3ef3        |
+    |  VPC                                   |  vpc-0b79c451562394dfe       |
+    |  WebInstance1                          |  i-0d11afd46418a8703         |
+    |  WebInstance2                          |  i-0dbe1e47aec17cf5b         |
+    +----------------------------------------+------------------------------+
 
 Environment variables
 ~~~~~~~~~~~~~~~~~~~~~
@@ -319,9 +320,9 @@ Run the following commands to capture the 'PhysicalResourceId' for the applicabl
 
 .. code-block::
 
-    export EX006_SUBNET_WEB1=$(aws cloudformation describe-stack-resources --stack-name ex-006 --output text --query 'StackResources[?LogicalResourceId==`SubnetWeb1`].PhysicalResourceId')
+    export EX006_SUBNET_LB1=$(aws cloudformation describe-stack-resources --stack-name ex-006 --output text --query 'StackResources[?LogicalResourceId==`PublicSubnet1`].PhysicalResourceId')
 
-    export EX006_SUBNET_WEB2=$(aws cloudformation describe-stack-resources --stack-name ex-006 --output text --query 'StackResources[?LogicalResourceId==`SubnetWeb2`].PhysicalResourceId')
+    export EX006_SUBNET_LB2=$(aws cloudformation describe-stack-resources --stack-name ex-006 --output text --query 'StackResources[?LogicalResourceId==`PublicSubnet2`].PhysicalResourceId')
 
     export EX006_SG_LB=$(aws cloudformation describe-stack-resources --stack-name ex-006 --output text --query 'StackResources[?LogicalResourceId==`SecurityGroupLoadBalancer`].PhysicalResourceId')
 
@@ -338,7 +339,7 @@ Sanity check
 
 .. code-block::
     
-    echo -e '\n'$EX006_SUBNET_WEB1'\n'$EX006_SUBNET_WEB2'\n'$EX006_SG_LB'\n'$EX006_VPC'\n'$EX006_INST_WEB1'\n'$EX006_INST_WEB2'\n'$EX006_SG_WEB
+    echo -e $EX006_SUBNET_LB1'\n'$EX006_SUBNET_LB2'\n'$EX006_SG_LB'\n'$EX006_VPC'\n'$EX006_INST_WEB1'\n'$EX006_INST_WEB2'\n'$EX006_SG_WEB
 
 
 Create Application Load-balancer
@@ -352,7 +353,7 @@ Use the following awscli command to create an Application Load-balancer.
         --scheme internet-facing \
         --type application \
         --ip-address-type ipv4 \
-        --subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2 \
+        --subnets $EX006_SUBNET_LB1 $EX006_SUBNET_LB2 \
         --security-groups $EX006_SG_LB
 
 Additional information for the above parameters:
@@ -488,7 +489,7 @@ Use the following awscli command to create a Network Load-balancer.
         --scheme internet-facing \
         --type network \
         --ip-address-type ipv4 \
-        --subnets $EX006_SUBNET_WEB1 $EX006_SUBNET_WEB2
+        --subnets $EX006_SUBNET_LB1 $EX006_SUBNET_LB2
 
 Output:
 
