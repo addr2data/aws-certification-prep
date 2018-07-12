@@ -88,14 +88,6 @@ Setting environment variables may be different on different OSs. Please refer to
 Diagram
 -------
 .. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-006.png
-    :scale: 40
-    :align: center
-
-
-
-
-
-  
 
 Template
 --------
