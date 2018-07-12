@@ -139,7 +139,7 @@ Note: The Network Load-balancer does not have this requirement.
 Explanation:
 
   - **Fn::GetAZs** returns us a list of Availability Zones (AZ) for a Region. **!Ref 'AWS::Region'** says to use the Region that the Stack is being deployed to.
-  - **!Select** lets us select the 1st (0) item in the list, for **SubnetWeb1** and the 2nd (1) for **SubnetWeb2**, ensuring that the two Subnets are on different AZs.
+  - **!Select** lets us select the 1st (0) item in the list, for **PublicSubnet1** and the 2nd (1) for **PublicSubnet2**, ensuring that the two Subnets are located on different AZs.
   - Every Region has at least two AZs, so this is Template is portable between Regions.
 
 **Notable item**
