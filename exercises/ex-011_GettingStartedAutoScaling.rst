@@ -18,7 +18,7 @@ Dependencies
 
 Objectives
 ----------
-- To be added
+- Explore **Fleet Management** by **Auto Scaling** EC2 instances.
 
 Expected Costs
 --------------
