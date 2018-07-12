@@ -108,7 +108,7 @@ For our starting configuration, we will create a CloudFormation **Stack** from a
     - Two **public** Subnets (10.0.0.0/24 and 10.0.1.0/24). Each in a different Availability Zone.
     - Two **private** Subnets (10.0.128.0/24 and 10.0.129.0/24). Each in a different Availability Zone.
     - An Internet Gateway to allow Internet access to/from the public Subnets.
-    - A NAT Gateway to allow Internet access from the public Subnets.
+    - A NAT Gateway to allow Internet access from the private Subnets.
     - A Security Group for the Web Servers that allows **HTTP** from anywhere in the VPC (10.0.0.0/16)
     - A Security Group for the Load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
 
