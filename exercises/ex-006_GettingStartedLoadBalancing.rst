@@ -89,12 +89,6 @@ Diagram
 -------
 In this configuration, we will be building the following configuration.
 
-Highlights
-
-  - Two Availability Zones (AZs)
-  - One **public** Subnet per AZ
-  - One **private** Subnet per AZ
-
 .. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-006.png
 
 Template
