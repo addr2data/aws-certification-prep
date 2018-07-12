@@ -114,9 +114,9 @@ For our starting configuration, we will create a CloudFormation **Stack** from a
 
 **Notable item**
 
-When creating an Application Load-balancer, you must specify at least two Subnets, from different Availability Zones. In order to achieve this, a couple of CloudFormation built-in functions will be used in the Template
+When creating an Application Load-balancer (ALB), you must specify at least two Subnets, from different Availability Zones. In order to achieve this, a couple of CloudFormation built-in functions will be used in the Template
 
-Note: The Network Load-balancer does not have this requirement.
+Note: The Network Load-balancer (NLB) does not have this requirement.
 
 .. code-block::
 
@@ -148,6 +148,38 @@ Explanation:
   - **Fn::GetAZs** returns us a list of Availability Zones (AZ) for a Region. **!Ref 'AWS::Region'** says to use the Region that the Stack is being deployed to.
   - **!Select** lets us select the 1st item (0) in the list, for **PublicSubnet1** and the 2nd item (1) for **PublicSubnet2**, ensuring that the two Subnets are located on different AZs.
   - Every Region has at least two AZs, so this is Template is portable between Regions.
+
+**Notable item**
+
+We will also you the same methodology for selecting Availability Zones (AZs) for the **private** Subnets. We will connect one Web Server to each private Subnet.
+
+Note: When a Load balancer node in one AZ s able to distribute client requests to targets (the Web Servers in this case) in all AZs, this in known as Cross-zone Load balancing. This capability is always on in ALBs, but is disabled by default in NLBs.
+
+.. code-block::
+
+    PrivateSubnet1:
+      Type: AWS::EC2::Subnet
+      Properties:
+        CidrBlock: 10.0.128.0/24
+        AvailabilityZone: !Select 
+          - 0
+          - Fn::GetAZs: !Ref 'AWS::Region'
+        Tags:
+          - Key: Name
+            Value: subnet_private1_ex006
+        VpcId: !Ref VPC
+    PrivateSubnet2:
+      Type: AWS::EC2::Subnet
+      Properties:
+        CidrBlock: 10.0.129.0/24
+        AvailabilityZone: !Select 
+          - 1
+          - Fn::GetAZs: !Ref 'AWS::Region'
+        Tags:
+          - Key: Name
+            Value: subnet_private2_ex006
+        VpcId: !Ref VPC
+
 
 **Notable item**
 
