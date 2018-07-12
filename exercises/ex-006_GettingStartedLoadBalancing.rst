@@ -98,11 +98,11 @@ For our starting configuration, we will create a CloudFormation **Stack** from a
 **Highlights**
 
     - Two Instances that will act as Web Servers.
-    - One Instance that will act a Jumpbox (with public IP)
-    - A Subnet for each Web Server (10.0.0.0/24 and 10.0.1.0/24), each in a different Availability Zone 
-    - A Subnet for the Jumpbox (10.0.100.0/24)
-    - A Security Group for the Jumpbox that allows **SSH** from anywhere (0.0.0.0/0).
-    - A Security Group for the Web Servers that allows **SSH** from the Jumpbox Subnet (10.0.100.0/24) and **HTTP** from anywhere in the VPC (10.0.0.0/16)
+    - Two **public** Subnets (10.0.0.0/24 and 10.0.1.0/24). Each in a different Availability Zone.
+    - Two **private** Subnets (10.0.128.0/24 and 10.0.129.0/24). Each in a different Availability Zone.
+    - An Internet Gateway to allow Internet access to/from the public Subnets.
+    - A NAT Gateway to allow Internet access from the public Subnets.
+    - A Security Group for the Web Servers that allows **HTTP** from anywhere in the VPC (10.0.0.0/16)
     - A Security Group for the Load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
 
 **Notable item**
@@ -113,29 +113,28 @@ Note: The Network Load-balancer does not have this requirement.
 
 .. code-block::
 
-      SubnetWeb1:
-        Type: AWS::EC2::Subnet
-        Properties:
-          CidrBlock: 10.0.0.0/24
-          AvailabilityZone: !Select 
-            - 0
-            - Fn::GetAZs: !Ref 'AWS::Region'
-          Tags:
-            - Key: Name
-              Value: subnet_web1_ex006
-          VpcId: !Ref VPC
-
-      SubnetWeb2:
-        Type: AWS::EC2::Subnet
-        Properties:
-          CidrBlock: 10.0.1.0/24
-          AvailabilityZone: !Select 
-            - 1
-            - Fn::GetAZs: !Ref 'AWS::Region'
-          Tags:
-            - Key: Name
-              Value: subnet_web2_ex006
-          VpcId: !Ref VPC
+    PublicSubnet1:
+      Type: AWS::EC2::Subnet
+      Properties:
+        CidrBlock: 10.0.0.0/24
+        AvailabilityZone: !Select 
+          - 0
+          - Fn::GetAZs: !Ref 'AWS::Region'
+        Tags:
+          - Key: Name
+            Value: subnet_public1_ex006
+        VpcId: !Ref VPC
+    PublicSubnet2:
+      Type: AWS::EC2::Subnet
+      Properties:
+        CidrBlock: 10.0.1.0/24
+        AvailabilityZone: !Select 
+          - 1
+          - Fn::GetAZs: !Ref 'AWS::Region'
+        Tags:
+          - Key: Name
+            Value: subnet_public2_ex006
+        VpcId: !Ref VPC
 
 Explanation:
 

@@ -59,11 +59,15 @@ Resources:
     Properties: 
       InternetGatewayId: !Ref InternetGateway
       VpcId: !Ref VPC
+  FloatingIpAddressNatGateway:
+    Type: "AWS::EC2::EIP"
+    Properties:
+      Domain: vpc
   NatGateway:
     Type: "AWS::EC2::NatGateway"
     Properties: 
-      AllocationId: !GetAtt FloatingIpAddressInstance.AllocationId
-      SubnetId: !Ref SubnetPublic1
+      AllocationId: !GetAtt FloatingIpAddressNatGateway.AllocationId
+      SubnetId: !Ref PublicSubnet1
     DependsOn: DefaultRoutePublic
   PublicSubnet1:
     Type: AWS::EC2::Subnet
