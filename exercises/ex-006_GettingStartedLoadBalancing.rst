@@ -151,9 +151,9 @@ Explanation:
 
 **Notable item**
 
-We will also you the same methodology for selecting Availability Zones (AZs) for the **private** Subnets. We will connect one Web Server to each private Subnet.
+We will use the same methodology for selecting Availability Zones (AZs) for the **private** Subnets. We will connect one Web Server to each private Subnet.
 
-Note: When a Load balancer node in one AZ s able to distribute client requests to targets (the Web Servers in this case) in all AZs, this in known as Cross-zone Load balancing. This capability is always on in ALBs, but is disabled by default in NLBs.
+Note: When a Load balancer node in one AZ is able to distribute client requests to targets (the Web Servers in this case) in all AZs, this in known as Cross-zone Load balancing. This capability is always on in ALBs, but is disabled by default in NLBs.
 
 .. code-block::
 
