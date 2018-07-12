@@ -85,6 +85,14 @@ In some places, we will do this manually, because we want to show the the full o
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
+Diagram
+-------
+
+.. image::
+
+  images/ex-006.png
+
+
 Template
 --------
 For our starting configuration, we will create a CloudFormation **Stack** from a Template. Please review **'ex-006_template.yaml'** in the **'templates'** directory.
