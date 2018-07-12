@@ -139,7 +139,7 @@ Note: The Network Load-balancer does not have this requirement.
 Explanation:
 
   - **Fn::GetAZs** returns us a list of Availability Zones (AZ) for a Region. **!Ref 'AWS::Region'** says to use the Region that the Stack is being deployed to.
-  - **!Select** lets us select the 1st (0) item in the list, for **PublicSubnet1** and the 2nd (1) for **PublicSubnet2**, ensuring that the two Subnets are located on different AZs.
+  - **!Select** lets us select the 1st item (0) in the list, for **PublicSubnet1** and the 2nd item (1) for **PublicSubnet2**, ensuring that the two Subnets are located on different AZs.
   - Every Region has at least two AZs, so this is Template is portable between Regions.
 
 **Notable item**
@@ -148,30 +148,30 @@ We need a way to verify the Load-balancer is functioning properly. To accomplish
 
 .. code-block::
     
-      WebInstance1:
-        Type: AWS::EC2::Instance
-        Properties: 
-          ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
-          InstanceType: t2.micro
-          KeyName: !Ref KeyPairName
-          SecurityGroupIds: 
-            - !Ref SecurityGroupWebInstances
-          SubnetId: !Ref SubnetWeb1
-          Tags: 
-            - Key: Name
-              Value: i_web1_ex006
-          UserData: !Base64
-            "Fn::Join":
-              - "\n"
-              -
-                - "#!/bin/bash"
-                - "sudo apt-get update"
-                - "sudo apt-get dist-upgrade -y"
-                - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
-                - "sudo python3 -m http.server 80"
-        DependsOn: DefaultRoutePublic
+    WebInstance1:
+      Type: AWS::EC2::Instance
+      Properties: 
+        ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+        InstanceType: t2.micro
+        KeyName: !Ref KeyPairName
+        SecurityGroupIds: 
+          - !Ref SecurityGroupWebInstances
+        SubnetId: !Ref PublicSubnet1
+        Tags: 
+          - Key: Name
+            Value: i_web1_ex006
+        UserData: !Base64
+          "Fn::Join":
+            - "\n"
+            -
+              - "#!/bin/bash"
+              - "sudo apt-get update"
+              - "sudo apt-get dist-upgrade -y"
+              - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
+              - "sudo python3 -m http.server 80"
+      DependsOn: DefaultRoutePrivate
 
-      WebInstance2:
+    WebInstance2:
 
         ... excluded for brevity ...
 
