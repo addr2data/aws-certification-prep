@@ -58,6 +58,31 @@ In some places, we will do this manually, because we want to show the the full o
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
+Diagram
+-------
+In this configuration, we will be building the following configuration.
+
+.. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-011.png
+
+Template
+--------
+For our starting configuration, we will create a CloudFormation **Stack** from a Template. Please review **'ex-011a_template.yaml'** and **'ex-011b_template.yaml'** in the **'templates'** directory.
+
+We will be using two templates to introduce some additional capabilities of CloudFormation Templates.
+
+**Highlights**
+
+    - Two Instances that will act as Web Servers.
+    - Two **public** Subnets (10.0.0.0/24 and 10.0.1.0/24). Each in a different Availability Zone.
+    - Two **private** Subnets (10.0.128.0/24 and 10.0.129.0/24). Each in a different Availability Zone.
+    - An Internet Gateway to allow Internet access to/from the public Subnets.
+    - A NAT Gateway to allow Internet access from the private Subnets.
+    - A Security Group for the Web Servers that allows **HTTP** from anywhere in the VPC (10.0.0.0/16)
+    - A Security Group for the Load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
+
+**Notable item**
+
+
 Create network Stack
 --------------------
 Use the following awscli command to create a new CloudFormation **'Stack'** based on the template.
