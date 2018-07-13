@@ -865,7 +865,7 @@ Let's take another look at the health of both Target Groups.
 
 Application Load-balancer
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Rerun this command until 'State:Code' is 'healthy'.
+Rerun this command until 'State' is 'healthy'.
 
 .. code-block::
 
@@ -902,7 +902,7 @@ Output:
 
 Network Load-balancer
 ~~~~~~~~~~~~~~~~~~~~~
-Rerun this command until 'State:Code' is 'healthy'.
+Rerun this command until 'State' is 'healthy'.
 
 .. code-block::
 
@@ -936,8 +936,6 @@ Output:
             }
         ]
     }
-
-You can see that **'State'** is **'healthy'**.
 
 Verify Application Load-balancer
 --------------------------------
@@ -1007,8 +1005,8 @@ The Security Group that is applied to the Application Load-balancer allows HTTP 
     SecurityGroupLoadBalancer:
       Type: AWS::EC2::SecurityGroup
       Properties: 
-        GroupName: sg_load-balancer_ex006
-        GroupDescription: "Security Group for Load balancer in ex-006"
+        GroupName: sg_loadbalancer_ex006
+        GroupDescription: "Security Group for Load balancer."
         SecurityGroupIngress:
           - 
             CidrIp: 0.0.0.0/0
@@ -1021,28 +1019,22 @@ The Security Group that is applied to the Web Servers only allows HTTP (TCP port
 
     The Application Load-balancer changes the source IP of packets it receives to it's private IP address, so those packets are not blocked by the Security Group rule.
 
-    The Network Load-balancer does NOT change the source IP of packets it receives, so those packets are blocked by the Security Group rule.
+    By default, the Network Load-balancer does NOT change the source IP of packets it receives, so those packets are blocked by the Security Group rule.
 
 .. code-block::
 
     SecurityGroupWebInstances:
       Type: AWS::EC2::SecurityGroup
       Properties: 
-        GroupName: sg_web-instances_ex006
-        GroupDescription: "Security Group for Web Instances in ex-006"
+        GroupName: sg_webinstances_ex006
+        GroupDescription: "Security Group for Web Instances."
         SecurityGroupIngress:
-          - 
-            CidrIp: 10.0.100.0/24
-            IpProtocol: tcp
-            FromPort: 22
-            ToPort: 22
           - 
             CidrIp: 10.0.0.0/16
             IpProtocol: tcp
             FromPort: 80
             ToPort: 80
         VpcId: !Ref VPC
-
 
 Resolve the issue
 -----------------
@@ -1068,6 +1060,123 @@ Using 'curl' or your browser test connectivity. Rerun/refresh a few times to mak
 .. code-block::
 
     curl http://ex-006-net-lb-xxxxxxxxxxxxxxxx.elb.us-east-1.amazonaws.com
+
+Cross-zone load balancing
+-------------------------
+Now let's see which load balancer is doing cross-zone load balancing.
+
+Application Load balancer (ALB)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+First, we will use **nslookup** to find the IP address of both nodes.
+
+.. code-block::
+
+    nslookup $(aws elbv2 describe-load-balancers --load-balancer-arns $EX006_APP_LB --output text --query LoadBalancers[*].DNSName)
+
+Output:
+
+.. code-block::
+
+    Non-authoritative answer:
+    Name:   ex-006-app-lb-xxxxxxxxx.us-east-1.elb.amazonaws.com
+    Address: xxx.xxx.xxx.xxx
+    Name:   ex-006-app-lb-xxxxxxxxx.us-east-1.elb.amazonaws.com
+    Address: xxx.xxx.xxx.xxx
+
+Next, using 'curl' or your browser test connectivity to each load balancer node. Rerun/refresh a few times.
+
+**Expected result:** You should be able to access both Web Servers through either load balancer node.
+
+.. code-block::
+
+    curl http://xxx.xxx.xxx.xxx
+
+    curl http://xxx.xxx.xxx.xxx
+
+Network Load balancer (NLB)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+First, we will use **nslookup** to find the IP address of both nodes.
+
+.. code-block::
+
+    nslookup $(aws elbv2 describe-load-balancers --load-balancer-arns $EX006_NET_LB --output text --query LoadBalancers[*].DNSName)
+
+Output:
+
+.. code-block::
+
+    Non-authoritative answer:
+    Name:   ex-006-net-lb-xxxxxxxxx.us-east-1.elb.amazonaws.com
+    Address: xxx.xxx.xxx.xxx
+    Name:   ex-006-net-lb-xxxxxxxxx.us-east-1.elb.amazonaws.com
+    Address: xxx.xxx.xxx.xxx
+
+Next, using 'curl' or your browser test connectivity to each load balancer node. Rerun/refresh a few times.
+
+**Expected result:** You should only be able to access one Web Server through either load balancer node. (Cross-zone load balancing is disabled by default)
+
+.. code-block::
+
+    curl http://xxx.xxx.xxx.xxx
+
+    curl http://xxx.xxx.xxx.xxx
+
+Enable Cross-zone load balancing on the NLB
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    aws elbv2 modify-load-balancer-attributes \
+        --load-balancer-arn $EX006_NET_LB \
+        --attributes Key=load_balancing.cross_zone.enabled,Value=true
+
+Output:
+
+.. code-block::
+
+    {
+        "Attributes": [
+            {
+                "Key": "deletion_protection.enabled",
+                "Value": "false"
+            }
+        ]
+    }
+
+Describe load balancer attributes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    aws elbv2 describe-load-balancer-attributes --load-balancer-arn $EX006_NET_LB
+
+Output:
+
+.. code-block::
+
+    {
+        "Attributes": [
+            {
+                "Key": "load_balancing.cross_zone.enabled",
+                "Value": "true"
+            },
+            {
+                "Key": "deletion_protection.enabled",
+                "Value": "false"
+            }
+        ]
+    }
+
+Using 'curl' or your browser test connectivity to each load balancer node. Rerun/refresh a few times.
+
+**Expected result:** You should only be able to access one Web Server through either load balancer node. (Cross-zone load balancing is disabled by default)
+
+.. code-block::
+
+    curl http://xxx.xxx.xxx.xxx
+
+    curl http://xxx.xxx.xxx.xxx
+
 
 Clean up
 --------
