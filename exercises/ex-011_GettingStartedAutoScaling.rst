@@ -366,40 +366,6 @@ Output:
         ]
     }
 
-
-
-Review the Stack details
-------------------------
-Use the following awscli command to display the **'LogicalResourceId'** and **'PhysicalResourceId'** for all the components in the **Stack**
-
-Notice the format of this portion of the query string **'{"Logical Resource Id": LogicalResourceId,"Physical Resource Id": PhysicalResourceId}'**, it adds a header to each column.** 
-
-.. code-block::
-
-    aws cloudformation describe-stack-resources \
-        --stack-name ex-011b \
-        --output table \
-        --query 'StackResources[*].{"Logical Resource Id": LogicalResourceId,"Physical Resource Id": PhysicalResourceId}'
-
-Output:
-
-.. code-block::
-
-    ----------------------------------------------------------------------------------------------------------------------------------------------
-    |                                                           DescribeStackResources                                                           |
-    +----------------------+---------------------------------------------------------------------------------------------------------------------+
-    |  Logical Resource Id |                                                Physical Resource Id                                                 |
-    +----------------------+---------------------------------------------------------------------------------------------------------------------+
-    |  AppLoadBalancer     |  arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/app/elb-app-ex011/49242b54aff9c5d7                |
-    |  LaunchTemplate      |  lt-08c8daf3c20dda004                                                                                               |
-    |  WebServerListener   |  arn:aws:elasticloadbalancing:us-east-1:926075045128:listener/app/elb-app-ex011/49242b54aff9c5d7/3229575d2db3c508   |
-    |  WebServerTargetGroup|  arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-011-tg-app-lb/87b1fd3363f55470                  |
-    +----------------------+---------------------------------------------------------------------------------------------------------------------+
-
-
-
-
-
 Environment variable
 ~~~~~~~~~~~~~~~~~~~~
 Create the following environment variable.
