@@ -380,12 +380,16 @@ Create the following environment variable.
 
     export EX011_WEB_LTEMP=$(aws cloudformation describe-stack-resources --stack-name ex-011b --output text --query 'StackResources[?LogicalResourceId==`LaunchTemplate`].PhysicalResourceId')
 
+    export EX011_PRI_SUBNET1=$(aws cloudformation list-exports --query 'Exports[?Name==`ex-011a-SubnetPrivate1`].Value' --output text)
+
+    export EX011_PRI_SUBNET2=$(aws cloudformation list-exports --query 'Exports[?Name==`ex-011a-SubnetPrivate2`].Value' --output text)
+
 Sanity check
 ------------
 
 .. code-block::
     
-    echo -e '\n'$EX011_WEB_LB'\n'$EX011_WEB_TG'\n'$EX011_WEB_LIS'\n'$EX011_WEB_LTEMP
+    echo -e '\n'$EX011_WEB_LB'\n'$EX011_WEB_TG'\n'$EX011_WEB_LIS'\n'$EX011_WEB_LTEMP'\n'$EX011_PRI_SUBNET1'\n'$EX011_PRI_SUBNET2
 
 
 Check Load-balancer status
@@ -449,7 +453,7 @@ Output:
         "TargetHealthDescriptions": []
     }
 
-Notice that the Target Grouo is empty. Instances will be added to the Target Group by Auto Scale.
+Notice that the Target Group is empty. Instances will be added to the Target Group by Auto Scale.
 
 Check Listener status
 ---------------------
@@ -479,18 +483,14 @@ Output:
         ]
     }
 
-
-export EX011_PRI_SUBNET1=$(aws cloudformation list-exports --query 'Exports[?Name==`ex-011a-SubnetPrivate1`].Value' --output text)
-
-export EX011_PRI_SUBNET2=$(aws cloudformation list-exports --query 'Exports[?Name==`ex-011a-SubnetPrivate2`].Value' --output text)
-
-echo -e '\n'$EX011_PRI_SUBNET1'\n'$EX011_PRI_SUBNET2
-
-export SUBNETS=$EX011_PRI_SUBNET1','$EX011_PRI_SUBNET2
-
-
 Create Auto Scaling Group
 -------------------------
+First, we need to be able to pass the Subnets that will be leveraged by the Auto Scale group as a string, so we will create a new environment variable that meets are needs.
+
+.. code-block::
+
+    export EX011_PRI_SUBNETS=$EX011_PRI_SUBNET1','$EX011_PRI_SUBNET2
+    echo $EX011_PRI_SUBNETS
 
 .. code-block::
 
@@ -502,7 +502,7 @@ Create Auto Scaling Group
         --target-group-arns $EX011_WEB_TG \
         --health-check-type ELB \
         --health-check-grace-period 300 \
-        --vpc-zone-identifier $SUBNETS
+        --vpc-zone-identifier $EX011_PRI_SUBNETS
 
 
 Modify Auto Scaling Group
