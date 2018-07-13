@@ -120,6 +120,107 @@ We will be using two templates to introduce some additional capabilities of Clou
 
 **Notable item**
 
+In Template **ex-011a_template.yaml**, we will define some **outputs**. After we deploy the first stack using this Template, these Outputs will available for import by Template **ex-011b_template.yaml**
+
+.. code-block::
+
+    Outputs:
+      VPC:
+        Value: !Ref VPC
+        Export:
+          Name: !Sub '${AWS::StackName}-VPC'
+      SecurityGroupWebInstances:
+        Value: !Ref SecurityGroupWebInstances
+        Export:
+          Name: !Sub '${AWS::StackName}-SecurityGroupWebInstances'
+      SecurityGroupLoadBalancer:
+        Value: !Ref SecurityGroupLoadBalancer
+        Export:
+          Name: !Sub '${AWS::StackName}-SecurityGroupLoadBalancer'
+      SubnetPublic1:
+        Value: !Ref SubnetPublic1
+        Export:
+          Name: !Sub '${AWS::StackName}-SubnetPublic1'
+      SubnetPublic2:
+        Value: !Ref SubnetPublic2
+        Export:
+          Name: !Sub '${AWS::StackName}-SubnetPublic2'
+      SubnetPrivate1:
+        Value: !Ref SubnetPrivate1
+        Export:
+          Name: !Sub '${AWS::StackName}-SubnetPrivate1'
+      SubnetPrivate2:
+        Value: !Ref SubnetPrivate2
+        Export:
+          Name: !Sub '${AWS::StackName}-SubnetPrivate2'
+
+**Notable item**
+
+In Template **ex-011b_template.yaml**, 
+
+.. code-block::
+
+    Resources:
+      LaunchTemplate:
+        Type: "AWS::EC2::LaunchTemplate"
+        Properties:
+          LaunchTemplateName: launch_template_ex011
+          LaunchTemplateData:
+            ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 64]
+            InstanceType: t2.micro
+            KeyName: !Ref KeyPairName
+            SecurityGroupIds: 
+              - Fn::ImportValue:
+                  !Sub '${StackName}-SecurityGroupWebInstances'
+            UserData: !Base64
+              Ref: UserData
+
+**Notable item**
+
+In Template **ex-011b_template.yaml**, 
+
+.. code-block::
+
+    Resources:
+      AppLoadBalancer:
+        Type: "AWS::ElasticLoadBalancingV2::LoadBalancer"
+        Properties:
+          Name: elb-app-ex011
+          Scheme: internet-facing
+          SecurityGroups:
+            - Fn::ImportValue:
+                !Sub '${StackName}-SecurityGroupLoadBalancer'
+          Subnets:
+            - Fn::ImportValue:
+                !Sub '${StackName}-SubnetPublic1'
+            - Fn::ImportValue:
+                !Sub '${StackName}-SubnetPublic2'
+          Type: application
+          IpAddressType: ipv4
+      WebServerTargetGroup:
+        Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
+        Properties:
+          Name: ex-011-tg-app-lb
+          Port: 80
+          Protocol: HTTP
+          TargetType: instance
+          VpcId:
+            Fn::ImportValue:
+                !Sub '${StackName}-VPC'
+      WebServerListener:
+        Type: "AWS::ElasticLoadBalancingV2::Listener"
+        Properties: 
+          DefaultActions:
+            -
+              TargetGroupArn: !Ref WebServerTargetGroup
+              Type: forward
+          LoadBalancerArn: !Ref AppLoadBalancer
+          Port: 80
+          Protocol: HTTP
+        DependsOn:
+          - AppLoadBalancer
+          - WebServerTargetGroup
+
 
 Create network Stack
 --------------------
