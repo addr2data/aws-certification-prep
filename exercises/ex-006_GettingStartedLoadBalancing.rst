@@ -1067,7 +1067,7 @@ Now let's see which load balancer is doing cross-zone load balancing.
 
 Application Load balancer (ALB)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-First, we will use **nslookup** to find the IP address of both nodes.
+First, we will use **nslookup** to find the IP addresses of both nodes.
 
 .. code-block::
 
@@ -1095,7 +1095,7 @@ Next, using 'curl' or your browser test connectivity to each load balancer node.
 
 Network Load balancer (NLB)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-First, we will use **nslookup** to find the IP address of both nodes.
+First, we will use **nslookup** to find the IP addresses of both nodes.
 
 .. code-block::
 
@@ -1169,7 +1169,7 @@ Output:
 
 Using 'curl' or your browser test connectivity to each load balancer node. Rerun/refresh a few times.
 
-**Expected result:** You should only be able to access one Web Server through either load balancer node. (Cross-zone load balancing is disabled by default)
+**Expected result:** You should be able to access both Web Servers through either load balancer node.
 
 .. code-block::
 
@@ -1181,21 +1181,49 @@ Using 'curl' or your browser test connectivity to each load balancer node. Rerun
 Clean up
 --------
 
-Delete the Application Load-balancer
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Deleting a Load-balancer with also delete the associated Target Group.
+Delete the ALB
+~~~~~~~~~~~~~~
+Deleting a Load-balancer with also delete the associated Target Group and Listener.
 
 .. code-block::
     
     aws elbv2 delete-load-balancer --load-balancer-arn $EX006_APP_LB
 
-Delete the Network Load-balancer
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Deleting a Load-balancer with also delete the associated Target Group.
+Describe the ALB
+~~~~~~~~~~~~~~~~
+Rerun this command until you see the following output.
 
 .. code-block::
     
-    aws elbv2 delete-load-balancer --load-balancer-arn $EX006__NET_LB
+    aws elbv2 describe-load-balancers --load-balancer-arn $EX006_APP_LB
+
+Output:
+
+.. code-block::
+
+    An error occurred (LoadBalancerNotFound) when calling the DescribeLoadBalancers operation: One or more load balancers not found
+
+Delete the NLB
+~~~~~~~~~~~~~~
+Deleting a Load-balancer with also delete the associated Target Group and Listener.
+
+.. code-block::
+    
+    aws elbv2 delete-load-balancer --load-balancer-arn $EX006_NET_LB
+
+Describe the NLB
+~~~~~~~~~~~~~~~~
+Rerun this command until you see the following output.
+
+.. code-block::
+    
+    aws elbv2 describe-load-balancers --load-balancer-arn $EX006_NET_LB
+
+Output:
+
+.. code-block::
+
+    An error occurred (LoadBalancerNotFound) when calling the DescribeLoadBalancers operation: One or more load balancers not found
 
 Delete the Stack
 ----------------
@@ -1218,7 +1246,7 @@ Output:
     {
         "Stacks": [
             {
-                "StackId": "arn:aws:cloudformation:us-east-1:926075045128:stack/ex-005/523f72f0-7619-11e8-b431-50fae583d0fe",
+                "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-005/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                 "StackName": "ex-005",
                 "CreationTime": "2018-06-22T12:39:36.117Z",
                 "DeletionTime": "2018-06-22T17:51:31.095Z",
@@ -1242,16 +1270,17 @@ Output:
 
 Summary
 -------
-- We created an Application Load-balancer.
-- We created a Network Load-balancer.
-- We created a Target Group for the Application Load-balancer.
-- We created a Target Group for the Network Load-balancer.
+- We created an ALB.
+- We created a NLB.
+- We created a Target Group for the ALB.
+- We created a Target Group for the NLB.
 - We registered the Web Servers with both Target Groups.
-- We created a Listener for the Application Load-balancer.
-- We created a Listener for the Network Load-balancer.
-- We tested connectivity through the Application Load-balancer.
-- We tested connectivity through the Network Load-balancer.
-- We resolved an issue with connectivity through the Network Load-balancer.
+- We created a Listener for the ALB.
+- We created a Listener for the NLB.
+- We tested connectivity through the ALB.
+- We tested connectivity through the NLB.
+- We resolved an issue with connectivity through the NLB.
+- We enabled cross-zone load balancing on the NLB
 
 Next steps
 ----------
