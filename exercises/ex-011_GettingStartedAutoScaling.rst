@@ -492,6 +492,8 @@ First, we need to be able to pass the Subnets that will be leveraged by the Auto
     export EX011_PRI_SUBNETS=$EX011_PRI_SUBNET1','$EX011_PRI_SUBNET2
     echo $EX011_PRI_SUBNETS
 
+Now we create the Auto Scaling group.
+
 .. code-block::
 
     aws autoscaling create-auto-scaling-group \
@@ -503,6 +505,99 @@ First, we need to be able to pass the Subnets that will be leveraged by the Auto
         --health-check-type ELB \
         --health-check-grace-period 300 \
         --vpc-zone-identifier $EX011_PRI_SUBNETS
+
+
+
+
+.. code-block::
+
+    aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names ex-011-asg
+
+Output:
+
+.. code-block::
+
+    {
+        "AutoScalingGroups": [
+            {
+                "AutoScalingGroupName": "ex-011-asg",
+                "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:926075045128:autoScalingGroup:80d8b05a-22db-4ee9-bb1a-988248227c23:autoScalingGroupName/ex-011-asg",
+                "LaunchTemplate": {
+                    "LaunchTemplateId": "lt-0c7b5c0001c7ab53a",
+                    "LaunchTemplateName": "launch_template_ex011"
+                },
+                "MinSize": 2,
+                "MaxSize": 2,
+                "DesiredCapacity": 2,
+                "DefaultCooldown": 300,
+                "AvailabilityZones": [
+                    "us-east-1a",
+                    "us-east-1b"
+                ],
+                "LoadBalancerNames": [],
+                "TargetGroupARNs": [
+                    "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-011-tg-app-lb/947f2b4d299ee37e"
+                ],
+                "HealthCheckType": "ELB",
+                "HealthCheckGracePeriod": 300,
+                "Instances": [],
+                "CreatedTime": "2018-07-13T16:50:11.108Z",
+                "SuspendedProcesses": [],
+                "VPCZoneIdentifier": "subnet-025c60668f3672d2e,subnet-0f8a9172b9bc59dc3",
+                "EnabledMetrics": [],
+                "Tags": [],
+                "TerminationPolicies": [
+                    "Default"
+                ],
+                "NewInstancesProtectedFromScaleIn": false,
+                "ServiceLinkedRoleARN": "arn:aws:iam::926075045128:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
+            }
+        ]
+    }
+
+.. code-block::
+
+    aws elbv2 describe-target-health --target-group-arn $EX011_WEB_TG
+
+    Rerun this command until 'State' is 'healthy'.
+
+Output:
+
+.. code-block::
+
+    {
+        "TargetHealthDescriptions": [
+            {
+                "Target": {
+                    "Id": "i-08063fc4fba5e79f2",
+                    "Port": 80
+                },
+                "TargetHealth": {
+                    "State": "initial",
+                    "Reason": "Elb.RegistrationInProgress",
+                    "Description": "Target registration is in progress"
+                }
+            },
+            {
+                "Target": {
+                    "Id": "i-056bbe9be8a44ea8e",
+                    "Port": 80
+                },
+                "TargetHealth": {
+                    "State": "initial",
+                    "Reason": "Elb.RegistrationInProgress",
+                    "Description": "Target registration is in progress"
+                }
+            }
+        ]
+    }
+
+
+
+
+
+
+
 
 
 Modify Auto Scaling Group
