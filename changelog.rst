@@ -37,6 +37,8 @@ CHANGE LOG
 
 - 06-29-18 (BrianRagazzi):  Created new GUI version of ex-003.
 
+- 07-13-18 (addr2data):  Improved **ex-006**. Changed version to 1.0.
+
 
 
 

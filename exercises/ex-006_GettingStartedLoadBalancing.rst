@@ -3,7 +3,7 @@ ex-006: Getting started with Load-balancing
 
 Status
 ------
-Version 0.9 (06/28/18)
+Version 1.0 (07/13/18)
 
 Dependencies
 ------------
