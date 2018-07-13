@@ -548,7 +548,7 @@ Output:
                 "AutoScalingGroupName": "ex-011-asg",
                 "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:xxxxxxxxxxxx:autoScalingGroup:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:autoScalingGroupName/ex-011-asg",
                 "LaunchTemplate": {
-                    "LaunchTemplateId": "lt-0c7b5c0001c7ab53a",
+                    "LaunchTemplateId": "lt-xxxxxxxxxxxxxxxxx",
                     "LaunchTemplateName": "launch_template_ex011"
                 },
                 "MinSize": 2,
@@ -568,17 +568,20 @@ Output:
                 "Instances": [],
                 "CreatedTime": "2018-07-13T16:50:11.108Z",
                 "SuspendedProcesses": [],
-                "VPCZoneIdentifier": "subnet-025c60668f3672d2e,subnet-0f8a9172b9bc59dc3",
+                "VPCZoneIdentifier": "subnet-xxxxxxxxxxxxxxxxx,subnet-xxxxxxxxxxxxxxxxx",
                 "EnabledMetrics": [],
                 "Tags": [],
                 "TerminationPolicies": [
                     "Default"
                 ],
                 "NewInstancesProtectedFromScaleIn": false,
-                "ServiceLinkedRoleARN": "arn:aws:iam::926075045128:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
+                "ServiceLinkedRoleARN": "arn:aws:iam::xxxxxxxxxxxx:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
             }
         ]
     }
+
+Check the State
+---------------
 
 .. code-block::
 
