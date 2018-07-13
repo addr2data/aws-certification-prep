@@ -270,6 +270,50 @@ Output:
         ]
     }
 
+Once you reach **'CREATE_COMPLETE'**, you should also be able to see the **Outputs** that we defined in the Template.
+
+Output:
+
+.. code-block::
+
+    "Outputs": [
+                    {
+                        "OutputKey": "SubnetPrivate1",
+                        "OutputValue": "subnet-xxxxxxxxxxxxxxxxx",
+                        "ExportName": "ex-011a-SubnetPrivate1"
+                    },
+                    {
+                        "OutputKey": "SubnetPrivate2",
+                        "OutputValue": "subnet-xxxxxxxxxxxxxxxxx",
+                        "ExportName": "ex-011a-SubnetPrivate2"
+                    },
+                    {
+                        "OutputKey": "VPC",
+                        "OutputValue": "vpc-xxxxxxxxxxxxxxxxx",
+                        "ExportName": "ex-011a-VPC"
+                    },
+                    {
+                        "OutputKey": "SecurityGroupLoadBalancer",
+                        "OutputValue": "sg-xxxxxxxxxxxxxxxxx",
+                        "ExportName": "ex-011a-SecurityGroupLoadBalancer"
+                    },
+                    {
+                        "OutputKey": "SecurityGroupWebInstances",
+                        "OutputValue": "sg-xxxxxxxxxxxxxxxxx",
+                        "ExportName": "ex-011a-SecurityGroupWebInstances"
+                    },
+                    {
+                        "OutputKey": "SubnetPublic1",
+                        "OutputValue": "subnet-xxxxxxxxxxxxxxxxx",
+                        "ExportName": "ex-011a-SubnetPublic1"
+                    },
+                    {
+                        "OutputKey": "SubnetPublic2",
+                        "OutputValue": "subnet-xxxxxxxxxxxxxxxxx",
+                        "ExportName": "ex-011a-SubnetPublic2"
+                    }
+                ],
+
 Create the second Stack
 ------------------------
 Use the following awscli command to create a new CloudFormation **'Stack'** based on the template.
