@@ -136,7 +136,7 @@ Resources:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties: 
       RouteTableId: !Ref RouteTablePublic
-      SubnetId: !Ref PublicSubnet1
+      SubnetId: !Ref PublicSubnet2
   AssociateSubnetWeb1RouteTablePrivate1:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties: 
@@ -193,7 +193,7 @@ Resources:
       KeyName: !Ref KeyPairName
       SecurityGroupIds: 
         - !Ref SecurityGroupWebInstances
-      SubnetId: !Ref PublicSubnet1
+      SubnetId: !Ref PrivateSubnet1
       Tags: 
         - Key: Name
           Value: i_web1_ex006
@@ -215,7 +215,7 @@ Resources:
       KeyName: !Ref KeyPairName
       SecurityGroupIds: 
         - !Ref SecurityGroupWebInstances
-      SubnetId: !Ref PublicSubnet2
+      SubnetId: !Ref PrivateSubnet2
       Tags: 
         - Key: Name
           Value: i_web2_ex006

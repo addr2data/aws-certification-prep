@@ -195,7 +195,7 @@ We need a way to verify the Load-balancer is functioning properly. To accomplish
         KeyName: !Ref KeyPairName
         SecurityGroupIds: 
           - !Ref SecurityGroupWebInstances
-        SubnetId: !Ref PublicSubnet1
+        SubnetId: !Ref PrivateSubnet1
         Tags: 
           - Key: Name
             Value: i_web1_ex006
@@ -209,10 +209,9 @@ We need a way to verify the Load-balancer is functioning properly. To accomplish
               - "sudo echo \"<html><body><h1>$(cat /etc/hostname)</h1></body></html>\" > index.html"
               - "sudo python3 -m http.server 80"
       DependsOn: DefaultRoutePrivate
-
     WebInstance2:
 
-        ... excluded for brevity ...
+      ... excluded for brevity ...
 
 Explanation:
 
@@ -291,27 +290,27 @@ Output:
     +----------------------------------------+------------------------------+
     |           Logical Resource Id          |    Physical Resource Id      |
     +----------------------------------------+------------------------------+
-    |  AssociateSubnetWeb1RouteTablePrivate1 |  rtbassoc-0872af453f3315b9d  |
-    |  AssociateSubnetWeb1RouteTablePrivate2 |  rtbassoc-079717afe6522faf4  |
-    |  AssociateSubnetWeb1RouteTablePublic1  |  rtbassoc-055d7bb6f300f4003  |
-    |  AssociateSubnetWeb1RouteTablePublic2  |  rtbassoc-055d7bb6f300f4003  |
-    |  AttachInternetGateway                 |  ex-00-Attac-1VP4UKY50BNHM   |
-    |  DefaultRoutePrivate                   |  ex-00-Defau-EQ8DW1UI5H99    |
-    |  DefaultRoutePublic                    |  ex-00-Defau-67YXN4YXAOIQ    |
-    |  FloatingIpAddressNatGateway           |  34.232.248.244              |
-    |  InternetGateway                       |  igw-0b3e22d5a90599e2a       |
-    |  NatGateway                            |  nat-0caa14f953947cb7a       |
-    |  PrivateSubnet1                        |  subnet-095fb10aa03a4f3fc    |
-    |  PrivateSubnet2                        |  subnet-0f5869e56678e2fa1    |
-    |  PublicSubnet1                         |  subnet-0c82b7299cf144945    |
-    |  PublicSubnet2                         |  subnet-0bdbd933dbb7b1002    |
-    |  RouteTablePrivate                     |  rtb-0be0e182a3004746e       |
-    |  RouteTablePublic                      |  rtb-03dc45b1bb226cce3       |
-    |  SecurityGroupLoadBalancer             |  sg-02420a833cdf257b7        |
-    |  SecurityGroupWebInstances             |  sg-0c38edb89494f3ef3        |
-    |  VPC                                   |  vpc-0b79c451562394dfe       |
-    |  WebInstance1                          |  i-0d11afd46418a8703         |
-    |  WebInstance2                          |  i-0dbe1e47aec17cf5b         |
+    |  AssociateSubnetWeb1RouteTablePrivate1 |  rtbassoc-xxxxxxxxxxxxxxxxx  |
+    |  AssociateSubnetWeb1RouteTablePrivate2 |  rtbassoc-xxxxxxxxxxxxxxxxx  |
+    |  AssociateSubnetWeb1RouteTablePublic1  |  rtbassoc-xxxxxxxxxxxxxxxxx  |
+    |  AssociateSubnetWeb1RouteTablePublic2  |  rtbassoc-xxxxxxxxxxxxxxxxx  |
+    |  AttachInternetGateway                 |  ex-00-Attac-XXXXXXXXXXXXX   |
+    |  DefaultRoutePrivate                   |  ex-00-Defau-XXXXXXXXXXXX    |
+    |  DefaultRoutePublic                    |  ex-00-Defau-XXXXXXXXXXXX    |
+    |  FloatingIpAddressNatGateway           |  xxx.xxx.xxx.xxx             |
+    |  InternetGateway                       |  igw-xxxxxxxxxxxxxxxxx       |
+    |  NatGateway                            |  nat-xxxxxxxxxxxxxxxxx       |
+    |  PrivateSubnet1                        |  subnet-xxxxxxxxxxxxxxxxx    |
+    |  PrivateSubnet2                        |  subnet-xxxxxxxxxxxxxxxxx    |
+    |  PublicSubnet1                         |  subnet-xxxxxxxxxxxxxxxxx    |
+    |  PublicSubnet2                         |  subnet-xxxxxxxxxxxxxxxxx    |
+    |  RouteTablePrivate                     |  rtb-xxxxxxxxxxxxxxxxx       |
+    |  RouteTablePublic                      |  rtb-xxxxxxxxxxxxxxxxx       |
+    |  SecurityGroupLoadBalancer             |  sg-xxxxxxxxxxxxxxxxx        |
+    |  SecurityGroupWebInstances             |  sg-xxxxxxxxxxxxxxxxx        |
+    |  VPC                                   |  vpc-xxxxxxxxxxxxxxxxx       |
+    |  WebInstance1                          |  i-xxxxxxxxxxxxxxxxx         |
+    |  WebInstance2                          |  i-xxxxxxxxxxxxxxxxx         |
     +----------------------------------------+------------------------------+
 
 Environment variables
@@ -866,6 +865,7 @@ Let's take another look at the health of both Target Groups.
 
 Application Load-balancer
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+Rerun this command until 'State:Code' is 'healthy'.
 
 .. code-block::
 
@@ -902,6 +902,7 @@ Output:
 
 Network Load-balancer
 ~~~~~~~~~~~~~~~~~~~~~
+Rerun this command until 'State:Code' is 'healthy'.
 
 .. code-block::
 
