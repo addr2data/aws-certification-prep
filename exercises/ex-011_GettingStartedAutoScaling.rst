@@ -72,7 +72,7 @@ The activities in this exercise may result in charges to your AWS account.
         + $0.00 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(up to 1 GB)**
         + $0.09 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(next 9.999 TB)**
      - 
-        + We also need to consider Data Transfer charges when using either the Network or Application Load balancers.
+        + We also need to consider Data Transfer charges when using either the Application Load balancers.
 
 Limits
 ------
@@ -109,13 +109,14 @@ We will be using two templates to introduce some additional capabilities of Clou
 
 **Highlights**
 
-    - Two Instances that will act as Web Servers.
     - Two **public** Subnets (10.0.0.0/24 and 10.0.1.0/24). Each in a different Availability Zone.
     - Two **private** Subnets (10.0.128.0/24 and 10.0.129.0/24). Each in a different Availability Zone.
     - An Internet Gateway to allow Internet access to/from the public Subnets.
     - A NAT Gateway to allow Internet access from the private Subnets.
     - A Security Group for the Web Servers that allows **HTTP** from anywhere in the VPC (10.0.0.0/16)
     - A Security Group for the Load-balancer that allows **HTTP** from anywhere (0.0.0.0/0)
+    - A Launch Template for use with Auto Scale.
+    - An Application Load balancer, plus an associated Target Group and Listener.
 
 **Notable item**
 
