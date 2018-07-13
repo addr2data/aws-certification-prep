@@ -103,9 +103,9 @@ In this configuration, we will be building the following configuration.
 
 Template
 --------
-For our starting configuration, we will create a CloudFormation **Stack** from a Template. Please review **'ex-011a_template.yaml'** and **'ex-011b_template.yaml'** in the **'templates'** directory.
+For our starting configuration, we will create two CloudFormation **Stacks** from Template. Please review **'ex-011a_template.yaml'** and **'ex-011b_template.yaml'** in the **'templates'** directory.
 
-We will be using two templates to introduce some additional capabilities of CloudFormation Templates.
+We are using two templates in order to introduce an additional capability (export/import) available in CloudFormation Templates.
 
 **Highlights**
 
@@ -120,7 +120,7 @@ We will be using two templates to introduce some additional capabilities of Clou
 
 **Notable item**
 
-In Template **ex-011a_template.yaml**, we will define some **outputs**. After we deploy the first stack using this Template, these Outputs will available for import by Template **ex-011b_template.yaml**
+In Template **ex-011a_template.yaml**, we will define some **Outputs**. After we deploy the first stack using this Template, these **Outputs** will available for import by Template **ex-011b_template.yaml**
 
 .. code-block::
 
@@ -156,7 +156,7 @@ In Template **ex-011a_template.yaml**, we will define some **outputs**. After we
 
 **Notable item**
 
-In Template **ex-011b_template.yaml**, 
+In Template **ex-011b_template.yaml**, we create a **Launch Template** that will be used by Auto Scale to launch new Instances.
 
 .. code-block::
 
@@ -177,7 +177,7 @@ In Template **ex-011b_template.yaml**,
 
 **Notable item**
 
-In Template **ex-011b_template.yaml**, 
+In Template **ex-011b_template.yaml**, we create a Application Load balancer, a Target Group and a Listener.
 
 .. code-block::
 
