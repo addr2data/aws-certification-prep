@@ -405,13 +405,13 @@ Output:
     {
         "LoadBalancers": [
             {
-                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/app/elb-app-ex011/49242b54aff9c5d7",
-                "DNSName": "elb-app-ex011-1978133642.us-east-1.elb.amazonaws.com",
-                "CanonicalHostedZoneId": "Z35SXDOTRQ7X7K",
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:loadbalancer/app/elb-app-ex011/xxxxxxxxxxxxxxxx",
+                "DNSName": "elb-app-ex011-xxxxxxxxxx.us-east-1.elb.amazonaws.com",
+                "CanonicalHostedZoneId": "XXXXXXXXXXXXXX",
                 "CreatedTime": "2018-07-10T17:03:19.470Z",
                 "LoadBalancerName": "elb-app-ex011",
                 "Scheme": "internet-facing",
-                "VpcId": "vpc-0a2153af261fac0e5",
+                "VpcId": "vpc-xxxxxxxxxxxxxxxxx",
                 "State": {
                     "Code": "active"
                 },
@@ -419,15 +419,15 @@ Output:
                 "AvailabilityZones": [
                     {
                         "ZoneName": "us-east-1a",
-                        "SubnetId": "subnet-0111ef965b30b7104"
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
                     },
                     {
                         "ZoneName": "us-east-1b",
-                        "SubnetId": "subnet-0fc5ae8b83f219d32"
+                        "SubnetId": "subnet-xxxxxxxxxxxxxxxxx"
                     }
                 ],
                 "SecurityGroups": [
-                    "sg-00f7a265bda667453"
+                    "sg-xxxxxxxxxxxxxxxxx"
                 ],
                 "IpAddressType": "ipv4"
             }
