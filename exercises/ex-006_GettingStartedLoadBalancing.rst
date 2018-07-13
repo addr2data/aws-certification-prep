@@ -256,7 +256,7 @@ Output:
     {
         "Stacks": [
             {
-                "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-005/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-006/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
                 "StackName": "ex-006",
                 "CreationTime": "2018-06-19T19:56:35.434Z",
                 "RollbackConfiguration": {},

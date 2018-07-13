@@ -222,8 +222,8 @@ In Template **ex-011b_template.yaml**, we create a Application Load balancer, a 
           - WebServerTargetGroup
 
 
-Create network Stack
---------------------
+Create the first Stack
+----------------------
 Use the following awscli command to create a new CloudFormation **'Stack'** based on the template.
 
 .. code-block::
@@ -240,12 +240,41 @@ Output:
         "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-011a/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
 
+Check the status
+----------------
+Use the following awscli command to check the **'StackStatus'**.
 
-Create application Stack
+Rerun this command until **'StackStatus'** is **'CREATE_COMPLETE'**.
+
+.. code-block::
+
+    aws cloudformation describe-stacks --stack-name ex-011a
+
+Output:
+
+.. code-block::
+
+    {
+        "Stacks": [
+            {
+                "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-011a/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "StackName": "ex-011a",
+                "CreationTime": "2018-06-19T19:56:35.434Z",
+                "RollbackConfiguration": {},
+                "StackStatus": "CREATE_IN_PROGRESS",
+                "DisableRollback": false,
+                "NotificationARNs": [],
+                "Tags": [],
+                "EnableTerminationProtection": false
+            }
+        ]
+    }
+
+Create the second Stack
 ------------------------
 Use the following awscli command to create a new CloudFormation **'Stack'** based on the template.
 
-Note: If you are using the **'acpkey1'** Key Pair, you can leave off the **'--parameters'** option all together.
+Notice we are using the parameters option to pass in the name of the first stack.
 
 .. code-block::
 
@@ -261,6 +290,39 @@ Output:
     {
         "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-011b/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
+
+
+Check the status
+----------------
+Use the following awscli command to check the **'StackStatus'**.
+
+Rerun this command until **'StackStatus'** is **'CREATE_COMPLETE'**.
+
+.. code-block::
+
+    aws cloudformation describe-stacks --stack-name ex-011b
+
+Output:
+
+.. code-block::
+
+    {
+        "Stacks": [
+            {
+                "StackId": "arn:aws:cloudformation:us-east-1:xxxxxxxxxxxx:stack/ex-011b/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "StackName": "ex-011b",
+                "CreationTime": "2018-06-19T19:56:35.434Z",
+                "RollbackConfiguration": {},
+                "StackStatus": "CREATE_IN_PROGRESS",
+                "DisableRollback": false,
+                "NotificationARNs": [],
+                "Tags": [],
+                "EnableTerminationProtection": false
+            }
+        ]
+    }
+
+
 
 Review the Stack details
 ------------------------
