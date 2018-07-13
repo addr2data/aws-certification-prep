@@ -449,6 +449,8 @@ Output:
         "TargetHealthDescriptions": []
     }
 
+Notice that the Target Grouo is empty. Instances will be added to the Target Group by Auto Scale.
+
 Check Listener status
 ---------------------
 
@@ -463,14 +465,14 @@ Output:
     {
         "Listeners": [
             {
-                "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:listener/app/elb-app-ex011/49242b54aff9c5d7/3229575d2db3c508",
-                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:loadbalancer/app/elb-app-ex011/49242b54aff9c5d7",
+                "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:listener/app/elb-app-ex011/xxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxx",
+                "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:loadbalancer/app/elb-app-ex011/xxxxxxxxxxxxxxxx",
                 "Port": 80,
                 "Protocol": "HTTP",
                 "DefaultActions": [
                     {
                         "Type": "forward",
-                        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-011-tg-app-lb/87b1fd3363f55470"
+                        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:targetgroup/ex-011-tg-app-lb/xxxxxxxxxxxxxxxx"
                     }
                 ]
             }
