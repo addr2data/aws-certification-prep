@@ -580,8 +580,8 @@ Output:
         ]
     }
 
-Check the State
----------------
+Describe Target Group health
+----------------------------
 
 .. code-block::
 
@@ -619,6 +619,34 @@ Output:
             }
         ]
     }
+
+Verify Application Load-balancer
+--------------------------------
+
+DNS Name
+~~~~~~~~
+.. code-block::
+
+    aws elbv2 describe-load-balancers \
+      --load-balancer-arns $EX011_WEB_LB \
+      --output text \
+      --query LoadBalancers[*].DNSName
+
+Output:
+
+.. code-block::
+
+    elb-app-ex011-xxxxxxxxxx.us-east-1.elb.amazonaws.com
+
+Test connectivity
+~~~~~~~~~~~~~~~~~
+Using 'curl' or your browser test connectivity. Rerun/refresh a few times to make sure you see the host name of both Web Servers.
+
+**Expected result:** Success
+
+.. code-block::
+
+    curl http://ex-006-app-lb-xxxxxxxxxx.us-east-1.elb.amazonaws.com
 
 
 
