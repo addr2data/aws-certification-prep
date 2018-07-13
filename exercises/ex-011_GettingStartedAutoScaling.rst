@@ -506,8 +506,33 @@ Now we create the Auto Scaling group.
         --health-check-grace-period 300 \
         --vpc-zone-identifier $EX011_PRI_SUBNETS
 
+Additional information for the above parameters:
 
+.. list-table::
+   :widths: 50, 50
+   :header-rows: 0
 
+   * - **Parameter**
+     - **Description**
+   * - '--auto-scaling-group-name ex-011-asg '
+     - Specifies a name for the Auto Scaling group.
+   * - '--launch-template LaunchTemplateId=$EX011_WEB_LTEMP'
+     - 
+   * - '--min-size 2'
+     - 
+   * - '--max-size 2'
+     - 
+   * - '--target-group-arns $EX011_WEB_TG'
+     - 
+   * - '--health-check-type ELB'
+     - 
+   * - '--health-check-grace-period 300'
+     - 
+   * - '--vpc-zone-identifier $EX011_PRI_SUBNETS'
+     - 
+
+Check the status
+----------------
 
 .. code-block::
 
@@ -521,7 +546,7 @@ Output:
         "AutoScalingGroups": [
             {
                 "AutoScalingGroupName": "ex-011-asg",
-                "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:926075045128:autoScalingGroup:80d8b05a-22db-4ee9-bb1a-988248227c23:autoScalingGroupName/ex-011-asg",
+                "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:xxxxxxxxxxxx:autoScalingGroup:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:autoScalingGroupName/ex-011-asg",
                 "LaunchTemplate": {
                     "LaunchTemplateId": "lt-0c7b5c0001c7ab53a",
                     "LaunchTemplateName": "launch_template_ex011"
@@ -536,7 +561,7 @@ Output:
                 ],
                 "LoadBalancerNames": [],
                 "TargetGroupARNs": [
-                    "arn:aws:elasticloadbalancing:us-east-1:926075045128:targetgroup/ex-011-tg-app-lb/947f2b4d299ee37e"
+                    "arn:aws:elasticloadbalancing:us-east-1:xxxxxxxxxxxx:targetgroup/ex-011-tg-app-lb/xxxxxxxxxxxxxxxx"
                 ],
                 "HealthCheckType": "ELB",
                 "HealthCheckGracePeriod": 300,
