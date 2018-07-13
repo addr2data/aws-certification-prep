@@ -879,32 +879,32 @@ Output:
 
 .. code-block::
 
-{
-    "TargetHealthDescriptions": [
-        {
-            "Target": {
-                "Id": "i-0468a03221b50a9b2",
-                "Port": 80
+    {
+        "TargetHealthDescriptions": [
+            {
+                "Target": {
+                    "Id": "i-0468a03221b50a9b2",
+                    "Port": 80
+                },
+                "TargetHealth": {
+                    "State": "draining",
+                    "Reason": "Target.DeregistrationInProgress",
+                    "Description": "Target deregistration is in progress"
+                }
             },
-            "TargetHealth": {
-                "State": "draining",
-                "Reason": "Target.DeregistrationInProgress",
-                "Description": "Target deregistration is in progress"
+            {
+                "Target": {
+                    "Id": "i-0f84e9f2f965b7ae1",
+                    "Port": 80
+                },
+                "TargetHealth": {
+                    "State": "draining",
+                    "Reason": "Target.DeregistrationInProgress",
+                    "Description": "Target deregistration is in progress"
+                }
             }
-        },
-        {
-            "Target": {
-                "Id": "i-0f84e9f2f965b7ae1",
-                "Port": 80
-            },
-            "TargetHealth": {
-                "State": "draining",
-                "Reason": "Target.DeregistrationInProgress",
-                "Description": "Target deregistration is in progress"
-            }
-        }
-    ]
-}
+        ]
+    }
 
 Cleanup
 -------
