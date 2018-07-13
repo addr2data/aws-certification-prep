@@ -649,15 +649,12 @@ Using 'curl' or your browser test connectivity. Rerun/refresh a few times to mak
     curl http://ex-006-app-lb-xxxxxxxxxx.us-east-1.elb.amazonaws.com
 
 
-
-
-
-
-
-
-
-Modify Auto Scaling Group
+Expand Auto Scaling Group
 -------------------------
+
+Max Size
+~~~~~~~~
+First, we will increase the max size of the auto scaling group.
 
 .. code-block::
 
@@ -665,35 +662,78 @@ Modify Auto Scaling Group
         --auto-scaling-group-name ex-011-asg \
         --max-size 4 
 
+Min Size
+~~~~~~~~
+Next, we will increase the min size. This will trigger Auto Scaling to deploy more Instances.
+
 .. code-block::
 
     aws autoscaling update-auto-scaling-group \
         --auto-scaling-group-name ex-011-asg \
         --min-size 4 
 
-.. code-block::
-
-    aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names ex-011-asg
-
-
-Modify Auto Scaling Group
--------------------------
+Describe Target Group health
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block::
 
-    aws autoscaling update-auto-scaling-group \
-        --auto-scaling-group-name ex-011-asg \
-        --min-size 2 
+    aws elbv2 describe-target-health --target-group-arn $EX011_WEB_TG
+
+    Rerun this command until you see the new targets and they reach a 'State' of 'healthy'.
+
+Output:
 
 .. code-block::
 
-    aws autoscaling update-auto-scaling-group \
-        --auto-scaling-group-name ex-011-asg \
-        --max-size 2 
+    {
+        "TargetHealthDescriptions": [
+            {
+                "Target": {
+                    "Id": "i-0468a03221b50a9b2",
+                    "Port": 80
+                },
+                "TargetHealth": {
+                    "State": "initial",
+                    "Reason": "Elb.RegistrationInProgress",
+                    "Description": "Target registration is in progress"
+                }
+            },
+            {
+                "Target": {
+                    "Id": "i-0f84e9f2f965b7ae1",
+                    "Port": 80
+                },
+                "TargetHealth": {
+                    "State": "initial",
+                    "Reason": "Elb.RegistrationInProgress",
+                    "Description": "Target registration is in progress"
+                }
+            },
+            {
+                "Target": {
+                    "Id": "i-056bbe9be8a44ea8e",
+                    "Port": 80
+                },
+                "HealthCheckPort": "80",
+                "TargetHealth": {
+                    "State": "healthy"
+                }
+            },
+            {
+                "Target": {
+                    "Id": "i-08063fc4fba5e79f2",
+                    "Port": 80
+                },
+                "HealthCheckPort": "80",
+                "TargetHealth": {
+                    "State": "healthy"
+                }
+            }
+        ]
+    }
 
-
-Verify Application Load-balancer
---------------------------------
+Re-verify Application Load-balancer
+-----------------------------------
 
 DNS Name
 ~~~~~~~~
@@ -718,72 +758,208 @@ Using 'curl' or your browser test connectivity. Rerun/refresh a few times to mak
 
 .. code-block::
 
-    curl http://elb-app-ex011-1384793920.us-east-1.elb.amazonaws.com
+    curl http://ex-006-app-lb-xxxxxxxxxx.us-east-1.elb.amazonaws.com
+
+Reduce Auto Scaling Group
+-------------------------
+
+Min Size
+~~~~~~~~
+First, we will increase the max size of the auto scaling group.
 
 .. code-block::
 
-    aws autoscaling create-auto-scaling-group \
-        --auto-scaling-group-name ex-011_asg \
-        --instance-id $EX011_INST_WEB1 \
-        --min-size 2 --max-size 2
+    aws autoscaling update-auto-scaling-group \
+        --auto-scaling-group-name ex-011-asg \
+        --min-size 2 
 
+Min Size
+~~~~~~~~
+Next, we will increase the min size. This will trigger Auto Scaling to deploy more Instances.
 
 .. code-block::
 
-    aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names ex-011_asg 
+    aws autoscaling update-auto-scaling-group \
+        --auto-scaling-group-name ex-011-asg \
+        --max-size 2 
+
+Describe Target Group health
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    aws elbv2 describe-target-health --target-group-arn $EX011_WEB_TG
+
+    Rerun this command until you two of the targets have completed draining and only two healthy' targets remain.
 
 Output:
 
 .. code-block::
 
     {
-        "AutoScalingGroups": [
+        "TargetHealthDescriptions": [
             {
-                "AutoScalingGroupName": "ex-011_asg",
-                "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:926075045128:autoScalingGroup:c090af35-5286-418b-acba-5d1ea2d0a2b1:autoScalingGroupName/ex-011_asg",
-                "LaunchConfigurationName": "ex-011_asg",
-                "MinSize": 2,
-                "MaxSize": 2,
-                "DesiredCapacity": 2,
-                "DefaultCooldown": 300,
-                "AvailabilityZones": [
-                    "us-east-1b"
-                ],
-                "LoadBalancerNames": [],
-                "TargetGroupARNs": [],
-                "HealthCheckType": "EC2",
-                "HealthCheckGracePeriod": 0,
-                "Instances": [
-                    {
-                        "InstanceId": "i-04030facca4770151",
-                        "AvailabilityZone": "us-east-1b",
-                        "LifecycleState": "InService",
-                        "HealthStatus": "Healthy",
-                        "LaunchConfigurationName": "ex-011_asg",
-                        "ProtectedFromScaleIn": false
-                    },
-                    {
-                        "InstanceId": "i-0d9056944b03f5aad",
-                        "AvailabilityZone": "us-east-1b",
-                        "LifecycleState": "InService",
-                        "HealthStatus": "Healthy",
-                        "LaunchConfigurationName": "ex-011_asg",
-                        "ProtectedFromScaleIn": false
-                    }
-                ],
-                "CreatedTime": "2018-07-10T02:37:33.399Z",
-                "SuspendedProcesses": [],
-                "VPCZoneIdentifier": "subnet-0cdeb38c31c380beb",
-                "EnabledMetrics": [],
-                "Tags": [],
-                "TerminationPolicies": [
-                    "Default"
-                ],
-                "NewInstancesProtectedFromScaleIn": false,
-                "ServiceLinkedRoleARN": "arn:aws:iam::926075045128:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
+                "Target": {
+                    "Id": "i-0468a03221b50a9b2",
+                    "Port": 80
+                },
+                "HealthCheckPort": "80",
+                "TargetHealth": {
+                    "State": "healthy"
+                }
+            },
+            {
+                "Target": {
+                    "Id": "i-0f84e9f2f965b7ae1",
+                    "Port": 80
+                },
+                "HealthCheckPort": "80",
+                "TargetHealth": {
+                    "State": "healthy"
+                }
+            },
+            {
+                "Target": {
+                    "Id": "i-056bbe9be8a44ea8e",
+                    "Port": 80
+                },
+                "TargetHealth": {
+                    "State": "draining",
+                    "Reason": "Target.DeregistrationInProgress",
+                    "Description": "Target deregistration is in progress"
+                }
+            },
+            {
+                "Target": {
+                    "Id": "i-08063fc4fba5e79f2",
+                    "Port": 80
+                },
+                "TargetHealth": {
+                    "State": "draining",
+                    "Reason": "Target.DeregistrationInProgress",
+                    "Description": "Target deregistration is in progress"
+                }
             }
         ]
     }
+
+Empty Auto Scaling Group
+------------------------
+
+Min Size
+~~~~~~~~
+First, we will increase the max size of the auto scaling group.
+
+.. code-block::
+
+    aws autoscaling update-auto-scaling-group \
+        --auto-scaling-group-name ex-011-asg \
+        --min-size 0 
+
+Max Size
+~~~~~~~~
+Next, we will increase the min size. This will trigger Auto Scaling to deploy more Instances.
+
+.. code-block::
+
+    aws autoscaling update-auto-scaling-group \
+        --auto-scaling-group-name ex-011-asg \
+        --max-size 0
+
+Describe Target Group health
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    aws elbv2 describe-target-health --target-group-arn $EX011_WEB_TG
+
+    Rerun this command until all the targets have completed draining and the Target Group is empty
+
+Output:
+
+.. code-block::
+
+{
+    "TargetHealthDescriptions": [
+        {
+            "Target": {
+                "Id": "i-0468a03221b50a9b2",
+                "Port": 80
+            },
+            "TargetHealth": {
+                "State": "draining",
+                "Reason": "Target.DeregistrationInProgress",
+                "Description": "Target deregistration is in progress"
+            }
+        },
+        {
+            "Target": {
+                "Id": "i-0f84e9f2f965b7ae1",
+                "Port": 80
+            },
+            "TargetHealth": {
+                "State": "draining",
+                "Reason": "Target.DeregistrationInProgress",
+                "Description": "Target deregistration is in progress"
+            }
+        }
+    ]
+}
+
+Cleanup
+-------
+
+Delete Auto Scaling Group
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Rerun the following command until it lets you delete the group. 
+
+.. code-block::
+
+    aws autoscaling delete-auto-scaling-group --auto-scaling-group-name ex-011-asg
+
+
+Delete the second Stack
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    aws cloudformation delete-stack --stack-name ex-011b 
+
+
+Check the status
+~~~~~~~~~~~~~~~~
+Rerun the following command until you check the error below. 
+
+.. code-block::
+
+    aws cloudformation describe-stacks --stack-name ex-011b 
+
+Output:
+
+.. code-block::
+
+    An error occurred (ValidationError) when calling the DescribeStacks operation: Stack with id ex-011b does not exist
+
+Delete the first Stack
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    aws cloudformation delete-stack --stack-name ex-011a 
+
+Check the status
+~~~~~~~~~~~~~~~~
+Rerun the following command until you check the error below. 
+
+.. code-block::
+
+    aws cloudformation describe-stacks --stack-name ex-011a
+
+Output:
+
+.. code-block::
+
+    An error occurred (ValidationError) when calling the DescribeStacks operation: Stack with id ex-011a does not exist
 
 Summary
 -------
