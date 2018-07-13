@@ -71,7 +71,6 @@ The activities in this exercise may result in charges to your AWS account.
         + During this exercise, we will deploy an Application Load balancer.
         + It will be deployed manually using the awscli.
         + It should not need to run for more than a hour or so.
-
    * - Data Transfer
      -
         + $0.00 per GB - Data Transfer IN to Amazon EC2 from Internet

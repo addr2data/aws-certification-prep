@@ -12,13 +12,13 @@ Dependencies
    :header-rows: 0
 
    * - Depends on exercise(s)
-     - to be added or none
+     - ex-001
    * - Prerequisite for exercise(s)
-     - to be added or none
+     - 
 
 Objectives
 ----------
-- Explore **Fleet Management** by **Auto Scaling** EC2 instances.
+- Explore **Fleet Management** by using **Auto Scale** to deploy/terminate EC2 instances.
 
 Expected Costs
 --------------
@@ -29,13 +29,50 @@ The activities in this exercise may result in charges to your AWS account.
    :header-rows: 0
 
    * - **Component**
-     - **Applicable Costs**
+     - **Applicable costs**
      - **Notes**
-   * - To be added
+   * - VPC (including Subnets, Route Tables and IntenetGateways).
      - 
-        + To be added
+        + None (AWS does not charge for these basic VPC building blocks)
+     - 
+        + During this exercise, we will deploy basic VPC components.
+        + They will be deployed as part of the CloudFormation Stack.
+   * - On-demand Instances
+     - 
+        + $0.0116 per hour per Instance (t2.micro)
+     - 
+        + During this exercise, we will deploy two (2) Instances. The AMI that will be used is **'Ubuntu Server 16.04 LTS'**, which combined with the **'t2.micro'** Instance Type, is **'Free tier eligible'**.
+        + They will be deployed using Auto Deploy. 
+        + They should not need to run for more than a hour or so.
+   * - NAT Gateway
+     - 
+        + Between $0.045 and $0.093 per hour, depending on Region.
+        + Between $0.045 and $0.093 per GB of data processed, depending on Region.
+     - 
+        + During this exercise, we will deploy a NAT Gateway.
+        + It will be deployed as part of a CloudFormation Stack. 
+        + It should not need to run for more than a hour or so.
+        + A small amount of data will be processed through it.
+   * - Application Load-balancing
+     - 
+        + Between $0.0225 and $0.034 per Application Load Balancer-hour (or partial hour), depending on your region.
+        + Between $0.008 and $0.011 per LCU-hour (or partial hour), depending on your region.
+     - 
+        + During this exercise, we will deploy an Application Load balancer.
+        + It will be deployed as part of a CloudFormation Stack.
+        + It should not need to run for more than a hour or so.
+   * - Auto Scale
+     - 
+        + None (AWS does not charge for Auto Scale)
+     - 
+        + We will configure Auto Scale manually using the awscli. 
+   * - Data Transfer
      -
-        + To be added
+        + $0.00 per GB - Data Transfer IN to Amazon EC2 from Internet
+        + $0.00 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(up to 1 GB)**
+        + $0.09 per GB per month - Data Transfer OUT of Amazon EC2 to Internet **(next 9.999 TB)**
+     - 
+        + We also need to consider Data Transfer charges when using either the Network or Application Load balancers.
 
 Limits
 ------
