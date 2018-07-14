@@ -84,7 +84,7 @@ Setting environment variables may be different on different OSs. Please refer to
 
 Diagram
 -------
-In this exercise, we will add Instances to the configuration from **ex-002**.
+In this exercise, we will recreate the configuration from **ex-002** and **ex-003** using CloudFormation.
 
 .. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-004.png
 
