@@ -3,7 +3,7 @@ ex-003: Testing basic connectivity
 
 Status
 ------
-Version 1.2 (6/27/18)
+Version 1.3 (7/14/18)
 
 Dependencies
 ------------
@@ -85,6 +85,12 @@ In some places, we will do this manually, because we want to show the the full o
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
 **Note: We'll be reusing some of the environment variables created in the previous exercise, in this exercise.**
+
+Diagram
+-------
+In this exercise, we will add Instances to the configuration from **ex-002**.
+
+.. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-003.png
 
 Create a Security Group
 -----------------------

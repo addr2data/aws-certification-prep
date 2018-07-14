@@ -3,7 +3,7 @@ ex-003: Testing basic connectivity from the AWS Management Console
 
 Status
 ------
-Version 1.1 (6/29/18)
+Version 1.2 (7/14/18)
 
 Dependencies
 ------------
@@ -75,6 +75,12 @@ The following table shows the default limits for the components utilized in this
      - 20 per region
    * - Elastic IP addresses
      - 5 per region
+
+Diagram
+-------
+In this exercise, we will add Instances to the configuration from **ex-002**.
+
+.. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-003.png
 
 Preparation
 -----------
