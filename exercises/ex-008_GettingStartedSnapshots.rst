@@ -3,7 +3,7 @@ ex-008: Getting started with Snapshots
 
 Status
 ------
-Draft
+Draft (not complete)
 
 Dependencies
 ------------

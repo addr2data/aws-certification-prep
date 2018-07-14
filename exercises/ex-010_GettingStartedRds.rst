@@ -3,7 +3,7 @@ ex-010: Getting Started with RDS
 
 Status
 ------
-Draft
+Draft (not complete)
 
 Dependencies
 ------------

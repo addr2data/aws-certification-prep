@@ -3,7 +3,7 @@ ex-007: Working with EBS
 
 Status
 ------
-Draft
+Draft (not complete)
 
 Dependencies
 ------------

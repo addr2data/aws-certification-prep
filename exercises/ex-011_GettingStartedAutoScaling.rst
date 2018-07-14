@@ -3,7 +3,7 @@ ex-011: Getting started with Auto Scaling
 
 Status
 ------
-Draft
+Version 0.8 (7/14/18)
 
 Dependencies
 ------------

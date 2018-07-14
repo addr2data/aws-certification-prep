@@ -3,7 +3,7 @@ ex-009: Getting started with S3
 
 Status
 ------
-Draft
+Draft (not complete)
 
 Dependencies
 ------------
