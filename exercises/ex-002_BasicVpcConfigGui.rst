@@ -3,7 +3,7 @@ ex-002: Basic VPC configuration from the AWS Management Console
 
 Status
 ------
-Version 1.1 (6/29/18)
+Version 1.2 (7/14/18)
 
 Dependencies
 ------------
@@ -56,6 +56,12 @@ The following table shows the default limits for the components utilized in this
      - 50
    * - Subnets
      - 200 per VPC
+
+Diagram
+-------
+In this exercise, we will be building the following configuration.
+
+.. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-002.png
 
 Preparation
 -----------

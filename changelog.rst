@@ -39,8 +39,9 @@ CHANGE LOG
 
 - 07-13-18 (addr2data):  Improved **ex-006**. Changed version to 1.0.
 
-- 07-14-18 (addr2data):  Added diagram and made minor improvements to **ex-002**. Changed version to 1.4.
+- 07-14-18 (addr2data):  Added diagram and made minor improvements to **ex-002 (CLI)**. Changed version to 1.4.
 
+- 07-14-18 (addr2data):  Added diagram to **ex-002 (GUI)**. Changed version to 1.2.
 
 
 
