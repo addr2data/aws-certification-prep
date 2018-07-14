@@ -3,7 +3,7 @@ ex-005: Expanding the VPC configuration
 
 Status
 ------
-Version (Draft)
+Version 0.9 (7/14/18)
 
 Dependencies
 ------------
@@ -12,7 +12,7 @@ Dependencies
    :header-rows: 0
 
    * - Depends on exercise(s)
-     - ex-001, ex-003, ex-004
+     - ex-001
    * - Prerequisite for exercise(s)
      - tbd
 
