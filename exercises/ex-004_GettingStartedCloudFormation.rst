@@ -3,7 +3,7 @@ ex-004: Getting Started with CloudFormation
 
 Status
 ------
-Version 1.0 (6/27/18)
+Version 1.1 (7/14/18)
 
 Dependencies
 ------------
@@ -81,6 +81,12 @@ During these exercises, we will be using the output of some commands to creatie 
 In some places, we will do this manually, because we want to show the the full output of the command. In other places, we will use the **'--query'** and **'--output'** options available in the awscli command to filter the output directly into a variable.
 
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
+
+Diagram
+-------
+In this exercise, we will add Instances to the configuration from **ex-002**.
+
+.. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-004.png
 
 Add CloudFormation API access to user 'apiuser01' 
 -------------------------------------------------
