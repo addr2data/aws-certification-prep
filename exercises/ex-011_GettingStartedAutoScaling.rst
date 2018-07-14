@@ -97,7 +97,7 @@ Setting environment variables may be different on different OSs. Please refer to
 
 Diagram
 -------
-In this configuration, we will be building the following configuration.
+In this exercise, we will be building the following configuration.
 
 .. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-011.png
 

@@ -3,7 +3,7 @@ ex-002: Basic VPC configuration
 
 Status
 ------
-Version 1.3 (6/27/18)
+Version 1.4 (7/14/18)
 
 Dependencies
 ------------
@@ -35,8 +35,8 @@ The activities in this exercise are NOT expected to result in any charges to you
      - 
         + None
      - 
-        + AWS does NOT charge for the basic VPC building blocks used in this exercise.
-        + AWS does charge for other VPC components, you will use these components in future exercises.   
+        + AWS does NOT charge for the basic VPC components.
+        + During this exercise, we will deploy basic VPC components. 
     
 Limits
 ------
@@ -66,6 +66,12 @@ In some places, we will do this manually, because we want to show the the full o
 Setting environment variables may be different on different OSs. Please refer to the documentation for your OS.
 
 **Note: We'll be reusing some of the environment variables created in this exercise, in the next exercise**
+
+Diagram
+-------
+In this exercise, we will be building the following configuration.
+
+.. image:: https://github.com/addr2data/aws-certification-prep/blob/master/images/ex-002.png
 
 Create a VPC
 ------------
