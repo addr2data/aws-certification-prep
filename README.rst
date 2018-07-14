@@ -10,7 +10,7 @@ Project Status
    * - Project Start
      - Jun 4, 2018
    * - Latest Update
-     - Jul 13, 2018
+     - Jul 14, 2018
 
 `Change Log <https://github.com/addr2data/aws-certification-prep/blob/master/changelog.rst>`_
 
@@ -49,7 +49,7 @@ The following table is provided to show two things:
 
 Expect this table to change frequently, as new exercises are added.
 
-**Last updated: 6/23/18**
+**Last updated: 7/14/18**
 
 .. list-table::
    :widths: 20, 20, 20, 20, 20
@@ -72,7 +72,7 @@ Expect this table to change frequently, as new exercises are added.
      - 
    * - Database
      - RDS, DynamoDB
-     - 
+     - RDS
      - 
      - 
    * - Networking & Content Delivery
@@ -81,8 +81,8 @@ Expect this table to change frequently, as new exercises are added.
      - VPC
      - 
    * - Management Tools
-     - CloudWatch, AWS Auto Scaling, CloudFormation, CloudTrail, Systems Manager
-     - CloudFormation, Systems Manager
+     - CloudWatch, Auto Scaling, CloudFormation, CloudTrail, Systems Manager
+     - CloudFormation, Systems Manager, Auto Scaling
      - 
      - 
    * - Security, Identity & Compliance

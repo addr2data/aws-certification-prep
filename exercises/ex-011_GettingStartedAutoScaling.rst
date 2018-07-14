@@ -868,12 +868,11 @@ Next, we will increase the min size. This will trigger Auto Scaling to deploy mo
 
 Describe Target Group health
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Rerun this command until all the targets have completed draining and the Target Group is empty
 
 .. code-block::
 
     aws elbv2 describe-target-health --target-group-arn $EX011_WEB_TG
-
-    Rerun this command until all the targets have completed draining and the Target Group is empty
 
 Output:
 
