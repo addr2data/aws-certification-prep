@@ -200,7 +200,10 @@ Foundational
      - Getting started with Auto Scaling (draft)
      - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-011_GettingStartedAutoScaling.rst>`_
      - 
-
+   * - ex-012
+     - Getting started with Simple Queue Service (SQS) (draft)
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-011_GettingStartedSqs.rst>`_
+     - 
 
 Functional
 ~~~~~~~~~~
