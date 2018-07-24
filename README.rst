@@ -202,7 +202,7 @@ Foundational
      - 
    * - ex-012
      - Getting started with Simple Queue Service (SQS) (draft)
-     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/master/exercises/ex-012_GettingStartedSqs.rst>`_
+     - `CLI <https://github.com/addr2data/aws-certification-prep/blob/tree/exercises/ex-012_GettingStartedSqs.rst>`_
      - 
 
 Functional
