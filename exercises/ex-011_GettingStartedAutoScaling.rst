@@ -3,7 +3,7 @@ ex-011: Getting started with Auto Scaling
 
 Status
 ------
-Version 0.8 (7/14/18)
+Version 0.9 (7/24/18)
 
 Dependencies
 ------------
@@ -18,7 +18,7 @@ Dependencies
 
 Objectives
 ----------
-- Explore **Fleet Management** by using **Auto Scale** to deploy/terminate EC2 instances.
+- Explore using **Auto Scaling** for basic **Fleet Management**.
 
 Expected Costs
 --------------
