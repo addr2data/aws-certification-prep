@@ -31,12 +31,12 @@ The activities in this exercise may result in charges to your AWS account.
    * - **Component**
      - **Applicable costs**
      - **Notes**
-   * - VPC (including Subnets, Route Tables and IntenetGateways).
+   * - VPC (including Subnets, Route Tables and InternetGateways).
      - 
         + None (AWS does not charge for these basic VPC building blocks)
      - 
         + During this exercise, we will deploy basic VPC components.
-        + They will be deployed as part of the CloudFormation Stack.
+        + They will be deployed as part of a CloudFormation Stack.
    * - On-demand Instances
      - 
         + $0.0116 per hour per Instance (t2.micro)
@@ -485,7 +485,7 @@ Output:
 
 Create Auto Scaling Group
 -------------------------
-First, we need to be able to pass the Subnets that will be leveraged by the Auto Scale group as a string, so we will create a new environment variable that meets are needs.
+First, we need to be able to pass the Subnets that will be leveraged by the Auto Scale group as a string, so we will create a new environment variable that meets our needs.
 
 .. code-block::
 
